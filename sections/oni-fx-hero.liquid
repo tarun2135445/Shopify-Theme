@@ -1,0 +1,394 @@
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<div
+  class="oni-hero section section--full-width color-{{ section.settings.color_scheme }}"
+  style="--oni-hero-min-h: {{ section.settings.min_height }}svh;"
+  data-testid="oni-fx-hero-{{ section.id }}"
+>
+  <div class="oni-hero__haze" aria-hidden="true"></div>
+  <div class="oni-hero__scanlines" aria-hidden="true"></div>
+  <div class="oni-hero__kanji" aria-hidden="true">{{ section.settings.kanji }}</div>
+
+  {% if section.settings.show_petals %}
+    <div class="oni-hero__petals" aria-hidden="true">
+      {% for i in (1..14) %}
+        <span class="oni-petal"></span>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <div class="oni-hero__content">
+    {% if section.settings.kicker != blank %}
+      <p class="oni-hero__kicker">{{ section.settings.kicker }}</p>
+    {% endif %}
+
+    <h1 class="oni-hero__title" data-text="{{ section.settings.heading | escape }}">
+      {{ section.settings.heading }}
+    </h1>
+
+    {% if section.settings.subheading != blank %}
+      <p class="oni-hero__sub">{{ section.settings.subheading }}</p>
+    {% endif %}
+
+    <div class="oni-hero__actions">
+      {% if section.settings.button_label_1 != blank %}
+        <a href="{{ section.settings.button_link_1 | default: '#' }}" class="button">
+          {{- section.settings.button_label_1 -}}
+        </a>
+      {% endif %}
+      {% if section.settings.button_label_2 != blank %}
+        <a href="{{ section.settings.button_link_2 | default: '#' }}" class="button button-secondary">
+          {{- section.settings.button_label_2 -}}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .oni-hero {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: var(--oni-hero-min-h, 90svh);
+    overflow: hidden;
+    isolation: isolate;
+    text-align: center;
+  }
+
+  .oni-hero__content {
+    position: relative;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 4rem 1.5rem;
+    max-width: 70rem;
+  }
+
+  .oni-hero__kicker {
+    margin: 0;
+    font-family: var(--font-accent--family);
+    font-size: clamp(0.7rem, 1.4vw, 0.9rem);
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: rgb(var(--color-primary-rgb) / 0.95);
+  }
+
+  .oni-hero__title {
+    position: relative;
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-weight: var(--font-heading--weight);
+    font-size: clamp(3.5rem, 13vw, 10rem);
+    line-height: 0.95;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--color-foreground-heading);
+  }
+
+  .oni-hero__sub {
+    margin: 0;
+    max-width: 38rem;
+    font-family: var(--font-accent--family);
+    font-size: clamp(0.85rem, 1.6vw, 1.05rem);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgb(var(--color-foreground-rgb) / 0.75);
+  }
+
+  .oni-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  /* Giant kanji watermark drifting behind the headline */
+  .oni-hero__kanji {
+    position: absolute;
+    z-index: 1;
+    inset-block-start: 50%;
+    inset-inline-start: 50%;
+    translate: -50% -54%;
+    font-size: 64vmin;
+    line-height: 1;
+    font-weight: 700;
+    color: rgb(var(--color-primary-rgb) / 0.08);
+    -webkit-text-stroke: 1px rgb(var(--color-primary-rgb) / 0.18);
+    user-select: none;
+    pointer-events: none;
+  }
+
+  /* Neon haze backdrop */
+  .oni-hero__haze {
+    position: absolute;
+    z-index: 0;
+    inset: -20%;
+    background:
+      radial-gradient(38% 45% at 22% 78%, rgb(var(--color-primary-rgb) / 0.22), transparent 70%),
+      radial-gradient(30% 38% at 80% 18%, rgb(var(--color-primary-rgb) / 0.14), transparent 70%),
+      radial-gradient(50% 55% at 60% 90%, rgb(72 36 120 / 0.25), transparent 70%);
+    filter: blur(40px);
+  }
+
+  /* CRT scanlines */
+  .oni-hero__scanlines {
+    position: absolute;
+    z-index: 3;
+    inset: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgb(var(--color-foreground-rgb) / 0.05) 0 1px,
+      transparent 1px 4px
+    );
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
+
+  /* Sakura petals */
+  .oni-hero__petals {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .oni-petal {
+    position: absolute;
+    top: -6%;
+    width: 12px;
+    height: 12px;
+    background: rgb(var(--color-primary-rgb) / 0.55);
+    border-radius: 80% 0 80% 0;
+    opacity: 0;
+  }
+
+  .oni-petal:nth-child(1)  { left: 4%;  scale: 0.7; }
+  .oni-petal:nth-child(2)  { left: 12%; scale: 1.1; }
+  .oni-petal:nth-child(3)  { left: 21%; scale: 0.5; }
+  .oni-petal:nth-child(4)  { left: 28%; scale: 0.9; }
+  .oni-petal:nth-child(5)  { left: 35%; scale: 0.65; }
+  .oni-petal:nth-child(6)  { left: 44%; scale: 1.2; }
+  .oni-petal:nth-child(7)  { left: 51%; scale: 0.8; }
+  .oni-petal:nth-child(8)  { left: 58%; scale: 0.55; }
+  .oni-petal:nth-child(9)  { left: 66%; scale: 1; }
+  .oni-petal:nth-child(10) { left: 73%; scale: 0.7; }
+  .oni-petal:nth-child(11) { left: 80%; scale: 0.95; }
+  .oni-petal:nth-child(12) { left: 87%; scale: 0.6; }
+  .oni-petal:nth-child(13) { left: 93%; scale: 1.15; }
+  .oni-petal:nth-child(14) { left: 97%; scale: 0.75; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .oni-hero__kanji {
+      animation: oni-kanji-drift 14s ease-in-out infinite alternate;
+    }
+
+    .oni-hero__haze {
+      animation: oni-haze-shift 18s ease-in-out infinite alternate;
+    }
+
+    /* Glitch slices on the headline */
+    .oni-hero__title::before,
+    .oni-hero__title::after {
+      content: attr(data-text);
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      opacity: 0.85;
+      pointer-events: none;
+    }
+
+    .oni-hero__title::before {
+      color: rgb(var(--color-primary-rgb) / 0.9);
+      animation: oni-glitch-a 3.4s steps(1, jump-none) infinite;
+    }
+
+    .oni-hero__title::after {
+      color: rgb(var(--color-foreground-rgb) / 0.55);
+      animation: oni-glitch-b 2.9s steps(1, jump-none) infinite;
+    }
+
+    .oni-petal {
+      animation: oni-petal-fall var(--petal-duration, 11s) linear infinite;
+    }
+
+    .oni-petal:nth-child(odd)  { --petal-duration: 13s; }
+    .oni-petal:nth-child(3n)   { --petal-duration: 9s; }
+    .oni-petal:nth-child(4n)   { --petal-duration: 16s; }
+    .oni-petal:nth-child(1)  { animation-delay: 0s; }
+    .oni-petal:nth-child(2)  { animation-delay: -2s; }
+    .oni-petal:nth-child(3)  { animation-delay: -4.5s; }
+    .oni-petal:nth-child(4)  { animation-delay: -7s; }
+    .oni-petal:nth-child(5)  { animation-delay: -1s; }
+    .oni-petal:nth-child(6)  { animation-delay: -9s; }
+    .oni-petal:nth-child(7)  { animation-delay: -3s; }
+    .oni-petal:nth-child(8)  { animation-delay: -11s; }
+    .oni-petal:nth-child(9)  { animation-delay: -5.5s; }
+    .oni-petal:nth-child(10) { animation-delay: -8s; }
+    .oni-petal:nth-child(11) { animation-delay: -2.8s; }
+    .oni-petal:nth-child(12) { animation-delay: -12s; }
+    .oni-petal:nth-child(13) { animation-delay: -6.2s; }
+    .oni-petal:nth-child(14) { animation-delay: -10s; }
+  }
+
+  @keyframes oni-kanji-drift {
+    from {
+      translate: -52% -56%;
+      rotate: -1.5deg;
+    }
+    to {
+      translate: -48% -50%;
+      rotate: 1.5deg;
+    }
+  }
+
+  @keyframes oni-haze-shift {
+    from {
+      transform: translate3d(-3%, -2%, 0) scale(1);
+    }
+    to {
+      transform: translate3d(3%, 2%, 0) scale(1.08);
+    }
+  }
+
+  @keyframes oni-glitch-a {
+    0%, 91%, 100% {
+      clip-path: inset(100% 0 0 0);
+      transform: none;
+    }
+    92% {
+      clip-path: inset(12% 0 78% 0);
+      transform: translate(-0.35rem, 0);
+    }
+    94% {
+      clip-path: inset(64% 0 22% 0);
+      transform: translate(0.3rem, 0);
+    }
+    96% {
+      clip-path: inset(38% 0 48% 0);
+      transform: translate(-0.2rem, 0.05em);
+    }
+    98% {
+      clip-path: inset(80% 0 6% 0);
+      transform: translate(0.25rem, 0);
+    }
+  }
+
+  @keyframes oni-glitch-b {
+    0%, 88%, 100% {
+      clip-path: inset(100% 0 0 0);
+      transform: none;
+    }
+    89% {
+      clip-path: inset(70% 0 18% 0);
+      transform: translate(0.4rem, 0);
+    }
+    92% {
+      clip-path: inset(8% 0 84% 0);
+      transform: translate(-0.3rem, 0);
+    }
+    95% {
+      clip-path: inset(45% 0 40% 0);
+      transform: translate(0.2rem, -0.04em);
+    }
+  }
+
+  @keyframes oni-petal-fall {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+    8% {
+      opacity: 0.9;
+    }
+    100% {
+      opacity: 0.1;
+      transform: translate3d(-9vw, 112vh, 0) rotate(540deg);
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Oni FX hero",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker",
+      "default": "新着 — Tokyo Midnight Division"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Oni Theory"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Anime streetwear forged after dark. Heavyweight hoodies & graphic tees, summoned in limited runs."
+    },
+    {
+      "type": "text",
+      "id": "kanji",
+      "label": "Kanji watermark",
+      "default": "鬼"
+    },
+    {
+      "type": "text",
+      "id": "button_label_1",
+      "label": "Primary button label",
+      "default": "Shop hoodies"
+    },
+    {
+      "type": "url",
+      "id": "button_link_1",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "button_label_2",
+      "label": "Secondary button label",
+      "default": "Shop tees"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "Secondary button link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_petals",
+      "label": "Show drifting petals",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "min_height",
+      "label": "Minimum height",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "svh",
+      "default": 90
+    }
+  ],
+  "presets": [
+    {
+      "name": "Oni FX hero",
+      "category": "t:categories.banners"
+    }
+  ]
+}
+{% endschema %}

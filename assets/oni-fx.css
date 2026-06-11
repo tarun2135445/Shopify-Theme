@@ -1,0 +1,108 @@
+/* ------------------------------------------------------------
+ * Oni Theory FX layer
+ * Animated effects layered on top of Horizon's base styles.
+ * All decorative motion is gated behind prefers-reduced-motion.
+ * ------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: no-preference) {
+  /* --- Neon pulse: primary buttons breathe a crimson glow --- */
+  .button:not(.button-secondary, .button-unstyled) {
+    animation: oni-neon-pulse 3.2s ease-in-out infinite;
+  }
+
+  .button:not(.button-secondary, .button-unstyled):hover {
+    animation: none;
+    box-shadow:
+      0 0 18px rgb(var(--color-primary-rgb) / 0.65),
+      0 0 48px rgb(var(--color-primary-rgb) / 0.35);
+  }
+
+  /* --- Secondary buttons: sharp edge-light sweep on hover --- */
+  .button-secondary {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .button-secondary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      rgb(var(--color-foreground-rgb) / 0.25) 50%,
+      transparent 60%
+    );
+    transform: translateX(-110%);
+  }
+
+  .button-secondary:hover::after {
+    transition: transform 0.6s cubic-bezier(0.2, 0.6, 0.2, 1);
+    transform: translateX(110%);
+  }
+
+  /* --- Product cards: crimson edge-glow on hover --- */
+  .product-card {
+    transition: box-shadow 0.35s ease;
+  }
+
+  .product-card:hover {
+    box-shadow:
+      0 0 0 1px rgb(var(--color-primary-rgb) / 0.55),
+      0 12px 40px rgb(var(--color-primary-rgb) / 0.18);
+  }
+
+  /* --- Scroll-driven entrances (no JS, progressive enhancement) --- */
+  @supports (animation-timeline: view()) {
+    .product-card,
+    .collection-card {
+      animation: oni-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 45%;
+    }
+  }
+
+  /* --- Jumbo text: RGB-split flicker on hover --- */
+  jumbo-text:hover .jumbo-text-line {
+    animation: oni-rgb-split 0.45s steps(2, jump-none) infinite;
+  }
+}
+
+@keyframes oni-neon-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgb(var(--color-primary-rgb) / 0);
+  }
+  50% {
+    box-shadow: 0 0 22px rgb(var(--color-primary-rgb) / 0.35);
+  }
+}
+
+@keyframes oni-rise {
+  from {
+    opacity: 0;
+    transform: translateY(2.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes oni-rgb-split {
+  0% {
+    text-shadow:
+      -3px 0 rgb(var(--color-primary-rgb) / 0.8),
+      3px 0 rgb(var(--color-foreground-rgb) / 0.45);
+  }
+  50% {
+    text-shadow:
+      3px 0 rgb(var(--color-primary-rgb) / 0.8),
+      -3px 0 rgb(var(--color-foreground-rgb) / 0.45);
+  }
+  100% {
+    text-shadow:
+      -2px 0 rgb(var(--color-primary-rgb) / 0.8),
+      2px 0 rgb(var(--color-foreground-rgb) / 0.45);
+  }
+}

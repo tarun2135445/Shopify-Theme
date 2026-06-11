@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ONI BEANIE EMBLEM — Embroidery artwork | Artboard 1200×1200 (4×4in)
+     Simple bold shapes, max 4 thread colours: red, white, gold, black. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200">
+  <defs><style>
+    .r{fill:#FF3346}.w{fill:#FFFFFF}.g{fill:#FFE600}.k{fill:#0D0D0D}
+  </style></defs>
+  <g transform="translate(600,640)">
+    <!-- Horns -->
+    <path d="M -190,-300 L -300,-520 C -322,-566 -266,-600 -228,-560 L -120,-330 Z" class="w"/>
+    <path d="M 190,-300 L 300,-520 C 322,-566 266,-600 228,-560 L 120,-330 Z" class="w"/>
+    <!-- Mask -->
+    <path d="M 0,-340
+      C 200,-340 330,-220 350,-40
+      C 365,100 320,230 230,310
+      C 160,372 80,400 0,400
+      C -80,400 -160,372 -230,310
+      C -320,230 -365,100 -350,-40
+      C -330,-220 -200,-340 0,-340 Z" class="r"/>
+    <!-- Eyes -->
+    <path d="M -210,-90 L -70,-40 L -200,10 Z" class="g"/>
+    <path d="M 210,-90 L 70,-40 L 200,10 Z" class="g"/>
+    <!-- Grin -->
+    <path d="M -200,140 C -100,210 100,210 200,140 C 150,260 80,310 0,310 C -80,310 -150,260 -200,140 Z" class="w"/>
+    <path d="M -120,180 L -95,265 L -65,185 M 65,185 L 95,265 L 120,180" stroke="#FF3346" stroke-width="16" fill="none" stroke-linejoin="round"/>
+    <!-- Kanji beside -->
+    <text x="0" y="-430" text-anchor="middle" font-family="'Noto Serif CJK JP',serif"
+      font-weight="900" font-size="150" fill="#FFFFFF">鬼</text>
+  </g>
+</svg>

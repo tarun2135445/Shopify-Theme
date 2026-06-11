@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SHINOBI BAG PRINT — Reflective print artwork | Artboard 1800×1800
+     Front-pocket print for crossbody sling: oni mask + 忍 patch layout. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1800" width="1800" height="1800">
+  <defs><style>
+    .r{fill:#FF3346}.w{fill:#FFFFFF}.c{fill:#00F5FF}.k{fill:#0D0D0D}
+    .sr{stroke:#FF3346;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .sc{stroke:#00F5FF;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .sw{stroke:#FFFFFF;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  </style></defs>
+  <g transform="translate(900,860)">
+    <!-- Reflective oni mask (single-colour for reflective vinyl) -->
+    <path d="M -230,-390 L -360,-630 C -388,-682 -322,-726 -280,-678 L -140,-430 Z" class="r"/>
+    <path d="M 230,-390 L 360,-630 C 388,-682 322,-726 280,-678 L 140,-430 Z" class="r"/>
+    <path d="M 0,-420
+      C 260,-420 420,-265 445,-35
+      C 465,155 405,320 290,415
+      C 200,490 100,525 0,525
+      C -100,525 -200,490 -290,415
+      C -405,320 -465,155 -445,-35
+      C -420,-265 -260,-420 0,-420 Z" fill="none" stroke="#FF3346" stroke-width="44"/>
+    <!-- Eyes -->
+    <path d="M -270,-100 L -90,-40 L -255,30 Z" class="r"/>
+    <path d="M 270,-100 L 90,-40 L 255,30 Z" class="r"/>
+    <!-- Grin -->
+    <path d="M -255,185 C -130,275 130,275 255,185 C 195,340 100,405 0,405 C -100,405 -195,340 -255,185 Z"
+      fill="none" stroke="#FF3346" stroke-width="36"/>
+    <path d="M -150,235 L -120,345 M 120,345 L 150,235" class="sr" stroke-width="30"/>
+
+    <!-- 忍 patch box (cyan accent) -->
+    <g transform="translate(0,760)">
+      <rect x="-260" y="-130" width="520" height="260" rx="30" class="sc" stroke-width="20"/>
+      <text x="0" y="62" text-anchor="middle" font-family="'Noto Serif CJK JP',serif"
+        font-weight="900" font-size="180" fill="#00F5FF">忍 SHINOBI</text>
+    </g>
+
+    <!-- Brand strip -->
+    <text x="0" y="-820" text-anchor="middle" font-family="'Arial Black',sans-serif"
+      font-weight="900" font-size="110" fill="#FFFFFF" letter-spacing="26" opacity="0.9">ONI THEORY</text>
+  </g>
+</svg>

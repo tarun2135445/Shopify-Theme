@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- HANNYA — Print-ready SVG | Artboard 4500×5400 | DTG chest print
+     White hannya mask, gold horns, red calligraphy. For dark garments. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4500 5400" width="4500" height="5400">
+  <defs><style>
+    .r{fill:#FF3346}.w{fill:#FFFFFF}.g{fill:#FFE600}.k{fill:#0D0D0D}
+    .sr{stroke:#FF3346;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .sw{stroke:#FFFFFF;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .sg{stroke:#FFE600;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  </style></defs>
+  <g transform="translate(2250,2450)">
+    <!-- Red enso backdrop -->
+    <circle cx="0" cy="-300" r="1450" class="sr" stroke-width="60" opacity="0.35"/>
+
+    <!-- ══ Hannya mask face ══ -->
+    <path d="M 0,-1450
+      C 420,-1450 700,-1230 760,-880
+      C 810,-580 770,-220 640,120
+      C 540,390 380,610 160,720
+      C 100,748 -100,748 -160,720
+      C -380,610 -540,390 -640,120
+      C -770,-220 -810,-580 -760,-880
+      C -700,-1230 -420,-1450 0,-1450 Z" class="w"/>
+    <!-- Gold horns -->
+    <path d="M -330,-1340 L -560,-1900 C -600,-2000 -480,-2060 -400,-1980 L -190,-1430 Z" class="g"/>
+    <path d="M 330,-1340 L 560,-1900 C 600,-2000 480,-2060 400,-1980 L 190,-1430 Z" class="g"/>
+    <path d="M -540,-1860 L -250,-1450" class="sr" stroke-width="14" opacity="0.5"/>
+    <path d="M 540,-1860 L 250,-1450" class="sr" stroke-width="14" opacity="0.5"/>
+
+    <!-- Brow furrows -->
+    <path d="M -560,-1000 C -420,-1090 -200,-1100 -90,-1030" class="k" stroke="#0D0D0D" stroke-width="46" fill="none" stroke-linecap="round"/>
+    <path d="M 560,-1000 C 420,-1090 200,-1100 90,-1030" class="k" stroke="#0D0D0D" stroke-width="46" fill="none" stroke-linecap="round"/>
+    <!-- Angry metallic eyes -->
+    <ellipse cx="-330" cy="-790" rx="190" ry="120" class="g"/>
+    <ellipse cx="330" cy="-790" rx="190" ry="120" class="g"/>
+    <ellipse cx="-330" cy="-790" rx="190" ry="120" fill="none" stroke="#0D0D0D" stroke-width="26"/>
+    <ellipse cx="330" cy="-790" rx="190" ry="120" fill="none" stroke="#0D0D0D" stroke-width="26"/>
+    <circle cx="-330" cy="-780" r="52" class="k"/>
+    <circle cx="330" cy="-780" r="52" class="k"/>
+
+    <!-- Nose -->
+    <path d="M -60,-560 C -20,-480 20,-480 60,-560 L 30,-420 L -30,-420 Z" class="k" opacity="0.85"/>
+
+    <!-- ══ The grin — wide, fanged ══ -->
+    <path d="M -560,-160
+      C -360,-20 -120,30 0,30
+      C 120,30 360,-20 560,-160
+      C 540,160 380,430 140,540
+      C 60,572 -60,572 -140,540
+      C -380,430 -540,160 -560,-160 Z" class="k"/>
+    <!-- Upper fangs -->
+    <path d="M -470,-130 L -400,60 L -330,-90 Z" class="w"/>
+    <path d="M -270,-60 L -200,150 L -130,-20 Z" class="w"/>
+    <path d="M 470,-130 L 400,60 L 330,-90 Z" class="w"/>
+    <path d="M 270,-60 L 200,150 L 130,-20 Z" class="w"/>
+    <!-- Lower fangs -->
+    <path d="M -340,470 L -290,300 L -230,440 Z" class="w"/>
+    <path d="M 340,470 L 290,300 L 230,440 Z" class="w"/>
+    <!-- Lip lines -->
+    <path d="M -560,-160 C -360,-20 -120,30 0,30 C 120,30 360,-20 560,-160" class="sr" stroke-width="20" opacity="0.8"/>
+
+    <!-- Cheek crack lines -->
+    <path d="M -620,-380 C -560,-300 -560,-200 -600,-110" class="sr" stroke-width="12" opacity="0.5"/>
+    <path d="M 620,-380 C 560,-300 560,-200 600,-110" class="sr" stroke-width="12" opacity="0.5"/>
+
+    <!-- ══ Brush calligraphy 般若 beside mask ══ -->
+    <text x="-1240" y="-500" text-anchor="middle" font-family="'Noto Serif CJK JP',serif"
+      font-weight="900" font-size="430" fill="#FF3346" transform="rotate(-6,-1240,-500)">般</text>
+    <text x="-1240" y="-30" text-anchor="middle" font-family="'Noto Serif CJK JP',serif"
+      font-weight="900" font-size="430" fill="#FF3346" transform="rotate(-6,-1240,-30)">若</text>
+
+    <!-- ══ Brand block ══ -->
+    <text x="0" y="1280" text-anchor="middle" font-family="'Arial Black',sans-serif"
+      font-weight="900" font-size="300" fill="#FF3346" letter-spacing="30">HANNYA</text>
+    <line x1="-760" y1="1340" x2="760" y2="1340" class="sg" stroke-width="8"/>
+    <text x="0" y="1450" text-anchor="middle" font-family="'Arial Black',sans-serif"
+      font-size="86" fill="#FFFFFF" letter-spacing="28" opacity="0.85">ONI THEORY   呪われた笑顔</text>
+  </g>
+</svg>

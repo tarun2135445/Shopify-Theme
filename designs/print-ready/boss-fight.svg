@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- BOSS FIGHT — Print-ready SVG | Artboard 4500×5400 | DTG chest print
+     Boss demon vs tiny warrior, game UI health bar, damage numbers. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4500 5400" width="4500" height="5400">
+  <defs><style>
+    .r{fill:#FF3346}.w{fill:#FFFFFF}.c{fill:#00F5FF}.y{fill:#FFE600}.k{fill:#0D0D0D}
+    .sr{stroke:#FF3346;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .sw{stroke:#FFFFFF;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .sc{stroke:#00F5FF;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  </style></defs>
+  <g transform="translate(2250,2400)">
+    <!-- ══ Boss health bar (top) ══ -->
+    <text x="0" y="-1780" text-anchor="middle" font-family="'Arial Black',sans-serif"
+      font-weight="900" font-size="120" fill="#FF3346" letter-spacing="16">☠ ONI OVERLORD — FINAL FORM ☠</text>
+    <rect x="-1300" y="-1700" width="2600" height="110" rx="14" class="sw" stroke-width="16"/>
+    <rect x="-1272" y="-1672" width="2380" height="54" rx="8" class="r"/>
+    <text x="1180" y="-1740" font-family="'Courier New',monospace" font-weight="900"
+      font-size="90" fill="#FFFFFF" opacity="0">x3</text>
+
+    <!-- ══ Boss demon — hulking silhouette ══ -->
+    <!-- Horns -->
+    <path d="M -480,-1280 L -760,-1560 C -820,-1620 -740,-1700 -660,-1650 L -360,-1380 Z" class="r"/>
+    <path d="M 480,-1280 L 760,-1560 C 820,-1620 740,-1700 660,-1650 L 360,-1380 Z" class="r"/>
+    <!-- Head -->
+    <path d="M 0,-1420
+      C 280,-1420 470,-1260 500,-1020
+      C 520,-860 470,-700 360,-600
+      L -360,-600
+      C -470,-700 -520,-860 -500,-1020
+      C -470,-1260 -280,-1420 0,-1420 Z" class="k"/>
+    <path d="M 0,-1420 C 280,-1420 470,-1260 500,-1020 C 520,-860 470,-700 360,-600 L -360,-600 C -470,-700 -520,-860 -500,-1020 C -470,-1260 -280,-1420 0,-1420 Z"
+      class="sr" stroke-width="20"/>
+    <!-- Eyes -->
+    <path d="M -320,-1100 L -120,-1040 L -300,-980 Z" class="r"/>
+    <path d="M 320,-1100 L 120,-1040 L 300,-980 Z" class="r"/>
+    <!-- Grin full of fangs -->
+    <path d="M -340,-820 C -180,-720 180,-720 340,-820 C 280,-650 160,-560 0,-560 C -160,-560 -280,-650 -340,-820 Z" class="w"/>
+    <path d="M -260,-780 L -220,-640 L -170,-760 M -90,-730 L -40,-590 L 10,-720 M 90,-740 L 140,-620 L 190,-770"
+      stroke="#0D0D0D" stroke-width="22" fill="none" stroke-linejoin="round"/>
+    <!-- Massive shoulders / arms -->
+    <path d="M -500,-1020 C -820,-960 -1060,-760 -1160,-460 C -1220,-280 -1220,-80 -1160,80 L -880,0 C -920,-220 -860,-460 -700,-620 Z" class="k"/>
+    <path d="M 500,-1020 C 820,-960 1060,-760 1160,-460 C 1220,-280 1220,-80 1160,80 L 880,0 C 920,-220 860,-460 700,-620 Z" class="k"/>
+    <path d="M -500,-1020 C -820,-960 -1060,-760 -1160,-460 C -1220,-280 -1220,-80 -1160,80 L -880,0 C -920,-220 -860,-460 -700,-620 Z" class="sr" stroke-width="16" opacity="0.7"/>
+    <path d="M 500,-1020 C 820,-960 1060,-760 1160,-460 C 1220,-280 1220,-80 1160,80 L 880,0 C 920,-220 860,-460 700,-620 Z" class="sr" stroke-width="16" opacity="0.7"/>
+    <!-- Claws -->
+    <path d="M -1160,80 L -1240,300 M -1080,100 L -1120,320 M -1000,90 L -1000,300" class="sw" stroke-width="26"/>
+    <path d="M 1160,80 L 1240,300 M 1080,100 L 1120,320 M 1000,90 L 1000,300" class="sw" stroke-width="26"/>
+
+    <!-- ══ Damage numbers ══ -->
+    <text x="-900" y="-1320" font-family="'Courier New',monospace" font-weight="900"
+      font-size="170" fill="#FFE600" transform="rotate(-12,-900,-1320)">9999</text>
+    <text x="760" y="-1180" font-family="'Courier New',monospace" font-weight="900"
+      font-size="130" fill="#00F5FF" transform="rotate(8,760,-1180)">CRIT!</text>
+    <text x="-1190" y="-680" font-family="'Courier New',monospace" font-weight="900"
+      font-size="110" fill="#FF3346" transform="rotate(-6,-1190,-680)">-450</text>
+
+    <!-- ══ Tiny warrior — bottom centre, facing boss ══ -->
+    <g transform="translate(0,760)">
+      <!-- Ground line -->
+      <path d="M -1300,180 L 1300,180" class="sc" stroke-width="14" opacity="0.5"/>
+      <!-- Warrior silhouette -->
+      <circle cx="0" cy="-160" r="60" class="w"/>
+      <path d="M 0,-100 L 0,60 M 0,-40 L -90,20 M 0,-40 L 110,-90 M 0,60 L -70,180 M 0,60 L 70,180"
+        class="sw" stroke-width="34"/>
+      <!-- Sword raised -->
+      <path d="M 110,-90 L 320,-260" class="sw" stroke-width="22"/>
+      <path d="M 320,-260 L 380,-310" class="sc" stroke-width="30"/>
+      <!-- Player tag -->
+      <text x="0" y="290" text-anchor="middle" font-family="'Courier New',monospace"
+        font-weight="900" font-size="86" fill="#00F5FF" letter-spacing="8">PLAYER_1   HP ███▒▒ 60%</text>
+    </g>
+
+    <!-- ══ Brand block ══ -->
+    <text x="0" y="1430" text-anchor="middle" font-family="'Arial Black',sans-serif"
+      font-weight="900" font-size="280" fill="#FF3346" letter-spacing="24">BOSS FIGHT</text>
+    <line x1="-900" y1="1490" x2="900" y2="1490" class="sc" stroke-width="8"/>
+    <text x="0" y="1600" text-anchor="middle" font-family="'Arial Black',sans-serif"
+      font-size="86" fill="#FFFFFF" letter-spacing="28" opacity="0.8">ONI THEORY   セーブポイントなし</text>
+  </g>
+</svg>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SHINIGAMI — Print-ready SVG | Artboard 4500×5400 | DTG chest print
+     Hooded death god, skull mask, scythe, purple flames. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4500 5400" width="4500" height="5400">
+  <defs><style>
+    .r{fill:#FF3346}.w{fill:#FFFFFF}.p{fill:#BF5FFF}.k{fill:#0D0D0D}
+    .sr{stroke:#FF3346;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .sw{stroke:#FFFFFF;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .sp{stroke:#BF5FFF;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  </style></defs>
+  <g transform="translate(2250,2400)">
+    <!-- ══ Purple moon halo ══ -->
+    <circle cx="0" cy="-500" r="1320" class="sp" stroke-width="20" opacity="0.4"/>
+    <circle cx="0" cy="-500" r="1320" class="p" opacity="0.06"/>
+
+    <!-- ══ Scythe — long arc behind figure ══ -->
+    <path d="M 820,-1760 L 760,1060" class="sw" stroke-width="44"/>
+    <!-- Blade -->
+    <path d="M 820,-1760
+      C 380,-1880 -120,-1820 -520,-1580
+      C -160,-1700 280,-1690 700,-1560
+      C 760,-1640 800,-1700 820,-1760 Z" class="w"/>
+    <path d="M -460,-1600 C -100,-1710 320,-1700 690,-1580" class="sp" stroke-width="14" opacity="0.7"/>
+    <!-- Grip wraps -->
+    <line x1="770" y1="-400" x2="850" y2="-360" class="sr" stroke-width="22"/>
+    <line x1="760" y1="-160" x2="840" y2="-120" class="sr" stroke-width="22"/>
+
+    <!-- ══ Hooded robe ══ -->
+    <path d="M 0,-1180
+      C 340,-1180 560,-960 600,-660
+      C 640,-380 600,-80 660,300
+      C 700,560 660,800 540,1020
+      L -540,1020
+      C -660,800 -700,560 -660,300
+      C -600,-80 -640,-380 -600,-660
+      C -560,-960 -340,-1180 0,-1180 Z" class="k"/>
+    <path d="M 0,-1180
+      C 340,-1180 560,-960 600,-660
+      C 640,-380 600,-80 660,300
+      C 700,560 660,800 540,1020
+      L -540,1020
+      C -660,800 -700,560 -660,300
+      C -600,-80 -640,-380 -600,-660
+      C -560,-960 -340,-1180 0,-1180 Z" class="sp" stroke-width="18" opacity="0.8"/>
+    <!-- Hood opening -->
+    <path d="M 0,-1080
+      C 250,-1080 420,-900 440,-660
+      C 455,-470 400,-300 280,-200
+      L -280,-200
+      C -400,-300 -455,-470 -440,-660
+      C -420,-900 -250,-1080 0,-1080 Z" class="k"/>
+    <path d="M 0,-1080 C 250,-1080 420,-900 440,-660 C 455,-470 400,-300 280,-200 L -280,-200 C -400,-300 -455,-470 -440,-660 C -420,-900 -250,-1080 0,-1080 Z"
+      class="sw" stroke-width="10" opacity="0.3"/>
+
+    <!-- ══ Skull mask ══ -->
+    <path d="M 0,-940
+      C 200,-940 330,-810 340,-630
+      C 348,-500 300,-380 210,-310
+      L 150,-220 L -150,-220 L -210,-310
+      C -300,-380 -348,-500 -340,-630
+      C -330,-810 -200,-940 0,-940 Z" class="w"/>
+    <!-- Eye sockets — red glow -->
+    <ellipse cx="-140" cy="-620" rx="105" ry="125" class="k"/>
+    <ellipse cx="140" cy="-620" rx="105" ry="125" class="k"/>
+    <circle cx="-140" cy="-600" r="48" class="r"/>
+    <circle cx="140" cy="-600" r="48" class="r"/>
+    <!-- Nasal -->
+    <path d="M 0,-480 L -44,-380 L 44,-380 Z" class="k"/>
+    <!-- Teeth -->
+    <path d="M -130,-300 L -130,-230 M -65,-290 L -65,-225 M 0,-285 L 0,-222 M 65,-290 L 65,-225 M 130,-300 L 130,-230"
+      stroke="#0D0D0D" stroke-width="26" stroke-linecap="round" fill="none"/>
+
+    <!-- Robe fold lines -->
+    <path d="M -340,-160 C -380,240 -400,600 -360,960" class="sp" stroke-width="12" opacity="0.5"/>
+    <path d="M 340,-160 C 380,240 400,600 360,960" class="sp" stroke-width="12" opacity="0.5"/>
+
+    <!-- ══ Spirit flames ══ -->
+    <path d="M -880,-100 C -950,-240 -930,-380 -830,-470 C -850,-360 -800,-270 -730,-220 C -760,-130 -820,-80 -880,-100 Z" class="p" opacity="0.8"/>
+    <path d="M 920,140 C 850,0 870,-140 970,-230 C 950,-120 1000,-30 1070,20 C 1040,110 980,160 920,140 Z" class="p" opacity="0.7"/>
+    <circle cx="-790" cy="320" r="22" class="p" opacity="0.6"/>
+    <circle cx="860" cy="500" r="18" class="p" opacity="0.6"/>
+
+    <!-- ══ 死神 kanji vertical ══ -->
+    <text x="-1230" y="-380" text-anchor="middle" font-family="'Noto Serif CJK JP',serif"
+      font-weight="900" font-size="400" fill="#FFFFFF" opacity="0.92">死</text>
+    <text x="-1230" y="60" text-anchor="middle" font-family="'Noto Serif CJK JP',serif"
+      font-weight="900" font-size="400" fill="#BF5FFF" opacity="0.92">神</text>
+
+    <!-- ══ Brand block ══ -->
+    <text x="0" y="1430" text-anchor="middle" font-family="'Arial Black',sans-serif"
+      font-weight="900" font-size="280" fill="#FFFFFF" letter-spacing="28">SHINIGAMI</text>
+    <line x1="-860" y1="1490" x2="860" y2="1490" class="sp" stroke-width="8"/>
+    <text x="0" y="1600" text-anchor="middle" font-family="'Arial Black',sans-serif"
+      font-size="86" fill="#BF5FFF" letter-spacing="28" opacity="0.85">ONI THEORY   死は時間通りに来る</text>
+  </g>
+</svg>

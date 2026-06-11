@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- CYBER GEISHA — Print-ready SVG | Artboard 4500×5400 | DTG chest print
+     Stylised geisha face, circuit hair, umbrella, glitching petals. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4500 5400" width="4500" height="5400">
+  <defs><style>
+    .r{fill:#FF3346}.w{fill:#FFFFFF}.c{fill:#00F5FF}.p{fill:#BF5FFF}.k{fill:#0D0D0D}.pk{fill:#FF7BAC}
+    .sr{stroke:#FF3346;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .sw{stroke:#FFFFFF;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .sc{stroke:#00F5FF;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .sp{stroke:#BF5FFF;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  </style></defs>
+  <g transform="translate(2250,2400)">
+    <!-- ══ Paper umbrella behind (wagasa) ══ -->
+    <circle cx="0" cy="-760" r="1300" class="p" opacity="0.10"/>
+    <path d="M 0,-2060 L 0,-760" class="sp" stroke-width="16" opacity="0.6"/>
+    <path d="M 0,-760 L -1230,-340 M 0,-760 L -940,-1180 M 0,-760 L -420,-1900
+             M 0,-760 L 420,-1900 M 0,-760 L 940,-1180 M 0,-760 L 1230,-340"
+      class="sp" stroke-width="14" opacity="0.55"/>
+    <path d="M -1230,-340 C -800,-700 -420,-880 0,-900 C 420,-880 800,-700 1230,-340"
+      class="sp" stroke-width="20" opacity="0.6"/>
+
+    <!-- ══ Hair — sweeping black updo with circuit lines ══ -->
+    <path d="M 0,-1280
+      C 420,-1280 700,-1040 740,-680
+      C 760,-480 720,-300 640,-160
+      C 760,-220 840,-360 870,-540
+      C 980,-300 920,-20 720,140
+      L -720,140
+      C -920,-20 -980,-300 -870,-540
+      C -840,-360 -760,-220 -640,-160
+      C -720,-300 -760,-480 -740,-680
+      C -700,-1040 -420,-1280 0,-1280 Z" class="k"/>
+    <path d="M 0,-1280 C 420,-1280 700,-1040 740,-680 C 760,-480 720,-300 640,-160 C 760,-220 840,-360 870,-540 C 980,-300 920,-20 720,140 L -720,140 C -920,-20 -980,-300 -870,-540 C -840,-360 -760,-220 -640,-160 C -720,-300 -760,-480 -740,-680 C -700,-1040 -420,-1280 0,-1280 Z"
+      class="sw" stroke-width="14" opacity="0.5"/>
+    <!-- Circuit traces in hair -->
+    <path d="M -560,-980 L -380,-980 L -380,-820 L -180,-820" class="sc" stroke-width="14"/>
+    <circle cx="-180" cy="-820" r="26" class="sc" stroke-width="12"/>
+    <path d="M 560,-940 L 400,-940 L 400,-760 L 220,-760" class="sc" stroke-width="14"/>
+    <circle cx="220" cy="-760" r="26" class="sc" stroke-width="12"/>
+    <!-- Kanzashi hair pins -->
+    <path d="M 520,-1180 L 880,-1420" class="sr" stroke-width="26"/>
+    <circle cx="880" cy="-1420" r="70" class="r"/>
+    <path d="M -520,-1180 L -840,-1380" class="sp" stroke-width="22"/>
+    <circle cx="-840" cy="-1380" r="56" class="p"/>
+
+    <!-- ══ Face — white mask, minimal features ══ -->
+    <path d="M 0,-1020
+      C 300,-1020 500,-800 520,-520
+      C 535,-310 470,-110 340,30
+      C 250,128 130,180 0,180
+      C -130,180 -250,128 -340,30
+      C -470,-110 -535,-310 -520,-520
+      C -500,-800 -300,-1020 0,-1020 Z" class="w"/>
+    <!-- Chrome side panel (cyber accent) -->
+    <path d="M 330,-760 C 420,-700 470,-590 475,-470 C 478,-360 450,-250 390,-160 L 290,-200 C 360,-330 380,-500 330,-640 Z" class="c" opacity="0.75"/>
+    <line x1="320" y1="-700" x2="350" y2="-300" class="sw" stroke-width="8" opacity="0.6"/>
+    <!-- Brows -->
+    <path d="M -320,-640 C -240,-680 -140,-680 -70,-650" stroke="#0D0D0D" stroke-width="22" fill="none" stroke-linecap="round"/>
+    <path d="M 320,-640 C 240,-680 140,-680 70,-650" stroke="#0D0D0D" stroke-width="22" fill="none" stroke-linecap="round"/>
+    <!-- Eyes — calm, lined -->
+    <path d="M -330,-520 C -250,-560 -150,-560 -80,-520 C -150,-490 -250,-490 -330,-520 Z" class="k"/>
+    <path d="M 330,-520 C 250,-560 150,-560 80,-520 C 150,-490 250,-490 330,-520 Z" class="k"/>
+    <!-- Red eyeliner flick -->
+    <path d="M -330,-520 L -420,-560" class="sr" stroke-width="16"/>
+    <path d="M 330,-520 L 420,-560" class="sr" stroke-width="16"/>
+    <!-- Nose hint -->
+    <path d="M 0,-420 L -20,-330" stroke="#0D0D0D" stroke-width="10" fill="none" opacity="0.4"/>
+    <!-- Lips — small red -->
+    <path d="M -70,-200 C -30,-230 30,-230 70,-200 C 30,-150 -30,-150 -70,-200 Z" class="r"/>
+    <!-- Beauty circuit dot -->
+    <circle cx="-260" cy="-260" r="16" class="c"/>
+    <path d="M -260,-260 L -340,-220" class="sc" stroke-width="8" opacity="0.7"/>
+
+    <!-- ══ Sakura petals → pixels ══ -->
+    <path d="M -1080,-380 C -1050,-440 -980,-440 -950,-380 C -980,-320 -1050,-320 -1080,-380 Z" class="pk" opacity="0.9"/>
+    <path d="M -1180,-80 C -1150,-140 -1080,-140 -1050,-80 C -1080,-20 -1150,-20 -1180,-80 Z" class="pk" opacity="0.75"/>
+    <rect x="-1140" y="200" width="70" height="70" class="pk" opacity="0.7"/>
+    <rect x="-1020" y="380" width="50" height="50" class="pk" opacity="0.5"/>
+    <path d="M 1060,-300 C 1090,-360 1160,-360 1190,-300 C 1160,-240 1090,-240 1060,-300 Z" class="pk" opacity="0.85"/>
+    <rect x="1080" y="-60" width="70" height="70" class="pk" opacity="0.7"/>
+    <rect x="1180" y="140" width="50" height="50" class="pk" opacity="0.5"/>
+    <rect x="1040" y="320" width="40" height="40" class="c" opacity="0.5"/>
+
+    <!-- ══ Brand block ══ -->
+    <text x="0" y="1330" text-anchor="middle" font-family="'Arial Black',sans-serif"
+      font-weight="900" font-size="260" fill="#FFFFFF" letter-spacing="26">CYBER</text>
+    <text x="0" y="1590" text-anchor="middle" font-family="'Arial Black',sans-serif"
+      font-weight="900" font-size="260" fill="#FF7BAC" letter-spacing="26">GEISHA</text>
+    <line x1="-760" y1="1650" x2="760" y2="1650" class="sc" stroke-width="8"/>
+    <text x="0" y="1760" text-anchor="middle" font-family="'Arial Black',sans-serif"
+      font-size="86" fill="#BF5FFF" letter-spacing="28" opacity="0.85">ONI THEORY   鋼の花</text>
+  </g>
+</svg>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TORII GRID MOUSEPAD — Print artwork | Artboard 5400×2400 (900×400mm)
+     Torii gate on cyber-grid with red sun. Full-bleed print. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5400 2400" width="5400" height="2400">
+  <defs>
+    <style>
+      .r{fill:#FF3346}.w{fill:#FFFFFF}.c{fill:#00F5FF}.p{fill:#BF5FFF}
+      .sc{stroke:#00F5FF;fill:none;stroke-linecap:round}
+      .sp{stroke:#BF5FFF;fill:none;stroke-linecap:round}
+      .sr{stroke:#FF3346;fill:none;stroke-linecap:round}
+    </style>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#07070D"/>
+      <stop offset="70%" stop-color="#0E0A1E"/>
+      <stop offset="100%" stop-color="#140A28"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="5400" height="2400" fill="url(#sky)"/>
+
+  <!-- Red sun -->
+  <circle cx="2700" cy="1180" r="760" class="r" opacity="0.9"/>
+  <rect x="1700" y="1010" width="2000" height="40" fill="#07070D" opacity="0.55"/>
+  <rect x="1820" y="1180" width="1760" height="56" fill="#07070D" opacity="0.55"/>
+  <rect x="1700" y="1390" width="2000" height="44" fill="#07070D" opacity="0.55"/>
+
+  <!-- Stars -->
+  <circle cx="500" cy="300" r="7" class="w" opacity="0.7"/>
+  <circle cx="1200" cy="180" r="5" class="c" opacity="0.7"/>
+  <circle cx="4200" cy="240" r="6" class="w" opacity="0.6"/>
+  <circle cx="4900" cy="420" r="7" class="p" opacity="0.7"/>
+  <circle cx="3600" cy="150" r="5" class="w" opacity="0.5"/>
+
+  <!-- Perspective grid floor -->
+  <g class="sc" opacity="0.75">
+    <path d="M 0,1700 L 5400,1700" stroke-width="6"/>
+    <path d="M 0,1800 L 5400,1800" stroke-width="7"/>
+    <path d="M 0,1940 L 5400,1940" stroke-width="8"/>
+    <path d="M 0,2120 L 5400,2120" stroke-width="10"/>
+    <path d="M 0,2340 L 5400,2340" stroke-width="12"/>
+    <path d="M 2700,1700 L 2700,2400" stroke-width="6"/>
+    <path d="M 2300,1700 L 1750,2400" stroke-width="6"/>
+    <path d="M 1900,1700 L 800,2400" stroke-width="6"/>
+    <path d="M 1500,1700 L -200,2400" stroke-width="6"/>
+    <path d="M 3100,1700 L 3650,2400" stroke-width="6"/>
+    <path d="M 3500,1700 L 4600,2400" stroke-width="6"/>
+    <path d="M 3900,1700 L 5600,2400" stroke-width="6"/>
+  </g>
+
+  <!-- Torii gate (center, standing on grid) -->
+  <g transform="translate(2700,0)">
+    <!-- Pillars -->
+    <rect x="-560" y="760" width="120" height="980" class="r"/>
+    <rect x="440" y="760" width="120" height="980" class="r"/>
+    <!-- Lower beam -->
+    <rect x="-640" y="900" width="1280" height="90" class="r"/>
+    <!-- Top beam with curve -->
+    <path d="M -820,700 C -400,640 400,640 820,700 L 820,580 C 400,520 -400,520 -820,580 Z" class="r"/>
+    <path d="M -820,700 C -400,640 400,640 820,700" class="sr" stroke-width="14" opacity="0.6"/>
+    <!-- Beam supports -->
+    <rect x="-60" y="700" width="120" height="220" class="r"/>
+    <!-- Pillar glow lines -->
+    <line x1="-500" y1="800" x2="-500" y2="1720" class="sc" stroke-width="8" opacity="0.5"/>
+    <line x1="500" y1="800" x2="500" y2="1720" class="sc" stroke-width="8" opacity="0.5"/>
+  </g>
+
+  <!-- Kanji corner -->
+  <text x="4980" y="560" text-anchor="middle" font-family="'Noto Serif CJK JP',serif"
+    font-weight="900" font-size="380" fill="#FFFFFF" opacity="0.9">鬼</text>
+
+  <!-- Brand bottom-left -->
+  <text x="240" y="2230" font-family="'Arial Black',sans-serif" font-weight="900"
+    font-size="140" fill="#FFFFFF" letter-spacing="22" opacity="0.92">ONI THEORY</text>
+  <text x="240" y="2330" font-family="'Arial Black',sans-serif"
+    font-size="64" fill="#00F5FF" letter-spacing="18" opacity="0.8">鬼の理論 — DEMON TERRITORY</text>
+</svg>

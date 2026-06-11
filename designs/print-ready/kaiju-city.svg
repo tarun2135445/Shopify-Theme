@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- KAIJU CITY — Print-ready SVG | Artboard 4500×5400 | DTG chest print
+     Kaiju silhouette over skyline, searchlights, warning signs. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4500 5400" width="4500" height="5400">
+  <defs><style>
+    .r{fill:#FF3346}.w{fill:#FFFFFF}.c{fill:#00F5FF}.gr{fill:#00FF88}.k{fill:#0D0D0D}
+    .sr{stroke:#FF3346;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .sw{stroke:#FFFFFF;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .sc{stroke:#00F5FF;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .sg{stroke:#00FF88;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  </style></defs>
+  <g transform="translate(2250,2400)">
+    <!-- ══ Red alert sun ══ -->
+    <circle cx="0" cy="-700" r="1050" class="r" opacity="0.16"/>
+    <circle cx="0" cy="-700" r="1050" class="sr" stroke-width="24" opacity="0.5"/>
+
+    <!-- ══ Searchlight beams ══ -->
+    <path d="M -1050,900 L -360,-1480 L -160,-1430 L -880,900 Z" class="c" opacity="0.18"/>
+    <path d="M 1050,900 L 420,-1380 L 230,-1330 L 880,900 Z" class="c" opacity="0.14"/>
+
+    <!-- ══ Kaiju silhouette — towering, spiked back ══ -->
+    <path d="M -660,900
+      L -620,560 C -700,480 -740,360 -700,240
+      L -780,260 L -700,120 L -820,120 L -700,-20 L -840,-40 L -680,-180
+      L -800,-220 L -620,-330 L -720,-400 L -520,-470
+      C -560,-620 -500,-780 -360,-880
+      C -300,-980 -240,-1080 -160,-1120
+      C -80,-1160 60,-1160 150,-1110
+      C 260,-1050 330,-930 330,-800
+      C 420,-740 470,-640 460,-530
+      L 620,-460 L 520,-380 L 700,-280 L 560,-220 L 720,-90
+      L 580,-60 L 700,80 L 560,100 L 660,260
+      C 700,400 660,520 580,600 L 620,900 Z" class="k"/>
+    <path d="M -660,900 L -620,560 C -700,480 -740,360 -700,240 L -780,260 L -700,120 L -820,120 L -700,-20 L -840,-40 L -680,-180 L -800,-220 L -620,-330 L -720,-400 L -520,-470 C -560,-620 -500,-780 -360,-880 C -300,-980 -240,-1080 -160,-1120 C -80,-1160 60,-1160 150,-1110 C 260,-1050 330,-930 330,-800 C 420,-740 470,-640 460,-530 L 620,-460 L 520,-380 L 700,-280 L 560,-220 L 720,-90 L 580,-60 L 700,80 L 560,100 L 660,260 C 700,400 660,520 580,600 L 620,900 Z"
+      class="sg" stroke-width="16" opacity="0.7"/>
+    <!-- Glowing eye -->
+    <circle cx="40" cy="-960" r="50" class="r"/>
+    <circle cx="40" cy="-960" r="50" class="sr" stroke-width="10" opacity="0.6"/>
+    <!-- Jaw line -->
+    <path d="M 150,-880 L 300,-840 L 170,-790" class="sw" stroke-width="18" opacity="0.8"/>
+
+    <!-- ══ City skyline (foreground, broken) ══ -->
+    <path d="M -1500,900 L -1500,520 L -1340,520 L -1340,680 L -1180,680 L -1180,380 L -1000,380 L -1000,620 L -860,620 L -860,460
+      M 860,460 L 1000,460 L 1000,640 L 1140,640 L 1140,400 L 1320,400 L 1320,700 L 1500,700 L 1500,900"
+      class="sc" stroke-width="18" opacity="0.7"/>
+    <!-- Broken building near kaiju -->
+    <path d="M -860,460 L -860,900 M 860,460 L 860,900" class="sc" stroke-width="18" opacity="0.7"/>
+    <rect x="-1300" y="560" width="44" height="44" class="r" opacity="0.6"/>
+    <rect x="1200" y="480" width="44" height="44" class="c" opacity="0.6"/>
+
+    <!-- ══ Warning sign ══ -->
+    <g transform="translate(-1130,-820) rotate(-8)">
+      <rect x="-260" y="-150" width="520" height="300" rx="20" class="sr" stroke-width="20"/>
+      <text x="0" y="-40" text-anchor="middle" font-family="'Arial Black',sans-serif"
+        font-weight="900" font-size="110" fill="#FF3346">警告</text>
+      <text x="0" y="90" text-anchor="middle" font-family="'Arial Black',sans-serif"
+        font-weight="900" font-size="74" fill="#FFFFFF" letter-spacing="6">EVACUATE</text>
+    </g>
+
+    <!-- ══ Brand block — distressed ══ -->
+    <text x="0" y="1400" text-anchor="middle" font-family="'Arial Black',sans-serif"
+      font-weight="900" font-size="280" fill="#FFFFFF" letter-spacing="22">KAIJU CITY</text>
+    <line x1="-900" y1="1460" x2="900" y2="1460" class="sg" stroke-width="8"/>
+    <text x="0" y="1570" text-anchor="middle" font-family="'Arial Black',sans-serif"
+      font-size="86" fill="#FF3346" letter-spacing="28" opacity="0.85">ONI THEORY   最終警告</text>
+  </g>
+</svg>

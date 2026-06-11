@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- MIDNIGHT RIDER — Print-ready SVG | Artboard 4500×5400 | DTG back print
+     Neon bike side profile with light trails through Neo Tokyo. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4500 5400" width="4500" height="5400">
+  <defs><style>
+    .r{fill:#FF3346}.w{fill:#FFFFFF}.c{fill:#00F5FF}.p{fill:#BF5FFF}.k{fill:#0D0D0D}
+    .sr{stroke:#FF3346;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .sw{stroke:#FFFFFF;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .sc{stroke:#00F5FF;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .sp{stroke:#BF5FFF;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  </style></defs>
+  <g transform="translate(2250,2400)">
+    <!-- ══ City skyline strip ══ -->
+    <path d="M -1500,-820 L -1500,-1240 L -1300,-1240 L -1300,-1060 L -1100,-1060 L -1100,-1420 L -860,-1420 L -860,-1140 L -640,-1140 L -640,-1300 L -420,-1300 L -420,-1020 L -180,-1020 L -180,-1380 L 80,-1380 L 80,-1100 L 320,-1100 L 320,-1240 L 560,-1240 L 560,-980 L 800,-980 L 800,-1340 L 1060,-1340 L 1060,-1080 L 1300,-1080 L 1300,-1200 L 1500,-1200 L 1500,-820 Z"
+      class="sp" stroke-width="18" opacity="0.6"/>
+    <!-- Building window dots -->
+    <rect x="-1040" y="-1340" width="50" height="50" class="c" opacity="0.5"/>
+    <rect x="-120" y="-1300" width="50" height="50" class="r" opacity="0.5"/>
+    <rect x="860" y="-1260" width="50" height="50" class="c" opacity="0.5"/>
+    <!-- Neon sign blocks -->
+    <rect x="-760" y="-1080" width="180" height="320" class="sr" stroke-width="12" opacity="0.7"/>
+    <text x="-670" y="-860" text-anchor="middle" font-family="'Noto Serif CJK JP',serif"
+      font-size="150" fill="#FF3346" opacity="0.9" writing-mode="tb">夜走</text>
+    <rect x="600" y="-1040" width="180" height="280" class="sc" stroke-width="12" opacity="0.7"/>
+    <text x="690" y="-840" text-anchor="middle" font-family="'Noto Serif CJK JP',serif"
+      font-size="140" fill="#00F5FF" opacity="0.9" writing-mode="tb">高速</text>
+
+    <!-- ══ Speed light trails ══ -->
+    <path d="M -1500,160 L 380,160" class="sr" stroke-width="60" opacity="0.85"/>
+    <path d="M -1500,300 L 200,300" class="sr" stroke-width="34" opacity="0.6"/>
+    <path d="M -1500,420 L -60,420" class="sp" stroke-width="22" opacity="0.5"/>
+    <path d="M -1500,30 L 300,30" class="sc" stroke-width="16" opacity="0.5"/>
+
+    <!-- ══ The bike — low side profile, futuristic ══ -->
+    <!-- Rear wheel -->
+    <circle cx="-440" cy="520" r="300" class="k"/>
+    <circle cx="-440" cy="520" r="300" class="sw" stroke-width="26"/>
+    <circle cx="-440" cy="520" r="190" class="sr" stroke-width="20"/>
+    <circle cx="-440" cy="520" r="60" class="r"/>
+    <!-- Front wheel -->
+    <circle cx="760" cy="520" r="300" class="k"/>
+    <circle cx="760" cy="520" r="300" class="sw" stroke-width="26"/>
+    <circle cx="760" cy="520" r="190" class="sc" stroke-width="20"/>
+    <circle cx="760" cy="520" r="60" class="c"/>
+    <!-- Body — sleek wedge -->
+    <path d="M -560,340
+      C -380,80 -120,-60 220,-80
+      L 560,-40 C 700,-20 800,80 840,220
+      L 700,260 C 560,140 380,120 220,180
+      L -100,320 C -240,380 -420,400 -560,340 Z" class="k"/>
+    <path d="M -560,340
+      C -380,80 -120,-60 220,-80
+      L 560,-40 C 700,-20 800,80 840,220
+      L 700,260 C 560,140 380,120 220,180
+      L -100,320 C -240,380 -420,400 -560,340 Z" class="sw" stroke-width="18"/>
+    <!-- Fairing accents -->
+    <path d="M 240,-60 L 540,-20" class="sr" stroke-width="16"/>
+    <path d="M -80,140 L 200,40" class="sc" stroke-width="14" opacity="0.8"/>
+    <!-- Headlight beam -->
+    <path d="M 840,200 L 1340,140 L 1340,300 L 860,260 Z" class="c" opacity="0.35"/>
+    <!-- Tail glow -->
+    <circle cx="-560,340" r="0"/>
+    <circle cx="-560" cy="340" r="46" class="r"/>
+    <!-- Windscreen -->
+    <path d="M 380,-80 C 460,-180 560,-220 660,-200 L 600,-60 Z" class="sc" stroke-width="14" opacity="0.8"/>
+
+    <!-- ══ Brand block — chrome treatment ══ -->
+    <text x="0" y="1330" text-anchor="middle" font-family="'Arial Black',sans-serif"
+      font-weight="900" font-size="250" fill="#FFFFFF" letter-spacing="26">MIDNIGHT</text>
+    <text x="0" y="1580" text-anchor="middle" font-family="'Arial Black',sans-serif"
+      font-weight="900" font-size="250" fill="#FF3346" letter-spacing="26">RIDER</text>
+    <line x1="-760" y1="1640" x2="760" y2="1640" class="sc" stroke-width="8"/>
+    <text x="0" y="1750" text-anchor="middle" font-family="'Arial Black',sans-serif"
+      font-size="86" fill="#BF5FFF" letter-spacing="28" opacity="0.85">ONI THEORY   ネオ東京</text>
+  </g>
+</svg>

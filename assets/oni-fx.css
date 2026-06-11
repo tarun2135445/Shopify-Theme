@@ -1155,6 +1155,100 @@ html.oni-mode .header::after {
 }
 
 /* ────────────────────────────────────────────────
+   PAGE MOTION — staggered grids, wipe reveals,
+   parallax, text scramble
+──────────────────────────────────────────────── */
+
+/* ── Keyframes ── */
+@keyframes oni-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(48px) scale(0.95);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes oni-wipe-up {
+  from { clip-path: inset(100% 0 0 0); opacity: 0.35; }
+  to   { clip-path: inset(0%   0 0 0); opacity: 1;    }
+}
+
+@keyframes oni-slide-left {
+  from { opacity: 0; transform: translateX(-56px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes oni-slide-right {
+  from { opacity: 0; transform: translateX(56px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes oni-levitate {
+  0%,100% { transform: translateY(0px)  rotate(-0.3deg); }
+  38%      { transform: translateY(-14px) rotate(0.5deg); }
+  72%      { transform: translateY(-6px)  rotate(-0.2deg); }
+}
+
+@keyframes oni-pop-in {
+  0%   { opacity: 0; transform: scale(0.7) rotate(-4deg); }
+  70%  { opacity: 1; transform: scale(1.06) rotate(0.5deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+/* ── Stagger grid ─────────────────────────────── */
+/* JS adds .oni-stagger-parent to grid containers when they enter
+   the viewport; individual cards get --oni-card-delay via inline style. */
+.oni-stagger-parent product-card,
+.oni-stagger-parent .product-card,
+.oni-stagger-parent .collection-card,
+.oni-stagger-parent li.grid__item {
+  animation: oni-card-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--oni-card-delay, 0ms);
+  /* override the basic oni-reveal transition so animation wins */
+  transition: box-shadow 0.3s ease, transform 0.3s ease !important;
+}
+
+/* ── Section wipe reveal ──────────────────────── */
+.oni-section-wipe {
+  opacity: 0;
+  clip-path: inset(100% 0 0 0);
+}
+.oni-section-wipe--visible {
+  animation: oni-wipe-up 0.82s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ── Slide-in variants (added by initSectionWipe) ── */
+.oni-slide-left  { opacity: 0; animation: oni-slide-left  0.7s cubic-bezier(0.16,1,0.3,1) forwards; }
+.oni-slide-right { opacity: 0; animation: oni-slide-right 0.7s cubic-bezier(0.16,1,0.3,1) forwards; }
+
+/* ── Float accent ─────────────────────────────── */
+.oni-float-accent {
+  animation: oni-levitate 7s ease-in-out infinite;
+}
+
+/* ── Parallax hint ────────────────────────────── */
+[data-oni-parallax] { will-change: transform; }
+
+/* ── Pop-in for badges / stat numbers ─────────── */
+.oni-pop-in { animation: oni-pop-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+
+/* ── Scramble text ─────────────────────────────── */
+.oni-scramble { display: inline-block; min-width: 1ch; }
+
+/* ── Stats HUD entry stagger ───────────────────── */
+.oni-hud__stat:nth-child(1) { --oni-card-delay: 0ms;   }
+.oni-hud__stat:nth-child(2) { --oni-card-delay: 90ms;  }
+.oni-hud__stat:nth-child(3) { --oni-card-delay: 180ms; }
+.oni-hud__stat:nth-child(4) { --oni-card-delay: 270ms; }
+.oni-hud__stat:nth-child(5) { --oni-card-delay: 360ms; }
+.oni-hud__stat:nth-child(6) { --oni-card-delay: 450ms; }
+
+/* ────────────────────────────────────────────────
    REDUCED MOTION
 ──────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
@@ -1171,6 +1265,15 @@ html.oni-mode .header::after {
   .oni-glitch::after { display: none; }
   .button::before { display: none; }
   .button::after  { transition: none; }
+  /* New motion */
+  .oni-stagger-parent product-card,
+  .oni-stagger-parent .product-card,
+  .oni-stagger-parent .collection-card,
+  .oni-stagger-parent li.grid__item { animation: none; opacity: 1; }
+  .oni-section-wipe,
+  .oni-section-wipe--visible { animation: none; opacity: 1; clip-path: none; }
+  .oni-slide-left, .oni-slide-right { animation: none; opacity: 1; }
+  .oni-float-accent { animation: none; }
 }
 
 /* ────────────────────────────────────────────────

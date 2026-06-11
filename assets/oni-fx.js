@@ -749,6 +749,184 @@
   }
 
   /* ────────────────────────────────────────────────
+     11. STAGGER GRID — cascade card entrance
+  ──────────────────────────────────────────────── */
+  function initStaggerGrid() {
+    if (!('IntersectionObserver' in window)) return;
+
+    var GRID_SELECTORS = [
+      'ul.grid',
+      'ul.product-grid',
+      '.collection-grid',
+      'ul[class*="grid"]',
+      '.grid--uniform',
+    ].join(',');
+
+    var STEP = 85; /* ms per card */
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var grid = entry.target;
+        if (grid.dataset.oniStaggerDone) return;
+        grid.dataset.oniStaggerDone = '1';
+        grid.classList.add('oni-stagger-parent');
+        var cards = grid.querySelectorAll(
+          'product-card, .product-card, .collection-card, li.grid__item'
+        );
+        cards.forEach(function (card, i) {
+          card.style.setProperty('--oni-card-delay', i * STEP + 'ms');
+        });
+        observer.unobserve(grid);
+      });
+    }, { threshold: 0.04, rootMargin: '0px 0px -30px 0px' });
+
+    document.querySelectorAll(GRID_SELECTORS).forEach(function (g) {
+      observer.observe(g);
+    });
+
+    /* Re-check after dynamic section loads */
+    var domObs = new MutationObserver(function (muts) {
+      muts.forEach(function (m) {
+        m.addedNodes.forEach(function (node) {
+          if (!(node instanceof HTMLElement)) return;
+          if (node.matches && node.matches(GRID_SELECTORS)) observer.observe(node);
+          node.querySelectorAll && node.querySelectorAll(GRID_SELECTORS)
+            .forEach(function (g) { observer.observe(g); });
+        });
+      });
+    });
+    domObs.observe(document.body, { childList: true, subtree: true });
+
+    onCleanup(function () { observer.disconnect(); domObs.disconnect(); });
+  }
+
+  /* ────────────────────────────────────────────────
+     12. SECTION WIPE — clip-path reveal on headings
+  ──────────────────────────────────────────────── */
+  function initSectionWipe() {
+    if (!('IntersectionObserver' in window)) return;
+
+    var SELECTORS = [
+      '.section-header',
+      '.section__heading',
+      'h2.shopify-section__heading',
+      '.oni-stats-hud',
+      '.featured-collection .section-header',
+    ].join(', ');
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('oni-section-wipe--visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+
+    document.querySelectorAll(SELECTORS).forEach(function (el) {
+      if (!el.dataset.oniWipeDone) {
+        el.dataset.oniWipeDone = '1';
+        el.classList.add('oni-section-wipe');
+        observer.observe(el);
+      }
+    });
+
+    onCleanup(function () { observer.disconnect(); });
+  }
+
+  /* ────────────────────────────────────────────────
+     13. PARALLAX SCROLL — hero / background elements
+  ──────────────────────────────────────────────── */
+  function initParallax() {
+    /* Automatically tag hero media elements */
+    document.querySelectorAll(
+      '.banner__media, .hero__media, [class*="banner__"] img, .oni-hero__bg'
+    ).forEach(function (el) {
+      if (!el.dataset.oniParallax) el.dataset.oniParallax = '0.22';
+    });
+
+    var targets = [];
+    document.querySelectorAll('[data-oni-parallax]').forEach(function (el) {
+      targets.push({ el: el, factor: parseFloat(el.dataset.oniParallax) || 0.2 });
+    });
+    if (!targets.length) return;
+
+    var ticking = false;
+    function tick() {
+      var sy = window.scrollY;
+      targets.forEach(function (t) {
+        var rect = t.el.getBoundingClientRect();
+        /* Only move when near the viewport */
+        if (rect.bottom < -200 || rect.top > window.innerHeight + 200) return;
+        var mid    = rect.top + rect.height / 2;
+        var relPos = (window.innerHeight / 2 - mid) * t.factor;
+        t.el.style.transform = 'translateY(' + relPos.toFixed(2) + 'px)';
+      });
+      ticking = false;
+    }
+
+    function onScroll() {
+      if (!ticking) { ticking = true; requestAnimationFrame(tick); }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onCleanup(function () { window.removeEventListener('scroll', onScroll); });
+  }
+
+  /* ────────────────────────────────────────────────
+     14. TEXT SCRAMBLE — heading char scramble on entry
+  ──────────────────────────────────────────────── */
+  function initTextScramble() {
+    if (!('IntersectionObserver' in window)) return;
+
+    var CHARS = '!<>-_\\/[]{}=+*^?#鬼龍火神';
+    var DURATION = 680;
+
+    function scramble(el) {
+      var orig = el.dataset.origText || el.textContent;
+      el.dataset.origText = orig;
+      var start = performance.now();
+      function frame(now) {
+        var progress    = Math.min((now - start) / DURATION, 1);
+        var revealUpTo  = Math.floor(progress * orig.length);
+        var out = '';
+        for (var i = 0; i < orig.length; i++) {
+          if (orig[i] === ' ') { out += ' '; continue; }
+          out += i < revealUpTo
+            ? orig[i]
+            : CHARS[Math.floor(Math.random() * CHARS.length)];
+        }
+        el.textContent = out;
+        if (progress < 1) requestAnimationFrame(frame);
+        else el.textContent = orig;
+      }
+      requestAnimationFrame(frame);
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          scramble(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    /* Target section headings only — skip product names to avoid CLS */
+    document.querySelectorAll(
+      '.section__heading, h2.shopify-section__heading, .section-header__heading'
+    ).forEach(function (el) {
+      /* Skip very long strings and elements with child HTML (icons etc.) */
+      if (el.children.length === 0 && el.textContent.trim().length < 55) {
+        observer.observe(el);
+      }
+    });
+
+    onCleanup(function () { observer.disconnect(); });
+  }
+
+  /* ────────────────────────────────────────────────
      INIT
   ──────────────────────────────────────────────── */
   function init() {
@@ -777,6 +955,12 @@
     initNavProgress();
     initHudCounters();
     initKonami();
+    initStaggerGrid();
+    initSectionWipe();
+    if (!prefersReduced) {
+      initParallax();
+      initTextScramble();
+    }
   }
 
   if (document.readyState === 'loading') {

@@ -36,18 +36,35 @@
       C -600,-1520 -300,-1600 0,-1600Z
     " class="k"/>
 
+    <!-- Helmet dome outline — keeps silhouette readable on dark garments -->
+    <path d="
+      M 0,-1600
+      C 300,-1600 600,-1520 760,-1360
+      C 920,-1200 940,-980 900,-800
+      C 860,-620 780,-500 720,-400
+      L 600,-200 L -600,-200
+      L -720,-400 C -780,-500 -860,-620 -900,-800
+      C -940,-980 -920,-1200 -760,-1360
+      C -600,-1520 -300,-1600 0,-1600Z
+    " class="sw" stroke-width="14" opacity="0.55"/>
+
     <!-- Helmet highlight gradient line -->
     <path d="M -640,-1300 C -400,-1480 400,-1480 640,-1300"
-          class="sc" stroke-width="16" opacity="0.6"/>
+          class="sc" stroke-width="20" opacity="0.8"/>
     <path d="M -580,-1180 C -360,-1360 360,-1360 580,-1180"
-          class="sc" stroke-width="8" opacity="0.3"/>
+          class="sc" stroke-width="10" opacity="0.4"/>
 
-    <!-- Kabuto maedate (crest) — oni horns -->
-    <path d="M -80,-1600 L -140,-1920 C -160,-2000 -80,-2040 -20,-1980 L 0,-1780 Z" class="r"/>
-    <path d="M 80,-1600 L 140,-1920 C 160,-2000 80,-2040 20,-1980 L 0,-1780 Z" class="r"/>
-    <!-- Crest kanji mark -->
-    <text x="0" y="-1650" text-anchor="middle" font-family="serif" font-size="100"
-          fill="#00F5FF" opacity="0.8">鬼</text>
+    <!-- Kabuto maedate (crest) — oni horns, oversized for silhouette -->
+    <path d="M -120,-1580 L -320,-2180 C -360,-2300 -220,-2360 -120,-2270 L -10,-1760 Z" class="r"/>
+    <path d="M 120,-1580 L 320,-2180 C 360,-2300 220,-2360 120,-2270 L 10,-1760 Z" class="r"/>
+    <!-- Horn edge glints -->
+    <path d="M -300,-2160 L -140,-1700" class="sc" stroke-width="10" opacity="0.6"/>
+    <path d="M 300,-2160 L 140,-1700" class="sc" stroke-width="10" opacity="0.6"/>
+    <!-- Crest disc + kanji mark -->
+    <circle cx="0" cy="-1480" r="120" fill="#FF3346" opacity="0.9"/>
+    <circle cx="0" cy="-1480" r="120" class="sw" stroke-width="10" opacity="0.7"/>
+    <text x="0" y="-1430" text-anchor="middle" font-family="serif" font-size="150"
+          fill="#FFFFFF" opacity="0.95">鬼</text>
 
     <!-- Fukikaeshi (side flaps) -->
     <path d="M -900,-800 L -1100,-700 L -1080,-480 L -860,-520 Z" class="k"/>
@@ -107,16 +124,22 @@
     <path d="M -900,220 L -1180,320 L -1200,500" class="sc" stroke-width="8" opacity="0.4"/>
     <path d="M 900,220 L 1180,320 L 1200,500" class="sc" stroke-width="8" opacity="0.4"/>
 
-    <!-- ══ Katana (partial, peeking shoulder right) ══ -->
-    <!-- Blade -->
-    <path d="M 980,180 L 1600,-900 L 1640,-860 L 1040,220 Z" class="w" opacity="0.9"/>
-    <!-- Blade edge -->
-    <line x1="1600" y1="-900" x2="1640" y2="-860" class="sc" stroke-width="10"/>
+    <!-- ══ Katana (drawn across shoulder, bold) ══ -->
+    <!-- Blade — wide, with distinct edge bevel -->
+    <path d="M 960,200 L 1740,-1080 L 1850,-1010 L 1080,280 Z" class="w" opacity="0.95"/>
+    <!-- Hamon temper line along the blade -->
+    <path d="M 1010,210 C 1230,-160 1450,-560 1700,-1020" class="sc" stroke-width="14" opacity="0.7"/>
+    <!-- Blade tip glint -->
+    <path d="M 1740,-1080 L 1900,-1180 L 1850,-1010 Z" class="c" opacity="0.8"/>
     <!-- Tsuba (guard) -->
-    <ellipse cx="1010" cy="200" rx="60" ry="40" transform="rotate(-35,1010,200)" fill="#FF3346"/>
-    <!-- Handle -->
-    <path d="M 980,180 L 860,400 L 900,440 L 1020,220 Z" fill="#888"/>
-    <line x1="885" y1="380" x2="1010" y2="208" class="sw" stroke-width="8" opacity="0.5"/>
+    <ellipse cx="1010" cy="240" rx="95" ry="60" transform="rotate(-55,1010,240)" fill="#FF3346"/>
+    <ellipse cx="1010" cy="240" rx="95" ry="60" transform="rotate(-55,1010,240)" class="sw" stroke-width="8" opacity="0.6"/>
+    <!-- Handle with wrap pattern -->
+    <path d="M 950,290 L 760,640 L 850,700 L 1050,330 Z" fill="#1A1A1A"/>
+    <path d="M 950,290 L 760,640 L 850,700 L 1050,330 Z" class="sr" stroke-width="8" opacity="0.7"/>
+    <line x1="920" y1="380" x2="1000" y2="420" class="sr" stroke-width="10" opacity="0.8"/>
+    <line x1="870" y1="470" x2="950" y2="510" class="sr" stroke-width="10" opacity="0.8"/>
+    <line x1="820" y1="560" x2="900" y2="600" class="sr" stroke-width="10" opacity="0.8"/>
 
     <!-- ══ Brand text block ══ -->
     <text x="0" y="1700" text-anchor="middle"

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- YOKAI GHOST — Print-ready SVG
+<!-- YOKAI GHOST — Print-ready SVG (v2)
      Artboard: 4500 × 5400 px
      Usage: Front chest or back print, oversized
-     Concept: Yūrei ghost floating in neon torii — ethereal, streetwear aesthetic
-     Colors: #BF5FFF Purple, #00F5FF Cyan, White, near-transparent layers -->
+     Concept: Chōchin-obake (paper lantern ghost) — one mad eye, lolling
+     tongue, glowing ribs — under a purple moon. Classic yokai, neon treatment.
+     Colors: #BF5FFF Purple, #00F5FF Cyan, #FF3346 Red, White -->
 <svg xmlns="http://www.w3.org/2000/svg"
      viewBox="0 0 4500 5400" width="4500" height="5400">
   <defs>
@@ -12,140 +13,138 @@
       .c  { fill: #00F5FF; }
       .r  { fill: #FF3346; }
       .w  { fill: #FFFFFF; }
+      .k  { fill: #0D0D0D; }
       .sp { stroke: #BF5FFF; fill: none; stroke-linecap: round; stroke-linejoin: round; }
       .sc { stroke: #00F5FF; fill: none; stroke-linecap: round; stroke-linejoin: round; }
       .sw { stroke: #FFFFFF; fill: none; stroke-linecap: round; stroke-linejoin: round; }
       .sr { stroke: #FF3346; fill: none; stroke-linecap: round; stroke-linejoin: round; }
     </style>
-    <filter id="blur-light">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="20" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
   </defs>
 
-  <g transform="translate(2250,2700)">
+  <g transform="translate(2250,2500)">
 
     <!-- ══ Moon backdrop ══ -->
-    <circle cx="0" cy="-1400" r="600" fill="#BF5FFF" opacity="0.08"/>
-    <circle cx="0" cy="-1400" r="540" class="sp" stroke-width="16" opacity="0.25"/>
-    <circle cx="0" cy="-1400" r="480" class="sp" stroke-width="8" opacity="0.15"/>
-    <!-- Moon kanji 月 -->
-    <text x="0" y="-1330" text-anchor="middle" font-family="serif" font-size="400"
-          fill="#BF5FFF" opacity="0.18">月</text>
+    <circle cx="0" cy="-700" r="1500" fill="#BF5FFF" opacity="0.07"/>
+    <circle cx="0" cy="-700" r="1380" class="sp" stroke-width="16" opacity="0.3"/>
+    <circle cx="0" cy="-700" r="1300" class="sp" stroke-width="6" opacity="0.18"/>
 
-    <!-- ══ Floating spirit hair tendrils ══ -->
-    <!-- Multiple wispy hair strands flowing upward -->
-    <path d="M -180,-600 C -300,-800 -480,-1000 -420,-1300 C -380,-1480 -260,-1500 -200,-1400"
-          class="sw" stroke-width="20" opacity="0.6"/>
-    <path d="M -80,-580 C -120,-820 -140,-1060 -60,-1260 C 20,-1440 120,-1420 100,-1300"
-          class="sw" stroke-width="16" opacity="0.5"/>
-    <path d="M 60,-590 C 40,-840 100,-1100 180,-1280 C 240,-1420 320,-1380 280,-1260"
-          class="sw" stroke-width="18" opacity="0.55"/>
-    <path d="M 200,-610 C 340,-820 520,-1020 500,-1300 C 480,-1480 360,-1480 320,-1380"
-          class="sw" stroke-width="14" opacity="0.45"/>
-    <!-- Wispy free tendrils -->
-    <path d="M -300,-700 C -500,-900 -700,-1100 -800,-1350" class="sw" stroke-width="10" opacity="0.3"/>
-    <path d="M 300,-700 C 500,-900 700,-1100 800,-1350" class="sw" stroke-width="10" opacity="0.3"/>
+    <!-- ══ Hanging cord ══ -->
+    <path d="M 0,-2050 C 30,-1930 -20,-1830 10,-1730" class="sw" stroke-width="22" opacity="0.8"/>
+    <!-- Cord knot -->
+    <circle cx="10" cy="-1700" r="36" class="r"/>
 
-    <!-- ══ Ghost body ══ -->
-    <!-- Outer ethereal glow -->
+    <!-- ══ Lantern top cap ══ -->
+    <path d="M -330,-1640 C -330,-1700 330,-1700 330,-1640 L 300,-1520 L -300,-1520 Z" class="k"/>
+    <path d="M -330,-1640 C -330,-1700 330,-1700 330,-1640" class="sc" stroke-width="10" opacity="0.6"/>
+
+    <!-- ══ Lantern body — paper chōchin, squashed and warped (it's alive) ══ -->
     <path d="
-      M 0,-620
-      C 280,-620 500,-480 560,-280
-      C 620,-80 580,160 500,360
-      C 460,460 420,540 400,620
-      C 380,700 380,780 360,860
-      C 340,940 280,980 240,960
-      C 200,940 180,880 160,820
-      C 140,760 120,720 80,680
-      C 40,640 -40,640 -80,680
-      C -120,720 -140,760 -160,820
-      C -180,880 -200,940 -240,960
-      C -280,980 -340,940 -360,860
-      C -380,780 -380,700 -400,620
-      C -420,540 -460,460 -500,360
-      C -580,160 -620,-80 -560,-280
-      C -500,-480 -280,-620 0,-620Z
-    " fill="#FFFFFF" opacity="0.9"/>
+      M 0,-1520
+      C 480,-1520 820,-1280 880,-880
+      C 940,-480 900,-40 780,300
+      C 700,520 560,680 360,760
+      C 240,808 120,830 0,830
+      C -120,830 -240,808 -360,760
+      C -560,680 -700,520 -780,300
+      C -900,-40 -940,-480 -880,-880
+      C -820,-1280 -480,-1520 0,-1520Z
+    " fill="#F2EFE9" opacity="0.96"/>
 
-    <!-- Ghost body inner -->
+    <!-- Paper shading (purple ambient) -->
     <path d="
-      M 0,-560
-      C 240,-560 440,-440 500,-260
-      C 560,-80 520,140 440,320
-      C 400,420 360,500 340,580
-      C 320,660 320,740 300,820
-      C 280,880 260,920 240,900
-      C 220,880 200,820 180,760
-      C 160,700 130,660 80,640
-      C 40,620 -40,620 -80,640
-      C -130,660 -160,700 -180,760
-      C -200,820 -220,880 -240,900
-      C -260,920 -280,880 -300,820
-      C -320,740 -320,660 -340,580
-      C -360,500 -400,420 -440,320
-      C -520,140 -560,-80 -500,-260
-      C -440,-440 -240,-560 0,-560Z
-    " fill="#EEEEEE" opacity="0.6"/>
+      M -600,-1320
+      C -780,-1140 -860,-880 -840,-560
+      C -828,-300 -800,-60 -740,160
+      C -820,-80 -880,-440 -860,-800
+      C -846,-1080 -740,-1260 -600,-1320Z
+    " fill="#BF5FFF" opacity="0.25"/>
 
-    <!-- Ghost "arms" reaching forward — wispy fabric sleeves -->
-    <path d="M -500,200 C -680,160 -820,120 -900,80 C -840,60 -760,80 -680,120"
-          class="sw" stroke-width="30" opacity="0.7"/>
-    <path d="M -500,240 C -700,220 -860,200 -960,180"
-          class="sw" stroke-width="20" opacity="0.5"/>
-    <path d="M 500,200 C 680,160 820,120 900,80 C 840,60 760,80 680,120"
-          class="sw" stroke-width="30" opacity="0.7"/>
-    <path d="M 500,240 C 700,220 860,200 960,180"
-          class="sw" stroke-width="20" opacity="0.5"/>
+    <!-- ══ Lantern ribs — horizontal curved lines ══ -->
+    <path d="M -855,-1060 C -500,-1180 500,-1180 855,-1060" class="sp" stroke-width="14" opacity="0.55"/>
+    <path d="M -905,-760 C -520,-880 520,-880 905,-760"   class="sp" stroke-width="14" opacity="0.55"/>
+    <path d="M -915,-450 C -530,-560 530,-560 915,-450"   class="sp" stroke-width="14" opacity="0.55"/>
+    <path d="M -890,-140 C -510,-240 510,-240 890,-140"   class="sp" stroke-width="14" opacity="0.55"/>
+    <path d="M -830,170  C -470,80  470,80  830,170"      class="sp" stroke-width="14" opacity="0.55"/>
+    <path d="M -700,470  C -390,390 390,390 700,470"      class="sp" stroke-width="14" opacity="0.55"/>
 
-    <!-- ══ Ghost face — hollow, dead eyes ══ -->
-    <!-- Left eye socket -->
-    <ellipse cx="-160" cy="-200" rx="100" ry="120" fill="#0A0A0A" opacity="0.9"/>
-    <!-- Left eye drip -->
-    <path d="M -160,-80 L -150,80 L -170,80 Z" fill="#0A0A0A" opacity="0.8"/>
-    <!-- Left eye glow -->
-    <ellipse cx="-160" cy="-200" rx="40" ry="48" fill="#BF5FFF" opacity="0.6"/>
-    <ellipse cx="-160" cy="-200" rx="18" ry="22" fill="#FFFFFF" opacity="0.9"/>
+    <!-- ══ The face ══ -->
+    <!-- Mad open eye (left) -->
+    <circle cx="-280" cy="-700" r="190" class="k"/>
+    <circle cx="-280" cy="-700" r="172" class="sc" stroke-width="10"/>
+    <circle cx="-280" cy="-700" r="105" fill="#00F5FF" opacity="0.25"/>
+    <circle cx="-280" cy="-700" r="64" fill="#00F5FF" opacity="0.9"/>
+    <circle cx="-280" cy="-700" r="26" class="k"/>
+    <circle cx="-238" cy="-742" r="22" class="w" opacity="0.95"/>
+    <!-- Angry brow over eye -->
+    <path d="M -490,-940 L -100,-860" class="sw" stroke-width="34" opacity="0.9"/>
 
-    <!-- Right eye socket -->
-    <ellipse cx="160" cy="-200" rx="100" ry="120" fill="#0A0A0A" opacity="0.9"/>
-    <!-- Right eye drip -->
-    <path d="M 160,-80 L 150,80 L 170,80 Z" fill="#0A0A0A" opacity="0.8"/>
-    <!-- Right eye glow -->
-    <ellipse cx="160" cy="-200" rx="40" ry="48" fill="#BF5FFF" opacity="0.6"/>
-    <ellipse cx="160" cy="-200" rx="18" ry="22" fill="#FFFFFF" opacity="0.9"/>
+    <!-- Squeezed-shut eye (right) — single stitched curve -->
+    <path d="M 160,-720 C 260,-780 400,-780 500,-720" stroke="#0D0D0D" fill="none" stroke-width="36" stroke-linecap="round"/>
+    <path d="M 220,-790 L 240,-700" stroke="#0D0D0D" fill="none" stroke-width="20" stroke-linecap="round"/>
+    <path d="M 330,-810 L 330,-710" stroke="#0D0D0D" fill="none" stroke-width="20" stroke-linecap="round"/>
+    <path d="M 440,-790 L 420,-700" stroke="#0D0D0D" fill="none" stroke-width="20" stroke-linecap="round"/>
 
-    <!-- Mouth — simple curved line, eerie smile -->
-    <path d="M -140,100 C -80,160 80,160 140,100" class="sw" stroke-width="16" opacity="0.6"/>
+    <!-- ══ Mouth — torn paper grin, wide ══ -->
+    <path d="
+      M -560,-220
+      C -360,-60 -120,-10 60,-10
+      C 280,-10 480,-80 600,-220
+      C 560,40 420,240 200,330
+      C 80,378 -60,380 -180,340
+      C -400,260 -540,60 -560,-220Z
+    " class="k"/>
+    <!-- Torn paper edge zigzags on mouth -->
+    <path d="M -560,-220 L -480,-150 L -400,-200 L -310,-110 L -220,-160 L -120,-80 L -20,-120 L 80,-60 L 180,-110 L 290,-50 L 390,-120 L 480,-90 L 600,-220"
+          class="sw" stroke-width="14" opacity="0.7"/>
 
-    <!-- ══ Spirit particles floating around body ══ -->
-    <circle cx="-700" cy="-100" r="20" fill="#BF5FFF" opacity="0.6"/>
-    <circle cx="-650" cy="200" r="14" fill="#00F5FF" opacity="0.5"/>
-    <circle cx="-600" cy="-300" r="10" fill="#FFFFFF" opacity="0.7"/>
-    <circle cx="700" cy="-100" r="20" fill="#BF5FFF" opacity="0.6"/>
-    <circle cx="650" cy="200" r="14" fill="#00F5FF" opacity="0.5"/>
-    <circle cx="600" cy="-300" r="10" fill="#FFFFFF" opacity="0.7"/>
-    <circle cx="-400" cy="-700" r="16" fill="#BF5FFF" opacity="0.4"/>
-    <circle cx="400" cy="-700" r="16" fill="#BF5FFF" opacity="0.4"/>
-    <circle cx="0" cy="-750" r="22" fill="#00F5FF" opacity="0.5"/>
+    <!-- ══ The tongue — long, red, lolling out ══ -->
+    <path d="
+      M -120,300
+      C -100,520 -80,720 -20,880
+      C 20,990 100,1060 180,1060
+      C 260,1060 320,990 320,900
+      C 320,830 280,780 220,770
+      C 260,720 270,650 240,580
+      C 210,500 160,430 140,330
+      C 60,360 -40,330 -120,300Z
+    " class="r"/>
+    <!-- Tongue centre line -->
+    <path d="M 60,360 C 90,560 130,760 200,920" class="sr" stroke-width="16" opacity="0.6" stroke="#AA1020"/>
+    <!-- Tongue highlight -->
+    <path d="M -40,380 C -20,520 10,680 60,820" class="sw" stroke-width="12" opacity="0.35"/>
+
+    <!-- ══ Kanji on lantern body 幽 ══ -->
+    <text x="-490" y="180" text-anchor="middle"
+          font-family="'Noto Serif CJK JP', serif" font-weight="900" font-size="300"
+          fill="#0D0D0D" opacity="0.85"
+          transform="rotate(-8,-490,180)">幽</text>
+
+    <!-- ══ Spirit flames (hitodama) floating beside ══ -->
+    <path d="M -1180,-300 C -1240,-420 -1220,-540 -1130,-620 C -1150,-520 -1100,-440 -1040,-400 C -1060,-320 -1120,-280 -1180,-300Z" class="p" opacity="0.75"/>
+    <path d="M -1140,-360 C -1170,-440 -1150,-510 -1100,-550" class="sc" stroke-width="8" opacity="0.5"/>
+    <path d="M 1160,-100 C 1100,-220 1120,-340 1210,-420 C 1190,-320 1240,-240 1300,-200 C 1280,-120 1220,-80 1160,-100Z" class="p" opacity="0.65"/>
+    <circle cx="-1060" cy="100" r="20" class="c" opacity="0.5"/>
+    <circle cx="1100" cy="240" r="16" class="c" opacity="0.5"/>
+    <circle cx="-980" cy="-840" r="14" class="w" opacity="0.6"/>
+    <circle cx="1020" cy="-760" r="18" class="p" opacity="0.6"/>
 
     <!-- ══ Brand text ══ -->
-    <text x="0" y="1380" text-anchor="middle"
+    <text x="0" y="1480" text-anchor="middle"
           font-family="'Arial Black', sans-serif" font-weight="900" font-size="220"
           fill="#FFFFFF" letter-spacing="15" opacity="0.95">YOKAI</text>
-    <text x="0" y="1600" text-anchor="middle"
+    <text x="0" y="1700" text-anchor="middle"
           font-family="'Arial Black', sans-serif" font-weight="900" font-size="200"
           fill="#BF5FFF" letter-spacing="15" opacity="0.95">GHOST</text>
-    <line x1="-640" y1="1640" x2="640" y2="1640" class="sc" stroke-width="6"/>
-    <text x="0" y="1730" text-anchor="middle"
+    <line x1="-640" y1="1740" x2="640" y2="1740" class="sc" stroke-width="6"/>
+    <text x="0" y="1830" text-anchor="middle"
           font-family="'Arial Black', sans-serif" font-size="80"
-          fill="#00F5FF" letter-spacing="25" opacity="0.7">ONI THEORY   幽霊</text>
+          fill="#00F5FF" letter-spacing="25" opacity="0.7">ONI THEORY   提灯お化け</text>
 
     <!-- ══ Corner marks ══ -->
-    <path d="M -1200,-2100 L -1000,-2100 L -1000,-1960" class="sp" stroke-width="10" opacity="0.35"/>
-    <path d="M 1200,-2100 L 1000,-2100 L 1000,-1960" class="sp" stroke-width="10" opacity="0.35"/>
-    <path d="M -1200,1800 L -1000,1800 L -1000,1660" class="sr" stroke-width="10" opacity="0.35"/>
-    <path d="M 1200,1800 L 1000,1800 L 1000,1660" class="sr" stroke-width="10" opacity="0.35"/>
+    <path d="M -1500,-2200 L -1300,-2200 L -1300,-2060" class="sp" stroke-width="10" opacity="0.35"/>
+    <path d="M 1500,-2200 L 1300,-2200 L 1300,-2060" class="sp" stroke-width="10" opacity="0.35"/>
+    <path d="M -1500,1900 L -1300,1900 L -1300,1760" class="sr" stroke-width="10" opacity="0.35"/>
+    <path d="M 1500,1900 L 1300,1900 L 1300,1760" class="sr" stroke-width="10" opacity="0.35"/>
 
   </g>
 </svg>

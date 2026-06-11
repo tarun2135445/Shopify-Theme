@@ -1,0 +1,239 @@
+<div
+  class="oni-hud color-{{ section.settings.color_scheme }}"
+  data-testid="oni-stats-hud-{{ section.id }}"
+>
+  <div class="oni-hud__frame">
+    <span class="oni-hud__corner oni-hud__corner--tl" aria-hidden="true"></span>
+    <span class="oni-hud__corner oni-hud__corner--tr" aria-hidden="true"></span>
+    <span class="oni-hud__corner oni-hud__corner--bl" aria-hidden="true"></span>
+    <span class="oni-hud__corner oni-hud__corner--br" aria-hidden="true"></span>
+
+    {% if section.settings.label != blank %}
+      <p class="oni-hud__label">
+        <span class="oni-hud__dot" aria-hidden="true"></span>
+        {{ section.settings.label }}
+      </p>
+    {% endif %}
+
+    <ul class="oni-hud__stats">
+      {% for block in section.blocks %}
+        <li class="oni-hud__stat" {{ block.shopify_attributes }}>
+          <span
+            class="oni-hud__value"
+            {% if block.settings.count_to > 0 %}
+              data-oni-count="{{ block.settings.count_to }}"
+            {% endif %}
+          >
+            {%- if block.settings.count_to > 0 -%}
+              0
+            {%- else -%}
+              {{ block.settings.value }}
+            {%- endif -%}
+          </span>
+          {%- if block.settings.suffix != blank -%}
+            <span class="oni-hud__suffix">{{ block.settings.suffix }}</span>
+          {%- endif -%}
+          <span class="oni-hud__caption">{{ block.settings.caption }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+{% stylesheet %}
+  .oni-hud {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .oni-hud__frame {
+    position: relative;
+    max-width: 70rem;
+    margin: 0 auto;
+    padding: 2rem 2.5rem;
+    border: 1px solid rgb(var(--color-primary-rgb) / 0.25);
+    background:
+      linear-gradient(rgb(var(--color-primary-rgb) / 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(var(--color-primary-rgb) / 0.03) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .oni-hud__corner {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgb(var(--color-primary-rgb) / 0.9);
+    pointer-events: none;
+  }
+  .oni-hud__corner--tl { top: -2px; left: -2px; border-width: 2px 0 0 2px; }
+  .oni-hud__corner--tr { top: -2px; right: -2px; border-width: 2px 2px 0 0; }
+  .oni-hud__corner--bl { bottom: -2px; left: -2px; border-width: 0 0 2px 2px; }
+  .oni-hud__corner--br { bottom: -2px; right: -2px; border-width: 0 2px 2px 0; }
+
+  .oni-hud__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 1.5rem;
+    font-family: var(--font-accent--family);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgb(var(--color-primary-rgb) / 0.95);
+  }
+
+  .oni-hud__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #00FF88;
+    box-shadow: 0 0 7px #00FF88, 0 0 14px rgb(0 255 136 / 0.4);
+    flex-shrink: 0;
+  }
+
+  .oni-hud__stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1.5rem 2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .oni-hud__stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .oni-hud__value,
+  .oni-hud__suffix {
+    font-family: var(--font-heading--family);
+    font-weight: 900;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    line-height: 1;
+    color: var(--color-foreground-heading);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .oni-hud__suffix {
+    display: inline;
+    color: rgb(var(--color-primary-rgb) / 0.95);
+  }
+
+  .oni-hud__value[data-oni-count] {
+    text-shadow: 0 0 14px rgb(var(--color-primary-rgb) / 0.35);
+  }
+
+  .oni-hud__caption {
+    font-family: var(--font-accent--family);
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgb(var(--color-foreground-rgb) / 0.6);
+  }
+
+  @media (max-width: 749px) {
+    .oni-hud__frame { padding: 1.5rem 1.25rem; }
+    .oni-hud__stats { gap: 1.25rem 1rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .oni-hud__dot { box-shadow: none; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Oni stats HUD",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "HUD label",
+      "default": "SYSTEM STATUS — ONI THEORY 鬼の理論"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        {
+          "type": "number",
+          "id": "count_to",
+          "label": "Count up to (number)",
+          "info": "Set to 0 to use the text value instead",
+          "default": 0
+        },
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Text value (if not counting)",
+          "default": "24H"
+        },
+        {
+          "type": "text",
+          "id": "suffix",
+          "label": "Suffix",
+          "info": "Shown after the number, e.g. + or %"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Caption",
+          "default": "Dispatch time"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Oni stats HUD",
+      "category": "t:categories.banners",
+      "blocks": [
+        {
+          "type": "stat",
+          "settings": {
+            "count_to": 15,
+            "suffix": "+",
+            "caption": "Designs deployed"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "count_to": 0,
+            "value": "24H",
+            "caption": "Dispatch time"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "count_to": 100,
+            "suffix": "%",
+            "caption": "Limited runs"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "count_to": 0,
+            "value": "鬼",
+            "caption": "Demon energy"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

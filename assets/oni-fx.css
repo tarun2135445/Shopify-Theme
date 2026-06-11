@@ -907,10 +907,261 @@ body.template-404 main {
 .oni-slant      { clip-path: polygon(0 0,100% 0,100% 88%,0 100%); }
 .oni-slant--top { clip-path: polygon(0 8%,100% 0,100% 100%,0 100%); }
 
+/* ============================================================
+   v4 — FULL POWER LAYER
+   Page transitions · nav progress · holo sheen · oni mode
+   ============================================================ */
+
+/* ────────────────────────────────────────────────
+   VIEW TRANSITIONS — glitch cross-fade between pages
+   (Horizon uses the View Transitions API natively)
+──────────────────────────────────────────────── */
+@keyframes oni-vt-out {
+  to { opacity: 0; transform: translateY(-6px); filter: saturate(1.4) hue-rotate(8deg); }
+}
+@keyframes oni-vt-in {
+  from { opacity: 0; transform: translateY(8px); clip-path: inset(0 0 30% 0); }
+  60%  { clip-path: inset(0 0 0 0); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+::view-transition-old(root) { animation: oni-vt-out 0.18s ease forwards; }
+::view-transition-new(root) { animation: oni-vt-in  0.28s ease forwards; }
+
+/* ────────────────────────────────────────────────
+   NAVIGATION PROGRESS BAR (driven by oni-fx.js)
+──────────────────────────────────────────────── */
+.oni-nav-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, var(--oni-red), var(--oni-purple), var(--oni-cyan));
+  box-shadow: 0 0 10px var(--oni-red), 0 0 20px rgba(var(--oni-red-rgb), 0.4);
+  z-index: 100000;
+  pointer-events: none;
+  opacity: 0;
+  transition: width 0.25s ease, opacity 0.3s ease;
+}
+.oni-nav-progress--active { opacity: 1; }
+
+/* ────────────────────────────────────────────────
+   HOLOGRAPHIC SHEEN — diagonal rainbow sweep on
+   product card image hover (trading-card effect)
+──────────────────────────────────────────────── */
+.oni-holo {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(var(--oni-cyan-rgb),   0.10) 42%,
+    rgba(255, 255, 255,         0.16) 50%,
+    rgba(var(--oni-purple-rgb), 0.10) 58%,
+    transparent 70%
+  );
+  background-size: 250% 250%;
+  background-position: 100% 100%;
+  transition: opacity 0.3s ease;
+  mix-blend-mode: screen;
+}
+product-card:hover .oni-holo,
+.product-card:hover .oni-holo {
+  opacity: 1;
+  animation: oni-holo-sweep 1.1s ease forwards;
+}
+@keyframes oni-holo-sweep {
+  from { background-position: 100% 100%; }
+  to   { background-position: 0% 0%; }
+}
+
+/* ────────────────────────────────────────────────
+   NEWSLETTER / EMAIL SIGNUP
+──────────────────────────────────────────────── */
+.newsletter-form,
+.footer__newsletter {
+  position: relative;
+}
+.newsletter-form input[type="email"],
+.footer__newsletter input[type="email"] {
+  font-family: var(--font-tech) !important;
+  letter-spacing: 0.04em;
+}
+.newsletter-form input[type="email"]::placeholder,
+.footer__newsletter input[type="email"]::placeholder {
+  font-family: var(--font-tech);
+  text-transform: uppercase;
+  font-size: 0.78em;
+  letter-spacing: 0.1em;
+}
+
+/* ────────────────────────────────────────────────
+   BLOG CARDS & ARTICLES
+──────────────────────────────────────────────── */
+.blog-post-card,
+.article-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.blog-post-card:hover,
+.article-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 0 0 1px rgba(var(--oni-cyan-rgb), 0.3),
+    0 0 18px rgba(var(--oni-cyan-rgb), 0.1),
+    0 12px 28px rgba(0,0,0,0.5);
+}
+.article__title,
+.blog-post-card__title {
+  font-family: var(--font-sharp) !important;
+  font-weight: 700 !important;
+}
+
+/* ────────────────────────────────────────────────
+   ACCOUNT / LOGIN / REGISTER
+──────────────────────────────────────────────── */
+.customer h1,
+.customer h2 {
+  font-family: var(--font-gaming) !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+}
+.customer form {
+  border: 1px solid rgba(var(--oni-red-rgb), 0.15);
+  padding: 1.5rem;
+  position: relative;
+}
+
+/* ────────────────────────────────────────────────
+   GIFT CARD PAGE
+──────────────────────────────────────────────── */
+.gift-card__code {
+  font-family: var(--font-tech) !important;
+  letter-spacing: 0.15em !important;
+  border: 1px dashed rgba(var(--oni-cyan-rgb), 0.5) !important;
+  text-shadow: 0 0 8px rgba(var(--oni-cyan-rgb), 0.4);
+}
+
+/* ────────────────────────────────────────────────
+   PRODUCT GALLERY THUMBNAILS
+──────────────────────────────────────────────── */
+.product__media-toggle[aria-pressed="true"],
+.thumbnail--active,
+.product__thumbnail--active {
+  box-shadow: 0 0 0 2px var(--oni-red), 0 0 10px rgba(var(--oni-red-rgb), 0.4) !important;
+}
+
+/* ────────────────────────────────────────────────
+   ONI MODE — Konami code unlock (class on <html>)
+   Intensifies the atmosphere site-wide
+──────────────────────────────────────────────── */
+html.oni-mode body::before {
+  background-image:
+    linear-gradient(rgba(var(--oni-red-rgb), 0.06)  1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--oni-red-rgb), 0.06) 1px, transparent 1px);
+  animation-duration: 4s;
+}
+html.oni-mode .button--primary {
+  animation: oni-box-pulse 2s ease-in-out infinite;
+}
+html.oni-mode header-component::after,
+html.oni-mode .header::after {
+  opacity: 1;
+  height: 2px;
+}
+
+/* Konami unlock overlay */
+.oni-cheat {
+  position: fixed;
+  inset: 0;
+  z-index: 100001;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: rgba(7, 7, 13, 0.92);
+  backdrop-filter: blur(6px);
+  font-family: var(--font-gaming);
+  text-transform: uppercase;
+  text-align: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+.oni-cheat--show { opacity: 1; pointer-events: auto; }
+.oni-cheat__title {
+  font-size: clamp(1.1rem, 4vw, 2rem);
+  font-weight: 900;
+  color: var(--oni-cyan);
+  letter-spacing: 0.2em;
+  text-shadow: 0 0 16px var(--oni-cyan), 0 0 40px rgba(var(--oni-cyan-rgb), 0.4);
+}
+.oni-cheat__code {
+  font-family: var(--font-tech);
+  font-size: clamp(1.4rem, 6vw, 3rem);
+  color: var(--oni-red);
+  letter-spacing: 0.3em;
+  padding: 10px 28px;
+  border: 1px dashed var(--oni-red);
+  text-shadow: 0 0 14px rgba(var(--oni-red-rgb), 0.6);
+}
+.oni-cheat__sub {
+  font-family: var(--font-sharp);
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  color: rgba(242,239,233,0.7);
+  text-transform: uppercase;
+}
+.oni-cheat__close {
+  margin-top: 10px;
+  font-family: var(--font-gaming);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--oni-purple);
+  background: none;
+  border: 1px solid var(--oni-purple);
+  padding: 8px 22px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: box-shadow 0.2s ease, color 0.2s ease;
+}
+.oni-cheat__close:hover {
+  box-shadow: 0 0 14px rgba(var(--oni-purple-rgb), 0.6);
+  color: #fff;
+}
+
+/* ────────────────────────────────────────────────
+   STOCK BAR — low-inventory urgency meter
+   (utility: <div class="oni-stock-bar" style="--oni-stock: 35%">)
+──────────────────────────────────────────────── */
+.oni-stock-bar {
+  width: 100%;
+  height: 4px;
+  background: rgba(255,255,255,0.08);
+  overflow: hidden;
+  position: relative;
+}
+.oni-stock-bar::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: var(--oni-stock, 50%);
+  background: linear-gradient(90deg, var(--oni-red), var(--oni-yellow));
+  box-shadow: 0 0 8px rgba(var(--oni-red-rgb), 0.6);
+  transition: width 0.8s ease;
+}
+
 /* ────────────────────────────────────────────────
    REDUCED MOTION
 ──────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) { animation: none; }
+  .oni-holo { display: none; }
+  html.oni-mode .button--primary { animation: none; }
   body::before,
   .oni-text-red, .oni-text-cyan, .oni-text-purple,
   .oni-badge, .oni-float, .oni-status::before,

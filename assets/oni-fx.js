@@ -519,16 +519,254 @@
   }
 
   /* ────────────────────────────────────────────────
+     9. NAVIGATION PROGRESS BAR (v4)
+     Neon bar at top during page navigations.
+     Uses pageswap (View Transitions) + link clicks.
+  ──────────────────────────────────────────────── */
+  function initNavProgress() {
+    var bar = document.createElement('div');
+    bar.className = 'oni-nav-progress';
+    bar.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(bar);
+
+    var timer = null;
+    function start() {
+      clearTimeout(timer);
+      bar.classList.add('oni-nav-progress--active');
+      bar.style.width = '0';
+      /* Force reflow so width transition restarts */
+      void bar.offsetWidth;
+      bar.style.width = '70%';
+      /* Crawl toward 90% if navigation is slow */
+      timer = setTimeout(function () { bar.style.width = '90%'; }, 600);
+    }
+
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a[href]');
+      if (!a) return;
+      var href = a.getAttribute('href');
+      /* Internal navigations only */
+      if (!href || href.charAt(0) === '#' || a.target === '_blank') return;
+      if (/^(mailto:|tel:|javascript:)/.test(href)) return;
+      if (a.origin && a.origin !== window.location.origin) return;
+      start();
+    });
+
+    /* Page restored from bfcache or transition finished */
+    window.addEventListener('pageshow', function () {
+      clearTimeout(timer);
+      bar.style.width = '100%';
+      setTimeout(function () {
+        bar.classList.remove('oni-nav-progress--active');
+        bar.style.width = '0';
+      }, 250);
+    });
+
+    onCleanup(function () {
+      clearTimeout(timer);
+      bar.remove();
+    });
+  }
+
+  /* ────────────────────────────────────────────────
+     10. HOLOGRAPHIC SHEEN (v4)
+     Injects .oni-holo div into card media — trading
+     card rainbow sweep on hover (CSS does the rest).
+  ──────────────────────────────────────────────── */
+  function initHoloSheen() {
+    function addHolo(card) {
+      var media = card.querySelector('.media, .product-card__media, .card__media');
+      if (!media || media.querySelector('.oni-holo')) return;
+      var holo = document.createElement('div');
+      holo.className = 'oni-holo';
+      holo.setAttribute('aria-hidden', 'true');
+      media.appendChild(holo);
+    }
+    document.querySelectorAll('product-card, .product-card').forEach(addHolo);
+
+    var obs = new MutationObserver(function (m) {
+      m.forEach(function (mut) {
+        mut.addedNodes.forEach(function (node) {
+          if (!(node instanceof HTMLElement)) return;
+          if (node.matches && node.matches('product-card, .product-card')) addHolo(node);
+          node.querySelectorAll && node.querySelectorAll('product-card, .product-card')
+            .forEach(addHolo);
+        });
+      });
+    });
+    obs.observe(document.body, { childList: true, subtree: true });
+    onCleanup(function () { obs.disconnect(); });
+  }
+
+  /* ────────────────────────────────────────────────
+     11. HUD COUNTERS (v4)
+     Animates [data-oni-count] numbers when scrolled
+     into view (used by the Oni stats HUD section).
+  ──────────────────────────────────────────────── */
+  function initHudCounters() {
+    if (!('IntersectionObserver' in window)) return;
+    var els = document.querySelectorAll('[data-oni-count]');
+    if (!els.length) return;
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        io.unobserve(entry.target);
+        var el = entry.target;
+        var target = parseInt(el.getAttribute('data-oni-count'), 10) || 0;
+        var t0 = null;
+        var DURATION = 1200;
+        function step(ts) {
+          if (!t0) t0 = ts;
+          var p = Math.min((ts - t0) / DURATION, 1);
+          /* easeOutCubic */
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(target * eased);
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    }, { threshold: 0.4 });
+
+    els.forEach(function (el) { io.observe(el); });
+    onCleanup(function () { io.disconnect(); });
+  }
+
+  /* ────────────────────────────────────────────────
+     12. MAGNETIC BUTTONS (v4, desktop only)
+     Primary buttons subtly pull toward the cursor.
+  ──────────────────────────────────────────────── */
+  function initMagneticButtons() {
+    var STRENGTH = 5; /* px max displacement — subtle */
+
+    function onMove(e) {
+      var btn = e.currentTarget;
+      var r = btn.getBoundingClientRect();
+      var x = ((e.clientX - r.left) / r.width  - 0.5) * 2;
+      var y = ((e.clientY - r.top)  / r.height - 0.5) * 2;
+      btn.style.translate = (x * STRENGTH) + 'px ' + (y * STRENGTH) + 'px';
+    }
+    function onLeave(e) {
+      e.currentTarget.style.translate = '';
+    }
+
+    function attach(btn) {
+      if (btn.dataset.oniMagnet) return;
+      btn.dataset.oniMagnet = '1';
+      btn.addEventListener('mousemove', onMove);
+      btn.addEventListener('mouseleave', onLeave);
+    }
+    document.querySelectorAll('.button--primary').forEach(attach);
+
+    var obs = new MutationObserver(function (m) {
+      m.forEach(function (mut) {
+        mut.addedNodes.forEach(function (node) {
+          if (!(node instanceof HTMLElement)) return;
+          if (node.matches && node.matches('.button--primary')) attach(node);
+          node.querySelectorAll && node.querySelectorAll('.button--primary').forEach(attach);
+        });
+      });
+    });
+    obs.observe(document.body, { childList: true, subtree: true });
+    onCleanup(function () { obs.disconnect(); });
+  }
+
+  /* ────────────────────────────────────────────────
+     13. KONAMI CODE EASTER EGG (v4)
+     ↑↑↓↓←→←→BA — unlocks ONI MODE + discount code.
+  ──────────────────────────────────────────────── */
+  function initKonami() {
+    var SEQ = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown',
+               'ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+    var pos = 0;
+
+    var overlay = null;
+    function showUnlock() {
+      document.documentElement.classList.add('oni-mode');
+      store.set('oni-mode', '1');
+
+      if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.className = 'oni-cheat';
+        overlay.setAttribute('role', 'dialog');
+        overlay.setAttribute('aria-label', 'Cheat code accepted');
+        /* To attach a reward: create a discount code in Shopify admin,
+           then set ONI_CHEAT_CODE to it (e.g. 'ONIMODE') and update the copy. */
+        var ONI_CHEAT_CODE = '';
+        overlay.innerHTML = [
+          '<div class="oni-cheat__title">Cheat code accepted</div>',
+          '<div class="oni-cheat__sub">鬼モード解放 — ONI MODE unlocked</div>',
+          ONI_CHEAT_CODE
+            ? '<div class="oni-cheat__code">' + ONI_CHEAT_CODE + '</div>' +
+              '<div class="oni-cheat__sub">Use at checkout</div>'
+            : '<div class="oni-cheat__sub">Visuals intensified — welcome to the other side</div>',
+          '<button type="button" class="oni-cheat__close">Continue</button>',
+        ].join('');
+        document.body.appendChild(overlay);
+        overlay.querySelector('.oni-cheat__close').addEventListener('click', function () {
+          overlay.classList.remove('oni-cheat--show');
+        });
+        overlay.addEventListener('click', function (e) {
+          if (e.target === overlay) overlay.classList.remove('oni-cheat--show');
+        });
+      }
+      /* Next frame so the transition fires */
+      requestAnimationFrame(function () {
+        overlay.classList.add('oni-cheat--show');
+      });
+    }
+
+    function onKey(e) {
+      /* Don't hijack typing in form fields */
+      var t = e.target;
+      if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) {
+        pos = 0;
+        return;
+      }
+      var key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+      if (key === SEQ[pos]) {
+        pos++;
+        if (pos === SEQ.length) {
+          pos = 0;
+          showUnlock();
+        }
+      } else {
+        pos = key === SEQ[0] ? 1 : 0;
+      }
+    }
+
+    document.addEventListener('keydown', onKey);
+
+    /* Restore oni-mode if previously unlocked this session */
+    if (store.get('oni-mode')) {
+      document.documentElement.classList.add('oni-mode');
+    }
+
+    onCleanup(function () {
+      document.removeEventListener('keydown', onKey);
+      if (overlay) overlay.remove();
+    });
+  }
+
+  /* ────────────────────────────────────────────────
      INIT
   ──────────────────────────────────────────────── */
   function init() {
-    var isMobile       = /Mobi|Android/i.test(navigator.userAgent);
+    /* UA sniff alone misses touch devices with desktop UAs —
+       pointer/hover media queries catch those */
+    var isMobile =
+      /Mobi|Android/i.test(navigator.userAgent) ||
+      window.matchMedia('(hover: none), (pointer: coarse)').matches;
     var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (!prefersReduced) {
       initBootSequence();
-      if (!isMobile) initCursorTrail();
+      if (!isMobile) {
+        initCursorTrail();
+        initMagneticButtons();
+      }
       initImageTilt();
+      initHoloSheen();
     }
 
     initCardBorders();
@@ -536,6 +774,9 @@
     initGlitchHeadings();
     initAddToCartToast();
     initScrollReveal();
+    initNavProgress();
+    initHudCounters();
+    initKonami();
   }
 
   if (document.readyState === 'loading') {

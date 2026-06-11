@@ -1,0 +1,783 @@
+/* ============================================================
+   ONI THEORY 鬼の理論 — Anime & Gaming Visual Effects v2
+   ============================================================ */
+
+/* ── GAMING / ANIME FONTS ── */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap');
+
+/* ────────────────────────────────────────────────
+   DESIGN TOKENS
+──────────────────────────────────────────────── */
+:root {
+  --oni-red:     #FF3346;
+  --oni-red-dim: rgba(255,51,70,0.55);
+  --oni-cyan:    #00F5FF;
+  --oni-purple:  #BF5FFF;
+  --oni-yellow:  #FFE600;
+  --oni-green:   #00FF88;
+  --oni-dark:    #0B0B10;
+  --oni-deep:    #07070D;
+
+  --oni-glow-red:    0 0 8px rgba(255,51,70,0.85),   0 0 22px rgba(255,51,70,0.4);
+  --oni-glow-cyan:   0 0 8px rgba(0,245,255,0.85),   0 0 22px rgba(0,245,255,0.4);
+  --oni-glow-purple: 0 0 8px rgba(191,95,255,0.85),  0 0 22px rgba(191,95,255,0.4);
+
+  --font-gaming: 'Orbitron', sans-serif;
+  --font-tech:   'Share Tech Mono', monospace;
+  --font-sharp:  'Rajdhani', sans-serif;
+}
+
+/* ────────────────────────────────────────────────
+   KEYFRAMES
+──────────────────────────────────────────────── */
+@keyframes oni-pulse-red {
+  0%,100% { text-shadow: 0 0 6px #FF3346, 0 0 14px #FF3346, 0 0 30px rgba(255,51,70,0.45); }
+  50%      { text-shadow: 0 0 3px #FF3346, 0 0 8px rgba(255,51,70,0.5); }
+}
+@keyframes oni-pulse-cyan {
+  0%,100% { text-shadow: 0 0 6px #00F5FF, 0 0 14px #00F5FF, 0 0 30px rgba(0,245,255,0.45); }
+  50%      { text-shadow: 0 0 3px #00F5FF, 0 0 8px rgba(0,245,255,0.5); }
+}
+@keyframes oni-pulse-purple {
+  0%,100% { text-shadow: 0 0 6px #BF5FFF, 0 0 14px #BF5FFF, 0 0 30px rgba(191,95,255,0.45); }
+  50%      { text-shadow: 0 0 3px #BF5FFF, 0 0 8px rgba(191,95,255,0.5); }
+}
+@keyframes oni-box-pulse {
+  0%,100% { box-shadow: 0 0 6px #FF3346, 0 0 14px rgba(255,51,70,0.5); }
+  50%      { box-shadow: 0 0 2px #FF3346, 0 0 7px rgba(255,51,70,0.25); }
+}
+@keyframes oni-glitch {
+  0%,88%,100% { clip-path: inset(0 0 100% 0); transform: translate(0); }
+  90%   { clip-path: inset(6% 0 60% 0);  transform: translate(-3px,0); }
+  92%   { clip-path: inset(32% 0 22% 0); transform: translate(3px,0); }
+  94%   { clip-path: inset(68% 0 4% 0);  transform: translate(-2px,0); }
+  96%   { clip-path: inset(0 0 100% 0);  transform: translate(0); }
+}
+@keyframes oni-shimmer {
+  0%   { left: -80%; }
+  100% { left: 180%; }
+}
+@keyframes oni-border-rotate {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes oni-float {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-7px); }
+}
+@keyframes oni-badge-breathe {
+  0%,100% { box-shadow: 0 0 7px currentColor, 0 0 16px rgba(255,51,70,0.4); }
+  50%      { box-shadow: 0 0 3px currentColor, 0 0 8px rgba(255,51,70,0.15); }
+}
+@keyframes oni-scan-v {
+  0%   { transform: translateY(-100%); opacity: 0; }
+  5%   { opacity: 0.6; }
+  95%  { opacity: 0.6; }
+  100% { transform: translateY(400%); opacity: 0; }
+}
+@keyframes oni-corner-expand {
+  0%   { width: 10px; height: 10px; opacity: 0.5; }
+  100% { width: 18px; height: 18px; opacity: 1; }
+}
+@keyframes oni-energy-charge {
+  0%   { transform: scaleX(0); transform-origin: left; opacity: 1; }
+  60%  { transform: scaleX(1); transform-origin: left; opacity: 1; }
+  100% { transform: scaleX(1); transform-origin: left; opacity: 0; }
+}
+@keyframes oni-flicker {
+  0%,96%,100% { opacity: 1; }
+  97%          { opacity: 0.75; }
+  98%          { opacity: 1; }
+  99%          { opacity: 0.55; }
+}
+@keyframes oni-bg-breathe {
+  0%,100% { opacity: 0.018; }
+  50%      { opacity: 0.045; }
+}
+@keyframes oni-type-cursor {
+  0%,100% { border-right-color: var(--oni-red); }
+  50%      { border-right-color: transparent; }
+}
+@keyframes oni-reveal-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes oni-ribbon-slide {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100vw); }
+}
+
+/* ────────────────────────────────────────────────
+   SCROLLBAR
+──────────────────────────────────────────────── */
+::-webkit-scrollbar        { width: 4px; height: 4px; }
+::-webkit-scrollbar-track  { background: var(--oni-dark); }
+::-webkit-scrollbar-thumb  {
+  background: linear-gradient(180deg, var(--oni-red) 0%, var(--oni-purple) 100%);
+  box-shadow: 0 0 6px var(--oni-red);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ff6677 0%, #d480ff 100%);
+  box-shadow: 0 0 12px var(--oni-red);
+}
+
+/* ── TEXT SELECTION ── */
+::selection { background: rgba(255,51,70,0.32); color: #F2EFE9; }
+
+/* ────────────────────────────────────────────────
+   BODY ATMOSPHERE
+   Very subtle animated kanji watermark + grid veil
+──────────────────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(255,51,70,0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,51,70,0.028) 1px, transparent 1px);
+  background-size: 48px 48px;
+  animation: oni-bg-breathe 8s ease-in-out infinite;
+}
+
+/* ────────────────────────────────────────────────
+   HEADER
+──────────────────────────────────────────────── */
+header-component,
+.header { position: relative; }
+
+/* Neon bottom edge */
+header-component::after,
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%, var(--oni-red) 30%, var(--oni-purple) 70%, transparent 100%);
+  box-shadow: 0 0 10px rgba(255,51,70,0.65);
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+/* Logo glow on hover */
+.header__logo-image,
+.header__logo svg { transition: filter 0.3s ease; }
+.header__logo:hover .header__logo-image,
+.header__logo:hover svg {
+  filter: drop-shadow(0 0 10px rgba(255,51,70,0.8));
+}
+
+/* Nav link hover */
+.header__menu-item > .link,
+.header__menu-item > a,
+.header__menu-item > button {
+  transition: color 0.2s ease, text-shadow 0.2s ease !important;
+}
+.header__menu-item > .link:hover,
+.header__menu-item > a:hover,
+.header__menu-item > button:hover {
+  color: var(--oni-red) !important;
+  text-shadow: 0 0 10px rgba(255,51,70,0.7) !important;
+}
+
+/* Active link underline glows */
+.header__active-menu-item::after {
+  box-shadow: 0 0 8px var(--oni-red) !important;
+  background: var(--oni-red) !important;
+}
+
+/* Cart badge pulse */
+.header__cart-count {
+  background: var(--oni-red) !important;
+  font-family: var(--font-gaming) !important;
+  font-size: 0.55rem !important;
+  animation: oni-box-pulse 2.5s ease-in-out infinite;
+}
+
+/* ────────────────────────────────────────────────
+   ANNOUNCEMENT BAR
+──────────────────────────────────────────────── */
+.announcement-bar { position: relative; overflow: hidden; }
+.announcement-bar__message {
+  font-family: var(--font-sharp);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+/* Sliding light ribbon */
+.announcement-bar::before {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  width: 60px;
+  background: linear-gradient(90deg,
+    transparent, rgba(255,255,255,0.08), transparent);
+  animation: oni-ribbon-slide 4s linear infinite;
+  pointer-events: none;
+}
+
+/* ────────────────────────────────────────────────
+   BUTTONS
+──────────────────────────────────────────────── */
+.button,
+.shopify-challenge__button,
+.customer button {
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-gaming) !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  font-weight: 700 !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+/* Shimmer sweep */
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -80%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.14), transparent);
+  pointer-events: none;
+}
+.button:hover::before {
+  animation: oni-shimmer 0.55s ease forwards;
+}
+
+/* Energy charge bottom bar */
+.button::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--oni-red), var(--oni-purple));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+  pointer-events: none;
+}
+.button:hover::after {
+  transform: scaleX(1);
+}
+.button--primary::after {
+  background: linear-gradient(90deg, rgba(255,255,255,0.6), rgba(255,255,255,0.2));
+}
+
+/* Primary — red neon glow */
+.button--primary:hover {
+  box-shadow: 0 0 14px rgba(255,51,70,0.75), 0 0 32px rgba(255,51,70,0.3), 0 4px 16px rgba(0,0,0,0.45) !important;
+  transform: translateY(-2px);
+}
+.button--primary:active { transform: translateY(0); }
+
+/* Secondary — white glow */
+.button--secondary:hover {
+  box-shadow: 0 0 12px rgba(242,239,233,0.28), 0 0 24px rgba(242,239,233,0.12), 0 4px 16px rgba(0,0,0,0.4) !important;
+  transform: translateY(-2px);
+}
+.button--secondary:active { transform: translateY(0); }
+
+/* ────────────────────────────────────────────────
+   PRODUCT CARDS
+──────────────────────────────────────────────── */
+product-card,
+.product-card {
+  position: relative;
+  isolation: isolate;
+  transition: transform var(--hover-transition-duration,0.25s) ease,
+              box-shadow var(--hover-transition-duration,0.25s) ease;
+}
+
+/* Animated gradient border on hover (pseudo-element technique) */
+product-card::before,
+.product-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    var(--oni-red),
+    var(--oni-purple),
+    var(--oni-cyan),
+    var(--oni-red)
+  );
+  background-size: 300% 300%;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: -1;
+  pointer-events: none;
+  animation: oni-border-rotate 3s linear infinite;
+}
+product-card:hover::before,
+.product-card:hover::before { opacity: 0.7; }
+
+/* CRT scan-line overlay */
+product-card::after,
+.product-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px, transparent 3px,
+    rgba(0,245,255,0.022) 3px, rgba(0,245,255,0.022) 4px
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: 2;
+  border-radius: inherit;
+}
+product-card:hover::after,
+.product-card:hover::after { opacity: 1; }
+
+/* Vertical scan sweep */
+product-card:hover .media::after,
+.product-card:hover .product-card__media::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(0,245,255,0.5), transparent);
+  pointer-events: none;
+  z-index: 3;
+  animation: oni-scan-v 1.4s ease forwards;
+}
+
+/* Corner brackets */
+product-card::before,
+.product-card::before {
+  z-index: -1;
+}
+
+/* Product title hover */
+product-card .card__heading a,
+.product-card .card__heading a,
+product-card .product-card__title a,
+.product-card .product-card__title a {
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+product-card:hover .card__heading a,
+.product-card:hover .card__heading a,
+product-card:hover .product-card__title a,
+.product-card:hover .product-card__title a {
+  color: var(--oni-red) !important;
+  text-shadow: 0 0 8px rgba(255,51,70,0.45);
+}
+
+/* ────────────────────────────────────────────────
+   PRICE
+──────────────────────────────────────────────── */
+.price-item--sale,
+.price--on-sale .price__sale {
+  color: var(--oni-red) !important;
+  text-shadow: 0 0 8px rgba(255,51,70,0.45);
+  font-weight: 800;
+}
+
+.price-item,
+.price__regular,
+.price__sale {
+  font-family: var(--font-gaming);
+}
+
+/* ────────────────────────────────────────────────
+   BADGES
+──────────────────────────────────────────────── */
+.badge--sale,
+.badge--new,
+[class*="badge"] {
+  font-family: var(--font-gaming) !important;
+  font-size: 0.58rem !important;
+  letter-spacing: 0.1em !important;
+  box-shadow: 0 0 8px rgba(255,51,70,0.6);
+}
+
+/* Utility badge */
+.oni-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  font-family: var(--font-gaming);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  animation: oni-badge-breathe 2.5s ease-in-out infinite;
+}
+.oni-badge--red    { background: var(--oni-red);    color: #0B0B10; }
+.oni-badge--cyan   { background: var(--oni-cyan);   color: #0B0B10; }
+.oni-badge--purple { background: var(--oni-purple); color: #F2EFE9; }
+
+/* ────────────────────────────────────────────────
+   COLLECTION CARDS
+──────────────────────────────────────────────── */
+.collection-card,
+.featured-blog-posts-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.collection-card:hover,
+.featured-blog-posts-card:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 0 0 1px rgba(255,51,70,0.35),
+    0 0 22px rgba(255,51,70,0.14),
+    0 14px 32px rgba(0,0,0,0.55);
+}
+
+/* ────────────────────────────────────────────────
+   HERO / SLIDESHOW
+──────────────────────────────────────────────── */
+/* CRT scanlines */
+.hero .media::before,
+.slideshow .media::before,
+.layered-slideshow .media::before,
+.banner .media::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px, transparent 4px,
+    rgba(0,0,0,0.065) 4px, rgba(0,0,0,0.065) 5px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Top neon accent line on hero sections */
+.shopify-section:first-of-type .hero,
+.shopify-section:first-of-type .slideshow {
+  border-top: 1px solid rgba(255,51,70,0.25);
+  box-shadow: inset 0 1px 0 0 rgba(255,51,70,0.15);
+}
+
+/* ────────────────────────────────────────────────
+   HEADINGS — subtle red underline on h1/h2
+──────────────────────────────────────────────── */
+h1, .h1 {
+  position: relative;
+  display: inline-block;
+}
+h1::after, .h1::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--oni-red), transparent);
+  box-shadow: 0 0 8px rgba(255,51,70,0.6);
+}
+
+/* ────────────────────────────────────────────────
+   FORMS
+──────────────────────────────────────────────── */
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: rgba(255,51,70,0.8) !important;
+  box-shadow: 0 0 0 1px rgba(255,51,70,0.25), 0 0 12px rgba(255,51,70,0.15) !important;
+  outline: none;
+}
+
+/* Monospace labels */
+label, .label {
+  font-family: var(--font-sharp);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+/* ────────────────────────────────────────────────
+   VARIANT PICKER / SWATCHES
+──────────────────────────────────────────────── */
+.swatch__input:checked + .swatch__button,
+.variant-picker__button[aria-pressed="true"],
+.variant-picker__button--selected {
+  box-shadow: 0 0 0 2px var(--oni-red), 0 0 10px rgba(255,51,70,0.55) !important;
+}
+
+/* ────────────────────────────────────────────────
+   CART DRAWER
+──────────────────────────────────────────────── */
+cart-drawer,
+.cart-drawer {
+  border-left: 1px solid rgba(255,51,70,0.2) !important;
+  box-shadow: -4px 0 30px rgba(255,51,70,0.08), -1px 0 60px rgba(0,0,0,0.5) !important;
+}
+cart-drawer::before,
+.cart-drawer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--oni-red), var(--oni-purple));
+  box-shadow: 0 0 10px var(--oni-red);
+  z-index: 10;
+}
+
+.cart-drawer__header {
+  border-bottom: 1px solid rgba(255,51,70,0.2) !important;
+}
+
+/* Checkout button in cart — full gaming treatment */
+cart-drawer .button--primary,
+.cart-drawer .button--primary {
+  background: var(--oni-red);
+  font-family: var(--font-gaming) !important;
+  letter-spacing: 0.15em !important;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ────────────────────────────────────────────────
+   MEGA / DROP-DOWN MENU
+──────────────────────────────────────────────── */
+.header__submenu,
+.mega-menu,
+.mega-menu__inner {
+  border-top: 2px solid rgba(255,51,70,0.5) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,51,70,0.1) !important;
+}
+
+.mega-menu__link:hover,
+.header__submenu .link:hover {
+  color: var(--oni-red) !important;
+  text-shadow: 0 0 8px rgba(255,51,70,0.5) !important;
+  padding-left: 4px;
+  transition: padding-left 0.15s ease, color 0.15s ease;
+}
+
+/* ────────────────────────────────────────────────
+   FOOTER
+──────────────────────────────────────────────── */
+.footer { position: relative; }
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%, var(--oni-purple) 30%, var(--oni-red) 70%, transparent 100%);
+  box-shadow: 0 0 10px rgba(191,95,255,0.55);
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+/* Footer link hover */
+.footer__list-item a:hover,
+.footer__nav-item a:hover {
+  color: var(--oni-red) !important;
+  text-shadow: 0 0 6px rgba(255,51,70,0.5);
+}
+
+/* ────────────────────────────────────────────────
+   MARQUEE / ANNOUNCEMENT TEXT
+──────────────────────────────────────────────── */
+.marquee__item,
+.marquee__content span,
+.marquee__content a {
+  font-family: var(--font-sharp);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ────────────────────────────────────────────────
+   QUICK-ADD / MODAL
+──────────────────────────────────────────────── */
+.quick-add__submit:hover,
+.product-form__submit:hover {
+  box-shadow: var(--oni-glow-red) !important;
+}
+
+/* ────────────────────────────────────────────────
+   PRODUCT MEDIA — image reveal on hover
+──────────────────────────────────────────────── */
+.product-card__media img,
+.card__media img {
+  transition: transform 0.45s cubic-bezier(0.25,0.1,0.25,1),
+              filter 0.45s ease;
+}
+product-card:hover .product-card__media img,
+.product-card:hover .card__media img {
+  filter: saturate(1.15) brightness(1.06) contrast(1.04);
+}
+
+/* ────────────────────────────────────────────────
+   PAGINATION
+──────────────────────────────────────────────── */
+.pagination__item--current {
+  box-shadow: 0 0 10px rgba(255,51,70,0.6) !important;
+  border-color: var(--oni-red) !important;
+}
+.pagination__item:not(.pagination__item--current):hover {
+  border-color: var(--oni-red) !important;
+  color: var(--oni-red) !important;
+}
+
+/* ────────────────────────────────────────────────
+   LOADING SPINNER
+──────────────────────────────────────────────── */
+.loading-overlay__spinner .path {
+  stroke: var(--oni-red) !important;
+  filter: drop-shadow(0 0 5px var(--oni-red));
+}
+
+/* ────────────────────────────────────────────────
+   UTILITY CLASSES
+──────────────────────────────────────────────── */
+
+/* Neon text */
+.oni-text-red    { color: var(--oni-red);    animation: oni-pulse-red    3s ease-in-out infinite; }
+.oni-text-cyan   { color: var(--oni-cyan);   animation: oni-pulse-cyan   3s ease-in-out infinite; }
+.oni-text-purple { color: var(--oni-purple); animation: oni-pulse-purple 3s ease-in-out infinite; }
+
+/* Glitch text */
+.oni-glitch { position: relative; display: inline-block; }
+.oni-glitch::before,
+.oni-glitch::after {
+  content: attr(data-text);
+  position: absolute; inset: 0;
+  pointer-events: none;
+}
+.oni-glitch::before { color: var(--oni-cyan); left: 2px;  animation: oni-glitch 6s infinite; }
+.oni-glitch::after  { color: var(--oni-red);  left: -2px; animation: oni-glitch 6s infinite 0.3s; }
+
+/* HUD corners */
+.oni-corners { position: relative; }
+.oni-corners::before,
+.oni-corners::after {
+  content: '';
+  position: absolute;
+  border-color: var(--oni-red);
+  border-style: solid;
+  opacity: 0.8;
+  pointer-events: none;
+  transition: width 0.2s ease, height 0.2s ease;
+}
+.oni-corners::before { top:0;    left:0;  border-width: 2px 0 0 2px; width:12px; height:12px; }
+.oni-corners::after  { bottom:0; right:0; border-width: 0 2px 2px 0; width:12px; height:12px; }
+.oni-corners:hover::before,
+.oni-corners:hover::after { width:20px; height:20px; opacity:1; }
+
+/* Floating */
+.oni-float { animation: oni-float 3.5s ease-in-out infinite; }
+
+/* Cyber grid background */
+.oni-cyber-grid {
+  background-image:
+    linear-gradient(rgba(255,51,70,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,51,70,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Section neon divider */
+.oni-divider {
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--oni-red) 30%, var(--oni-purple) 70%, transparent);
+  box-shadow: 0 0 10px rgba(255,51,70,0.4);
+  border: none;
+  margin: 2.5rem 0;
+}
+
+/* Diagonal clip */
+.oni-slant      { clip-path: polygon(0 0,100% 0,100% 88%,0 100%); }
+.oni-slant--top { clip-path: polygon(0 8%,100% 0,100% 100%,0 100%); }
+
+/* Typewriter cursor */
+.oni-cursor {
+  border-right: 2px solid var(--oni-red);
+  animation: oni-type-cursor 0.9s step-end infinite;
+  padding-right: 4px;
+}
+
+/* Rank label */
+.oni-rank {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-gaming);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border: 1px solid var(--oni-red);
+  color: var(--oni-red);
+  box-shadow: 0 0 7px rgba(255,51,70,0.3), inset 0 0 8px rgba(255,51,70,0.05);
+}
+
+/* Status dot */
+.oni-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-gaming);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--oni-green);
+}
+.oni-status::before {
+  content: '';
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--oni-green);
+  box-shadow: 0 0 7px var(--oni-green), 0 0 14px rgba(0,255,136,0.4);
+  animation: oni-box-pulse 2.2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+.oni-status--offline::before { background:#555; box-shadow:none; animation:none; }
+.oni-status--warning::before { background:var(--oni-yellow); box-shadow:0 0 7px var(--oni-yellow); }
+
+/* Gaming heading class */
+.oni-heading-gaming {
+  font-family: var(--font-gaming) !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+}
+
+/* Tech mono text */
+.oni-mono {
+  font-family: var(--font-tech);
+  font-size: 0.8em;
+  letter-spacing: 0.06em;
+}
+
+/* ────────────────────────────────────────────────
+   REDUCED MOTION
+──────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  body::before,
+  .oni-text-red, .oni-text-cyan, .oni-text-purple,
+  .oni-badge, .oni-float, .oni-status::before,
+  .header__cart-count,
+  .announcement-bar::before {
+    animation: none !important;
+  }
+  .oni-glitch::before,
+  .oni-glitch::after { display: none; }
+  product-card::before,
+  .product-card::before { animation: none !important; }
+}
+
+/* ────────────────────────────────────────────────
+   MOBILE
+──────────────────────────────────────────────── */
+@media (max-width: 749px) {
+  ::-webkit-scrollbar { width: 2px; height: 2px; }
+  body::before { background-size: 32px 32px; }
+  .button--primary:hover,
+  .button--secondary:hover { transform: none; }
+  product-card::before,
+  .product-card::before { display: none; }
+}

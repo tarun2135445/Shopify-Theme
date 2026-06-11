@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SHURIKEN STRIKE — Print-ready SVG
+     Artboard: 4500 × 4500 px
+     Usage: Centre chest print, 10×10 inch
+     Concept: 8-point shuriken (hira-shuriken) with circuit/glitch treatment, mid-air speed lines
+     Colors: #FF3346 Red, #00F5FF Cyan, White — works as 2-3 colour screen print -->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 4500 4500" width="4500" height="4500">
+  <defs>
+    <style>
+      .r  { fill: #FF3346; }
+      .c  { fill: #00F5FF; }
+      .w  { fill: #FFFFFF; }
+      .sr { stroke: #FF3346; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .sc { stroke: #00F5FF; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .sw { stroke: #FFFFFF; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+
+  <g transform="translate(2250,2250)">
+
+    <!-- ══ Speed lines (motion blur behind shuriken) ══ -->
+    <!-- These radiate from the centre, suggesting rotation -->
+    <line x1="0" y1="-1050" x2="-400" y2="-1200" stroke="#FFFFFF" stroke-width="8" opacity="0.15"/>
+    <line x1="0" y1="-1050" x2="-500" y2="-1100" stroke="#FFFFFF" stroke-width="6" opacity="0.1"/>
+    <line x1="0" y1="-1050" x2="-600" y2="-960" stroke="#FFFFFF" stroke-width="4" opacity="0.07"/>
+    <line x1="1050" y1="0" x2="1200" y2="-400" stroke="#FFFFFF" stroke-width="8" opacity="0.15"/>
+    <line x1="1050" y1="0" x2="1200" y2="-200" stroke="#FFFFFF" stroke-width="6" opacity="0.1"/>
+    <line x1="1050" y1="0" x2="1150" y2="200" stroke="#FFFFFF" stroke-width="4" opacity="0.07"/>
+    <!-- Longer trailing lines -->
+    <line x1="-300" y1="-100" x2="-1400" y2="-800" stroke="#00F5FF" stroke-width="6" opacity="0.2"/>
+    <line x1="-300" y1="-100" x2="-1500" y2="-600" stroke="#00F5FF" stroke-width="4" opacity="0.15"/>
+    <line x1="300" y1="100" x2="1400" y2="800" stroke="#FF3346" stroke-width="6" opacity="0.2"/>
+    <line x1="300" y1="100" x2="1500" y2="600" stroke="#FF3346" stroke-width="4" opacity="0.15"/>
+
+    <!-- ══ 8-point shuriken ══ -->
+    <!-- The 8 blades using overlapping rotated rectangles / polygons -->
+    <!-- Blade set 1: axis-aligned -->
+    <polygon points="0,-900 120,-120 0,-300 -120,-120"
+             class="w" opacity="0.95"/>  <!-- top -->
+    <polygon points="900,0 120,120 300,0 120,-120"
+             class="w" opacity="0.95"/>  <!-- right -->
+    <polygon points="0,900 -120,120 0,300 120,120"
+             class="w" opacity="0.95"/>  <!-- bottom -->
+    <polygon points="-900,0 -120,-120 -300,0 -120,120"
+             class="w" opacity="0.95"/>  <!-- left -->
+
+    <!-- Blade set 2: 45° rotated — red blades -->
+    <polygon points="636,-636 120,120 212,212 -120,-120"
+             transform="rotate(45,0,0)" class="r" opacity="0.0"/>
+    <!-- Just do 4 diagonal blades directly -->
+    <!-- Top-right -->
+    <polygon points="636,-636 86,86 0,212 -86,-86" class="r" opacity="0.95"/>
+    <!-- Bottom-right -->
+    <polygon points="636,636 -86,86 -212,0 86,-86" class="r" opacity="0.95"/>
+    <!-- Bottom-left -->
+    <polygon points="-636,636 -86,-86 0,-212 86,86" class="r" opacity="0.95"/>
+    <!-- Top-left -->
+    <polygon points="-636,-636 86,-86 212,0 -86,86" class="r" opacity="0.95"/>
+
+    <!-- ══ Centre ring ══ -->
+    <circle cx="0" cy="0" r="200" fill="#0D0D0D" opacity="0.9"/>
+    <circle cx="0" cy="0" r="180" class="sc" stroke-width="12"/>
+    <circle cx="0" cy="0" r="120" fill="#00F5FF" opacity="0.15"/>
+    <circle cx="0" cy="0" r="80" fill="#00F5FF" opacity="0.3"/>
+    <circle cx="0" cy="0" r="40" fill="#00F5FF" opacity="0.8"/>
+    <!-- Centre inner circle glint -->
+    <circle cx="-20" cy="-20" r="14" class="w" opacity="0.8"/>
+
+    <!-- Centre kanji 忍 (shinobi/ninja) -->
+    <!-- Skip if not needed for 2-colour screen print; include for 3-colour -->
+    <text x="0" y="50" text-anchor="middle" font-family="serif" font-size="140"
+          fill="#FF3346" opacity="0.8">忍</text>
+
+    <!-- ══ Blade edge highlights (cyan accent) ══ -->
+    <!-- Top blade edge -->
+    <line x1="0" y1="-900" x2="120" y2="-120" class="sc" stroke-width="5" opacity="0.5"/>
+    <!-- Right blade edge -->
+    <line x1="900" y1="0" x2="120" y2="120" class="sc" stroke-width="5" opacity="0.5"/>
+
+    <!-- ══ Glitch offset ghost (secondary outline, slightly offset) ══ -->
+    <polygon points="0,-900 120,-120 0,-300 -120,-120"
+             stroke="#00F5FF" fill="none" stroke-width="4" opacity="0.2"
+             transform="translate(8,-4)"/>
+    <polygon points="636,-636 86,86 0,212 -86,-86"
+             stroke="#FF3346" fill="none" stroke-width="4" opacity="0.2"
+             transform="translate(-6,6)"/>
+
+    <!-- ══ Brand text ══ -->
+    <text x="0" y="1140" text-anchor="middle"
+          font-family="'Arial Black', sans-serif" font-weight="900" font-size="180"
+          fill="#FFFFFF" letter-spacing="20" opacity="0.95">SHURIKEN</text>
+    <text x="0" y="1320" text-anchor="middle"
+          font-family="'Arial Black', sans-serif" font-weight="900" font-size="160"
+          fill="#FF3346" letter-spacing="20" opacity="0.95">STRIKE</text>
+    <line x1="-600" y1="1360" x2="600" y2="1360" class="sc" stroke-width="6"/>
+    <text x="0" y="1450" text-anchor="middle"
+          font-family="'Arial Black', sans-serif" font-size="80"
+          fill="#00F5FF" letter-spacing="25" opacity="0.7">ONI THEORY   手裏剣</text>
+
+    <!-- ══ Corner marks ══ -->
+    <path d="M -1160,-1220 L -980,-1220 L -980,-1100" class="sc" stroke-width="10" opacity="0.35"/>
+    <path d="M 1160,-1220 L 980,-1220 L 980,-1100" class="sc" stroke-width="10" opacity="0.35"/>
+    <path d="M -1160,1520 L -980,1520 L -980,1400" class="sr" stroke-width="10" opacity="0.35"/>
+    <path d="M 1160,1520 L 980,1520 L 980,1400" class="sr" stroke-width="10" opacity="0.35"/>
+
+  </g>
+</svg>

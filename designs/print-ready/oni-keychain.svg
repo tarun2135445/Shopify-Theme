@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ONI KEYCHAIN — Die-cast enamel artwork | Artboard 1200×1200
+     Vector mask for metal casting: red enamel, silver (white) horns/outline. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200">
+  <g transform="translate(600,660)">
+    <!-- Chain loop tab -->
+    <circle cx="0" cy="-520" r="90" fill="none" stroke="#FFFFFF" stroke-width="50"/>
+    <!-- Silver horns -->
+    <path d="M -170,-280 L -280,-470 C -302,-512 -250,-548 -216,-510 L -105,-310 Z" fill="#FFFFFF"/>
+    <path d="M 170,-280 L 280,-470 C 302,-512 250,-548 216,-510 L 105,-310 Z" fill="#FFFFFF"/>
+    <!-- Mask body — red enamel with silver outline -->
+    <path d="M 0,-310
+      C 190,-310 310,-195 330,-25
+      C 345,115 300,235 215,305
+      C 150,360 75,385 0,385
+      C -75,385 -150,360 -215,305
+      C -300,235 -345,115 -330,-25
+      C -310,-195 -190,-310 0,-310 Z" fill="#FF3346" stroke="#FFFFFF" stroke-width="28"/>
+    <!-- Eyes — silver recesses -->
+    <path d="M -200,-75 L -68,-30 L -190,20 Z" fill="#FFFFFF"/>
+    <path d="M 200,-75 L 68,-30 L 190,20 Z" fill="#FFFFFF"/>
+    <!-- Grin -->
+    <path d="M -190,135 C -95,200 95,200 190,135 C 145,250 75,300 0,300 C -75,300 -145,250 -190,135 Z" fill="#FFFFFF"/>
+    <path d="M -115,175 L -92,255 L -62,180 M 62,180 L 92,255 L 115,175"
+      stroke="#FF3346" stroke-width="16" fill="none" stroke-linejoin="round"/>
+    <!-- Back tag engraving guide -->
+    <text x="0" y="500" text-anchor="middle" font-family="'Noto Serif CJK JP',serif"
+      font-weight="900" font-size="110" fill="#FFFFFF" opacity="0.9">鬼の理論</text>
+  </g>
+</svg>

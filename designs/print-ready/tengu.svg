@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TENGU — Print-ready SVG | Artboard 4500×5400 | DTG chest print
+     Black tengu crow mask, long red nose, neon feathers, mountain. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4500 5400" width="4500" height="5400">
+  <defs><style>
+    .r{fill:#FF3346}.w{fill:#FFFFFF}.p{fill:#BF5FFF}.c{fill:#00F5FF}.k{fill:#0D0D0D}
+    .sr{stroke:#FF3346;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .sw{stroke:#FFFFFF;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .sp{stroke:#BF5FFF;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .sc{stroke:#00F5FF;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  </style></defs>
+  <g transform="translate(2250,2400)">
+    <!-- ══ Mountain silhouette backdrop ══ -->
+    <path d="M -1500,700 L -900,-300 L -520,260 L -140,-520 L 320,300 L 760,-160 L 1500,700 Z"
+      class="sp" stroke-width="22" opacity="0.5"/>
+    <!-- Big moon -->
+    <circle cx="640" cy="-960" r="520" class="sp" stroke-width="16" opacity="0.4"/>
+    <circle cx="640" cy="-960" r="430" class="p" opacity="0.10"/>
+
+    <!-- ══ Tengu mask — black, white outline for dark garments ══ -->
+    <path d="M -120,-1300
+      C 260,-1300 540,-1080 600,-740
+      C 650,-460 600,-120 460,160
+      C 360,360 200,500 -40,560
+      C -300,620 -560,520 -700,300
+      C -830,90 -870,-260 -800,-580
+      C -720,-980 -480,-1300 -120,-1300 Z" class="k"/>
+    <path d="M -120,-1300
+      C 260,-1300 540,-1080 600,-740
+      C 650,-460 600,-120 460,160
+      C 360,360 200,500 -40,560
+      C -300,620 -560,520 -700,300
+      C -830,90 -870,-260 -800,-580
+      C -720,-980 -480,-1300 -120,-1300 Z" class="sw" stroke-width="18" opacity="0.7"/>
+
+    <!-- ══ The long nose ══ -->
+    <path d="M 360,-440
+      C 700,-560 1080,-620 1420,-560
+      C 1240,-430 1060,-340 880,-280
+      C 700,-220 520,-200 380,-240
+      C 330,-300 330,-380 360,-440 Z" class="r"/>
+    <path d="M 420,-420 C 760,-520 1100,-560 1360,-540" class="sw" stroke-width="12" opacity="0.4"/>
+
+    <!-- Angry brow + eye -->
+    <path d="M -560,-880 L -120,-760" class="sw" stroke-width="42"/>
+    <ellipse cx="-300" cy="-620" rx="150" ry="105" class="c" opacity="0.9"/>
+    <ellipse cx="-300" cy="-620" rx="150" ry="105" fill="none" stroke="#0D0D0D" stroke-width="22"/>
+    <circle cx="-300" cy="-610" r="44" class="k"/>
+    <circle cx="-268" cy="-648" r="20" class="w"/>
+
+    <!-- Frown -->
+    <path d="M -440,180 C -300,80 -80,60 60,120" class="sw" stroke-width="30" opacity="0.85"/>
+
+    <!-- ══ Feathers fanned at left ══ -->
+    <path d="M -780,-200 C -1120,-340 -1340,-560 -1420,-860 C -1180,-720 -1000,-560 -860,-380 Z" class="p" opacity="0.85"/>
+    <path d="M -820,40 C -1180,-20 -1440,-160 -1580,-400 C -1320,-320 -1100,-220 -920,-80 Z" class="c" opacity="0.7"/>
+    <path d="M -800,260 C -1160,280 -1440,200 -1620,20 C -1340,60 -1100,140 -920,240 Z" class="p" opacity="0.55"/>
+    <path d="M -900,-300 C -1080,-420 -1220,-580 -1300,-760" class="sw" stroke-width="10" opacity="0.4"/>
+    <path d="M -960,-30 C -1180,-90 -1360,-190 -1480,-330" class="sw" stroke-width="10" opacity="0.35"/>
+
+    <!-- Kanji 天狗 vertical right -->
+    <text x="1240" y="300" text-anchor="middle" font-family="'Noto Serif CJK JP',serif"
+      font-weight="900" font-size="400" fill="#FFFFFF" opacity="0.92">天</text>
+    <text x="1240" y="740" text-anchor="middle" font-family="'Noto Serif CJK JP',serif"
+      font-weight="900" font-size="400" fill="#FF3346" opacity="0.92">狗</text>
+
+    <!-- ══ Brand block ══ -->
+    <text x="0" y="1330" text-anchor="middle" font-family="'Arial Black',sans-serif"
+      font-weight="900" font-size="300" fill="#FFFFFF" letter-spacing="34">TENGU</text>
+    <line x1="-680" y1="1390" x2="680" y2="1390" class="sc" stroke-width="8"/>
+    <text x="0" y="1500" text-anchor="middle" font-family="'Arial Black',sans-serif"
+      font-size="86" fill="#BF5FFF" letter-spacing="28" opacity="0.85">ONI THEORY   山の悪霊</text>
+  </g>
+</svg>

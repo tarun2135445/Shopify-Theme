@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- KAMI KANJI — Print-ready SVG
+     Artboard: 4500 × 4500 px
+     Usage: Chest or sleeve hit print, 8×8 inch
+     Concept: Bold kanji stack 神 (kami/god) with neon circuit treatment — clean, minimal, iconic
+     Colors: #FF3346 Red, #00F5FF Cyan, White — 3-colour screen print friendly -->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 4500 4500" width="4500" height="4500">
+  <defs>
+    <style>
+      .r  { fill: #FF3346; }
+      .c  { fill: #00F5FF; }
+      .w  { fill: #FFFFFF; }
+      .sr { stroke: #FF3346; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .sc { stroke: #00F5FF; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .sw { stroke: #FFFFFF; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+
+  <g transform="translate(2250,2250)">
+
+    <!-- ══ Outer hexagonal tech frame ══ -->
+    <!-- Main hex -->
+    <polygon points="0,-1100 953,-550 953,550 0,1100 -953,550 -953,-550"
+             fill="none" stroke="#FF3346" stroke-width="20" opacity="0.4"/>
+    <!-- Inner hex -->
+    <polygon points="0,-980 849,-490 849,490 0,980 -849,490 -849,-490"
+             fill="none" stroke="#00F5FF" stroke-width="8" opacity="0.25"/>
+    <!-- Hex corner accent dots -->
+    <circle cx="0" cy="-1100" r="24" class="r" opacity="0.8"/>
+    <circle cx="953" cy="-550" r="24" class="r" opacity="0.8"/>
+    <circle cx="953" cy="550" r="24" class="r" opacity="0.8"/>
+    <circle cx="0" cy="1100" r="24" class="r" opacity="0.8"/>
+    <circle cx="-953" cy="550" r="24" class="r" opacity="0.8"/>
+    <circle cx="-953" cy="-550" r="24" class="r" opacity="0.8"/>
+
+    <!-- ══ Circuit trace lines radiating from centre ══ -->
+    <!-- Top circuit -->
+    <path d="M 0,-200 L 0,-600 L 200,-600 L 200,-700" class="sc" stroke-width="10" opacity="0.4"/>
+    <path d="M 0,-200 L 0,-600 L -200,-600 L -200,-700" class="sc" stroke-width="10" opacity="0.4"/>
+    <circle cx="200" cy="-700" r="16" class="c" opacity="0.5"/>
+    <circle cx="-200" cy="-700" r="16" class="c" opacity="0.5"/>
+
+    <!-- Right circuit -->
+    <path d="M 200,0 L 700,0 L 700,-200" class="sc" stroke-width="10" opacity="0.4"/>
+    <path d="M 200,0 L 700,0 L 700,200" class="sc" stroke-width="10" opacity="0.4"/>
+    <circle cx="700" cy="-200" r="16" class="c" opacity="0.5"/>
+    <circle cx="700" cy="200" r="16" class="c" opacity="0.5"/>
+
+    <!-- Left circuit -->
+    <path d="M -200,0 L -700,0 L -700,-200" class="sc" stroke-width="10" opacity="0.4"/>
+    <path d="M -200,0 L -700,0 L -700,200" class="sc" stroke-width="10" opacity="0.4"/>
+    <circle cx="-700" cy="-200" r="16" class="c" opacity="0.5"/>
+    <circle cx="-700" cy="200" r="16" class="c" opacity="0.5"/>
+
+    <!-- Bottom circuit -->
+    <path d="M 0,200 L 0,600 L 300,600 L 300,720" class="sr" stroke-width="10" opacity="0.4"/>
+    <path d="M 0,200 L 0,600 L -300,600 L -300,720" class="sr" stroke-width="10" opacity="0.4"/>
+    <circle cx="300" cy="720" r="16" class="r" opacity="0.6"/>
+    <circle cx="-300" cy="720" r="16" class="r" opacity="0.6"/>
+
+    <!-- ══ Main kanji 神 (kami/god) — oversized, white ══ -->
+    <text x="0" y="180" text-anchor="middle"
+          font-family="'Noto Serif CJK JP', 'Yu Mincho', 'MS Mincho', serif"
+          font-weight="900" font-size="760"
+          fill="#FFFFFF" opacity="0.95">神</text>
+
+    <!-- Red inline stroke effect -->
+    <text x="0" y="180" text-anchor="middle"
+          font-family="'Noto Serif CJK JP', 'Yu Mincho', 'MS Mincho', serif"
+          font-weight="900" font-size="760"
+          fill="none" stroke="#FF3346" stroke-width="8" opacity="0.7">神</text>
+
+    <!-- ══ Subtitle stack ══ -->
+    <text x="0" y="780" text-anchor="middle"
+          font-family="'Arial Black', sans-serif" font-weight="900" font-size="130"
+          fill="#FF3346" letter-spacing="30" opacity="0.9">KAMI</text>
+
+    <line x1="-500" y1="820" x2="500" y2="820" class="sc" stroke-width="6"/>
+
+    <text x="0" y="920" text-anchor="middle"
+          font-family="'Arial Black', sans-serif" font-size="80"
+          fill="#00F5FF" letter-spacing="25" opacity="0.7">GOD  /  神  /  ONI THEORY</text>
+
+    <!-- ══ Top label ══ -->
+    <text x="0" y="-860" text-anchor="middle"
+          font-family="'Arial Black', sans-serif" font-weight="900" font-size="90"
+          fill="#00F5FF" letter-spacing="24" opacity="0.6">ONI THEORY   鬼の理論</text>
+
+    <!-- ══ Scan line overlay effect ══ -->
+    <!-- These represent the halftone/duotone texture for screen print -->
+    <line x1="-1000" y1="-1000" x2="1000" y2="-1000" stroke="#FFFFFF" stroke-width="2" opacity="0.03"/>
+    <line x1="-1000" y1="-980" x2="1000" y2="-980" stroke="#FFFFFF" stroke-width="2" opacity="0.03"/>
+    <line x1="-1000" y1="-960" x2="1000" y2="-960" stroke="#FFFFFF" stroke-width="2" opacity="0.03"/>
+
+  </g>
+</svg>

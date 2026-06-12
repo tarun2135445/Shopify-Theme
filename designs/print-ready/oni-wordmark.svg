@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ONI WORDMARK — Print-ready SVG
+     Artboard: 4500 × 2000 px (wide, banner/chest band)
+     Usage: Sleeve hit, collar print, waistband, tote bag, cap panel — 14×6 inch max
+     Concept: Full brand lockup with kanji + wordmark + tagline, neon circuit aesthetic
+     Colors: #FF3346 Red, #00F5FF Cyan, White — 2 or 3 colour screen print -->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 4500 2000" width="4500" height="2000">
+  <defs>
+    <style>
+      .r  { fill: #FF3346; }
+      .c  { fill: #00F5FF; }
+      .w  { fill: #FFFFFF; }
+      .sr { stroke: #FF3346; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .sc { stroke: #00F5FF; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .sw { stroke: #FFFFFF; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+
+  <g transform="translate(2250,1000)">
+
+    <!-- ══ Left kanji mark ══ -->
+    <text x="-1820" y="180" text-anchor="middle"
+          font-family="'Noto Serif CJK JP', serif" font-weight="900" font-size="640"
+          fill="#FFFFFF" opacity="0.95">鬼</text>
+    <!-- Kanji red glow frame -->
+    <rect x="-2200" y="-380" width="760" height="760" rx="20"
+          fill="none" stroke="#FF3346" stroke-width="12" opacity="0.4"/>
+    <!-- Corner cuts on kanji box -->
+    <path d="M -2200,-380 L -2140,-380 L -2140,-320" class="sc" stroke-width="8" opacity="0.5"/>
+    <path d="M -1440,-380 L -1500,-380 L -1500,-320" class="sc" stroke-width="8" opacity="0.5"/>
+    <path d="M -2200,380 L -2140,380 L -2140,320" class="sc" stroke-width="8" opacity="0.5"/>
+    <path d="M -1440,380 L -1500,380 L -1500,320" class="sc" stroke-width="8" opacity="0.5"/>
+
+    <!-- ══ Vertical divider ══ -->
+    <line x1="-1360" y1="-440" x2="-1360" y2="440" class="sr" stroke-width="8" opacity="0.6"/>
+    <circle cx="-1360" cy="-440" r="10" class="r" opacity="0.8"/>
+    <circle cx="-1360" cy="440" r="10" class="r" opacity="0.8"/>
+
+    <!-- ══ Main wordmark ══ -->
+    <!-- ONI large -->
+    <text x="-200" y="-60" text-anchor="middle"
+          font-family="'Arial Black', 'Impact', sans-serif" font-weight="900"
+          font-size="480" fill="#FFFFFF" letter-spacing="-10" opacity="0.97">ONI</text>
+
+    <!-- THEORY medium -->
+    <text x="-100" y="200" text-anchor="middle"
+          font-family="'Arial Black', sans-serif" font-weight="900"
+          font-size="240" fill="#FF3346" letter-spacing="40" opacity="0.95">THEORY</text>
+
+    <!-- ══ Right side: vertical tagline ══ -->
+    <text x="1780" y="280" text-anchor="middle"
+          font-family="monospace" font-size="80"
+          fill="#00F5FF" letter-spacing="8" opacity="0.6"
+          transform="rotate(-90,1780,0)">STREETWEAR  /  ANIME  /  GAMING</text>
+
+    <!-- ══ Underline rule system ══ -->
+    <line x1="-1300" y1="260" x2="1600" y2="260" class="sc" stroke-width="6"/>
+    <line x1="-1300" y1="280" x2="800" y2="280" stroke="#FFFFFF" stroke-width="3" opacity="0.2"/>
+
+    <!-- ══ Bottom tagline ══ -->
+    <text x="-100" y="400" text-anchor="middle"
+          font-family="monospace" font-size="90"
+          fill="#00F5FF" letter-spacing="20" opacity="0.6">鬼の理論  ·  EST. 2024  ·  ONITHEORY.COM</text>
+
+    <!-- ══ Top accent bar ══ -->
+    <line x1="-1300" y1="-440" x2="1600" y2="-440" class="sr" stroke-width="6" opacity="0.4"/>
+
+  </g>
+</svg>

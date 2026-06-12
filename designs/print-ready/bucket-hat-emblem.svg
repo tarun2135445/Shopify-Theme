@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- BUCKET HAT EMBLEM — Embroidery artwork | Artboard 1200×1200 (4×4in)
+     鬼 kanji + horns icon. 3 thread colours: red, white, black. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200">
+  <g transform="translate(600,600)">
+    <!-- Horns above kanji -->
+    <path d="M -120,-330 L -200,-490 C -218,-526 -172,-554 -142,-522 L -60,-352 Z" fill="#FFFFFF"/>
+    <path d="M 120,-330 L 200,-490 C 218,-526 172,-554 142,-522 L 60,-352 Z" fill="#FFFFFF"/>
+    <!-- Big kanji -->
+    <text x="0" y="240" text-anchor="middle" font-family="'Noto Serif CJK JP',serif"
+      font-weight="900" font-size="760" fill="#FF3346">鬼</text>
+    <!-- Underline brand -->
+    <text x="0" y="480" text-anchor="middle" font-family="'Arial Black',sans-serif"
+      font-weight="900" font-size="92" fill="#FFFFFF" letter-spacing="18">ONI THEORY</text>
+  </g>
+</svg>

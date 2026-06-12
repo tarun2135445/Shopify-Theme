@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- DRAGON SPIRIT — Print-ready SVG (v2)
+     Artboard: 4500 × 5400 px
+     Usage: Full back print or oversized front print
+     Concept: Flame enso ring + giant 龍 kanji + dragon claw slashes —
+     bold, readable at distance, classic irezumi-meets-cyber composition
+     Colors: #FF3346 Red, #BF5FFF Purple, #00F5FF Cyan, White -->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 4500 5400" width="4500" height="5400">
+  <defs>
+    <style>
+      .r  { fill: #FF3346; }
+      .p  { fill: #BF5FFF; }
+      .c  { fill: #00F5FF; }
+      .w  { fill: #FFFFFF; }
+      .sr { stroke: #FF3346; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .sp { stroke: #BF5FFF; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .sc { stroke: #00F5FF; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .sw { stroke: #FFFFFF; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+
+  <g transform="translate(2250,2400)">
+
+    <!-- ══ Flame enso ring — thick, hand-brushed feel, broken at top-right ══ -->
+    <!-- Main ring: broken arc (from 60° sweeping clockwise round to 10°) -->
+    <path d="
+      M 850,-740
+      A 1130 1130 0 1 0 1110,-200
+    " class="sr" stroke-width="170"/>
+    <!-- Inner glow ring echo -->
+    <path d="
+      M 780,-680
+      A 1030 1030 0 1 0 1010,-180
+    " class="sp" stroke-width="34" opacity="0.5"/>
+
+    <!-- Flame licks coming off the ring ends -->
+    <path d="M 850,-740 C 960,-880 1010,-1020 990,-1180 C 1090,-1040 1110,-880 1030,-720 Z" class="r"/>
+    <path d="M 1110,-200 C 1260,-240 1380,-320 1460,-440 C 1450,-280 1370,-140 1210,-70 Z" class="r"/>
+    <!-- Small flame details along ring -->
+    <path d="M -1080,-420 C -1180,-520 -1220,-640 -1190,-760 C -1100,-680 -1050,-560 -1060,-440 Z" class="r" opacity="0.85"/>
+    <path d="M -600,940 C -720,1000 -860,1010 -980,960 C -880,1080 -720,1110 -570,1050 Z" class="r" opacity="0.85"/>
+
+    <!-- ══ Dragon claw slashes — three diagonal cuts across the ring ══ -->
+    <!-- Slash 1 (longest) -->
+    <path d="M -1320,-1060 L 1180,1290 L 1060,1330 L -1390,-960 Z" class="w" opacity="0.92"/>
+    <!-- Slash 2 -->
+    <path d="M -980,-1280 L 1420,990 L 1320,1040 L -1060,-1190 Z" class="w" opacity="0.85"/>
+    <!-- Slash 3 (shortest) -->
+    <path d="M -1540,-760 L 820,1480 L 720,1520 L -1600,-660 Z" class="w" opacity="0.75"/>
+    <!-- Cyan glow edges on slashes -->
+    <line x1="-1320" y1="-1060" x2="1180" y2="1290" class="sc" stroke-width="10" opacity="0.5"/>
+    <line x1="-980" y1="-1280" x2="1420" y2="990" class="sc" stroke-width="8" opacity="0.4"/>
+
+    <!-- ══ Giant 龍 kanji — the dragon itself ══ -->
+    <text x="0" y="330" text-anchor="middle"
+          font-family="'Noto Serif CJK JP', 'Yu Mincho', 'MS Mincho', serif"
+          font-weight="900" font-size="1500"
+          fill="#FFFFFF" opacity="0.97">龍</text>
+    <!-- Red double-strike outline -->
+    <text x="14" y="344" text-anchor="middle"
+          font-family="'Noto Serif CJK JP', 'Yu Mincho', 'MS Mincho', serif"
+          font-weight="900" font-size="1500"
+          fill="none" stroke="#FF3346" stroke-width="12" opacity="0.8">龍</text>
+    <!-- Cyan glitch offset -->
+    <text x="-22" y="318" text-anchor="middle"
+          font-family="'Noto Serif CJK JP', 'Yu Mincho', 'MS Mincho', serif"
+          font-weight="900" font-size="1500"
+          fill="none" stroke="#00F5FF" stroke-width="6" opacity="0.45">龍</text>
+
+    <!-- ══ Dragon eye — watching from upper left of ring ══ -->
+    <ellipse cx="-760" cy="-1060" rx="150" ry="105" fill="#0A0A0A"/>
+    <ellipse cx="-760" cy="-1060" rx="138" ry="94" class="sc" stroke-width="10"/>
+    <ellipse cx="-760" cy="-1060" rx="72" ry="72" fill="#00F5FF" opacity="0.85"/>
+    <ellipse cx="-760" cy="-1060" rx="22" ry="58" fill="#0A0A0A"/>
+    <ellipse cx="-730" cy="-1090" rx="20" ry="14" class="w" opacity="0.9"/>
+    <!-- Brow slash above eye -->
+    <path d="M -930,-1190 L -600,-1150" class="sw" stroke-width="26"/>
+
+    <!-- ══ Spirit particles ══ -->
+    <circle cx="1240" cy="-620" r="24" class="p" opacity="0.6"/>
+    <circle cx="1330" cy="-460" r="14" class="c" opacity="0.55"/>
+    <circle cx="-1260" cy="640" r="20" class="p" opacity="0.6"/>
+    <circle cx="-1350" cy="480" r="12" class="c" opacity="0.5"/>
+    <circle cx="-180" cy="-1380" r="18" class="r" opacity="0.6"/>
+
+    <!-- ══ Brand text ══ -->
+    <text x="0" y="1900" text-anchor="middle"
+          font-family="'Arial Black', sans-serif" font-weight="900" font-size="220"
+          fill="#FFFFFF" letter-spacing="15" opacity="0.95">DRAGON</text>
+    <text x="0" y="2120" text-anchor="middle"
+          font-family="'Arial Black', sans-serif" font-weight="900" font-size="220"
+          fill="#FF3346" letter-spacing="15" opacity="0.95">SPIRIT</text>
+    <line x1="-700" y1="2160" x2="700" y2="2160" class="sc" stroke-width="6"/>
+    <text x="0" y="2250" text-anchor="middle"
+          font-family="'Arial Black', sans-serif" font-size="80"
+          fill="#BF5FFF" letter-spacing="25" opacity="0.7">ONI THEORY   龍の魂</text>
+
+    <!-- ══ Corner marks ══ -->
+    <path d="M -1700,-2100 L -1500,-2100 L -1500,-1960" class="sc" stroke-width="10" opacity="0.35"/>
+    <path d="M 1700,-2100 L 1500,-2100 L 1500,-1960" class="sc" stroke-width="10" opacity="0.35"/>
+    <path d="M -1700,2300 L -1500,2300 L -1500,2160" class="sr" stroke-width="10" opacity="0.35"/>
+    <path d="M 1700,2300 L 1500,2300 L 1500,2160" class="sr" stroke-width="10" opacity="0.35"/>
+
+  </g>
+</svg>

@@ -662,11 +662,64 @@
         "padding-block-start": 16,
         "padding-block-end": 16
       }
+    },
+    "oni_stats_hud": {
+      "type": "oni-stats-hud",
+      "name": "Oni stats HUD",
+      "blocks": {
+        "stat_designs": {
+          "type": "stat",
+          "settings": {
+            "count_to": 15,
+            "value": "",
+            "suffix": "+",
+            "caption": "Designs deployed"
+          }
+        },
+        "stat_dispatch": {
+          "type": "stat",
+          "settings": {
+            "count_to": 0,
+            "value": "24H",
+            "suffix": "",
+            "caption": "Dispatch time"
+          }
+        },
+        "stat_limited": {
+          "type": "stat",
+          "settings": {
+            "count_to": 100,
+            "value": "",
+            "suffix": "%",
+            "caption": "Limited runs"
+          }
+        },
+        "stat_oni": {
+          "type": "stat",
+          "settings": {
+            "count_to": 0,
+            "value": "鬼",
+            "suffix": "",
+            "caption": "Demon energy"
+          }
+        }
+      },
+      "block_order": [
+        "stat_designs",
+        "stat_dispatch",
+        "stat_limited",
+        "stat_oni"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "label": "SYSTEM STATUS — ONI THEORY 鬼の理論"
+      }
     }
   },
   "order": [
     "oni_hero",
     "marquee_top",
+    "oni_stats_hud",
     "collection_links",
     "hoodies_list",
     "tees_list",

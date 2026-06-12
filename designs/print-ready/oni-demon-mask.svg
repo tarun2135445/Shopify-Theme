@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ONI DEMON MASK — Print-ready SVG
+     Artboard: 4500 × 4500 px @ 300 DPI = 15 × 15 inch
+     Usage: DTG print, screen print, embroidery digitize
+     Colors: Spot #FF3346 (Oni Red), #00F5FF (Cyan), White, Black
+     Background: transparent -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 4500 4500" width="4500" height="4500">
+  <defs>
+    <style>
+      .oni-red   { fill: #FF3346; }
+      .oni-cyan  { fill: #00F5FF; }
+      .oni-white { fill: #FFFFFF; }
+      .oni-black { fill: #0A0A0A; }
+      .stroke-red   { stroke: #FF3346; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .stroke-cyan  { stroke: #00F5FF; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .stroke-white { stroke: #FFFFFF; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .text-gaming  { font-family: 'Orbitron', 'Arial Black', sans-serif; font-weight: 900; letter-spacing: 0.1em; }
+    </style>
+    <!-- Glow filter for neon effect on screen previews (no-op on print) -->
+    <filter id="neon-red" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="neon-cyan" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- ═══ DESIGN AREA (centred, ~3200px tall) ═══ -->
+  <g transform="translate(2250,2250)">
+
+    <!-- ── Shadow / depth base ── -->
+    <ellipse cx="20" cy="80" rx="920" ry="980" fill="#FF3346" opacity="0.08"/>
+
+    <!-- ── Main Oni mask face ── -->
+    <!-- Outer mask shape — broad, fearsome traditional oni proportions -->
+    <path d="
+      M 0,-980
+      C 420,-960 780,-820 860,-560
+      C 940,-300 920,0 880,200
+      C 840,400 760,560 640,680
+      C 520,800 340,880 180,920
+      C 80,944 0,950 0,950
+      C 0,950 -80,944 -180,920
+      C -340,880 -520,800 -640,680
+      C -760,560 -840,400 -880,200
+      C -920,0 -940,-300 -860,-560
+      C -780,-820 -420,-960 0,-980 Z
+    " class="oni-red"/>
+
+    <!-- Face inner skin -->
+    <path d="
+      M 0,-900
+      C 380,-880 700,-760 780,-520
+      C 860,-280 840,0 800,180
+      C 760,360 680,500 560,620
+      C 440,740 280,820 140,860
+      C 60,878 0,884 0,884
+      C 0,884 -60,878 -140,860
+      C -280,820 -440,740 -560,620
+      C -680,500 -760,360 -800,180
+      C -840,0 -860,-280 -780,-520
+      C -700,-760 -380,-880 0,-900 Z
+    " fill="#CC1A2A"/>
+
+    <!-- ── Forehead horns ── -->
+    <polygon points="0,-980 -80,-1200 80,-1200" class="oni-white" opacity="0.95"/>
+    <polygon points="-260,-940 -320,-1120 -180,-1100" class="oni-white" opacity="0.85"/>
+    <polygon points="260,-940 320,-1120 180,-1100" class="oni-white" opacity="0.85"/>
+    <!-- Horn detail lines -->
+    <line x1="0" y1="-980" x2="0" y2="-1200" class="stroke-cyan" stroke-width="6"/>
+    <line x1="-260" y1="-940" x2="-280" y2="-1120" class="stroke-cyan" stroke-width="4"/>
+    <line x1="260" y1="-940" x2="280" y2="-1120" class="stroke-cyan" stroke-width="4"/>
+
+    <!-- ── Brow ridge ── -->
+    <path d="M -760,-400 C -600,-600 -200,-680 0,-680 C 200,-680 600,-600 760,-400"
+          class="stroke-white" stroke-width="24"/>
+    <!-- Brow shadow -->
+    <path d="M -740,-410 C -580,-600 -190,-680 0,-680 C 190,-680 580,-600 740,-410"
+          fill="#0A0A0A" opacity="0.4"/>
+
+    <!-- ── Eyes ── -->
+    <!-- Left eye socket -->
+    <ellipse cx="-300" cy="-260" rx="200" ry="160" fill="#0A0A0A"/>
+    <!-- Left eye glow ring -->
+    <ellipse cx="-300" cy="-260" rx="190" ry="150" class="stroke-cyan" stroke-width="8" opacity="0.9"/>
+    <!-- Left iris -->
+    <ellipse cx="-300" cy="-260" rx="120" ry="120" fill="#00F5FF" opacity="0.15"/>
+    <ellipse cx="-300" cy="-260" rx="90" ry="90" fill="#00F5FF" opacity="0.25"/>
+    <ellipse cx="-300" cy="-260" rx="55" ry="55" fill="#00F5FF" opacity="0.8"/>
+    <!-- Left pupil (slit) -->
+    <ellipse cx="-300" cy="-260" rx="14" ry="48" fill="#0A0A0A"/>
+    <!-- Left eye glint -->
+    <ellipse cx="-265" cy="-295" rx="20" ry="14" fill="#FFFFFF" opacity="0.9"/>
+
+    <!-- Right eye socket -->
+    <ellipse cx="300" cy="-260" rx="200" ry="160" fill="#0A0A0A"/>
+    <!-- Right eye glow ring -->
+    <ellipse cx="300" cy="-260" rx="190" ry="150" class="stroke-cyan" stroke-width="8" opacity="0.9"/>
+    <!-- Right iris -->
+    <ellipse cx="300" cy="-260" rx="120" ry="120" fill="#00F5FF" opacity="0.15"/>
+    <ellipse cx="300" cy="-260" rx="90" ry="90" fill="#00F5FF" opacity="0.25"/>
+    <ellipse cx="300" cy="-260" rx="55" ry="55" fill="#00F5FF" opacity="0.8"/>
+    <!-- Right pupil (slit) -->
+    <ellipse cx="300" cy="-260" rx="14" ry="48" fill="#0A0A0A"/>
+    <!-- Right eye glint -->
+    <ellipse cx="335" cy="-295" rx="20" ry="14" fill="#FFFFFF" opacity="0.9"/>
+
+    <!-- ── Nose ── -->
+    <path d="M -60,100 C -80,40 -100,-40 -60,-80 L 0,-60 L 60,-80 C 100,-40 80,40 60,100 C 40,130 0,144 -60,100Z"
+          fill="#AA1020"/>
+    <path d="M -60,100 C -80,40 -100,-40 -60,-80 L 0,-60 L 60,-80 C 100,-40 80,40 60,100"
+          class="stroke-white" stroke-width="6"/>
+
+    <!-- ── Mouth / fangs ── -->
+    <!-- Mouth opening -->
+    <path d="M -420,380 C -300,280 -100,240 0,240 C 100,240 300,280 420,380 C 300,500 100,560 0,560 C -100,560 -300,500 -420,380Z"
+          fill="#0A0A0A"/>
+    <!-- Upper fangs -->
+    <polygon points="-160,320 -220,480 -100,440" class="oni-white"/>
+    <polygon points="160,320 220,480 100,440" class="oni-white"/>
+    <polygon points="-60,310 -80,430 60,430 80,310" class="oni-white"/>
+    <!-- Lower fangs -->
+    <polygon points="-180,520 -140,440 -100,510" class="oni-white" opacity="0.7"/>
+    <polygon points="180,520 140,440 100,510" class="oni-white" opacity="0.7"/>
+    <!-- Mouth line -->
+    <path d="M -420,380 C -300,280 -100,240 0,240 C 100,240 300,280 420,380"
+          class="stroke-white" stroke-width="10"/>
+
+    <!-- ── Cheek markings (traditional oni war paint) ── -->
+    <!-- Left cheek -->
+    <path d="M -680,100 L -560,140 L -520,60 L -460,100" class="stroke-cyan" stroke-width="12"/>
+    <path d="M -700,180 L -540,220 L -500,140" class="stroke-cyan" stroke-width="8"/>
+    <!-- Right cheek -->
+    <path d="M 680,100 L 560,140 L 520,60 L 460,100" class="stroke-cyan" stroke-width="12"/>
+    <path d="M 700,180 L 540,220 L 500,140" class="stroke-cyan" stroke-width="8"/>
+
+    <!-- ── Chin detail ── -->
+    <path d="M -200,800 C -100,860 100,860 200,800" class="stroke-white" stroke-width="8"/>
+    <path d="M -120,840 C -60,880 60,880 120,840" class="stroke-white" stroke-width="6" opacity="0.5"/>
+
+    <!-- ── Kanji: 鬼 (oni) ── centred below mask -->
+    <text x="0" y="1120" text-anchor="middle" class="text-gaming oni-white"
+          font-size="180" opacity="0.9">ONI</text>
+    <text x="0" y="1280" text-anchor="middle"
+          font-family="'Noto Serif CJK JP', serif" font-size="140"
+          fill="#FF3346" opacity="0.7">鬼の理論</text>
+
+    <!-- ── Horizontal rule / brand line ── -->
+    <line x1="-600" y1="1060" x2="600" y2="1060" class="stroke-cyan" stroke-width="4"/>
+    <line x1="-400" y1="1300" x2="400" y2="1300" class="stroke-red" stroke-width="4" opacity="0.6"/>
+
+    <!-- ── Corner circuit accent marks ── -->
+    <!-- Top-left -->
+    <path d="M -1050,-1050 L -900,-1050 L -900,-920" class="stroke-cyan" stroke-width="8" opacity="0.5"/>
+    <!-- Top-right -->
+    <path d="M 1050,-1050 L 900,-1050 L 900,-920" class="stroke-cyan" stroke-width="8" opacity="0.5"/>
+    <!-- Bottom-left -->
+    <path d="M -1050,1380 L -900,1380 L -900,1260" class="stroke-red" stroke-width="8" opacity="0.5"/>
+    <!-- Bottom-right -->
+    <path d="M 1050,1380 L 900,1380 L 900,1260" class="stroke-red" stroke-width="8" opacity="0.5"/>
+
+  </g><!-- /design area -->
+</svg>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- YOKAI STICKER SHEET — 8 die-cut stickers | Artboard 3600×4800 (A4+)
+     Each sticker has a white keyline border for die-cutting. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3600 4800" width="3600" height="4800">
+  <defs><style>
+    .r{fill:#FF3346}.w{fill:#FFFFFF}.c{fill:#00F5FF}.p{fill:#BF5FFF}.g{fill:#FFE600}.k{fill:#0D0D0D}
+    .key{stroke:#FFFFFF;stroke-width:24;fill:none;stroke-linejoin:round}
+  </style></defs>
+
+  <!-- 1. Oni mask (top-left) -->
+  <g transform="translate(900,700)">
+    <circle r="560" class="key"/>
+    <path d="M -150,-300 L -240,-470 C -258,-508 -212,-536 -182,-504 L -90,-330 Z" class="w"/>
+    <path d="M 150,-300 L 240,-470 C 258,-508 212,-536 182,-504 L 90,-330 Z" class="w"/>
+    <path d="M 0,-320 C 190,-320 310,-200 330,-30 C 345,110 300,230 215,300 C 150,355 75,380 0,380 C -75,380 -150,355 -215,300 C -300,230 -345,110 -330,-30 C -310,-200 -190,-320 0,-320 Z" class="r"/>
+    <path d="M -195,-80 L -65,-35 L -185,15 Z" class="g"/>
+    <path d="M 195,-80 L 65,-35 L 185,15 Z" class="g"/>
+    <path d="M -185,130 C -90,195 90,195 185,130 C 140,245 75,295 0,295 C -75,295 -140,245 -185,130 Z" class="w"/>
+  </g>
+
+  <!-- 2. Dragon kanji (top-right) -->
+  <g transform="translate(2700,700)">
+    <circle r="560" class="key"/>
+    <circle r="460" fill="none" stroke="#FF3346" stroke-width="52"/>
+    <text x="0" y="180" text-anchor="middle" font-family="'Noto Serif CJK JP',serif"
+      font-weight="900" font-size="520" fill="#00F5FF">龍</text>
+  </g>
+
+  <!-- 3. Ghost lantern (mid-left) -->
+  <g transform="translate(900,1900)">
+    <circle r="560" class="key"/>
+    <path d="M 0,-420 C 220,-420 360,-280 380,-80 C 395,90 340,260 220,340 C 150,388 75,400 0,400 C -75,400 -150,388 -220,340 C -340,260 -395,90 -380,-80 C -360,-280 -220,-420 0,-420 Z" fill="#F2EFE9"/>
+    <path d="M -350,-160 C -160,-220 160,-220 350,-160" stroke="#BF5FFF" stroke-width="18" fill="none"/>
+    <path d="M -360,40 C -170,-10 170,-10 360,40" stroke="#BF5FFF" stroke-width="18" fill="none"/>
+    <circle cx="-110" cy="-130" r="80" class="k"/>
+    <circle cx="-110" cy="-130" r="34" class="c"/>
+    <path d="M 60,-150 C 120,-190 200,-190 260,-150" stroke="#0D0D0D" stroke-width="26" fill="none" stroke-linecap="round"/>
+    <path d="M -140,160 C -40,230 100,230 200,170 C 160,290 40,340 -60,300 C -130,270 -160,210 -140,160 Z" class="k"/>
+    <path d="M -20,260 C 0,360 40,430 100,460 C 140,478 170,440 150,400 C 120,340 90,300 80,260 Z" class="r"/>
+  </g>
+
+  <!-- 4. Shuriken (mid-right) -->
+  <g transform="translate(2700,1900)">
+    <circle r="560" class="key"/>
+    <g transform="rotate(22)">
+      <path d="M 0,-420 L 90,-90 L 420,0 L 90,90 L 0,420 L -90,90 L -420,0 L -90,-90 Z" class="w"/>
+      <path d="M 0,-420 L 90,-90 L 420,0 L 90,90 L 0,420 L -90,90 L -420,0 L -90,-90 Z" fill="none" stroke="#FF3346" stroke-width="22"/>
+      <circle r="90" class="k"/>
+      <circle r="90" fill="none" stroke="#00F5FF" stroke-width="18"/>
+      <text x="0" y="34" text-anchor="middle" font-family="'Noto Serif CJK JP',serif" font-size="100" fill="#FFFFFF">忍</text>
+    </g>
+  </g>
+
+  <!-- 5. Kanji 神 chip (low-left) -->
+  <g transform="translate(900,3100)">
+    <rect x="-460" y="-460" width="920" height="920" rx="120" class="key"/>
+    <rect x="-420" y="-420" width="840" height="840" rx="100" class="k"/>
+    <text x="0" y="170" text-anchor="middle" font-family="'Noto Serif CJK JP',serif"
+      font-weight="900" font-size="540" fill="#FF3346">神</text>
+    <rect x="-420" y="-420" width="840" height="840" rx="100" fill="none" stroke="#00F5FF" stroke-width="16"/>
+  </g>
+
+  <!-- 6. Controller torii (low-right) -->
+  <g transform="translate(2700,3100)">
+    <rect x="-500" y="-380" width="1000" height="760" rx="200" class="key"/>
+    <rect x="-460" y="-340" width="920" height="680" rx="180" class="k"/>
+    <!-- Torii on controller -->
+    <rect x="-260" y="-200" width="60" height="320" class="r"/>
+    <rect x="200" y="-200" width="60" height="320" class="r"/>
+    <path d="M -340,-220 C -160,-260 160,-260 340,-220 L 340,-300 C 160,-340 -160,-340 -340,-300 Z" class="r"/>
+    <rect x="-300" y="-120" width="600" height="44" class="r"/>
+    <!-- D-pad + buttons -->
+    <rect x="-360" y="120" width="150" height="50" class="w"/>
+    <rect x="-310" y="70" width="50" height="150" class="w"/>
+    <circle cx="270" cy="120" r="44" class="c"/>
+    <circle cx="380" cy="60" r="44" class="r"/>
+  </g>
+
+  <!-- 7. Kitsune fox head (bottom-left) -->
+  <g transform="translate(900,4250)">
+    <circle r="480" class="key"/>
+    <path d="M -240,-130 L -380,-400 C -400,-440 -350,-470 -320,-440 L -160,-240 Z" class="w"/>
+    <path d="M 240,-130 L 380,-400 C 400,-440 350,-470 320,-440 L 160,-240 Z" class="w"/>
+    <path d="M 0,-260 C 170,-260 290,-160 310,0 C 325,130 270,250 160,310 L 0,400 L -160,310 C -270,250 -325,130 -310,0 C -290,-160 -170,-260 0,-260 Z" class="w"/>
+    <path d="M -190,-40 L -80,0 L -180,40 Z" class="r"/>
+    <path d="M 190,-40 L 80,0 L 180,40 Z" class="r"/>
+    <path d="M 0,120 L -40,180 L 40,180 Z" class="r"/>
+    <path d="M -240,-160 C -140,-220 140,-220 240,-160" stroke="#FF3346" stroke-width="16" fill="none"/>
+  </g>
+
+  <!-- 8. ONI THEORY wordmark bar (bottom-right) -->
+  <g transform="translate(2700,4250)">
+    <rect x="-560" y="-220" width="1120" height="440" rx="80" class="key"/>
+    <rect x="-520" y="-180" width="1040" height="360" rx="60" class="k"/>
+    <text x="0" y="-20" text-anchor="middle" font-family="'Arial Black',sans-serif"
+      font-weight="900" font-size="150" fill="#FF3346" letter-spacing="10">ONI THEORY</text>
+    <text x="0" y="120" text-anchor="middle" font-family="'Arial Black',sans-serif"
+      font-size="86" fill="#00F5FF" letter-spacing="16">鬼の理論</text>
+  </g>
+</svg>

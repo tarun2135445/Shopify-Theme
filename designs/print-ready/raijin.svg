@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- RAIJIN — Print-ready SVG | Artboard 4500×5400 | DTG chest print
+     Thunder god drum ring + lightning. Cyan/white on dark garments. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4500 5400" width="4500" height="5400">
+  <defs><style>
+    .r{fill:#FF3346}.w{fill:#FFFFFF}.c{fill:#00F5FF}.k{fill:#0D0D0D}.y{fill:#FFE600}
+    .sr{stroke:#FF3346;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .sw{stroke:#FFFFFF;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .sc{stroke:#00F5FF;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  </style></defs>
+  <g transform="translate(2250,2400)">
+    <!-- ══ Storm cloud ring ══ -->
+    <circle cx="0" cy="-300" r="1420" class="sr" stroke-width="46" opacity="0.45"/>
+
+    <!-- ══ Taiko drum ring (8 drums) ══ -->
+    <g class="w">
+      <g transform="rotate(0) translate(0,-1620)"><circle r="170" class="w"/><circle r="170" fill="none" stroke="#FF3346" stroke-width="20"/><circle r="105" fill="none" stroke="#0D0D0D" stroke-width="14"/><circle r="34" class="k"/></g>
+      <g transform="rotate(45) translate(0,-1620)"><circle r="170" class="w"/><circle r="170" fill="none" stroke="#FF3346" stroke-width="20"/><circle r="105" fill="none" stroke="#0D0D0D" stroke-width="14"/><circle r="34" class="k"/></g>
+      <g transform="rotate(90) translate(0,-1620)"><circle r="170" class="w"/><circle r="170" fill="none" stroke="#FF3346" stroke-width="20"/><circle r="105" fill="none" stroke="#0D0D0D" stroke-width="14"/><circle r="34" class="k"/></g>
+      <g transform="rotate(135) translate(0,-1620)"><circle r="170" class="w"/><circle r="170" fill="none" stroke="#FF3346" stroke-width="20"/><circle r="105" fill="none" stroke="#0D0D0D" stroke-width="14"/><circle r="34" class="k"/></g>
+      <g transform="rotate(180) translate(0,-1620)"><circle r="170" class="w"/><circle r="170" fill="none" stroke="#FF3346" stroke-width="20"/><circle r="105" fill="none" stroke="#0D0D0D" stroke-width="14"/><circle r="34" class="k"/></g>
+      <g transform="rotate(225) translate(0,-1620)"><circle r="170" class="w"/><circle r="170" fill="none" stroke="#FF3346" stroke-width="20"/><circle r="105" fill="none" stroke="#0D0D0D" stroke-width="14"/><circle r="34" class="k"/></g>
+      <g transform="rotate(270) translate(0,-1620)"><circle r="170" class="w"/><circle r="170" fill="none" stroke="#FF3346" stroke-width="20"/><circle r="105" fill="none" stroke="#0D0D0D" stroke-width="14"/><circle r="34" class="k"/></g>
+      <g transform="rotate(315) translate(0,-1620)"><circle r="170" class="w"/><circle r="170" fill="none" stroke="#FF3346" stroke-width="20"/><circle r="105" fill="none" stroke="#0D0D0D" stroke-width="14"/><circle r="34" class="k"/></g>
+    </g>
+    <!-- Note: drum ring rotates around centre (0,-300) — shift group -->
+
+    <!-- ══ Central lightning kanji 雷 ══ -->
+    <text x="0" y="220" text-anchor="middle" font-family="'Noto Serif CJK JP',serif"
+      font-weight="900" font-size="1250" fill="#FFFFFF" opacity="0.96">雷</text>
+    <text x="-18" y="206" text-anchor="middle" font-family="'Noto Serif CJK JP',serif"
+      font-weight="900" font-size="1250" fill="none" stroke="#00F5FF" stroke-width="10" opacity="0.6">雷</text>
+
+    <!-- ══ Lightning bolts ══ -->
+    <path d="M -880,-1280 L -640,-840 L -780,-820 L -480,-360 L -600,-660 L -460,-680 L -740,-1240 Z" class="c"/>
+    <path d="M 900,-1180 L 700,-800 L 820,-780 L 560,-340 L 660,-620 L 540,-640 L 780,-1140 Z" class="y"/>
+    <path d="M -1060,300 L -820,640 L -940,660 L -700,1020" class="sc" stroke-width="26"/>
+    <path d="M 1080,360 L 860,680 L 980,700 L 760,1040" class="sc" stroke-width="26"/>
+
+    <!-- Spark dots -->
+    <circle cx="-1180" cy="-480" r="26" class="c" opacity="0.8"/>
+    <circle cx="1220" cy="-420" r="22" class="y" opacity="0.8"/>
+    <circle cx="-980" cy="880" r="20" class="c" opacity="0.7"/>
+    <circle cx="1010" cy="920" r="24" class="w" opacity="0.6"/>
+
+    <!-- ══ Brand block ══ -->
+    <text x="0" y="1430" text-anchor="middle" font-family="'Arial Black',sans-serif"
+      font-weight="900" font-size="300" fill="#00F5FF" letter-spacing="34">RAIJIN</text>
+    <line x1="-680" y1="1490" x2="680" y2="1490" class="sw" stroke-width="8" opacity="0.6"/>
+    <text x="0" y="1600" text-anchor="middle" font-family="'Arial Black',sans-serif"
+      font-size="86" fill="#FFFFFF" letter-spacing="28" opacity="0.8">ONI THEORY   雷神</text>
+  </g>
+</svg>

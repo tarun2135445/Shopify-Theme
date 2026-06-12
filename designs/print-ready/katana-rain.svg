@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- KATANA RAIN — Print-ready SVG | Artboard 4500×5400 | DTG chest print
+     Lone samurai in neon rain under red moon. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4500 5400" width="4500" height="5400">
+  <defs><style>
+    .r{fill:#FF3346}.w{fill:#FFFFFF}.c{fill:#00F5FF}.k{fill:#0D0D0D}
+    .sr{stroke:#FF3346;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .sw{stroke:#FFFFFF;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .sc{stroke:#00F5FF;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  </style></defs>
+  <g transform="translate(2250,2400)">
+    <!-- ══ Red moon ══ -->
+    <circle cx="0" cy="-820" r="1080" class="r" opacity="0.85"/>
+    <circle cx="0" cy="-820" r="1080" class="sr" stroke-width="20" opacity="0.5"/>
+    <!-- Cloud slashes across moon -->
+    <path d="M -1240,-1060 C -700,-1120 200,-1120 760,-1060 L 760,-980 C 200,-1040 -700,-1040 -1240,-980 Z" class="k" opacity="0.9"/>
+    <path d="M -800,-560 C -200,-620 600,-620 1240,-560 L 1240,-470 C 600,-530 -200,-530 -800,-470 Z" class="k" opacity="0.9"/>
+
+    <!-- ══ Rain streaks (diagonal) ══ -->
+    <g class="sc" opacity="0.75">
+      <path d="M -1400,-1800 L -1480,-1450" stroke-width="14"/>
+      <path d="M -1100,-1900 L -1180,-1500" stroke-width="10"/>
+      <path d="M -700,-1850 L -790,-1420" stroke-width="14"/>
+      <path d="M -260,-1950 L -340,-1560" stroke-width="10"/>
+      <path d="M 200,-1880 L 120,-1480" stroke-width="14"/>
+      <path d="M 640,-1940 L 560,-1520" stroke-width="10"/>
+      <path d="M 1080,-1860 L 1000,-1450" stroke-width="14"/>
+      <path d="M 1420,-1760 L 1340,-1380" stroke-width="10"/>
+      <path d="M -1340,-700 L -1420,-330" stroke-width="10"/>
+      <path d="M 1340,-760 L 1260,-380" stroke-width="12"/>
+      <path d="M -1240,200 L -1320,560" stroke-width="12"/>
+      <path d="M 1280,150 L 1200,520" stroke-width="10"/>
+      <path d="M -1060,800 L -1140,1140" stroke-width="10"/>
+      <path d="M 1130,860 L 1050,1200" stroke-width="12"/>
+    </g>
+    <g class="sw" opacity="0.35">
+      <path d="M -900,-1600 L -960,-1300" stroke-width="8"/>
+      <path d="M 420,-1700 L 360,-1380" stroke-width="8"/>
+      <path d="M -480,-500 L -540,-220" stroke-width="8"/>
+      <path d="M 900,-300 L 840,-20" stroke-width="8"/>
+      <path d="M -800,500 L -860,760" stroke-width="8"/>
+      <path d="M 600,640 L 540,900" stroke-width="8"/>
+    </g>
+
+    <!-- ══ Samurai silhouette — standing, blade low ══ -->
+    <!-- Wide hat (kasa) -->
+    <path d="M -380,-660 C -260,-780 260,-780 380,-660 L 320,-590 L -320,-590 Z" class="k"/>
+    <path d="M -380,-660 C -260,-780 260,-780 380,-660" class="sw" stroke-width="14" opacity="0.7"/>
+    <!-- Head/neck shadow -->
+    <rect x="-70" y="-590" width="140" height="110" class="k"/>
+    <!-- Body — long coat, flared by wind -->
+    <path d="M -180,-480
+      C -260,-300 -320,-40 -360,260
+      C -380,430 -360,620 -280,800
+      L -80,800 L -110,360 L -60,-200
+      L 60,-200 L 110,360 L 80,800
+      L 280,800 C 360,620 380,430 360,260
+      C 320,-40 260,-300 180,-480 Z" class="k"/>
+    <path d="M -180,-480 C -260,-300 -320,-40 -360,260 C -380,430 -360,620 -280,800 L -80,800 L -110,360 L -60,-200 L 60,-200 L 110,360 L 80,800 L 280,800 C 360,620 380,430 360,260 C 320,-40 260,-300 180,-480 Z"
+      class="sw" stroke-width="12" opacity="0.6"/>
+    <!-- Arms holding blade low-right -->
+    <path d="M 120,-360 C 250,-280 360,-160 420,-20" class="sw" stroke-width="36"/>
+    <!-- Katana — drawn, angled down -->
+    <path d="M 420,-20 L 1060,560" class="sw" stroke-width="30"/>
+    <path d="M 1060,560 L 1150,640" class="sc" stroke-width="36"/>
+    <!-- Tsuba -->
+    <circle cx="450" cy="10" r="44" class="r"/>
+    <!-- Blade glint -->
+    <path d="M 700,230 L 760,290" class="sc" stroke-width="12" opacity="0.9"/>
+
+    <!-- Puddle ring + reflection -->
+    <ellipse cx="0" cy="860" rx="520" ry="60" class="sc" stroke-width="12" opacity="0.5"/>
+    <ellipse cx="0" cy="860" rx="300" ry="34" class="sr" stroke-width="8" opacity="0.4"/>
+
+    <!-- ══ 雨 kanji ══ -->
+    <text x="-1180" y="-160" text-anchor="middle" font-family="'Noto Serif CJK JP',serif"
+      font-weight="900" font-size="480" fill="#00F5FF" opacity="0.9">雨</text>
+
+    <!-- ══ Brand block ══ -->
+    <text x="0" y="1430" text-anchor="middle" font-family="'Arial Black',sans-serif"
+      font-weight="900" font-size="270" fill="#FFFFFF" letter-spacing="24">KATANA RAIN</text>
+    <line x1="-940" y1="1490" x2="940" y2="1490" class="sc" stroke-width="8"/>
+    <text x="0" y="1600" text-anchor="middle" font-family="'Arial Black',sans-serif"
+      font-size="86" fill="#FF3346" letter-spacing="28" opacity="0.85">ONI THEORY   一人で戦う</text>
+  </g>
+</svg>

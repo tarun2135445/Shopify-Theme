@@ -1,108 +1,1289 @@
-/* ------------------------------------------------------------
- * Oni Theory FX layer
- * Animated effects layered on top of Horizon's base styles.
- * All decorative motion is gated behind prefers-reduced-motion.
- * ------------------------------------------------------------ */
+/* ============================================================
+   ONI THEORY 鬼の理論 — Anime & Gaming Visual Effects v3
+   Fixes: duplicate rules, wrong selectors, consolidated keyframes
+   Customer journey: header → product → cart → checkout
+   ============================================================ */
 
-@media (prefers-reduced-motion: no-preference) {
-  /* --- Neon pulse: primary buttons breathe a crimson glow --- */
-  .button:not(.button-secondary, .button-unstyled) {
-    animation: oni-neon-pulse 3.2s ease-in-out infinite;
-  }
+/* ── GAMING / ANIME FONTS ── */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap');
 
-  .button:not(.button-secondary, .button-unstyled):hover {
-    animation: none;
-    box-shadow:
-      0 0 18px rgb(var(--color-primary-rgb) / 0.65),
-      0 0 48px rgb(var(--color-primary-rgb) / 0.35);
-  }
+/* ────────────────────────────────────────────────
+   DESIGN TOKENS
+──────────────────────────────────────────────── */
+:root {
+  --oni-red:       #FF3346;
+  --oni-red-rgb:   255, 51, 70;
+  --oni-cyan:      #00F5FF;
+  --oni-cyan-rgb:  0, 245, 255;
+  --oni-purple:    #BF5FFF;
+  --oni-purple-rgb:191, 95, 255;
+  --oni-yellow:    #FFE600;
+  --oni-green:     #00FF88;
+  --oni-dark:      #0B0B10;
+  --oni-deep:      #07070D;
 
-  /* --- Secondary buttons: sharp edge-light sweep on hover --- */
-  .button-secondary {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .button-secondary::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      105deg,
-      transparent 40%,
-      rgb(var(--color-foreground-rgb) / 0.25) 50%,
-      transparent 60%
-    );
-    transform: translateX(-110%);
-  }
-
-  .button-secondary:hover::after {
-    transition: transform 0.6s cubic-bezier(0.2, 0.6, 0.2, 1);
-    transform: translateX(110%);
-  }
-
-  /* --- Product cards: crimson edge-glow on hover --- */
-  .product-card {
-    transition: box-shadow 0.35s ease;
-  }
-
-  .product-card:hover {
-    box-shadow:
-      0 0 0 1px rgb(var(--color-primary-rgb) / 0.55),
-      0 12px 40px rgb(var(--color-primary-rgb) / 0.18);
-  }
-
-  /* --- Scroll-driven entrances (no JS, progressive enhancement) --- */
-  @supports (animation-timeline: view()) {
-    .product-card,
-    .collection-card {
-      animation: oni-rise linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 45%;
-    }
-  }
-
-  /* --- Jumbo text: RGB-split flicker on hover --- */
-  jumbo-text:hover .jumbo-text-line {
-    animation: oni-rgb-split 0.45s steps(2, jump-none) infinite;
-  }
+  --font-gaming: 'Orbitron', sans-serif;
+  --font-tech:   'Share Tech Mono', monospace;
+  --font-sharp:  'Rajdhani', sans-serif;
 }
 
+/* ────────────────────────────────────────────────
+   KEYFRAMES
+   Single parametric approach — color changes via
+   custom property on the element, not duplicated blocks
+──────────────────────────────────────────────── */
+
+/* Generic neon text pulse — set --oni-glow-color on element */
 @keyframes oni-neon-pulse {
-  0%,
-  100% {
-    box-shadow: 0 0 0 rgb(var(--color-primary-rgb) / 0);
+  0%,100% {
+    text-shadow:
+      0 0 6px  var(--oni-glow-color),
+      0 0 14px var(--oni-glow-color),
+      0 0 28px rgba(var(--oni-glow-rgb), 0.45);
   }
   50% {
-    box-shadow: 0 0 22px rgb(var(--color-primary-rgb) / 0.35);
+    text-shadow:
+      0 0 3px var(--oni-glow-color),
+      0 0 7px rgba(var(--oni-glow-rgb), 0.5);
   }
 }
 
-@keyframes oni-rise {
+@keyframes oni-box-pulse {
+  0%,100% { box-shadow: 0 0 6px var(--oni-red), 0 0 14px rgba(var(--oni-red-rgb),0.5); }
+  50%      { box-shadow: 0 0 2px var(--oni-red), 0 0  7px rgba(var(--oni-red-rgb),0.25); }
+}
+
+@keyframes oni-glitch {
+  0%,85%,100% { clip-path: inset(0 0 100% 0); transform: translate(0); }
+  87% { clip-path: inset(6%  0 58% 0); transform: translate(-3px,0); }
+  89% { clip-path: inset(33% 0 22% 0); transform: translate( 3px,0); }
+  91% { clip-path: inset(68% 0  4% 0); transform: translate(-2px,0); }
+  93% { clip-path: inset(0   0 100% 0); transform: translate(0); }
+}
+
+@keyframes oni-shimmer {
+  0%   { left: -80%; }
+  100% { left: 180%; }
+}
+
+@keyframes oni-border-rotate {
+  0%   { background-position:   0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position:   0% 50%; }
+}
+
+@keyframes oni-float {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-7px); }
+}
+
+@keyframes oni-badge-breathe {
+  0%,100% { box-shadow: 0 0 7px currentColor, 0 0 16px rgba(var(--oni-red-rgb),0.4); }
+  50%      { box-shadow: 0 0 3px currentColor, 0 0  8px rgba(var(--oni-red-rgb),0.15); }
+}
+
+@keyframes oni-scan-v {
+  0%   { top: -4px;  opacity: 0; }
+  5%   { opacity: 0.6; }
+  95%  { opacity: 0.6; }
+  100% { top: 110%;  opacity: 0; }
+}
+
+@keyframes oni-ribbon-slide {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(180vw); }
+}
+
+@keyframes oni-type-cursor {
+  0%,100% { border-right-color: var(--oni-red); }
+  50%      { border-right-color: transparent; }
+}
+
+@keyframes oni-bg-breathe {
+  0%,100% { opacity: 0.022; }
+  50%      { opacity: 0.048; }
+}
+
+@keyframes oni-tilt-reset {
+  to { transform: perspective(800px) rotateX(0deg) rotateY(0deg); }
+}
+
+@keyframes oni-boot-bar {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+/* ────────────────────────────────────────────────
+   SCROLLBAR
+──────────────────────────────────────────────── */
+::-webkit-scrollbar        { width: 4px; height: 4px; }
+::-webkit-scrollbar-track  { background: var(--oni-dark); }
+::-webkit-scrollbar-thumb  {
+  background: linear-gradient(180deg, var(--oni-red) 0%, var(--oni-purple) 100%);
+  box-shadow: 0 0 6px var(--oni-red);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ff6677 0%, #d480ff 100%);
+  box-shadow: 0 0 12px var(--oni-red);
+}
+
+/* ── TEXT SELECTION ── */
+::selection { background: rgba(var(--oni-red-rgb), 0.32); color: #F2EFE9; }
+
+/* ── FOCUS VISIBLE — accessibility with neon style ── */
+:focus-visible {
+  outline: 2px solid var(--oni-red) !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 8px rgba(var(--oni-red-rgb), 0.5) !important;
+}
+
+/* ────────────────────────────────────────────────
+   BODY ATMOSPHERE — subtle cyber grid
+──────────────────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  will-change: opacity;
+  background-image:
+    linear-gradient(rgba(var(--oni-red-rgb), 0.03)  1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--oni-red-rgb), 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  animation: oni-bg-breathe 8s ease-in-out infinite;
+}
+
+/* ────────────────────────────────────────────────
+   HEADER
+──────────────────────────────────────────────── */
+header-component,
+.header { position: relative; }
+
+/* Neon bottom edge */
+header-component::after,
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--oni-red)    30%,
+    var(--oni-purple) 70%,
+    transparent 100%
+  );
+  box-shadow: 0 0 10px rgba(var(--oni-red-rgb), 0.65);
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+/* Logo hover glow */
+.header__logo-image,
+.header__logo svg { transition: filter 0.3s ease; }
+.header__logo:hover .header__logo-image,
+.header__logo:hover svg {
+  filter: drop-shadow(0 0 10px rgba(var(--oni-red-rgb), 0.8));
+}
+
+/* Nav link hover */
+.header__menu-item > .link,
+.header__menu-item > a,
+.header__menu-item > button {
+  transition: color 0.2s ease, text-shadow 0.2s ease !important;
+}
+.header__menu-item > .link:hover,
+.header__menu-item > a:hover,
+.header__menu-item > button:hover {
+  color: var(--oni-red) !important;
+  text-shadow: 0 0 10px rgba(var(--oni-red-rgb), 0.7) !important;
+}
+
+/* Active underline */
+.header__active-menu-item::after {
+  box-shadow: 0 0 8px var(--oni-red) !important;
+  background: var(--oni-red) !important;
+}
+
+/* Cart badge */
+.header__cart-count {
+  background: var(--oni-red) !important;
+  font-family: var(--font-gaming) !important;
+  font-size: 0.55rem !important;
+  animation: oni-box-pulse 2.5s ease-in-out infinite;
+}
+
+/* ────────────────────────────────────────────────
+   MOBILE NAV DRAWER
+──────────────────────────────────────────────── */
+.header-drawer,
+.dialog-drawer {
+  border-right: 1px solid rgba(var(--oni-red-rgb), 0.18) !important;
+  box-shadow: 4px 0 30px rgba(var(--oni-red-rgb), 0.08), 1px 0 60px rgba(0,0,0,0.6) !important;
+}
+
+.header-drawer::before,
+.dialog-drawer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--oni-red), var(--oni-purple));
+  box-shadow: 0 0 10px var(--oni-red);
+  z-index: 10;
+}
+
+/* Drawer right-side (cart) */
+.dialog-drawer--right {
+  border-right: none !important;
+  border-left: 1px solid rgba(var(--oni-red-rgb), 0.2) !important;
+  box-shadow: -4px 0 30px rgba(var(--oni-red-rgb), 0.08), -1px 0 60px rgba(0,0,0,0.5) !important;
+}
+
+/* Cart/generic drawer header */
+.drawer__header {
+  border-bottom: 1px solid rgba(var(--oni-red-rgb), 0.18) !important;
+}
+
+/* ────────────────────────────────────────────────
+   ANNOUNCEMENT BAR
+──────────────────────────────────────────────── */
+.announcement-bar { position: relative; overflow: hidden; }
+.announcement-bar__message {
+  font-family: var(--font-sharp);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.announcement-bar::before {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  width: 60px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.09), transparent);
+  animation: oni-ribbon-slide 4s linear infinite;
+  pointer-events: none;
+}
+
+/* ────────────────────────────────────────────────
+   BUTTONS
+──────────────────────────────────────────────── */
+.button,
+.shopify-challenge__button,
+.customer button {
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-gaming) !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  font-weight: 700 !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+/* Shimmer sweep — excluded from close/unstyled buttons */
+.button:not(.close-button):not(.button-unstyled)::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -80%;
+  width: 40%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.14), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+.button:not(.close-button):not(.button-unstyled):hover::before {
+  animation: oni-shimmer 0.55s ease forwards;
+}
+
+/* Energy charge bar at bottom
+   Excluded: close-button, button-unstyled (they use ::after for focus rings) */
+.button:not(.close-button):not(.button-unstyled)::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 2px;
+  background: linear-gradient(90deg, var(--oni-red), var(--oni-purple));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+.button:not(.close-button):not(.button-unstyled):hover::after  { transform: scaleX(1); }
+.button:not(.close-button):not(.button-unstyled):active::after { transform: scaleX(0); transition-duration: 0.05s; }
+
+/* Primary — red neon glow */
+.button--primary:hover {
+  box-shadow:
+    0 0 14px rgba(var(--oni-red-rgb), 0.75),
+    0 0 32px rgba(var(--oni-red-rgb), 0.3),
+    0 4px 16px rgba(0,0,0,0.45) !important;
+  transform: translateY(-2px);
+}
+.button--primary::after {
+  background: linear-gradient(90deg, rgba(255,255,255,0.5), rgba(255,255,255,0.15));
+}
+.button--primary:active { transform: translateY(0); }
+
+/* Secondary — white glow */
+.button--secondary:hover {
+  box-shadow:
+    0 0 12px rgba(242,239,233,0.28),
+    0 0 24px rgba(242,239,233,0.12),
+    0 4px 16px rgba(0,0,0,0.4) !important;
+  transform: translateY(-2px);
+}
+.button--secondary:active { transform: translateY(0); }
+
+/* ────────────────────────────────────────────────
+   PRODUCT CARDS
+──────────────────────────────────────────────── */
+product-card,
+.product-card {
+  position: relative;
+  isolation: isolate;
+  transition:
+    transform var(--hover-transition-duration,0.25s) ease,
+    box-shadow var(--hover-transition-duration,0.25s) ease;
+}
+
+/* Animated gradient border — lives on a child div injected by JS
+   (CSS-only fallback: outline glow on hover) */
+product-card:hover,
+.product-card:hover {
+  box-shadow:
+    0 0 0 1px rgba(var(--oni-red-rgb), 0.5),
+    0 0 20px rgba(var(--oni-red-rgb), 0.2),
+    0 8px 28px rgba(0,0,0,0.55) !important;
+}
+
+/* CRT scan-line overlay */
+product-card::after,
+.product-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px, transparent 3px,
+    rgba(var(--oni-cyan-rgb), 0.022) 3px,
+    rgba(var(--oni-cyan-rgb), 0.022) 4px
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: 2;
+  border-radius: inherit;
+}
+product-card:hover::after,
+.product-card:hover::after { opacity: 1; }
+
+/* Vertical scan sweep — absolutely positioned within card (not pseudo on descendant) */
+.oni-card-scan {
+  position: absolute;
+  left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(var(--oni-cyan-rgb),0.55), transparent);
+  pointer-events: none;
+  z-index: 3;
+  top: -4px;
+  opacity: 0;
+}
+product-card:hover .oni-card-scan,
+.product-card:hover .oni-card-scan {
+  animation: oni-scan-v 1.4s ease forwards;
+}
+
+/* Title hover */
+product-card .card__heading a,
+.product-card .card__heading a,
+product-card .product-card__title a,
+.product-card .product-card__title a {
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+product-card:hover .card__heading a,
+product-card:hover .product-card__title a,
+.product-card:hover .card__heading a,
+.product-card:hover .product-card__title a {
+  color: var(--oni-red) !important;
+  text-shadow: 0 0 8px rgba(var(--oni-red-rgb), 0.45);
+}
+
+/* Image filter on hover */
+product-card .media img,
+.product-card .media img {
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+product-card:hover .media img,
+.product-card:hover .media img {
+  filter: saturate(1.15) brightness(1.06) contrast(1.03);
+}
+
+/* ────────────────────────────────────────────────
+   PRICE
+──────────────────────────────────────────────── */
+.price-item--sale,
+.price--on-sale .price__sale {
+  color: var(--oni-red) !important;
+  text-shadow: 0 0 8px rgba(var(--oni-red-rgb), 0.45);
+  font-weight: 800;
+}
+
+.price-item,
+.price__regular,
+.price__sale {
+  font-family: var(--font-gaming);
+}
+
+/* ────────────────────────────────────────────────
+   BADGES
+──────────────────────────────────────────────── */
+.badge--sale,
+.badge--new,
+[class*="badge--"] {
+  font-family: var(--font-gaming) !important;
+  font-size: 0.58rem !important;
+  letter-spacing: 0.1em !important;
+  box-shadow: 0 0 8px rgba(var(--oni-red-rgb), 0.6);
+}
+
+/* Utility badge */
+.oni-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  font-family: var(--font-gaming);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  animation: oni-badge-breathe 2.5s ease-in-out infinite;
+}
+.oni-badge--red    { background: var(--oni-red);    color: #0B0B10; }
+.oni-badge--cyan   { background: var(--oni-cyan);   color: #0B0B10; }
+.oni-badge--purple { background: var(--oni-purple); color: #F2EFE9; }
+
+/* ────────────────────────────────────────────────
+   COLLECTION CARDS
+──────────────────────────────────────────────── */
+.collection-card,
+.featured-blog-posts-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.collection-card:hover,
+.featured-blog-posts-card:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 0 0 1px rgba(var(--oni-red-rgb), 0.35),
+    0 0 22px rgba(var(--oni-red-rgb), 0.14),
+    0 14px 32px rgba(0,0,0,0.55);
+}
+
+/* ────────────────────────────────────────────────
+   HERO / SLIDESHOW / BANNER
+──────────────────────────────────────────────── */
+.hero .media::before,
+.slideshow .media::before,
+.layered-slideshow .media::before,
+.banner .media::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px, transparent 4px,
+    rgba(0,0,0,0.065) 4px, rgba(0,0,0,0.065) 5px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ────────────────────────────────────────────────
+   PREDICTIVE SEARCH / SEARCH MODAL
+──────────────────────────────────────────────── */
+.predictive-search-results__inner,
+.search-modal__content,
+.dialog-modal {
+  border: 1px solid rgba(var(--oni-red-rgb), 0.2) !important;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.7), 0 0 0 1px rgba(var(--oni-red-rgb), 0.1) !important;
+}
+
+.predictive-search-results__card:hover,
+.predictive-search-results__card--product:hover {
+  box-shadow:
+    0 0 0 1px rgba(var(--oni-red-rgb), 0.4),
+    0 0 14px rgba(var(--oni-red-rgb), 0.15) !important;
+}
+
+/* Search input */
+.search-modal__form input:focus,
+.predictive-search__form input:focus {
+  border-color: rgba(var(--oni-red-rgb), 0.8) !important;
+  box-shadow: 0 0 0 1px rgba(var(--oni-red-rgb), 0.25), 0 0 12px rgba(var(--oni-red-rgb), 0.15) !important;
+}
+
+/* ────────────────────────────────────────────────
+   FORMS
+──────────────────────────────────────────────── */
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: rgba(var(--oni-red-rgb), 0.8) !important;
+  box-shadow:
+    0 0 0 1px rgba(var(--oni-red-rgb), 0.25),
+    0 0 12px rgba(var(--oni-red-rgb), 0.15) !important;
+  outline: none;
+}
+
+label,
+.label {
+  font-family: var(--font-sharp);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+/* ────────────────────────────────────────────────
+   VARIANT PICKER
+──────────────────────────────────────────────── */
+.swatch__input:checked + .swatch__button,
+.variant-picker__button[aria-pressed="true"],
+.variant-picker__button--selected {
+  box-shadow: 0 0 0 2px var(--oni-red), 0 0 10px rgba(var(--oni-red-rgb), 0.55) !important;
+}
+
+/* Quantity selector gaming style */
+quantity-selector,
+.quantity-selector {
+  font-family: var(--font-gaming);
+}
+
+/* ────────────────────────────────────────────────
+   PRODUCT PAGE
+──────────────────────────────────────────────── */
+
+/* Sticky ATC bar */
+sticky-add-to-cart,
+.sticky-add-to-cart {
+  border-top: 2px solid rgba(var(--oni-red-rgb), 0.4) !important;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.5) !important;
+  backdrop-filter: blur(12px);
+}
+
+/* Product media gallery border */
+.product__media-item--active .product__media {
+  box-shadow: 0 0 0 1px rgba(var(--oni-red-rgb), 0.4), 0 0 12px rgba(var(--oni-red-rgb), 0.15);
+}
+
+/* Product availability dot */
+.product__inventory--in-stock {
+  color: var(--oni-green) !important;
+  text-shadow: 0 0 6px rgba(0,255,136,0.5);
+}
+.product__inventory--low-stock {
+  color: var(--oni-yellow) !important;
+  text-shadow: 0 0 6px rgba(255,230,0,0.5);
+}
+.product__inventory--out-of-stock {
+  color: var(--oni-red) !important;
+}
+
+/* ────────────────────────────────────────────────
+   CART DRAWER  (.dialog-drawer--right is the cart)
+──────────────────────────────────────────────── */
+.dialog-drawer--right[open] {
+  border-left: 1px solid rgba(var(--oni-red-rgb), 0.22) !important;
+  box-shadow: -4px 0 30px rgba(var(--oni-red-rgb), 0.1), -1px 0 60px rgba(0,0,0,0.55) !important;
+}
+
+.dialog-drawer--right::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--oni-red), var(--oni-purple));
+  box-shadow: 0 0 10px var(--oni-red);
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Cart subtotal */
+.totals__total-value,
+.cart-total-price {
+  font-family: var(--font-gaming);
+  color: var(--oni-red) !important;
+  text-shadow: 0 0 8px rgba(var(--oni-red-rgb), 0.4);
+}
+
+/* Empty cart message */
+.cart__empty-text {
+  font-family: var(--font-sharp);
+  opacity: 0.6;
+  letter-spacing: 0.08em;
+}
+.cart__empty-text::before {
+  content: 'INVENTORY: NULL';
+  display: block;
+  font-family: var(--font-gaming);
+  font-size: 0.6rem;
+  color: var(--oni-red);
+  letter-spacing: 0.2em;
+  margin-bottom: 0.5rem;
+  opacity: 0.7;
+}
+
+/* ────────────────────────────────────────────────
+   MEGA MENU
+──────────────────────────────────────────────── */
+.header__submenu,
+.mega-menu,
+.mega-menu__inner {
+  border-top: 2px solid rgba(var(--oni-red-rgb), 0.5) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.7), 0 0 0 1px rgba(var(--oni-red-rgb), 0.1) !important;
+}
+
+.mega-menu__link:hover,
+.header__submenu .link:hover {
+  color: var(--oni-red) !important;
+  text-shadow: 0 0 8px rgba(var(--oni-red-rgb), 0.5) !important;
+  transition: color 0.15s ease, text-shadow 0.15s ease, padding-left 0.15s ease;
+  padding-left: 4px;
+}
+
+/* ────────────────────────────────────────────────
+   FOOTER
+──────────────────────────────────────────────── */
+.footer { position: relative; }
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--oni-purple) 30%,
+    var(--oni-red)    70%,
+    transparent 100%
+  );
+  box-shadow: 0 0 10px rgba(var(--oni-purple-rgb), 0.55);
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+.footer__list-item a:hover,
+.footer__nav-item a:hover {
+  color: var(--oni-red) !important;
+  text-shadow: 0 0 6px rgba(var(--oni-red-rgb), 0.5);
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+/* ────────────────────────────────────────────────
+   MARQUEE
+──────────────────────────────────────────────── */
+.marquee__item,
+.marquee__content span,
+.marquee__content a {
+  font-family: var(--font-sharp);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ────────────────────────────────────────────────
+   BREADCRUMBS — gaming trail style
+──────────────────────────────────────────────── */
+.breadcrumbs,
+.breadcrumb,
+nav[aria-label="breadcrumb"] {
+  font-family: var(--font-tech);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.breadcrumbs a:hover,
+.breadcrumb a:hover {
+  color: var(--oni-red) !important;
+  text-shadow: 0 0 6px rgba(var(--oni-red-rgb), 0.5);
+}
+
+/* ────────────────────────────────────────────────
+   PAGINATION
+──────────────────────────────────────────────── */
+.pagination__item--current {
+  box-shadow: 0 0 10px rgba(var(--oni-red-rgb), 0.6) !important;
+  border-color: var(--oni-red) !important;
+}
+.pagination__item:not(.pagination__item--current):hover {
+  border-color: var(--oni-red) !important;
+  color: var(--oni-red) !important;
+}
+
+/* ────────────────────────────────────────────────
+   QUICK-ADD
+──────────────────────────────────────────────── */
+.quick-add__submit:hover,
+.product-form__submit:hover {
+  box-shadow:
+    0 0 14px rgba(var(--oni-red-rgb), 0.75),
+    0 0 30px rgba(var(--oni-red-rgb), 0.3) !important;
+}
+
+/* ────────────────────────────────────────────────
+   LOADING SPINNER
+──────────────────────────────────────────────── */
+.loading-overlay__spinner .path {
+  stroke: var(--oni-red) !important;
+  filter: drop-shadow(0 0 5px var(--oni-red));
+}
+
+/* ────────────────────────────────────────────────
+   404 / ERROR PAGE — gaming "system error" theme
+──────────────────────────────────────────────── */
+.template-404 .section,
+body.template-404 main {
+  position: relative;
+}
+
+.template-404 h1 {
+  font-family: var(--font-gaming) !important;
+  font-size: clamp(5rem, 18vw, 12rem) !important;
+  font-weight: 900 !important;
+  color: transparent !important;
+  -webkit-text-stroke: 2px var(--oni-red);
+  text-shadow:
+    0 0 30px rgba(var(--oni-red-rgb), 0.6),
+    0 0 80px rgba(var(--oni-red-rgb), 0.3) !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1 !important;
+}
+
+.template-404 h2 {
+  font-family: var(--font-tech) !important;
+  color: var(--oni-cyan) !important;
+  text-shadow: 0 0 8px var(--oni-cyan) !important;
+}
+
+.template-404 p {
+  font-family: var(--font-sharp);
+  letter-spacing: 0.06em;
+}
+
+/* ────────────────────────────────────────────────
+   UTILITY CLASSES
+──────────────────────────────────────────────── */
+
+/* Neon text — use CSS custom properties instead of 3 duplicate animations */
+.oni-text-red {
+  --oni-glow-color: var(--oni-red);
+  --oni-glow-rgb: var(--oni-red-rgb);
+  color: var(--oni-red);
+  animation: oni-neon-pulse 3s ease-in-out infinite;
+}
+.oni-text-cyan {
+  --oni-glow-color: var(--oni-cyan);
+  --oni-glow-rgb: var(--oni-cyan-rgb);
+  color: var(--oni-cyan);
+  animation: oni-neon-pulse 3s ease-in-out infinite;
+}
+.oni-text-purple {
+  --oni-glow-color: var(--oni-purple);
+  --oni-glow-rgb: var(--oni-purple-rgb);
+  color: var(--oni-purple);
+  animation: oni-neon-pulse 3s ease-in-out infinite;
+}
+
+/* Glitch — requires data-text attr (set by JS automatically) */
+.oni-glitch {
+  position: relative;
+  display: inline-block;
+}
+.oni-glitch::before,
+.oni-glitch::after {
+  content: attr(data-text);
+  position: absolute; inset: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.oni-glitch::before { color: var(--oni-cyan); left:  2px; animation: oni-glitch 6s infinite; }
+.oni-glitch::after  { color: var(--oni-red);  left: -2px; animation: oni-glitch 6s infinite 0.3s; }
+
+/* HUD corner brackets — animated expand on hover */
+.oni-corners { position: relative; }
+.oni-corners::before,
+.oni-corners::after {
+  content: '';
+  position: absolute;
+  border-color: var(--oni-red);
+  border-style: solid;
+  opacity: 0.8;
+  pointer-events: none;
+  transition: width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
+}
+.oni-corners::before { top:0;    left:0;  border-width: 2px 0 0 2px; width:12px; height:12px; }
+.oni-corners::after  { bottom:0; right:0; border-width: 0 2px 2px 0; width:12px; height:12px; }
+.oni-corners:hover::before,
+.oni-corners:hover::after { width:20px; height:20px; opacity:1; }
+
+/* Floating */
+.oni-float { animation: oni-float 3.5s ease-in-out infinite; }
+
+/* Cyber grid background */
+.oni-cyber-grid {
+  background-image:
+    linear-gradient(rgba(var(--oni-red-rgb), 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--oni-red-rgb), 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Section neon divider */
+.oni-divider {
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg,
+    transparent, var(--oni-red) 30%, var(--oni-purple) 70%, transparent);
+  box-shadow: 0 0 10px rgba(var(--oni-red-rgb), 0.4);
+  border: none;
+  margin: 2.5rem 0;
+}
+
+/* Typewriter cursor */
+.oni-cursor {
+  border-right: 2px solid var(--oni-red);
+  animation: oni-type-cursor 0.9s step-end infinite;
+  padding-right: 4px;
+}
+
+/* Rank label */
+.oni-rank {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-gaming);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border: 1px solid var(--oni-red);
+  color: var(--oni-red);
+  box-shadow: 0 0 7px rgba(var(--oni-red-rgb),0.3), inset 0 0 8px rgba(var(--oni-red-rgb),0.05);
+}
+
+/* Status dot */
+.oni-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-gaming);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--oni-green);
+}
+.oni-status::before {
+  content: '';
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--oni-green);
+  box-shadow: 0 0 7px var(--oni-green), 0 0 14px rgba(0,255,136,0.4);
+  animation: oni-box-pulse 2.2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+.oni-status--offline::before { background:#555; box-shadow:none; animation:none; }
+.oni-status--warning::before { background:var(--oni-yellow); box-shadow:0 0 7px var(--oni-yellow); }
+
+/* Gaming heading */
+.oni-heading-gaming {
+  font-family: var(--font-gaming) !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+}
+
+/* Tech mono */
+.oni-mono { font-family: var(--font-tech); font-size: 0.8em; letter-spacing: 0.06em; }
+
+/* Diagonal clip */
+.oni-slant      { clip-path: polygon(0 0,100% 0,100% 88%,0 100%); }
+.oni-slant--top { clip-path: polygon(0 8%,100% 0,100% 100%,0 100%); }
+
+/* ============================================================
+   v4 — FULL POWER LAYER
+   Page transitions · nav progress · holo sheen · oni mode
+   ============================================================ */
+
+/* ────────────────────────────────────────────────
+   VIEW TRANSITIONS — glitch cross-fade between pages
+   (Horizon uses the View Transitions API natively)
+──────────────────────────────────────────────── */
+@keyframes oni-vt-out {
+  to { opacity: 0; transform: translateY(-6px); filter: saturate(1.4) hue-rotate(8deg); }
+}
+@keyframes oni-vt-in {
+  from { opacity: 0; transform: translateY(8px); clip-path: inset(0 0 30% 0); }
+  60%  { clip-path: inset(0 0 0 0); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+::view-transition-old(root) { animation: oni-vt-out 0.18s ease forwards; }
+::view-transition-new(root) { animation: oni-vt-in  0.28s ease forwards; }
+
+/* ────────────────────────────────────────────────
+   NAVIGATION PROGRESS BAR (driven by oni-fx.js)
+──────────────────────────────────────────────── */
+.oni-nav-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, var(--oni-red), var(--oni-purple), var(--oni-cyan));
+  box-shadow: 0 0 10px var(--oni-red), 0 0 20px rgba(var(--oni-red-rgb), 0.4);
+  z-index: 100000;
+  pointer-events: none;
+  opacity: 0;
+  transition: width 0.25s ease, opacity 0.3s ease;
+}
+.oni-nav-progress--active { opacity: 1; }
+
+/* ────────────────────────────────────────────────
+   HOLOGRAPHIC SHEEN — diagonal rainbow sweep on
+   product card image hover (trading-card effect)
+──────────────────────────────────────────────── */
+.oni-holo {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(var(--oni-cyan-rgb),   0.10) 42%,
+    rgba(255, 255, 255,         0.16) 50%,
+    rgba(var(--oni-purple-rgb), 0.10) 58%,
+    transparent 70%
+  );
+  background-size: 250% 250%;
+  background-position: 100% 100%;
+  transition: opacity 0.3s ease;
+  mix-blend-mode: screen;
+}
+product-card:hover .oni-holo,
+.product-card:hover .oni-holo {
+  opacity: 1;
+  animation: oni-holo-sweep 1.1s ease forwards;
+}
+@keyframes oni-holo-sweep {
+  from { background-position: 100% 100%; }
+  to   { background-position: 0% 0%; }
+}
+
+/* ────────────────────────────────────────────────
+   NEWSLETTER / EMAIL SIGNUP
+──────────────────────────────────────────────── */
+.newsletter-form,
+.footer__newsletter {
+  position: relative;
+}
+.newsletter-form input[type="email"],
+.footer__newsletter input[type="email"] {
+  font-family: var(--font-tech) !important;
+  letter-spacing: 0.04em;
+}
+.newsletter-form input[type="email"]::placeholder,
+.footer__newsletter input[type="email"]::placeholder {
+  font-family: var(--font-tech);
+  text-transform: uppercase;
+  font-size: 0.78em;
+  letter-spacing: 0.1em;
+}
+
+/* ────────────────────────────────────────────────
+   BLOG CARDS & ARTICLES
+──────────────────────────────────────────────── */
+.blog-post-card,
+.article-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.blog-post-card:hover,
+.article-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 0 0 1px rgba(var(--oni-cyan-rgb), 0.3),
+    0 0 18px rgba(var(--oni-cyan-rgb), 0.1),
+    0 12px 28px rgba(0,0,0,0.5);
+}
+.article__title,
+.blog-post-card__title {
+  font-family: var(--font-sharp) !important;
+  font-weight: 700 !important;
+}
+
+/* ────────────────────────────────────────────────
+   ACCOUNT / LOGIN / REGISTER
+──────────────────────────────────────────────── */
+.customer h1,
+.customer h2 {
+  font-family: var(--font-gaming) !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+}
+.customer form {
+  border: 1px solid rgba(var(--oni-red-rgb), 0.15);
+  padding: 1.5rem;
+  position: relative;
+}
+
+/* ────────────────────────────────────────────────
+   GIFT CARD PAGE
+──────────────────────────────────────────────── */
+.gift-card__code {
+  font-family: var(--font-tech) !important;
+  letter-spacing: 0.15em !important;
+  border: 1px dashed rgba(var(--oni-cyan-rgb), 0.5) !important;
+  text-shadow: 0 0 8px rgba(var(--oni-cyan-rgb), 0.4);
+}
+
+/* ────────────────────────────────────────────────
+   PRODUCT GALLERY THUMBNAILS
+──────────────────────────────────────────────── */
+.product__media-toggle[aria-pressed="true"],
+.thumbnail--active,
+.product__thumbnail--active {
+  box-shadow: 0 0 0 2px var(--oni-red), 0 0 10px rgba(var(--oni-red-rgb), 0.4) !important;
+}
+
+/* ────────────────────────────────────────────────
+   ONI MODE — Konami code unlock (class on <html>)
+   Intensifies the atmosphere site-wide
+──────────────────────────────────────────────── */
+html.oni-mode body::before {
+  background-image:
+    linear-gradient(rgba(var(--oni-red-rgb), 0.06)  1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--oni-red-rgb), 0.06) 1px, transparent 1px);
+  animation-duration: 4s;
+}
+html.oni-mode .button--primary {
+  animation: oni-box-pulse 2s ease-in-out infinite;
+}
+html.oni-mode header-component::after,
+html.oni-mode .header::after {
+  opacity: 1;
+  height: 2px;
+}
+
+/* Konami unlock overlay */
+.oni-cheat {
+  position: fixed;
+  inset: 0;
+  z-index: 100001;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: rgba(7, 7, 13, 0.92);
+  backdrop-filter: blur(6px);
+  font-family: var(--font-gaming);
+  text-transform: uppercase;
+  text-align: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+.oni-cheat--show { opacity: 1; pointer-events: auto; }
+.oni-cheat__title {
+  font-size: clamp(1.1rem, 4vw, 2rem);
+  font-weight: 900;
+  color: var(--oni-cyan);
+  letter-spacing: 0.2em;
+  text-shadow: 0 0 16px var(--oni-cyan), 0 0 40px rgba(var(--oni-cyan-rgb), 0.4);
+}
+.oni-cheat__code {
+  font-family: var(--font-tech);
+  font-size: clamp(1.4rem, 6vw, 3rem);
+  color: var(--oni-red);
+  letter-spacing: 0.3em;
+  padding: 10px 28px;
+  border: 1px dashed var(--oni-red);
+  text-shadow: 0 0 14px rgba(var(--oni-red-rgb), 0.6);
+}
+.oni-cheat__sub {
+  font-family: var(--font-sharp);
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  color: rgba(242,239,233,0.7);
+  text-transform: uppercase;
+}
+.oni-cheat__close {
+  margin-top: 10px;
+  font-family: var(--font-gaming);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--oni-purple);
+  background: none;
+  border: 1px solid var(--oni-purple);
+  padding: 8px 22px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: box-shadow 0.2s ease, color 0.2s ease;
+}
+.oni-cheat__close:hover {
+  box-shadow: 0 0 14px rgba(var(--oni-purple-rgb), 0.6);
+  color: #fff;
+}
+
+/* ────────────────────────────────────────────────
+   STOCK BAR — low-inventory urgency meter
+   (utility: <div class="oni-stock-bar" style="--oni-stock: 35%">)
+──────────────────────────────────────────────── */
+.oni-stock-bar {
+  width: 100%;
+  height: 4px;
+  background: rgba(255,255,255,0.08);
+  overflow: hidden;
+  position: relative;
+}
+.oni-stock-bar::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: var(--oni-stock, 50%);
+  background: linear-gradient(90deg, var(--oni-red), var(--oni-yellow));
+  box-shadow: 0 0 8px rgba(var(--oni-red-rgb), 0.6);
+  transition: width 0.8s ease;
+}
+
+/* ────────────────────────────────────────────────
+   PAGE MOTION — staggered grids, wipe reveals,
+   parallax, text scramble
+──────────────────────────────────────────────── */
+
+/* ── Keyframes ── */
+@keyframes oni-card-in {
   from {
     opacity: 0;
-    transform: translateY(2.5rem);
+    transform: translateY(48px) scale(0.95);
+    filter: blur(3px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
+    filter: blur(0);
   }
 }
 
-@keyframes oni-rgb-split {
-  0% {
-    text-shadow:
-      -3px 0 rgb(var(--color-primary-rgb) / 0.8),
-      3px 0 rgb(var(--color-foreground-rgb) / 0.45);
-  }
-  50% {
-    text-shadow:
-      3px 0 rgb(var(--color-primary-rgb) / 0.8),
-      -3px 0 rgb(var(--color-foreground-rgb) / 0.45);
-  }
-  100% {
-    text-shadow:
-      -2px 0 rgb(var(--color-primary-rgb) / 0.8),
-      2px 0 rgb(var(--color-foreground-rgb) / 0.45);
-  }
+@keyframes oni-wipe-up {
+  from { clip-path: inset(100% 0 0 0); opacity: 0.35; }
+  to   { clip-path: inset(0%   0 0 0); opacity: 1;    }
+}
+
+@keyframes oni-slide-left {
+  from { opacity: 0; transform: translateX(-56px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes oni-slide-right {
+  from { opacity: 0; transform: translateX(56px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes oni-levitate {
+  0%,100% { transform: translateY(0px)  rotate(-0.3deg); }
+  38%      { transform: translateY(-14px) rotate(0.5deg); }
+  72%      { transform: translateY(-6px)  rotate(-0.2deg); }
+}
+
+@keyframes oni-pop-in {
+  0%   { opacity: 0; transform: scale(0.7) rotate(-4deg); }
+  70%  { opacity: 1; transform: scale(1.06) rotate(0.5deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+/* ── Stagger grid ─────────────────────────────── */
+/* JS adds .oni-stagger-parent to grid containers when they enter
+   the viewport; individual cards get --oni-card-delay via inline style. */
+.oni-stagger-parent product-card,
+.oni-stagger-parent .product-card,
+.oni-stagger-parent .collection-card,
+.oni-stagger-parent li.grid__item {
+  animation: oni-card-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--oni-card-delay, 0ms);
+  /* override the basic oni-reveal transition so animation wins */
+  transition: box-shadow 0.3s ease, transform 0.3s ease !important;
+}
+
+/* ── Section wipe reveal ──────────────────────── */
+.oni-section-wipe {
+  opacity: 0;
+  clip-path: inset(100% 0 0 0);
+}
+.oni-section-wipe--visible {
+  animation: oni-wipe-up 0.82s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ── Slide-in variants (added by initSectionWipe) ── */
+.oni-slide-left  { opacity: 0; animation: oni-slide-left  0.7s cubic-bezier(0.16,1,0.3,1) forwards; }
+.oni-slide-right { opacity: 0; animation: oni-slide-right 0.7s cubic-bezier(0.16,1,0.3,1) forwards; }
+
+/* ── Float accent ─────────────────────────────── */
+.oni-float-accent {
+  animation: oni-levitate 7s ease-in-out infinite;
+}
+
+/* ── Parallax hint ────────────────────────────── */
+[data-oni-parallax] { will-change: transform; }
+
+/* ── Pop-in for badges / stat numbers ─────────── */
+.oni-pop-in { animation: oni-pop-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+
+/* ── Scramble text ─────────────────────────────── */
+.oni-scramble { display: inline-block; min-width: 1ch; }
+
+/* ── Stats HUD entry stagger ───────────────────── */
+.oni-hud__stat:nth-child(1) { --oni-card-delay: 0ms;   }
+.oni-hud__stat:nth-child(2) { --oni-card-delay: 90ms;  }
+.oni-hud__stat:nth-child(3) { --oni-card-delay: 180ms; }
+.oni-hud__stat:nth-child(4) { --oni-card-delay: 270ms; }
+.oni-hud__stat:nth-child(5) { --oni-card-delay: 360ms; }
+.oni-hud__stat:nth-child(6) { --oni-card-delay: 450ms; }
+
+/* ────────────────────────────────────────────────
+   REDUCED MOTION
+──────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) { animation: none; }
+  .oni-holo { display: none; }
+  html.oni-mode .button--primary { animation: none; }
+  body::before,
+  .oni-text-red, .oni-text-cyan, .oni-text-purple,
+  .oni-badge, .oni-float, .oni-status::before,
+  .header__cart-count,
+  .announcement-bar::before { animation: none !important; }
+  .oni-glitch::before,
+  .oni-glitch::after { display: none; }
+  .button::before { display: none; }
+  .button::after  { transition: none; }
+  /* New motion */
+  .oni-stagger-parent product-card,
+  .oni-stagger-parent .product-card,
+  .oni-stagger-parent .collection-card,
+  .oni-stagger-parent li.grid__item { animation: none; opacity: 1; }
+  .oni-section-wipe,
+  .oni-section-wipe--visible { animation: none; opacity: 1; clip-path: none; }
+  .oni-slide-left, .oni-slide-right { animation: none; opacity: 1; }
+  .oni-float-accent { animation: none; }
+}
+
+/* ────────────────────────────────────────────────
+   MOBILE
+──────────────────────────────────────────────── */
+@media (max-width: 749px) {
+  ::-webkit-scrollbar { width: 2px; height: 2px; }
+  body::before { background-size: 32px 32px; }
+  .button--primary:hover,
+  .button--secondary:hover { transform: none; }
+  .header-drawer::before,
+  .dialog-drawer::before { display: block; }
 }

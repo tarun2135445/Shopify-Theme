@@ -28,11 +28,11 @@ Print files are in: `designs/qikink-print-v2/`
 | AKUMA Oversized Hoodie | L | OT-HD-AKUMA-L | hannya-print.png |
 | AKUMA Oversized Hoodie | XL | OT-HD-AKUMA-XL | hannya-print.png |
 | AKUMA Oversized Hoodie | XXL | OT-HD-AKUMA-XXL | hannya-print.png |
-| KITSUNE Heavyweight Hoodie | S | OT-HD-KITSUNE-S | tengu-print.png |
-| KITSUNE Heavyweight Hoodie | M | OT-HD-KITSUNE-M | tengu-print.png |
-| KITSUNE Heavyweight Hoodie | L | OT-HD-KITSUNE-L | tengu-print.png |
-| KITSUNE Heavyweight Hoodie | XL | OT-HD-KITSUNE-XL | tengu-print.png |
-| KITSUNE Heavyweight Hoodie | XXL | OT-HD-KITSUNE-XXL | tengu-print.png |
+| KITSUNE Heavyweight Hoodie | S | OT-HD-KITSUNE-S | kitsune-print.png |
+| KITSUNE Heavyweight Hoodie | M | OT-HD-KITSUNE-M | kitsune-print.png |
+| KITSUNE Heavyweight Hoodie | L | OT-HD-KITSUNE-L | kitsune-print.png |
+| KITSUNE Heavyweight Hoodie | XL | OT-HD-KITSUNE-XL | kitsune-print.png |
+| KITSUNE Heavyweight Hoodie | XXL | OT-HD-KITSUNE-XXL | kitsune-print.png |
 | GLITCH RONIN Hoodie | S | OT-HD-RONIN-S | glitch-ronin-print.png |
 | GLITCH RONIN Hoodie | M | OT-HD-RONIN-M | glitch-ronin-print.png |
 | GLITCH RONIN Hoodie | L | OT-HD-RONIN-L | glitch-ronin-print.png |

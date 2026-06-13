@@ -8,6 +8,27 @@ Print files are in: `designs/qikink-print-v2/`
 
 ---
 
+## ⚠️ MISSING PRINT FILES — DO NOT FULFIL THESE UNTIL ARTWORK IS EXPORTED
+
+The following products have **no print file in the repo**. Earlier versions of this
+doc pointed them at unrelated files (the wrong design would have shipped). They are
+now marked `MISSING-*` below. Source the original artwork at 3600×4320 px / 300 DPI
+before enabling them in Printrove:
+
+| Product | Needed artwork | Was wrongly mapped to |
+|---------|----------------|----------------------|
+| NEON YUREI Tee | Katana girl in neon Tokyo | dragon-spirit-print.png |
+| MECHA SAKURA Tee | Mecha in sakura storm | cyber-geisha-print.png |
+| NEON ONI Art Print | Alley King oni samurai | dragon-spirit-print.png |
+| MANEKI ONI Tote | Maneki-neko in oni mask | shinobi-bag-print-print.png |
+
+Fixed in this revision (files now exist, exported from `designs/print-ready/` SVGs):
+- **AKUMA Hoodie** → `oni-demon-mask-print.png` (was wrongly `hannya-print.png`)
+- **ONI MASK Tee** → `oni-demon-mask-print.png` (was wrongly `pixel-oni-print.png`)
+- **鬼 KANJI Snapback Cap** → `oni-wordmark-print.png` (was wrongly `kami-kanji-print.png` — 神 kami, the wrong kanji)
+
+---
+
 ## Setup Steps (do once per product in Printrove dashboard)
 
 1. Go to **printrove.in** → My Products → Add Product
@@ -17,17 +38,22 @@ Print files are in: `designs/qikink-print-v2/`
 5. Enter the **Shopify SKU** from the table below for each size variant
 6. Save — Printrove will now auto-fulfil matching Shopify orders
 
+> **Note:** some tables below omit larger sizes (XL/XXL/2XL) that DO exist in
+> Shopify. SKUs follow the pattern `<base>-<SIZE>` (e.g. `OT-HD-HANNYA-XXL`,
+> `OT-TS-GAMING-2XL`) and use the same print file as the other sizes of that
+> product — enter every size that exists in Shopify when setting up Printrove.
+
 ---
 
 ## Hoodies
 
 | Product | Size | Shopify SKU | Print File |
 |---------|------|-------------|------------|
-| AKUMA Oversized Hoodie | S | OT-HD-AKUMA-S | hannya-print.png |
-| AKUMA Oversized Hoodie | M | OT-HD-AKUMA-M | hannya-print.png |
-| AKUMA Oversized Hoodie | L | OT-HD-AKUMA-L | hannya-print.png |
-| AKUMA Oversized Hoodie | XL | OT-HD-AKUMA-XL | hannya-print.png |
-| AKUMA Oversized Hoodie | XXL | OT-HD-AKUMA-XXL | hannya-print.png |
+| AKUMA Oversized Hoodie | S | OT-HD-AKUMA-S | oni-demon-mask-print.png |
+| AKUMA Oversized Hoodie | M | OT-HD-AKUMA-M | oni-demon-mask-print.png |
+| AKUMA Oversized Hoodie | L | OT-HD-AKUMA-L | oni-demon-mask-print.png |
+| AKUMA Oversized Hoodie | XL | OT-HD-AKUMA-XL | oni-demon-mask-print.png |
+| AKUMA Oversized Hoodie | XXL | OT-HD-AKUMA-XXL | oni-demon-mask-print.png |
 | KITSUNE Heavyweight Hoodie | S | OT-HD-KITSUNE-S | kitsune-print.png |
 | KITSUNE Heavyweight Hoodie | M | OT-HD-KITSUNE-M | kitsune-print.png |
 | KITSUNE Heavyweight Hoodie | L | OT-HD-KITSUNE-L | kitsune-print.png |
@@ -69,21 +95,21 @@ Print files are in: `designs/qikink-print-v2/`
 
 | Product | Size | Shopify SKU | Print File |
 |---------|------|-------------|------------|
-| NEON YUREI Tee | S | OT-TS-YUREI-S | dragon-spirit-print.png |
-| NEON YUREI Tee | M | OT-TS-YUREI-M | dragon-spirit-print.png |
-| NEON YUREI Tee | L | OT-TS-YUREI-L | dragon-spirit-print.png |
-| NEON YUREI Tee | XL | OT-TS-YUREI-XL | dragon-spirit-print.png |
-| NEON YUREI Tee | XXL | OT-TS-YUREI-XXL | dragon-spirit-print.png |
-| ONI MASK Tee | S | OT-TS-ONIMASK-S | pixel-oni-print.png |
-| ONI MASK Tee | M | OT-TS-ONIMASK-M | pixel-oni-print.png |
-| ONI MASK Tee | L | OT-TS-ONIMASK-L | pixel-oni-print.png |
-| ONI MASK Tee | XL | OT-TS-ONIMASK-XL | pixel-oni-print.png |
-| ONI MASK Tee | XXL | OT-TS-ONIMASK-XXL | pixel-oni-print.png |
-| MECHA SAKURA Tee | S | OT-TS-MECHA-S | cyber-geisha-print.png |
-| MECHA SAKURA Tee | M | OT-TS-MECHA-M | cyber-geisha-print.png |
-| MECHA SAKURA Tee | L | OT-TS-MECHA-L | cyber-geisha-print.png |
-| MECHA SAKURA Tee | XL | OT-TS-MECHA-XL | cyber-geisha-print.png |
-| MECHA SAKURA Tee | XXL | OT-TS-MECHA-XXL | cyber-geisha-print.png |
+| NEON YUREI Tee | S | OT-TS-YUREI-S | ⚠️ MISSING-neon-yurei |
+| NEON YUREI Tee | M | OT-TS-YUREI-M | ⚠️ MISSING-neon-yurei |
+| NEON YUREI Tee | L | OT-TS-YUREI-L | ⚠️ MISSING-neon-yurei |
+| NEON YUREI Tee | XL | OT-TS-YUREI-XL | ⚠️ MISSING-neon-yurei |
+| NEON YUREI Tee | XXL | OT-TS-YUREI-XXL | ⚠️ MISSING-neon-yurei |
+| ONI MASK Tee | S | OT-TS-ONIMASK-S | oni-demon-mask-print.png |
+| ONI MASK Tee | M | OT-TS-ONIMASK-M | oni-demon-mask-print.png |
+| ONI MASK Tee | L | OT-TS-ONIMASK-L | oni-demon-mask-print.png |
+| ONI MASK Tee | XL | OT-TS-ONIMASK-XL | oni-demon-mask-print.png |
+| ONI MASK Tee | XXL | OT-TS-ONIMASK-XXL | oni-demon-mask-print.png |
+| MECHA SAKURA Tee | S | OT-TS-MECHA-S | ⚠️ MISSING-mecha-sakura |
+| MECHA SAKURA Tee | M | OT-TS-MECHA-M | ⚠️ MISSING-mecha-sakura |
+| MECHA SAKURA Tee | L | OT-TS-MECHA-L | ⚠️ MISSING-mecha-sakura |
+| MECHA SAKURA Tee | XL | OT-TS-MECHA-XL | ⚠️ MISSING-mecha-sakura |
+| MECHA SAKURA Tee | XXL | OT-TS-MECHA-XXL | ⚠️ MISSING-mecha-sakura |
 | Dragon Spirit Tee | S | OT-TS-DRAGON-S | dragon-spirit-print.png |
 | Dragon Spirit Tee | M | OT-TS-DRAGON-M | dragon-spirit-print.png |
 | Dragon Spirit Tee | L | OT-TS-DRAGON-L | dragon-spirit-print.png |
@@ -131,15 +157,15 @@ Print files are in: `designs/qikink-print-v2/`
 
 | Product | Size | Shopify SKU | Print File |
 |---------|------|-------------|------------|
-| 鬼 KANJI Snapback Cap | One Size | OT-AC-CAP | kami-kanji-print.png |
+| 鬼 KANJI Snapback Cap | One Size | OT-AC-CAP | oni-wordmark-print.png |
 | ONI Beanie | One Size | OT-AC-BEANIE | oni-beanie-emblem-print.png |
 | 鬼 Bucket Hat | One Size | OT-AC-BUCKET | bucket-hat-emblem-print.png |
 | ONI MASK Keychain | One Size | OT-AC-KEY | oni-keychain-print.png |
 | SHINOBI Crossbody Bag | One Size | OT-AC-SLING | shinobi-bag-print-print.png |
 | TORII GRID Mousepad XL | One Size | OT-AC-PAD | torii-mousepad-raw.png |
 | YOKAI Sticker Pack | One Size | OT-AC-STICKERS | yokai-sticker-sheet-raw.png |
-| NEON ONI Art Print | One Size | OT-AC-PRINT | dragon-spirit-print.png |
-| MANEKI ONI Tote | One Size | OT-AC-TOTE | shinobi-bag-print-print.png |
+| NEON ONI Art Print | One Size | OT-AC-PRINT | ⚠️ MISSING-neon-oni-art |
+| MANEKI ONI Tote | One Size | OT-AC-TOTE | ⚠️ MISSING-maneki-oni |
 
 ---
 

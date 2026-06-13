@@ -548,6 +548,7 @@
         "section_width": "full-width",
         "min_height": 85,
         "enable_zoom": true,
+        "image": "shopify://shop_images/oni-editorial-forged-after-dark.png",
         "overlay_opacity": 45,
         "color_scheme": "scheme-4",
         "kicker": "鬼 The Edit",

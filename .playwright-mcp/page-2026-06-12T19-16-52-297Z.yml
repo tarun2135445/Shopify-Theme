@@ -1,0 +1,934 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#MainContent"
+  - generic [ref=e3]:
+    - complementary [ref=e6]:
+      - paragraph [ref=e10]: ⛩ Free shipping over ₹2,999 — new drops every full moon 🌕
+    - banner [ref=e11]:
+      - generic [ref=e15]:
+        - generic [ref=e16]:
+          - link "Oni Theory" [ref=e17] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e18]: Oni Theory
+          - navigation "Primary" [ref=e21]:
+            - list [ref=e23]:
+              - generic:
+                - link "Home" [ref=e24] [cursor=pointer]:
+                  - /url: /
+                  - generic [ref=e25]: Home
+                - link "Hoodies" [ref=e26] [cursor=pointer]:
+                  - /url: /collections/hoodies
+                  - generic [ref=e27]: Hoodies
+                - link "T-Shirts" [ref=e28] [cursor=pointer]:
+                  - /url: /collections/t-shirts
+                  - generic [ref=e29]: T-Shirts
+                - link "Accessories" [ref=e30] [cursor=pointer]:
+                  - /url: /collections/accessories
+                  - generic [ref=e31]: Accessories
+                - link "Theory 001" [ref=e32] [cursor=pointer]:
+                  - /url: /collections/theory-001
+                  - generic [ref=e33]: Theory 001
+        - generic [ref=e34]:
+          - button "Search" [ref=e36] [cursor=pointer]:
+            - generic:
+              - img
+          - generic [ref=e37]:
+            - button "Account" [ref=e42] [cursor=pointer]:
+              - img [ref=e44]
+            - generic [ref=e46]:
+              - button "Cart" [ref=e47] [cursor=pointer]:
+                - generic [ref=e48]:
+                  - generic:
+                    - img
+                  - generic [ref=e52]: "2"
+              - text: Rs. 3,999.00 INR Rs. 3,799.00 INR Rs. 7,798.00 INR
+            - status [ref=e53]
+  - main [ref=e54]:
+    - heading "Products" [level=1] [ref=e61]
+    - generic [ref=e64]:
+      - link "Skip to results list" [ref=e65] [cursor=pointer]:
+        - /url: "#ResultsList"
+      - generic [ref=e66]:
+        - generic "Filters" [ref=e68]:
+          - generic [ref=e70]:
+            - list [ref=e73]:
+              - generic:
+                - group [ref=e75]:
+                  - generic "Availability" [ref=e76] [cursor=pointer]:
+                    - generic [ref=e77]: Availability
+                    - generic [ref=e78]:
+                      - generic:
+                        - img
+                - group [ref=e80]:
+                  - generic "Price" [ref=e81] [cursor=pointer]:
+                    - generic [ref=e82]: Price
+                    - generic:
+                      - img
+            - status [ref=e84]: 39 items
+            - group [ref=e87]:
+              - button "Sort" [ref=e88] [cursor=pointer]:
+                - generic [ref=e89]: Sort
+                - generic:
+                  - img
+            - group "Column grid" [ref=e91]:
+              - generic [ref=e92]: Column grid
+              - generic [ref=e93] [cursor=pointer]:
+                - radio "Default" [checked] [ref=e94]
+                - img [ref=e96]
+              - generic [ref=e101] [cursor=pointer]:
+                - radio "Zoom out" [ref=e102]
+                - img [ref=e104]
+        - list [ref=e116]:
+          - listitem [ref=e117]:
+            - generic [ref=e118]:
+              - link "AKUMA Oversized Hoodie — Oni Mask" [ref=e119] [cursor=pointer]:
+                - /url: /products/akuma-oversized-hoodie-oni-mask?variant=53761726939479
+                - generic [ref=e120]: AKUMA Oversized Hoodie — Oni Mask
+              - generic [ref=e121] [cursor=pointer]:
+                - generic [ref=e122]:
+                  - link "AKUMA Oversized Hoodie — Oni Mask" [ref=e123]:
+                    - /url: /products/akuma-oversized-hoodie-oni-mask?variant=53761726939479
+                    - generic [ref=e126]:
+                      - img "AKUMA Oversized Hoodie worn by model — Oni Mask print, Oni Theory streetwear" [ref=e129]
+                      - img [ref=e132]
+                  - generic [ref=e134]: Sale
+                  - generic:
+                    - generic:
+                      - status
+                      - button "Choose" [ref=e135]:
+                        - generic [ref=e136]:
+                          - generic:
+                            - img
+                          - generic [ref=e137]: Choose
+                - link "AKUMA Oversized Hoodie — Oni Mask" [ref=e138]:
+                  - /url: /products/akuma-oversized-hoodie-oni-mask?variant=53761726939479
+                  - heading "AKUMA Oversized Hoodie — Oni Mask" [level=3] [ref=e140]
+                - generic [ref=e143]:
+                  - generic [ref=e144]:
+                    - generic [ref=e145]: Sale price
+                    - text: Rs. 1,499.00 INR
+                  - generic [ref=e146]:
+                    - generic [ref=e147]: Regular price
+                    - text: Rs. 2,199.00 INR
+                - generic [ref=e150]:
+                  - generic [ref=e151]:
+                    - generic [ref=e152]: Sale price
+                    - text: Rs. 1,499.00 INR
+                  - generic [ref=e153]:
+                    - generic [ref=e154]: Regular price
+                    - text: Rs. 2,199.00 INR
+          - listitem [ref=e155]:
+            - generic [ref=e156]:
+              - link "ARISE Hoodie — Shadow Hunter" [ref=e157] [cursor=pointer]:
+                - /url: /products/arise-hoodie-shadow-hunter?variant=53772259361111
+                - generic [ref=e158]: ARISE Hoodie — Shadow Hunter
+              - generic [ref=e159] [cursor=pointer]:
+                - generic [ref=e160]:
+                  - link "ARISE Hoodie — Shadow Hunter" [ref=e161]:
+                    - /url: /products/arise-hoodie-shadow-hunter?variant=53772259361111
+                    - generic [ref=e164]:
+                      - img "Model wearing ARISE hoodie, back view" [ref=e167]
+                      - img [ref=e170]
+                  - generic [ref=e172]: Sold out
+                  - generic:
+                    - generic:
+                      - status
+                - link "ARISE Hoodie — Shadow Hunter" [ref=e173]:
+                  - /url: /products/arise-hoodie-shadow-hunter?variant=53772259361111
+                  - heading "ARISE Hoodie — Shadow Hunter" [level=3] [ref=e175]
+                - generic [ref=e178]:
+                  - generic [ref=e179]:
+                    - generic [ref=e180]: Sale price
+                    - text: Rs. 1,499.00 INR
+                  - generic [ref=e181]:
+                    - generic [ref=e182]: Regular price
+                    - text: Rs. 3,799.00 INR
+                - generic [ref=e185]:
+                  - generic [ref=e186]:
+                    - generic [ref=e187]: Sale price
+                    - text: Rs. 1,499.00 INR
+                  - generic [ref=e188]:
+                    - generic [ref=e189]: Regular price
+                    - text: Rs. 3,799.00 INR
+          - listitem [ref=e190]:
+            - generic [ref=e191]:
+              - link "BOSS FIGHT Tee — Final Form" [ref=e192] [cursor=pointer]:
+                - /url: /products/boss-fight-tee-final-form?variant=53765552832855
+                - generic [ref=e193]: BOSS FIGHT Tee — Final Form
+              - generic [ref=e194] [cursor=pointer]:
+                - generic [ref=e195]:
+                  - link "BOSS FIGHT Tee — Final Form" [ref=e196]:
+                    - /url: /products/boss-fight-tee-final-form?variant=53765552832855
+                    - img "BOSS FIGHT Tee — Final Form on model" [ref=e202]
+                  - generic [ref=e204]: Sold out
+                  - generic:
+                    - generic:
+                      - status
+                - link "BOSS FIGHT Tee — Final Form" [ref=e205]:
+                  - /url: /products/boss-fight-tee-final-form?variant=53765552832855
+                  - heading "BOSS FIGHT Tee — Final Form" [level=3] [ref=e207]
+                - generic [ref=e210]:
+                  - generic [ref=e211]:
+                    - generic [ref=e212]: Sale price
+                    - text: Rs. 799.00 INR
+                  - generic [ref=e213]:
+                    - generic [ref=e214]: Regular price
+                    - text: Rs. 1,199.00 INR
+                - generic [ref=e217]:
+                  - generic [ref=e218]:
+                    - generic [ref=e219]: Sale price
+                    - text: Rs. 799.00 INR
+                  - generic [ref=e220]:
+                    - generic [ref=e221]: Regular price
+                    - text: Rs. 1,199.00 INR
+          - listitem [ref=e222]:
+            - generic [ref=e223]:
+              - link "CYBER GEISHA Tee — Chrome Bloom" [ref=e224] [cursor=pointer]:
+                - /url: /products/cyber-geisha-tee-chrome-bloom?variant=53765550145879
+                - generic [ref=e225]: CYBER GEISHA Tee — Chrome Bloom
+              - generic [ref=e226] [cursor=pointer]:
+                - generic [ref=e227]:
+                  - link "CYBER GEISHA Tee — Chrome Bloom" [ref=e228]:
+                    - /url: /products/cyber-geisha-tee-chrome-bloom?variant=53765550145879
+                    - img "CYBER GEISHA Tee — Chrome Bloom on model" [ref=e234]
+                  - generic [ref=e236]: Sold out
+                  - generic:
+                    - generic:
+                      - status
+                - link "CYBER GEISHA Tee — Chrome Bloom" [ref=e237]:
+                  - /url: /products/cyber-geisha-tee-chrome-bloom?variant=53765550145879
+                  - heading "CYBER GEISHA Tee — Chrome Bloom" [level=3] [ref=e239]
+                - generic [ref=e242]:
+                  - generic [ref=e243]:
+                    - generic [ref=e244]: Sale price
+                    - text: Rs. 799.00 INR
+                  - generic [ref=e245]:
+                    - generic [ref=e246]: Regular price
+                    - text: Rs. 1,199.00 INR
+                - generic [ref=e249]:
+                  - generic [ref=e250]:
+                    - generic [ref=e251]: Sale price
+                    - text: Rs. 799.00 INR
+                  - generic [ref=e252]:
+                    - generic [ref=e253]: Regular price
+                    - text: Rs. 1,199.00 INR
+          - listitem [ref=e254]:
+            - generic [ref=e255]:
+              - link "Cyber Samurai Long Sleeve" [ref=e256] [cursor=pointer]:
+                - /url: /products/cyber-samurai-long-sleeve?variant=53764211933527
+                - generic [ref=e257]: Cyber Samurai Long Sleeve
+              - generic [ref=e258] [cursor=pointer]:
+                - generic [ref=e259]:
+                  - link "Cyber Samurai Long Sleeve" [ref=e260]:
+                    - /url: /products/cyber-samurai-long-sleeve?variant=53764211933527
+                    - img "Cyber Samurai Long Sleeve on model — ONI THEORY" [ref=e266]
+                  - generic [ref=e268]: Sale
+                  - generic:
+                    - generic:
+                      - status
+                      - button "Choose" [ref=e269]:
+                        - generic [ref=e270]:
+                          - generic:
+                            - img
+                          - generic [ref=e271]: Choose
+                - link "Cyber Samurai Long Sleeve" [ref=e272]:
+                  - /url: /products/cyber-samurai-long-sleeve?variant=53764211933527
+                  - heading "Cyber Samurai Long Sleeve" [level=3] [ref=e274]
+                - generic [ref=e277]:
+                  - generic [ref=e278]:
+                    - generic [ref=e279]: Sale price
+                    - text: Rs. 899.00 INR
+                  - generic [ref=e280]:
+                    - generic [ref=e281]: Regular price
+                    - text: Rs. 1,299.00 INR
+                - generic [ref=e284]:
+                  - generic [ref=e285]:
+                    - generic [ref=e286]: Sale price
+                    - text: Rs. 899.00 INR
+                  - generic [ref=e287]:
+                    - generic [ref=e288]: Regular price
+                    - text: Rs. 1,299.00 INR
+          - listitem [ref=e289]:
+            - generic [ref=e290]:
+              - link "Dragon Spirit Tee" [ref=e291] [cursor=pointer]:
+                - /url: /products/dragon-spirit-tee?variant=53764211442007
+                - generic [ref=e292]: Dragon Spirit Tee
+              - generic [ref=e293] [cursor=pointer]:
+                - generic [ref=e294]:
+                  - link "Dragon Spirit Tee" [ref=e295]:
+                    - /url: /products/dragon-spirit-tee?variant=53764211442007
+                    - img "Dragon Spirit Tee on model — ONI THEORY" [ref=e301]
+                  - generic [ref=e303]: Sale
+                  - generic:
+                    - generic:
+                      - status
+                      - button "Choose" [ref=e304]:
+                        - generic [ref=e305]:
+                          - generic:
+                            - img
+                          - generic [ref=e306]: Choose
+                - link "Dragon Spirit Tee" [ref=e307]:
+                  - /url: /products/dragon-spirit-tee?variant=53764211442007
+                  - heading "Dragon Spirit Tee" [level=3] [ref=e309]
+                - generic [ref=e312]:
+                  - generic [ref=e313]:
+                    - generic [ref=e314]: Sale price
+                    - text: Rs. 799.00 INR
+                  - generic [ref=e315]:
+                    - generic [ref=e316]: Regular price
+                    - text: Rs. 1,199.00 INR
+                - generic [ref=e319]:
+                  - generic [ref=e320]:
+                    - generic [ref=e321]: Sale price
+                    - text: Rs. 799.00 INR
+                  - generic [ref=e322]:
+                    - generic [ref=e323]: Regular price
+                    - text: Rs. 1,199.00 INR
+          - listitem [ref=e324]:
+            - generic [ref=e325]:
+              - link "Gaming Gods Tee" [ref=e326] [cursor=pointer]:
+                - /url: /products/gaming-gods-tee?variant=53764212359511
+                - generic [ref=e327]: Gaming Gods Tee
+              - generic [ref=e328] [cursor=pointer]:
+                - generic [ref=e329]:
+                  - link "Gaming Gods Tee" [ref=e330]:
+                    - /url: /products/gaming-gods-tee?variant=53764212359511
+                    - img "Gaming Gods Tee on model — ONI THEORY" [ref=e336]
+                  - generic [ref=e338]: Sale
+                  - generic:
+                    - generic:
+                      - status
+                      - button "Choose" [ref=e339]:
+                        - generic [ref=e340]:
+                          - generic:
+                            - img
+                          - generic [ref=e341]: Choose
+                - link "Gaming Gods Tee" [ref=e342]:
+                  - /url: /products/gaming-gods-tee?variant=53764212359511
+                  - heading "Gaming Gods Tee" [level=3] [ref=e344]
+                - generic [ref=e347]:
+                  - generic [ref=e348]:
+                    - generic [ref=e349]: Sale price
+                    - text: Rs. 799.00 INR
+                  - generic [ref=e350]:
+                    - generic [ref=e351]: Regular price
+                    - text: Rs. 1,199.00 INR
+                - generic [ref=e354]:
+                  - generic [ref=e355]:
+                    - generic [ref=e356]: Sale price
+                    - text: Rs. 799.00 INR
+                  - generic [ref=e357]:
+                    - generic [ref=e358]: Regular price
+                    - text: Rs. 1,199.00 INR
+          - listitem [ref=e359]:
+            - generic [ref=e360]:
+              - link "GLITCH RONIN Hoodie — Static" [ref=e361] [cursor=pointer]:
+                - /url: /products/glitch-ronin-hoodie-static?variant=53761731264855
+                - generic [ref=e362]: GLITCH RONIN Hoodie — Static
+              - generic [ref=e363] [cursor=pointer]:
+                - generic [ref=e364]:
+                  - link "GLITCH RONIN Hoodie — Static" [ref=e365]:
+                    - /url: /products/glitch-ronin-hoodie-static?variant=53761731264855
+                    - generic [ref=e368]:
+                      - img "GLITCH RONIN Hoodie worn by model — Static print, Oni Theory streetwear" [ref=e371]
+                      - img [ref=e374]
+                  - generic [ref=e376]: Sale
+                  - generic:
+                    - generic:
+                      - status
+                      - button "Choose" [ref=e377]:
+                        - generic [ref=e378]:
+                          - generic:
+                            - img
+                          - generic [ref=e379]: Choose
+                - link "GLITCH RONIN Hoodie — Static" [ref=e380]:
+                  - /url: /products/glitch-ronin-hoodie-static?variant=53761731264855
+                  - heading "GLITCH RONIN Hoodie — Static" [level=3] [ref=e382]
+                - generic [ref=e385]:
+                  - generic [ref=e386]:
+                    - generic [ref=e387]: Sale price
+                    - text: Rs. 1,499.00 INR
+                  - generic [ref=e388]:
+                    - generic [ref=e389]: Regular price
+                    - text: Rs. 2,199.00 INR
+                - generic [ref=e392]:
+                  - generic [ref=e393]:
+                    - generic [ref=e394]: Sale price
+                    - text: Rs. 1,499.00 INR
+                  - generic [ref=e395]:
+                    - generic [ref=e396]: Regular price
+                    - text: Rs. 2,199.00 INR
+          - listitem [ref=e397]:
+            - generic [ref=e398]:
+              - link "HANNYA Hoodie — Cursed Smile" [ref=e399] [cursor=pointer]:
+                - /url: /products/hannya-hoodie-cursed-smile?variant=53765537399127
+                - generic [ref=e400]: HANNYA Hoodie — Cursed Smile
+              - generic [ref=e401] [cursor=pointer]:
+                - generic [ref=e402]:
+                  - link "HANNYA Hoodie — Cursed Smile" [ref=e403]:
+                    - /url: /products/hannya-hoodie-cursed-smile?variant=53765537399127
+                    - img "HANNYA Hoodie — Cursed Smile on model" [ref=e409]
+                  - generic [ref=e411]: Sale
+                  - generic:
+                    - generic:
+                      - status
+                      - button "Choose" [ref=e412]:
+                        - generic [ref=e413]:
+                          - generic:
+                            - img
+                          - generic [ref=e414]: Choose
+                - link "HANNYA Hoodie — Cursed Smile" [ref=e415]:
+                  - /url: /products/hannya-hoodie-cursed-smile?variant=53765537399127
+                  - heading "HANNYA Hoodie — Cursed Smile" [level=3] [ref=e417]
+                - generic [ref=e420]:
+                  - generic [ref=e421]:
+                    - generic [ref=e422]: Sale price
+                    - text: Rs. 1,499.00 INR
+                  - generic [ref=e423]:
+                    - generic [ref=e424]: Regular price
+                    - text: Rs. 2,199.00 INR
+                - generic [ref=e427]:
+                  - generic [ref=e428]:
+                    - generic [ref=e429]: Sale price
+                    - text: Rs. 1,499.00 INR
+                  - generic [ref=e430]:
+                    - generic [ref=e431]: Regular price
+                    - text: Rs. 2,199.00 INR
+          - listitem [ref=e432]:
+            - generic [ref=e433]:
+              - link "JIGOKU Tee — Court of Enma" [ref=e434] [cursor=pointer]:
+                - /url: /products/jigoku-tee-court-of-enma?variant=53771471028567
+                - generic [ref=e435]: JIGOKU Tee — Court of Enma
+              - generic [ref=e436] [cursor=pointer]:
+                - generic [ref=e437]:
+                  - link [ref=e439]:
+                    - /url: /products/jigoku-tee-court-of-enma?variant=53771471028567
+                    - generic [ref=e440]: JIGOKU Tee — Court of Enma
+                  - generic:
+                    - generic:
+                      - status
+                      - button "Choose" [ref=e441]:
+                        - generic [ref=e442]:
+                          - generic:
+                            - img
+                          - generic [ref=e443]: Choose
+                - link "JIGOKU Tee — Court of Enma" [ref=e444]:
+                  - /url: /products/jigoku-tee-court-of-enma?variant=53771471028567
+                  - heading "JIGOKU Tee — Court of Enma" [level=3] [ref=e446]
+                - generic [ref=e449]: Rs. 799.00 INR
+                - generic [ref=e452]: Rs. 799.00 INR
+          - listitem [ref=e453]:
+            - generic [ref=e454]:
+              - link "KAIJU CITY Tee — Last Warning" [ref=e455] [cursor=pointer]:
+                - /url: /products/kaiju-city-tee-last-warning?variant=53765544935767
+                - generic [ref=e456]: KAIJU CITY Tee — Last Warning
+              - generic [ref=e457] [cursor=pointer]:
+                - generic [ref=e458]:
+                  - link "KAIJU CITY Tee — Last Warning" [ref=e459]:
+                    - /url: /products/kaiju-city-tee-last-warning?variant=53765544935767
+                    - img "KAIJU CITY Tee — Last Warning on model" [ref=e465]
+                  - generic [ref=e467]: Sold out
+                  - generic:
+                    - generic:
+                      - status
+                - link "KAIJU CITY Tee — Last Warning" [ref=e468]:
+                  - /url: /products/kaiju-city-tee-last-warning?variant=53765544935767
+                  - heading "KAIJU CITY Tee — Last Warning" [level=3] [ref=e470]
+                - generic [ref=e473]:
+                  - generic [ref=e474]:
+                    - generic [ref=e475]: Sale price
+                    - text: Rs. 799.00 INR
+                  - generic [ref=e476]:
+                    - generic [ref=e477]: Regular price
+                    - text: Rs. 1,199.00 INR
+                - generic [ref=e480]:
+                  - generic [ref=e481]:
+                    - generic [ref=e482]: Sale price
+                    - text: Rs. 799.00 INR
+                  - generic [ref=e483]:
+                    - generic [ref=e484]: Regular price
+                    - text: Rs. 1,199.00 INR
+          - listitem [ref=e485]:
+            - generic [ref=e486]:
+              - link "Kami Crewneck Sweatshirt" [ref=e487] [cursor=pointer]:
+                - /url: /products/kami-crewneck-sweatshirt?variant=53764213277015
+                - generic [ref=e488]: Kami Crewneck Sweatshirt
+              - generic [ref=e489] [cursor=pointer]:
+                - generic [ref=e490]:
+                  - link "Kami Crewneck Sweatshirt" [ref=e491]:
+                    - /url: /products/kami-crewneck-sweatshirt?variant=53764213277015
+                    - img "Kami Crewneck Sweatshirt on model — ONI THEORY" [ref=e497]
+                  - generic [ref=e499]: Sale
+                  - generic:
+                    - generic:
+                      - status
+                      - button "Choose" [ref=e500]:
+                        - generic [ref=e501]:
+                          - generic:
+                            - img
+                          - generic [ref=e502]: Choose
+                - link "Kami Crewneck Sweatshirt" [ref=e503]:
+                  - /url: /products/kami-crewneck-sweatshirt?variant=53764213277015
+                  - heading "Kami Crewneck Sweatshirt" [level=3] [ref=e505]
+                - generic [ref=e508]:
+                  - generic [ref=e509]:
+                    - generic [ref=e510]: Sale price
+                    - text: Rs. 1,199.00 INR
+                  - generic [ref=e511]:
+                    - generic [ref=e512]: Regular price
+                    - text: Rs. 1,699.00 INR
+                - generic [ref=e515]:
+                  - generic [ref=e516]:
+                    - generic [ref=e517]: Sale price
+                    - text: Rs. 1,199.00 INR
+                  - generic [ref=e518]:
+                    - generic [ref=e519]: Regular price
+                    - text: Rs. 1,699.00 INR
+          - listitem [ref=e520]:
+            - generic [ref=e521]:
+              - link "KATANA RAIN Tee — Lone Blade" [ref=e522] [cursor=pointer]:
+                - /url: /products/katana-rain-tee-lone-blade?variant=53765555552599
+                - generic [ref=e523]: KATANA RAIN Tee — Lone Blade
+              - generic [ref=e524] [cursor=pointer]:
+                - generic [ref=e525]:
+                  - link "KATANA RAIN Tee — Lone Blade" [ref=e526]:
+                    - /url: /products/katana-rain-tee-lone-blade?variant=53765555552599
+                    - img "KATANA RAIN Tee — Lone Blade on model" [ref=e532]
+                  - generic [ref=e534]: Sold out
+                  - generic:
+                    - generic:
+                      - status
+                - link "KATANA RAIN Tee — Lone Blade" [ref=e535]:
+                  - /url: /products/katana-rain-tee-lone-blade?variant=53765555552599
+                  - heading "KATANA RAIN Tee — Lone Blade" [level=3] [ref=e537]
+                - generic [ref=e540]:
+                  - generic [ref=e541]:
+                    - generic [ref=e542]: Sale price
+                    - text: Rs. 799.00 INR
+                  - generic [ref=e543]:
+                    - generic [ref=e544]: Regular price
+                    - text: Rs. 1,199.00 INR
+                - generic [ref=e547]:
+                  - generic [ref=e548]:
+                    - generic [ref=e549]: Sale price
+                    - text: Rs. 799.00 INR
+                  - generic [ref=e550]:
+                    - generic [ref=e551]: Regular price
+                    - text: Rs. 1,199.00 INR
+          - listitem [ref=e552]:
+            - generic [ref=e553]:
+              - link "KITSUNE Heavyweight Hoodie — Nine Tails" [ref=e554] [cursor=pointer]:
+                - /url: /products/kitsune-heavyweight-hoodie-nine-tails?variant=53761730052439
+                - generic [ref=e555]: KITSUNE Heavyweight Hoodie — Nine Tails
+              - generic [ref=e556] [cursor=pointer]:
+                - generic [ref=e557]:
+                  - link "KITSUNE Heavyweight Hoodie — Nine Tails" [ref=e558]:
+                    - /url: /products/kitsune-heavyweight-hoodie-nine-tails?variant=53761730052439
+                    - generic [ref=e560]:
+                      - generic:
+                        - button "Previous slide" [ref=e561]:
+                          - generic:
+                            - img
+                        - button "Next slide" [ref=e562]:
+                          - generic:
+                            - img
+                      - generic [ref=e563]:
+                        - img "KITSUNE Heavyweight Hoodie worn by model — Nine Tails print, Oni Theory streetwear" [ref=e566]
+                        - img [ref=e569]
+                        - img [ref=e572]
+                  - generic [ref=e574]: Sale
+                  - generic:
+                    - generic:
+                      - status
+                      - button "Choose" [ref=e575]:
+                        - generic [ref=e576]:
+                          - generic:
+                            - img
+                          - generic [ref=e577]: Choose
+                - link "KITSUNE Heavyweight Hoodie — Nine Tails" [ref=e578]:
+                  - /url: /products/kitsune-heavyweight-hoodie-nine-tails?variant=53761730052439
+                  - heading "KITSUNE Heavyweight Hoodie — Nine Tails" [level=3] [ref=e580]
+                - generic [ref=e583]:
+                  - generic [ref=e584]:
+                    - generic [ref=e585]: Sale price
+                    - text: Rs. 1,499.00 INR
+                  - generic [ref=e586]:
+                    - generic [ref=e587]: Regular price
+                    - text: Rs. 2,199.00 INR
+                - generic [ref=e590]:
+                  - generic [ref=e591]:
+                    - generic [ref=e592]: Sale price
+                    - text: Rs. 1,499.00 INR
+                  - generic [ref=e593]:
+                    - generic [ref=e594]: Regular price
+                    - text: Rs. 2,199.00 INR
+          - listitem [ref=e595]:
+            - generic [ref=e596]:
+              - link "KOI ASCENSION Tee — Dragon's Gate" [ref=e597] [cursor=pointer]:
+                - /url: /products/koi-ascension-tee-dragons-gate?variant=53771470668119
+                - generic [ref=e598]: KOI ASCENSION Tee — Dragon's Gate
+              - generic [ref=e599] [cursor=pointer]:
+                - generic [ref=e600]:
+                  - link [ref=e602]:
+                    - /url: /products/koi-ascension-tee-dragons-gate?variant=53771470668119
+                    - generic [ref=e603]: KOI ASCENSION Tee — Dragon's Gate
+                  - generic:
+                    - generic:
+                      - status
+                      - button "Choose" [ref=e604]:
+                        - generic [ref=e605]:
+                          - generic:
+                            - img
+                          - generic [ref=e606]: Choose
+                - link "KOI ASCENSION Tee — Dragon's Gate" [ref=e607]:
+                  - /url: /products/koi-ascension-tee-dragons-gate?variant=53771470668119
+                  - heading "KOI ASCENSION Tee — Dragon's Gate" [level=3] [ref=e609]
+                - generic [ref=e612]: Rs. 799.00 INR
+                - generic [ref=e615]: Rs. 799.00 INR
+          - listitem [ref=e616]:
+            - generic [ref=e617]:
+              - link "MANEKI ONI Tote — Lucky Demon" [ref=e618] [cursor=pointer]:
+                - /url: /products/maneki-oni-tote-lucky-demon?variant=53761736868183
+                - generic [ref=e619]: MANEKI ONI Tote — Lucky Demon
+              - generic [ref=e620] [cursor=pointer]:
+                - generic [ref=e621]:
+                  - link "MANEKI ONI Tote — Lucky Demon" [ref=e622]:
+                    - /url: /products/maneki-oni-tote-lucky-demon?variant=53761736868183
+                    - img "Black canvas tote with maneki-neko in oni mask print" [ref=e628]
+                  - generic [ref=e630]: Sale
+                  - generic:
+                    - generic:
+                      - status
+                      - button "Add" [ref=e631]:
+                        - generic [ref=e632]:
+                          - generic:
+                            - img
+                          - generic [ref=e633]: Add
+                        - generic [ref=e634]:
+                          - generic:
+                            - img
+                - link "MANEKI ONI Tote — Lucky Demon" [ref=e635]:
+                  - /url: /products/maneki-oni-tote-lucky-demon?variant=53761736868183
+                  - heading "MANEKI ONI Tote — Lucky Demon" [level=3] [ref=e637]
+                - generic [ref=e640]:
+                  - generic [ref=e641]:
+                    - generic [ref=e642]: Sale price
+                    - text: Rs. 499.00 INR
+                  - generic [ref=e643]:
+                    - generic [ref=e644]: Regular price
+                    - text: Rs. 749.00 INR
+                - generic [ref=e647]:
+                  - generic [ref=e648]:
+                    - generic [ref=e649]: Sale price
+                    - text: Rs. 499.00 INR
+                  - generic [ref=e650]:
+                    - generic [ref=e651]: Regular price
+                    - text: Rs. 749.00 INR
+          - listitem [ref=e652]:
+            - generic [ref=e653]:
+              - link "MECHA SAKURA Tee — Bloom Protocol" [ref=e654] [cursor=pointer]:
+                - /url: /products/mecha-sakura-tee-bloom-protocol?variant=53761735131479
+                - generic [ref=e655]: MECHA SAKURA Tee — Bloom Protocol
+              - generic [ref=e656] [cursor=pointer]:
+                - generic [ref=e657]:
+                  - link "MECHA SAKURA Tee — Bloom Protocol" [ref=e658]:
+                    - /url: /products/mecha-sakura-tee-bloom-protocol?variant=53761735131479
+                    - generic [ref=e661]:
+                      - img "MECHA SAKURA Tee worn by model — Bloom Protocol print, Oni Theory streetwear" [ref=e664]
+                      - img [ref=e667]
+                  - generic [ref=e669]: Sale
+                  - generic:
+                    - generic:
+                      - status
+                      - button "Choose" [ref=e670]:
+                        - generic [ref=e671]:
+                          - generic:
+                            - img
+                          - generic [ref=e672]: Choose
+                - link "MECHA SAKURA Tee — Bloom Protocol" [ref=e673]:
+                  - /url: /products/mecha-sakura-tee-bloom-protocol?variant=53761735131479
+                  - heading "MECHA SAKURA Tee — Bloom Protocol" [level=3] [ref=e675]
+                - generic [ref=e678]:
+                  - generic [ref=e679]:
+                    - generic [ref=e680]: Sale price
+                    - text: Rs. 799.00 INR
+                  - generic [ref=e681]:
+                    - generic [ref=e682]: Regular price
+                    - text: Rs. 1,199.00 INR
+                - generic [ref=e685]:
+                  - generic [ref=e686]:
+                    - generic [ref=e687]: Sale price
+                    - text: Rs. 799.00 INR
+                  - generic [ref=e688]:
+                    - generic [ref=e689]: Regular price
+                    - text: Rs. 1,199.00 INR
+          - listitem [ref=e690]:
+            - generic [ref=e691]:
+              - link "MIDNIGHT RIDER Hoodie — Neo Tokyo" [ref=e692] [cursor=pointer]:
+                - /url: /products/midnight-rider-hoodie-neo-tokyo?variant=53765544608087
+                - generic [ref=e693]: MIDNIGHT RIDER Hoodie — Neo Tokyo
+              - generic [ref=e694] [cursor=pointer]:
+                - generic [ref=e695]:
+                  - link "MIDNIGHT RIDER Hoodie — Neo Tokyo" [ref=e696]:
+                    - /url: /products/midnight-rider-hoodie-neo-tokyo?variant=53765544608087
+                    - img "MIDNIGHT RIDER Hoodie — Neo Tokyo on model" [ref=e702]
+                  - generic [ref=e704]: Sold out
+                  - generic:
+                    - generic:
+                      - status
+                - link "MIDNIGHT RIDER Hoodie — Neo Tokyo" [ref=e705]:
+                  - /url: /products/midnight-rider-hoodie-neo-tokyo?variant=53765544608087
+                  - heading "MIDNIGHT RIDER Hoodie — Neo Tokyo" [level=3] [ref=e707]
+                - generic [ref=e710]:
+                  - generic [ref=e711]:
+                    - generic [ref=e712]: Sale price
+                    - text: Rs. 1,499.00 INR
+                  - generic [ref=e713]:
+                    - generic [ref=e714]: Regular price
+                    - text: Rs. 2,199.00 INR
+                - generic [ref=e717]:
+                  - generic [ref=e718]:
+                    - generic [ref=e719]: Sale price
+                    - text: Rs. 1,499.00 INR
+                  - generic [ref=e720]:
+                    - generic [ref=e721]: Regular price
+                    - text: Rs. 2,199.00 INR
+          - listitem [ref=e722]:
+            - generic [ref=e723]:
+              - link "NEKO GLITCH Hoodie — Cyber Cat" [ref=e724] [cursor=pointer]:
+                - /url: /products/neko-glitch-hoodie-cyber-cat?variant=53765541757271
+                - generic [ref=e725]: NEKO GLITCH Hoodie — Cyber Cat
+              - generic [ref=e726] [cursor=pointer]:
+                - generic [ref=e727]:
+                  - link "NEKO GLITCH Hoodie — Cyber Cat" [ref=e728]:
+                    - /url: /products/neko-glitch-hoodie-cyber-cat?variant=53765541757271
+                    - img "NEKO GLITCH Hoodie — Cyber Cat on model" [ref=e734]
+                  - generic [ref=e736]: Sale
+                  - generic:
+                    - generic:
+                      - status
+                      - button "Choose" [ref=e737]:
+                        - generic [ref=e738]:
+                          - generic:
+                            - img
+                          - generic [ref=e739]: Choose
+                - link "NEKO GLITCH Hoodie — Cyber Cat" [ref=e740]:
+                  - /url: /products/neko-glitch-hoodie-cyber-cat?variant=53765541757271
+                  - heading "NEKO GLITCH Hoodie — Cyber Cat" [level=3] [ref=e742]
+                - generic [ref=e745]:
+                  - generic [ref=e746]:
+                    - generic [ref=e747]: Sale price
+                    - text: Rs. 1,499.00 INR
+                  - generic [ref=e748]:
+                    - generic [ref=e749]: Regular price
+                    - text: Rs. 2,199.00 INR
+                - generic [ref=e752]:
+                  - generic [ref=e753]:
+                    - generic [ref=e754]: Sale price
+                    - text: Rs. 1,499.00 INR
+                  - generic [ref=e755]:
+                    - generic [ref=e756]: Regular price
+                    - text: Rs. 2,199.00 INR
+          - listitem [ref=e757]:
+            - generic [ref=e758]:
+              - link "NEON ONI Art Print — Alley King" [ref=e759] [cursor=pointer]:
+                - /url: /products/neon-oni-art-print-alley-king?variant=53761736573271
+                - generic [ref=e760]: NEON ONI Art Print — Alley King
+              - generic [ref=e761] [cursor=pointer]:
+                - generic [ref=e762]:
+                  - link "NEON ONI Art Print — Alley King" [ref=e763]:
+                    - /url: /products/neon-oni-art-print-alley-king?variant=53761736573271
+                    - img "Anime art print of oni samurai in neon Tokyo alley" [ref=e769]
+                  - generic [ref=e771]: Sale
+                  - generic:
+                    - generic:
+                      - status
+                      - button "Add" [ref=e772]:
+                        - generic [ref=e773]:
+                          - generic:
+                            - img
+                          - generic [ref=e774]: Add
+                        - generic [ref=e775]:
+                          - generic:
+                            - img
+                - link "NEON ONI Art Print — Alley King" [ref=e776]:
+                  - /url: /products/neon-oni-art-print-alley-king?variant=53761736573271
+                  - heading "NEON ONI Art Print — Alley King" [level=3] [ref=e778]
+                - generic [ref=e781]:
+                  - generic [ref=e782]:
+                    - generic [ref=e783]: Sale price
+                    - text: Rs. 449.00 INR
+                  - generic [ref=e784]:
+                    - generic [ref=e785]: Regular price
+                    - text: Rs. 699.00 INR
+                - generic [ref=e788]:
+                  - generic [ref=e789]:
+                    - generic [ref=e790]: Sale price
+                    - text: Rs. 449.00 INR
+                  - generic [ref=e791]:
+                    - generic [ref=e792]: Regular price
+                    - text: Rs. 699.00 INR
+          - listitem [ref=e793]:
+            - generic [ref=e794]:
+              - link "NEON YUREI Tee — Katana Girl" [ref=e795] [cursor=pointer]:
+                - /url: /products/neon-yurei-tee-katana-girl?variant=53761733919063
+                - generic [ref=e796]: NEON YUREI Tee — Katana Girl
+              - generic [ref=e797] [cursor=pointer]:
+                - generic [ref=e798]:
+                  - link "NEON YUREI Tee — Katana Girl" [ref=e799]:
+                    - /url: /products/neon-yurei-tee-katana-girl?variant=53761733919063
+                    - generic [ref=e802]:
+                      - img "NEON YUREI Tee worn by model — Katana Girl print, Oni Theory streetwear" [ref=e805]
+                      - img [ref=e808]
+                  - generic [ref=e810]: Sale
+                  - generic:
+                    - generic:
+                      - status
+                      - button "Choose" [ref=e811]:
+                        - generic [ref=e812]:
+                          - generic:
+                            - img
+                          - generic [ref=e813]: Choose
+                - link "NEON YUREI Tee — Katana Girl" [ref=e814]:
+                  - /url: /products/neon-yurei-tee-katana-girl?variant=53761733919063
+                  - heading "NEON YUREI Tee — Katana Girl" [level=3] [ref=e816]
+                - generic [ref=e819]:
+                  - generic [ref=e820]:
+                    - generic [ref=e821]: Sale price
+                    - text: Rs. 799.00 INR
+                  - generic [ref=e822]:
+                    - generic [ref=e823]: Regular price
+                    - text: Rs. 1,199.00 INR
+                - generic [ref=e826]:
+                  - generic [ref=e827]:
+                    - generic [ref=e828]: Sale price
+                    - text: Rs. 799.00 INR
+                  - generic [ref=e829]:
+                    - generic [ref=e830]: Regular price
+                    - text: Rs. 1,199.00 INR
+          - listitem [ref=e831]:
+            - generic [ref=e832]:
+              - link "ONI Beanie — Demon Knit" [ref=e833] [cursor=pointer]:
+                - /url: /products/oni-beanie-demon-knit?variant=53765561024855
+                - generic [ref=e834]: ONI Beanie — Demon Knit
+              - generic [ref=e835] [cursor=pointer]:
+                - generic [ref=e836]:
+                  - link "ONI Beanie — Demon Knit" [ref=e837]:
+                    - /url: /products/oni-beanie-demon-knit?variant=53765561024855
+                    - img "ONI Beanie — Demon Knit on model" [ref=e843]
+                  - generic [ref=e845]: Sold out
+                  - generic:
+                    - generic:
+                      - status
+                - link "ONI Beanie — Demon Knit" [ref=e846]:
+                  - /url: /products/oni-beanie-demon-knit?variant=53765561024855
+                  - heading "ONI Beanie — Demon Knit" [level=3] [ref=e848]
+                - generic [ref=e851]:
+                  - generic [ref=e852]:
+                    - generic [ref=e853]: Sale price
+                    - text: Rs. 549.00 INR
+                  - generic [ref=e854]:
+                    - generic [ref=e855]: Regular price
+                    - text: Rs. 799.00 INR
+                - generic [ref=e858]:
+                  - generic [ref=e859]:
+                    - generic [ref=e860]: Sale price
+                    - text: Rs. 549.00 INR
+                  - generic [ref=e861]:
+                    - generic [ref=e862]: Regular price
+                    - text: Rs. 799.00 INR
+          - listitem [ref=e863]:
+            - generic [ref=e864]:
+              - link "ONI MASK Keychain — Die-Cast" [ref=e865] [cursor=pointer]:
+                - /url: /products/oni-mask-keychain-die-cast?variant=53765564432727
+                - generic [ref=e866]: ONI MASK Keychain — Die-Cast
+              - generic [ref=e867] [cursor=pointer]:
+                - generic [ref=e868]:
+                  - link "ONI MASK Keychain — Die-Cast" [ref=e869]:
+                    - /url: /products/oni-mask-keychain-die-cast?variant=53765564432727
+                    - img "ONI MASK Keychain — die-cast metal with red enamel" [ref=e875]
+                  - generic [ref=e877]: Sold out
+                  - generic:
+                    - generic:
+                      - status
+                - link "ONI MASK Keychain — Die-Cast" [ref=e878]:
+                  - /url: /products/oni-mask-keychain-die-cast?variant=53765564432727
+                  - heading "ONI MASK Keychain — Die-Cast" [level=3] [ref=e880]
+                - generic [ref=e883]:
+                  - generic [ref=e884]:
+                    - generic [ref=e885]: Sale price
+                    - text: Rs. 349.00 INR
+                  - generic [ref=e886]:
+                    - generic [ref=e887]: Regular price
+                    - text: Rs. 499.00 INR
+                - generic [ref=e890]:
+                  - generic [ref=e891]:
+                    - generic [ref=e892]: Sale price
+                    - text: Rs. 349.00 INR
+                  - generic [ref=e893]:
+                    - generic [ref=e894]: Regular price
+                    - text: Rs. 499.00 INR
+          - listitem [ref=e895]:
+            - generic [ref=e896]:
+              - link "ONI MASK Tee — Bone" [ref=e897] [cursor=pointer]:
+                - /url: /products/oni-mask-tee-bone?variant=53761734574423
+                - generic [ref=e898]: ONI MASK Tee — Bone
+              - generic [ref=e899] [cursor=pointer]:
+                - generic [ref=e900]:
+                  - link "ONI MASK Tee — Bone" [ref=e901]:
+                    - /url: /products/oni-mask-tee-bone?variant=53761734574423
+                    - generic [ref=e904]:
+                      - img "ONI MASK Tee worn by model — Bone colourway, Oni Theory streetwear" [ref=e907]
+                      - img [ref=e910]
+                  - generic [ref=e912]: Sale
+                  - generic:
+                    - generic:
+                      - status
+                      - button "Choose" [ref=e913]:
+                        - generic [ref=e914]:
+                          - generic:
+                            - img
+                          - generic [ref=e915]: Choose
+                - link "ONI MASK Tee — Bone" [ref=e916]:
+                  - /url: /products/oni-mask-tee-bone?variant=53761734574423
+                  - heading "ONI MASK Tee — Bone" [level=3] [ref=e918]
+                - generic [ref=e921]:
+                  - generic [ref=e922]:
+                    - generic [ref=e923]: Sale price
+                    - text: Rs. 799.00 INR
+                  - generic [ref=e924]:
+                    - generic [ref=e925]: Regular price
+                    - text: Rs. 1,199.00 INR
+                - generic [ref=e928]:
+                  - generic [ref=e929]:
+                    - generic [ref=e930]: Sale price
+                    - text: Rs. 799.00 INR
+                  - generic [ref=e931]:
+                    - generic [ref=e932]: Regular price
+                    - text: Rs. 1,199.00 INR
+  - contentinfo [ref=e933]:
+    - generic [ref=e937]:
+      - generic [ref=e939]:
+        - heading "Oni Theory 鬼の理論" [level=2] [ref=e941]
+        - paragraph [ref=e943]: Anime streetwear forged after dark. Drop alerts, early access, zero spam.
+      - generic [ref=e946]:
+        - generic [ref=e947]: Email
+        - textbox "Email" [ref=e948]:
+          - /placeholder: Email address
+        - button "Sign up" [ref=e949]:
+          - img [ref=e950]
+    - generic [ref=e955]:
+      - generic [ref=e957]:
+        - text: © 2026
+        - link "Oni Theory" [ref=e958] [cursor=pointer]:
+          - /url: /
+        - text: ","
+        - link "Powered by Shopify" [ref=e959] [cursor=pointer]:
+          - /url: https://www.shopify.com?utm_campaign=poweredby&utm_medium=shopify&utm_source=onlinestore
+      - button "Terms and Policies" [ref=e961] [cursor=pointer]
+  - generic [ref=e962]:
+    - generic [ref=e963]: 鬼の理論
+    - generic [ref=e964]: ONI THEORY
+  - generic:
+    - generic: ⚡
+    - generic: Added to cart

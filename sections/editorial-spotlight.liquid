@@ -1,0 +1,439 @@
+{%- liquid
+  assign s = section.settings
+  assign valign = s.content_vertical
+  assign halign = s.text_alignment
+  assign is_split = false
+  if s.layout == 'split'
+    assign is_split = true
+  endif
+-%}
+
+<div class="section-background color-{{ s.color_scheme }}"></div>
+<div
+  class="
+    polly-editorial
+    section section--{{ s.section_width }}
+    color-{{ s.color_scheme }}
+    polly-editorial--{{ s.layout }}
+    polly-editorial--v-{{ valign }}
+    polly-editorial--media-{{ s.media_position }}
+    text-{{ halign }}
+  "
+  style="
+    {% render 'spacing-padding', settings: s %}
+    --polly-ed-minh: {{ s.min_height }}svh;
+    --polly-ed-scrim: {{ s.overlay_opacity | divided_by: 100.0 }};
+  "
+  data-testid="editorial-spotlight-{{ section.id }}"
+>
+  <div class="polly-editorial__media" data-polly-media>
+    {%- if s.image != blank -%}
+      <picture>
+        {%- if s.image_mobile != blank -%}
+          <source
+            media="(max-width: 749px)"
+            srcset="
+              {{ s.image_mobile | image_url: width: 750 }} 750w,
+              {{ s.image_mobile | image_url: width: 1100 }} 1100w
+            "
+            sizes="100vw"
+          >
+        {%- endif -%}
+        <img
+          src="{{ s.image | image_url: width: 1600 }}"
+          srcset="
+            {{ s.image | image_url: width: 800 }} 800w,
+            {{ s.image | image_url: width: 1200 }} 1200w,
+            {{ s.image | image_url: width: 1600 }} 1600w,
+            {{ s.image | image_url: width: 2400 }} 2400w,
+            {{ s.image | image_url: width: 3000 }} 3000w
+          "
+          sizes="100vw"
+          alt="{{ s.image.alt | escape }}"
+          width="{{ s.image.width }}"
+          height="{{ s.image.height }}"
+          loading="lazy"
+          class="polly-editorial__img{% if s.enable_zoom %} polly-kenburns{% endif %}"
+        >
+      </picture>
+    {%- else -%}
+      <div class="polly-editorial__img polly-editorial__placeholder" role="img" aria-label="Editorial image placeholder"></div>
+    {%- endif -%}
+    <div class="polly-editorial__scrim" aria-hidden="true"></div>
+  </div>
+
+  <div class="polly-editorial__content">
+    {%- if s.kicker != blank -%}
+      <p class="polly-editorial__kicker" data-polly-reveal data-polly-delay="100ms">
+        {{- s.kicker -}}
+      </p>
+    {%- endif -%}
+
+    {%- if s.heading != blank -%}
+      <h2 class="polly-editorial__heading" data-polly-words>{{ s.heading | escape }}</h2>
+    {%- endif -%}
+
+    {%- if s.text != blank -%}
+      <div class="polly-editorial__text" data-polly-reveal data-polly-delay="240ms">
+        {{ s.text }}
+      </div>
+    {%- endif -%}
+
+    {%- if s.button_label_1 != blank or s.button_label_2 != blank -%}
+      <div class="polly-editorial__actions" data-polly-reveal data-polly-delay="340ms">
+        {%- if s.button_label_1 != blank and s.button_link_1 != blank -%}
+          <a href="{{ s.button_link_1 }}" class="button">{{ s.button_label_1 }}</a>
+        {%- endif -%}
+        {%- if s.button_label_2 != blank and s.button_link_2 != blank -%}
+          <a href="{{ s.button_link_2 }}" class="button button-secondary">{{ s.button_label_2 }}</a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .polly-editorial {
+    position: relative;
+    min-height: var(--polly-ed-minh, 80svh);
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .polly-editorial__media {
+    position: relative;
+    z-index: 0;
+  }
+
+  .polly-editorial__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .polly-editorial__placeholder {
+    background-color: var(--color-background);
+    background-image:
+      radial-gradient(60% 80% at 22% 18%, rgb(var(--color-primary-rgb) / 0.35), transparent 70%),
+      radial-gradient(70% 90% at 86% 92%, rgb(var(--color-primary-rgb) / 0.18), transparent 70%),
+      linear-gradient(160deg, rgb(var(--color-foreground-rgb) / 0.14), rgb(var(--color-foreground-rgb) / 0) 55%);
+  }
+
+  .polly-editorial__scrim {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      to top,
+      rgb(0 0 0 / 0.75) 0%,
+      rgb(0 0 0 / 0.25) 45%,
+      rgb(0 0 0 / 0) 80%
+    );
+    opacity: var(--polly-ed-scrim, 0.4);
+  }
+
+  .polly-editorial__content {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.85rem, 1.6vw, 1.35rem);
+    max-width: 46rem;
+  }
+
+  .polly-editorial__kicker {
+    margin: 0;
+    font-family: var(--font-accent--family);
+    font-size: clamp(0.7rem, 1.3vw, 0.85rem);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: rgb(var(--color-primary-rgb) / 0.95);
+  }
+
+  .polly-editorial__heading {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-weight: var(--font-heading--weight);
+    font-size: clamp(2.5rem, 6.5vw, 5.5rem);
+    line-height: 0.98;
+    letter-spacing: 0.005em;
+    color: var(--color-foreground-heading);
+  }
+
+  .polly-editorial__text {
+    max-width: 38rem;
+    font-family: var(--font-body--family);
+    font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+    line-height: 1.55;
+    color: rgb(var(--color-foreground-rgb) / 0.85);
+  }
+
+  .polly-editorial__text > :first-child { margin-block-start: 0; }
+  .polly-editorial__text > :last-child { margin-block-end: 0; }
+
+  .polly-editorial__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-block-start: clamp(0.5rem, 1vw, 1rem);
+  }
+
+  /* Horizontal placement follows text alignment. */
+  .polly-editorial.text-left  .polly-editorial__content { margin-inline-end: auto; text-align: left; }
+  .polly-editorial.text-center .polly-editorial__content { margin-inline: auto; text-align: center; align-items: center; }
+  .polly-editorial.text-right .polly-editorial__content { margin-inline-start: auto; text-align: right; align-items: flex-end; }
+  .polly-editorial.text-center .polly-editorial__actions { justify-content: center; }
+  .polly-editorial.text-right .polly-editorial__actions { justify-content: flex-end; }
+
+  /* ── Overlay layout ── */
+  .polly-editorial--overlay {
+    display: flex;
+  }
+
+  .polly-editorial--overlay.polly-editorial--v-top { align-items: flex-start; }
+  .polly-editorial--overlay.polly-editorial--v-center { align-items: center; }
+  .polly-editorial--overlay.polly-editorial--v-bottom { align-items: flex-end; }
+
+  .polly-editorial--overlay .polly-editorial__media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .polly-editorial--overlay .polly-editorial__content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: clamp(2rem, 5vw, 5rem);
+    color: #fff;
+  }
+
+  .polly-editorial--overlay .polly-editorial__heading {
+    color: #fff;
+  }
+
+  .polly-editorial--overlay .polly-editorial__text {
+    color: rgb(255 255 255 / 0.88);
+  }
+
+  /* ── Split layout ── */
+  .polly-editorial--split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+  }
+
+  .polly-editorial--split .polly-editorial__scrim { display: none; }
+
+  .polly-editorial--split .polly-editorial__media {
+    min-height: var(--polly-ed-minh, 80svh);
+  }
+
+  .polly-editorial--split .polly-editorial__content {
+    justify-content: center;
+    padding: clamp(2rem, 5vw, 5rem);
+  }
+
+  /* Media on the right: swap visual order on desktop. */
+  .polly-editorial--split.polly-editorial--media-right .polly-editorial__media { order: 2; }
+
+  @media screen and (max-width: 749px) {
+    .polly-editorial--split {
+      grid-template-columns: 1fr;
+    }
+
+    .polly-editorial--split .polly-editorial__media {
+      min-height: 60svh;
+    }
+
+    /* Keep media first on mobile regardless of desktop order. */
+    .polly-editorial--split.polly-editorial--media-right .polly-editorial__media { order: 0; }
+
+    .polly-editorial--overlay .polly-editorial__content {
+      padding: clamp(1.5rem, 8vw, 2.5rem);
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Editorial spotlight",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        { "value": "overlay", "label": "Text over image" },
+        { "value": "split", "label": "Image beside text" }
+      ],
+      "default": "overlay"
+    },
+    {
+      "type": "select",
+      "id": "media_position",
+      "label": "Image position (split layout)",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "content_vertical",
+      "label": "Content vertical position (overlay)",
+      "options": [
+        { "value": "top", "label": "Top" },
+        { "value": "center", "label": "Middle" },
+        { "value": "bottom", "label": "Bottom" }
+      ],
+      "default": "bottom"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section width",
+      "options": [
+        { "value": "full-width", "label": "Full width" },
+        { "value": "page-width", "label": "Page width" }
+      ],
+      "default": "full-width"
+    },
+    {
+      "type": "range",
+      "id": "min_height",
+      "label": "Minimum height",
+      "min": 40,
+      "max": 100,
+      "step": 5,
+      "unit": "svh",
+      "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile image (optional)"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_zoom",
+      "label": "Slow zoom (Ken Burns)",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Image darkening (overlay layout)",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Eyebrow",
+      "default": "The Edit"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Made to be seen"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>A new chapter of statement pieces, shot after dark. Limited runs, built to turn heads.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label_1",
+      "label": "Primary button label",
+      "default": "Shop the edit"
+    },
+    {
+      "type": "url",
+      "id": "button_link_1",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "button_label_2",
+      "label": "Secondary button label"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "Secondary button link"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top_padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom_padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Editorial spotlight",
+      "category": "t:categories.banners"
+    }
+  ]
+}
+{% endschema %}

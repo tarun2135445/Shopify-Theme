@@ -537,6 +537,30 @@
         "padding-block-end": 64
       }
     },
+    "editorial_spotlight": {
+      "type": "editorial-spotlight",
+      "name": "Editorial spotlight",
+      "settings": {
+        "layout": "overlay",
+        "media_position": "left",
+        "content_vertical": "bottom",
+        "text_alignment": "left",
+        "section_width": "full-width",
+        "min_height": 85,
+        "enable_zoom": true,
+        "overlay_opacity": 45,
+        "color_scheme": "scheme-4",
+        "kicker": "鬼 The Edit",
+        "heading": "Forged after dark",
+        "text": "<p>Statement streetwear shot in the neon back-alleys of midnight Tokyo. Limited runs, heavyweight builds — gone before sunrise.</p>",
+        "button_label_1": "Shop the drop",
+        "button_link_1": "shopify://collections/theory-001",
+        "button_label_2": "Explore hoodies",
+        "button_link_2": "shopify://collections/hoodies",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
     "join_horde": {
       "type": "section",
       "blocks": {
@@ -733,6 +757,7 @@
     "collection_links",
     "hoodies_list",
     "tees_list",
+    "editorial_spotlight",
     "join_horde",
     "marquee_bottom"
   ]

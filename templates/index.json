@@ -39,7 +39,7 @@
         "marquee_text_2": {
           "type": "text",
           "settings": {
-            "text": "<p>◆ Free shipping over ₹2,999 ◆</p>",
+            "text": "<p>◆ Free shipping over ₹1,499 ◆</p>",
             "type_preset": "custom",
             "font": "var(--font-accent--family)",
             "font_size": "var(--font-size--h4)",

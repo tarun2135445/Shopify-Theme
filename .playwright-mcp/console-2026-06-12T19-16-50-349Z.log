@@ -1,0 +1,11 @@
+[    1002ms] [WARNING] Did not find element expected to be parsed from: <link rel=expect href="#MainContent"> @ https://cdn.shopify.com/storefront/web-components/account.js:0
+[    1828ms] [VERBOSE] Rendering was performed in a subtree hidden by content-visibility. @ :3180
+[    1939ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://onitheory.com/favicon.ico:0
+[    3101ms] [VERBOSE] Rendering was performed in a subtree hidden by content-visibility. @ https://cdn.shopify.com/shopifycloud/shop-js/modules/v2/chunk.colors_D3qBuvXW.esm.js:0
+[    3117ms] [VERBOSE] Rendering was performed in a subtree hidden by content-visibility. @ https://cdn.shopify.com/shopifycloud/shop-js/modules/v2/chunk.index_D8YUHN8e.esm.js:0
+[    3652ms] [VERBOSE] Rendering was performed in a subtree hidden by content-visibility. @ https://cdn.shopify.com/shopifycloud/shop-js/modules/v2/chunk.index_D8YUHN8e.esm.js:0
+[    6970ms] [WARNING] The resource https://shop.app/pay/assets/sprite.svg was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://shop.app/accounts/pre_auth?client_id=6cd1ae6d-123b-4eae-97c4-aed074991f82&analytics_trace_id=dd8e0a8b-f2c6-4f2a-aa3a-8dfbcb7b5074&flow=embed&flow_version=account_menu&target_origin=https%3A%2F%2Fonitheory.com&storefront_domain=https%3A%2F%2Fonitheory.com&scope=openid+email%3Averified+pay%3Asession_token+profile+shop%3Aaccount_uuid&locale=en:0
+[    8615ms] [VERBOSE] Rendering was performed in a subtree hidden by content-visibility. @ :3180
+[    9623ms] [WARNING] The resource https://onitheory.com/cdn/shop/t/2/assets/overflow-list.css?v=16727044177065489451781116980 was preloaded using link preload in Early Hints but not used within a few seconds from the window's load event. @ https://onitheory.com/collections/all?cb=fresh1:0
+[    9623ms] [WARNING] The resource https://onitheory.com/cdn/shop/t/2/assets/base.css?v=110558660533795380521781116980 was preloaded using link preload in Early Hints but not used within a few seconds from the window's load event. @ https://onitheory.com/collections/all?cb=fresh1:0
+[   19196ms] [VERBOSE] Rendering was performed in a subtree hidden by content-visibility. @ :3180

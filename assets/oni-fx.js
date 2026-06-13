@@ -608,6 +608,9 @@
     var els = document.querySelectorAll('[data-oni-count]');
     if (!els.length) return;
 
+    /* Respect reduced motion: leave the server-rendered target number in place. */
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;

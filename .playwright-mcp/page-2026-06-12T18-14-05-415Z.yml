@@ -1,0 +1,259 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#MainContent"
+  - generic [ref=e3]:
+    - complementary [ref=e6]:
+      - paragraph [ref=e10]: ⛩ Free shipping over ₹2,999 — new drops every full moon 🌕
+    - banner [ref=e11]:
+      - generic [ref=e15]:
+        - generic [ref=e16]:
+          - link "Oni Theory" [ref=e17] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e18]: Oni Theory
+          - navigation "Primary" [ref=e21]:
+            - list [ref=e23]:
+              - generic:
+                - link "Home" [ref=e24] [cursor=pointer]:
+                  - /url: /
+                  - generic [ref=e25]: Home
+                - link "Hoodies" [ref=e26] [cursor=pointer]:
+                  - /url: /collections/hoodies
+                  - generic [ref=e27]: Hoodies
+                - link "T-Shirts" [ref=e28] [cursor=pointer]:
+                  - /url: /collections/t-shirts
+                  - generic [ref=e29]: T-Shirts
+                - link "Accessories" [ref=e30] [cursor=pointer]:
+                  - /url: /collections/accessories
+                  - generic [ref=e31]: Accessories
+                - link "Theory 001" [ref=e32] [cursor=pointer]:
+                  - /url: /collections/theory-001
+                  - generic [ref=e33]: Theory 001
+        - generic [ref=e34]:
+          - button "Search" [ref=e36] [cursor=pointer]:
+            - generic:
+              - img
+          - generic [ref=e37]:
+            - button "Account" [ref=e42] [cursor=pointer]:
+              - img [ref=e44]
+            - generic [ref=e46]:
+              - button "Cart" [ref=e47] [cursor=pointer]:
+                - generic [ref=e48]:
+                  - generic:
+                    - img
+                  - generic [ref=e52]: "2"
+              - text: Rs. 3,999.00 INR Rs. 3,799.00 INR Rs. 7,798.00 INR
+            - status [ref=e53]
+  - main [ref=e54]:
+    - generic [ref=e55]:
+      - region "Quick add to cart bar" [ref=e56]:
+        - img "Model wearing SHADOW MONARCH hoodie, back view" [ref=e58]
+        - generic [ref=e59]:
+          - paragraph [ref=e60]: SHADOW MONARCH Hoodie — Ashborn
+          - generic [ref=e61]: S
+        - generic [ref=e64]: Rs. 3,799.00 INR
+        - button "Add to cart" [ref=e65] [cursor=pointer]:
+          - generic [ref=e66]:
+            - generic:
+              - img
+            - generic [ref=e67]: Add to cart
+          - generic [ref=e68]:
+            - generic:
+              - img
+      - generic [ref=e70]:
+        - link "Skip to product information" [ref=e71] [cursor=pointer]:
+          - /url: "#ProductInformation-template--30109739254103__main"
+        - generic [ref=e72]:
+          - list [ref=e75]:
+            - listitem [ref=e76]:
+              - button "Zoom media 1" [ref=e77]
+              - img "Model wearing SHADOW MONARCH hoodie, back view" [ref=e79]
+            - listitem [ref=e80]:
+              - button "Zoom media 2" [ref=e81]
+              - img "SHADOW MONARCH back print design" [ref=e83]
+          - generic [ref=e86]:
+            - generic [ref=e88]:
+              - heading "SHADOW MONARCH Hoodie — Ashborn" [level=1] [ref=e90]
+              - generic [ref=e93]: Rs. 3,799.00 INR
+            - group "Size" [ref=e98]:
+              - generic [ref=e99]: Size
+              - generic [ref=e100] [cursor=pointer]:
+                - radio "S" [checked] [ref=e101]
+                - generic: S
+              - generic [ref=e102] [cursor=pointer]:
+                - radio "M" [ref=e103]
+                - generic: M
+              - generic [ref=e104] [cursor=pointer]:
+                - radio "L" [ref=e105]
+                - generic: L
+              - generic [ref=e106] [cursor=pointer]:
+                - radio "XL" [ref=e107]
+                - generic: XL
+              - generic [ref=e108] [cursor=pointer]:
+                - radio "XXL" [ref=e109]
+                - generic: XXL
+            - generic [ref=e111]:
+              - status [ref=e112]
+              - generic [ref=e114]:
+                - generic [ref=e116]:
+                  - button "Decrease quantity" [disabled] [ref=e117] [cursor=pointer]:
+                    - generic [ref=e118]: Decrease quantity
+                    - generic:
+                      - img
+                  - spinbutton "Quantity" [ref=e119]: "1"
+                  - button "Increase quantity" [ref=e120] [cursor=pointer]:
+                    - generic [ref=e121]: Increase quantity
+                    - generic:
+                      - img
+                - button "Add to cart" [ref=e124] [cursor=pointer]:
+                  - generic [ref=e125]:
+                    - generic:
+                      - img
+                    - generic [ref=e127]: Add to cart
+                  - generic [ref=e128]:
+                    - generic:
+                      - img
+                - button "Buy it now" [ref=e133] [cursor=pointer]
+            - generic [ref=e134]:
+              - paragraph [ref=e135]:
+                - text: Rise from the shadows. The
+                - strong [ref=e136]: SHADOW MONARCH
+                - text: hoodie carries the crowned sovereign of the dead across its back — a heavyweight black pullover built for the streets of Midnight Kabukichō.
+              - list [ref=e137]:
+                - listitem [ref=e138]: Oversized streetwear fit
+                - listitem [ref=e139]: Brushed fleece interior
+                - listitem [ref=e140]: Premium back print that holds detail wash after wash
+    - generic [ref=e144]:
+      - heading "You may also like" [level=3] [ref=e147]
+      - generic [ref=e148]:
+        - generic [ref=e150]:
+          - link "SHOGUN Hoodie — Iron Crest" [ref=e151] [cursor=pointer]:
+            - /url: /products/shogun-hoodie-iron-crest?variant=53765544247639
+            - generic [ref=e152]: SHOGUN Hoodie — Iron Crest
+          - generic [ref=e153] [cursor=pointer]:
+            - generic [ref=e154]:
+              - link "SHOGUN Hoodie — Iron Crest" [ref=e155]:
+                - /url: /products/shogun-hoodie-iron-crest?variant=53765544247639
+                - img "SHOGUN Hoodie — Iron Crest on model" [ref=e161]
+              - generic [ref=e163]: Sale
+              - generic:
+                - generic:
+                  - status
+                  - button "Choose" [ref=e164]:
+                    - generic [ref=e165]:
+                      - generic:
+                        - img
+                      - generic [ref=e166]: Choose
+            - link "SHOGUN Hoodie — Iron Crest" [ref=e167]:
+              - /url: /products/shogun-hoodie-iron-crest?variant=53765544247639
+              - heading "SHOGUN Hoodie — Iron Crest" [level=3] [ref=e169]
+            - generic [ref=e172]:
+              - generic [ref=e173]:
+                - generic [ref=e174]: Sale price
+                - text: Rs. 1,499.00 INR
+              - generic [ref=e175]:
+                - generic [ref=e176]: Regular price
+                - text: Rs. 2,199.00 INR
+        - generic [ref=e178]:
+          - link "GLITCH RONIN Hoodie — Static" [ref=e179] [cursor=pointer]:
+            - /url: /products/glitch-ronin-hoodie-static?variant=53761731264855
+            - generic [ref=e180]: GLITCH RONIN Hoodie — Static
+          - generic [ref=e181] [cursor=pointer]:
+            - generic [ref=e182]:
+              - link "GLITCH RONIN Hoodie — Static" [ref=e183]:
+                - /url: /products/glitch-ronin-hoodie-static?variant=53761731264855
+                - generic [ref=e186]:
+                  - img "GLITCH RONIN Hoodie worn by model — Static print, Oni Theory streetwear" [ref=e189]
+                  - img [ref=e192]
+              - generic [ref=e194]: Sale
+              - generic:
+                - generic:
+                  - status
+                  - button "Choose" [ref=e195]:
+                    - generic [ref=e196]:
+                      - generic:
+                        - img
+                      - generic [ref=e197]: Choose
+            - link "GLITCH RONIN Hoodie — Static" [ref=e198]:
+              - /url: /products/glitch-ronin-hoodie-static?variant=53761731264855
+              - heading "GLITCH RONIN Hoodie — Static" [level=3] [ref=e200]
+            - generic [ref=e203]:
+              - generic [ref=e204]:
+                - generic [ref=e205]: Sale price
+                - text: Rs. 1,499.00 INR
+              - generic [ref=e206]:
+                - generic [ref=e207]: Regular price
+                - text: Rs. 2,199.00 INR
+        - generic [ref=e209]:
+          - link "ARISE Hoodie — Shadow Hunter" [ref=e210] [cursor=pointer]:
+            - /url: /products/arise-hoodie-shadow-hunter?variant=53772259361111
+            - generic [ref=e211]: ARISE Hoodie — Shadow Hunter
+          - generic [ref=e212] [cursor=pointer]:
+            - generic [ref=e213]:
+              - link "ARISE Hoodie — Shadow Hunter" [ref=e214]:
+                - /url: /products/arise-hoodie-shadow-hunter?variant=53772259361111
+                - generic [ref=e217]:
+                  - img "Model wearing ARISE hoodie, back view" [ref=e220]
+                  - img [ref=e223]
+              - generic:
+                - generic:
+                  - status
+                  - button "Choose" [ref=e224]:
+                    - generic [ref=e225]:
+                      - generic:
+                        - img
+                      - generic [ref=e226]: Choose
+            - link "ARISE Hoodie — Shadow Hunter" [ref=e227]:
+              - /url: /products/arise-hoodie-shadow-hunter?variant=53772259361111
+              - heading "ARISE Hoodie — Shadow Hunter" [level=3] [ref=e229]
+            - generic [ref=e232]: Rs. 3,799.00 INR
+        - generic [ref=e234]:
+          - link "NEKO GLITCH Hoodie — Cyber Cat" [ref=e235] [cursor=pointer]:
+            - /url: /products/neko-glitch-hoodie-cyber-cat?variant=53765541757271
+            - generic [ref=e236]: NEKO GLITCH Hoodie — Cyber Cat
+          - generic [ref=e237] [cursor=pointer]:
+            - generic [ref=e238]:
+              - link "NEKO GLITCH Hoodie — Cyber Cat" [ref=e239]:
+                - /url: /products/neko-glitch-hoodie-cyber-cat?variant=53765541757271
+                - img "NEKO GLITCH Hoodie — Cyber Cat on model" [ref=e245]
+              - generic [ref=e247]: Sale
+              - generic:
+                - generic:
+                  - status
+                  - button "Choose" [ref=e248]:
+                    - generic [ref=e249]:
+                      - generic:
+                        - img
+                      - generic [ref=e250]: Choose
+            - link "NEKO GLITCH Hoodie — Cyber Cat" [ref=e251]:
+              - /url: /products/neko-glitch-hoodie-cyber-cat?variant=53765541757271
+              - heading "NEKO GLITCH Hoodie — Cyber Cat" [level=3] [ref=e253]
+            - generic [ref=e256]:
+              - generic [ref=e257]:
+                - generic [ref=e258]: Sale price
+                - text: Rs. 1,499.00 INR
+              - generic [ref=e259]:
+                - generic [ref=e260]: Regular price
+                - text: Rs. 2,199.00 INR
+  - contentinfo [ref=e261]:
+    - generic [ref=e265]:
+      - generic [ref=e267]:
+        - heading "Oni Theory 鬼の理論" [level=2] [ref=e269]
+        - paragraph [ref=e271]: Anime streetwear forged after dark. Drop alerts, early access, zero spam.
+      - generic [ref=e274]:
+        - generic [ref=e275]: Email
+        - textbox "Email" [ref=e276]:
+          - /placeholder: Email address
+        - button "Sign up" [ref=e277]:
+          - img [ref=e278]
+    - generic [ref=e283]:
+      - generic [ref=e285]:
+        - text: © 2026
+        - link "Oni Theory" [ref=e286] [cursor=pointer]:
+          - /url: /
+        - text: ","
+        - link "Powered by Shopify" [ref=e287] [cursor=pointer]:
+          - /url: https://www.shopify.com?utm_campaign=poweredby&utm_medium=shopify&utm_source=onlinestore
+      - button "Terms and Policies" [ref=e289] [cursor=pointer]
+  - generic:
+    - generic: ⚡
+    - generic: Added to cart

@@ -22,7 +22,7 @@
     {% endif %}
 
     <h1 class="oni-hero__title" data-text="{{ section.settings.heading | escape }}">
-      {{ section.settings.heading }}
+      {{ section.settings.heading | escape }}
     </h1>
 
     {% if section.settings.subheading != blank %}
@@ -30,13 +30,13 @@
     {% endif %}
 
     <div class="oni-hero__actions">
-      {% if section.settings.button_label_1 != blank %}
-        <a href="{{ section.settings.button_link_1 | default: '#' }}" class="button">
+      {% if section.settings.button_label_1 != blank and section.settings.button_link_1 != blank %}
+        <a href="{{ section.settings.button_link_1 }}" class="button">
           {{- section.settings.button_label_1 -}}
         </a>
       {% endif %}
-      {% if section.settings.button_label_2 != blank %}
-        <a href="{{ section.settings.button_link_2 | default: '#' }}" class="button button-secondary">
+      {% if section.settings.button_label_2 != blank and section.settings.button_link_2 != blank %}
+        <a href="{{ section.settings.button_link_2 }}" class="button button-secondary">
           {{- section.settings.button_label_2 -}}
         </a>
       {% endif %}

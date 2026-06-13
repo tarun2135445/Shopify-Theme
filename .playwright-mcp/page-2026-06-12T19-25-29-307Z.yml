@@ -1,0 +1,256 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#MainContent"
+  - generic [ref=e3]:
+    - complementary [ref=e6]:
+      - paragraph [ref=e10]: ⛩ Free shipping over ₹2,999 — new drops every full moon 🌕
+    - banner [ref=e11]:
+      - generic [ref=e15]:
+        - generic [ref=e16]:
+          - link "Oni Theory" [ref=e17] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e18]: Oni Theory
+          - navigation "Primary" [ref=e21]:
+            - list [ref=e23]:
+              - generic:
+                - link "Home" [ref=e24] [cursor=pointer]:
+                  - /url: /
+                  - generic [ref=e25]: Home
+                - link "Hoodies" [ref=e26] [cursor=pointer]:
+                  - /url: /collections/hoodies
+                  - generic [ref=e27]: Hoodies
+                - link "T-Shirts" [ref=e28] [cursor=pointer]:
+                  - /url: /collections/t-shirts
+                  - generic [ref=e29]: T-Shirts
+                - link "Accessories" [ref=e30] [cursor=pointer]:
+                  - /url: /collections/accessories
+                  - generic [ref=e31]: Accessories
+                - link "Theory 001" [ref=e32] [cursor=pointer]:
+                  - /url: /collections/theory-001
+                  - generic [ref=e33]: Theory 001
+        - generic [ref=e34]:
+          - button "Search" [ref=e36] [cursor=pointer]:
+            - generic:
+              - img
+          - generic [ref=e37]:
+            - button "Account" [ref=e42] [cursor=pointer]:
+              - img [ref=e44]
+            - generic [ref=e46]:
+              - button "Cart" [ref=e47] [cursor=pointer]:
+                - generic [ref=e48]:
+                  - generic:
+                    - img
+                  - generic [ref=e52]: "2"
+              - text: Rs. 3,999.00 INR Rs. 3,799.00 INR Rs. 7,798.00 INR
+            - status [ref=e53]
+  - main [ref=e54]:
+    - generic [ref=e57]:
+      - link "Skip to product information" [ref=e58] [cursor=pointer]:
+        - /url: "#ProductInformation-template--30109739254103__main"
+      - generic [ref=e59]:
+        - list [ref=e62]:
+          - listitem [ref=e63]:
+            - button "Zoom media 1" [ref=e64]
+            - img "Model wearing ARISE hoodie, back view" [ref=e66]
+          - listitem [ref=e67]:
+            - button "Zoom media 2" [ref=e68]
+            - img "ARISE back print design" [ref=e70]
+        - generic [ref=e73]:
+          - generic [ref=e75]:
+            - heading "ARISE Hoodie — Shadow Hunter" [level=1] [ref=e77]
+            - generic [ref=e80]:
+              - generic [ref=e81]:
+                - generic [ref=e82]: Sale price
+                - text: Rs. 1,499.00 INR
+              - generic [ref=e83]:
+                - generic [ref=e84]: Regular price
+                - text: Rs. 3,799.00 INR
+          - group "Size" [ref=e89]:
+            - generic [ref=e90]: Size
+            - generic [ref=e91] [cursor=pointer]:
+              - radio "S - Sold out" [checked] [disabled] [ref=e92]
+              - generic: S
+              - img
+            - generic [ref=e93] [cursor=pointer]:
+              - radio "M - Sold out" [disabled] [ref=e94]
+              - generic: M
+              - img
+            - generic [ref=e95] [cursor=pointer]:
+              - radio "L - Sold out" [disabled] [ref=e96]
+              - generic: L
+              - img
+            - generic [ref=e97] [cursor=pointer]:
+              - radio "XL - Sold out" [disabled] [ref=e98]
+              - generic: XL
+              - img
+            - generic [ref=e99] [cursor=pointer]:
+              - radio "XXL - Sold out" [disabled] [ref=e100]
+              - generic: XXL
+              - img
+          - generic [ref=e102]:
+            - status [ref=e103]
+            - generic [ref=e105]:
+              - generic [ref=e107]:
+                - button "Decrease quantity" [disabled] [ref=e108] [cursor=pointer]:
+                  - generic [ref=e109]: Decrease quantity
+                  - generic:
+                    - img
+                - spinbutton "Quantity" [disabled] [ref=e110]: "1"
+                - button "Increase quantity" [ref=e111] [cursor=pointer]:
+                  - generic [ref=e112]: Increase quantity
+                  - generic:
+                    - img
+              - button "Unavailable" [disabled] [ref=e115]:
+                - generic [ref=e118]: Unavailable
+                - generic [ref=e119]:
+                  - generic:
+                    - img
+          - generic [ref=e120]:
+            - paragraph [ref=e121]:
+              - text: Arise. The
+              - strong [ref=e122]: ARISE
+              - text: hoodie channels the lone hunter — blade-sharp anime artwork rendered in glacial blues across the back of a heavyweight black pullover. Built for cold nights and longer grinds.
+            - list [ref=e123]:
+              - listitem [ref=e124]: Oversized streetwear fit
+              - listitem [ref=e125]: Brushed fleece interior
+              - listitem [ref=e126]: Premium back print that holds detail wash after wash
+    - generic [ref=e130]:
+      - heading "You may also like" [level=3] [ref=e133]
+      - generic [ref=e134]:
+        - generic [ref=e136]:
+          - link "SHOGUN Hoodie — Iron Crest" [ref=e137] [cursor=pointer]:
+            - /url: /products/shogun-hoodie-iron-crest?variant=53765544247639
+            - generic [ref=e138]: SHOGUN Hoodie — Iron Crest
+          - generic [ref=e139] [cursor=pointer]:
+            - generic [ref=e140]:
+              - link "SHOGUN Hoodie — Iron Crest" [ref=e141]:
+                - /url: /products/shogun-hoodie-iron-crest?variant=53765544247639
+                - img "SHOGUN Hoodie — Iron Crest on model" [ref=e147]
+              - generic [ref=e149]: Sale
+              - generic:
+                - generic:
+                  - status
+                  - button "Choose" [ref=e150]:
+                    - generic [ref=e151]:
+                      - generic:
+                        - img
+                      - generic [ref=e152]: Choose
+            - link "SHOGUN Hoodie — Iron Crest" [ref=e153]:
+              - /url: /products/shogun-hoodie-iron-crest?variant=53765544247639
+              - heading "SHOGUN Hoodie — Iron Crest" [level=3] [ref=e155]
+            - generic [ref=e158]:
+              - generic [ref=e159]:
+                - generic [ref=e160]: Sale price
+                - text: Rs. 1,499.00 INR
+              - generic [ref=e161]:
+                - generic [ref=e162]: Regular price
+                - text: Rs. 2,199.00 INR
+        - generic [ref=e164]:
+          - link "GLITCH RONIN Hoodie — Static" [ref=e165] [cursor=pointer]:
+            - /url: /products/glitch-ronin-hoodie-static?variant=53761731264855
+            - generic [ref=e166]: GLITCH RONIN Hoodie — Static
+          - generic [ref=e167] [cursor=pointer]:
+            - generic [ref=e168]:
+              - link "GLITCH RONIN Hoodie — Static" [ref=e169]:
+                - /url: /products/glitch-ronin-hoodie-static?variant=53761731264855
+                - generic [ref=e172]:
+                  - img "GLITCH RONIN Hoodie worn by model — Static print, Oni Theory streetwear" [ref=e175]
+                  - img [ref=e178]
+              - generic [ref=e180]: Sale
+              - generic:
+                - generic:
+                  - status
+                  - button "Choose" [ref=e181]:
+                    - generic [ref=e182]:
+                      - generic:
+                        - img
+                      - generic [ref=e183]: Choose
+            - link "GLITCH RONIN Hoodie — Static" [ref=e184]:
+              - /url: /products/glitch-ronin-hoodie-static?variant=53761731264855
+              - heading "GLITCH RONIN Hoodie — Static" [level=3] [ref=e186]
+            - generic [ref=e189]:
+              - generic [ref=e190]:
+                - generic [ref=e191]: Sale price
+                - text: Rs. 1,499.00 INR
+              - generic [ref=e192]:
+                - generic [ref=e193]: Regular price
+                - text: Rs. 2,199.00 INR
+        - generic [ref=e195]:
+          - link "NEKO GLITCH Hoodie — Cyber Cat" [ref=e196] [cursor=pointer]:
+            - /url: /products/neko-glitch-hoodie-cyber-cat?variant=53765541757271
+            - generic [ref=e197]: NEKO GLITCH Hoodie — Cyber Cat
+          - generic [ref=e198] [cursor=pointer]:
+            - generic [ref=e199]:
+              - link "NEKO GLITCH Hoodie — Cyber Cat" [ref=e200]:
+                - /url: /products/neko-glitch-hoodie-cyber-cat?variant=53765541757271
+                - img "NEKO GLITCH Hoodie — Cyber Cat on model" [ref=e206]
+              - generic [ref=e208]: Sale
+              - generic:
+                - generic:
+                  - status
+                  - button "Choose" [ref=e209]:
+                    - generic [ref=e210]:
+                      - generic:
+                        - img
+                      - generic [ref=e211]: Choose
+            - link "NEKO GLITCH Hoodie — Cyber Cat" [ref=e212]:
+              - /url: /products/neko-glitch-hoodie-cyber-cat?variant=53765541757271
+              - heading "NEKO GLITCH Hoodie — Cyber Cat" [level=3] [ref=e214]
+            - generic [ref=e217]:
+              - generic [ref=e218]:
+                - generic [ref=e219]: Sale price
+                - text: Rs. 1,499.00 INR
+              - generic [ref=e220]:
+                - generic [ref=e221]: Regular price
+                - text: Rs. 2,199.00 INR
+        - generic [ref=e223]:
+          - link "RAIJIN Hoodie — Thunder God" [ref=e224] [cursor=pointer]:
+            - /url: /products/raijin-hoodie-thunder-god?variant=53765540282711
+            - generic [ref=e225]: RAIJIN Hoodie — Thunder God
+          - generic [ref=e226] [cursor=pointer]:
+            - generic [ref=e227]:
+              - link "RAIJIN Hoodie — Thunder God" [ref=e228]:
+                - /url: /products/raijin-hoodie-thunder-god?variant=53765540282711
+                - img "RAIJIN Hoodie — Thunder God on model" [ref=e234]
+              - generic [ref=e236]: Sale
+              - generic:
+                - generic:
+                  - status
+                  - button "Choose" [ref=e237]:
+                    - generic [ref=e238]:
+                      - generic:
+                        - img
+                      - generic [ref=e239]: Choose
+            - link "RAIJIN Hoodie — Thunder God" [ref=e240]:
+              - /url: /products/raijin-hoodie-thunder-god?variant=53765540282711
+              - heading "RAIJIN Hoodie — Thunder God" [level=3] [ref=e242]
+            - generic [ref=e245]:
+              - generic [ref=e246]:
+                - generic [ref=e247]: Sale price
+                - text: Rs. 1,499.00 INR
+              - generic [ref=e248]:
+                - generic [ref=e249]: Regular price
+                - text: Rs. 2,199.00 INR
+  - contentinfo [ref=e250]:
+    - generic [ref=e254]:
+      - generic [ref=e256]:
+        - heading "Oni Theory 鬼の理論" [level=2] [ref=e258]
+        - paragraph [ref=e260]: Anime streetwear forged after dark. Drop alerts, early access, zero spam.
+      - generic [ref=e263]:
+        - generic [ref=e264]: Email
+        - textbox "Email" [ref=e265]:
+          - /placeholder: Email address
+        - button "Sign up" [ref=e266]:
+          - img [ref=e267]
+    - generic [ref=e272]:
+      - generic [ref=e274]:
+        - text: © 2026
+        - link "Oni Theory" [ref=e275] [cursor=pointer]:
+          - /url: /
+        - text: ","
+        - link "Powered by Shopify" [ref=e276] [cursor=pointer]:
+          - /url: https://www.shopify.com?utm_campaign=poweredby&utm_medium=shopify&utm_source=onlinestore
+      - button "Terms and Policies" [ref=e278] [cursor=pointer]
+  - generic:
+    - generic: ⚡
+    - generic: Added to cart

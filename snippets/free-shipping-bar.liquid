@@ -1,0 +1,74 @@
+{%- doc -%}
+  Free-shipping progress bar for the cart drawer and cart page.
+
+  Shows how much more the customer needs to spend to unlock free shipping, with a
+  progress bar, or a success message once the threshold is reached. Re-renders with
+  the cart summary on every cart change (no JS required).
+
+  IMPORTANT: `threshold` is in the store's currency subunit (paise for INR).
+  ₹1,499 = 149900. Keep this in sync with the real free-shipping rate configured in
+  Shopify → Settings → Shipping and delivery.
+{%- enddoc -%}
+
+{%- liquid
+  assign threshold = 149900
+  assign current = cart.total_price
+-%}
+
+{%- if cart.item_count > 0 and threshold > 0 -%}
+  {%- liquid
+    assign remaining = threshold | minus: current
+    assign percent = current | times: 100.0 | divided_by: threshold
+    if percent > 100
+      assign percent = 100
+    endif
+  -%}
+  <div class="free-shipping-bar{% if remaining <= 0 %} free-shipping-bar--unlocked{% endif %}">
+    <p class="free-shipping-bar__message">
+      {%- if remaining > 0 -%}
+        🚚 Add <strong>{{ remaining | money }}</strong> more for <strong>FREE shipping</strong>
+      {%- else -%}
+        🎉 <strong>You've unlocked FREE shipping!</strong>
+      {%- endif -%}
+    </p>
+    <div class="free-shipping-bar__track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ percent | round }}">
+      <div class="free-shipping-bar__fill" style="width: {{ percent }}%;"></div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% stylesheet %}
+  .free-shipping-bar {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-2xs);
+    margin-block-end: var(--margin-md);
+  }
+
+  .free-shipping-bar__message {
+    margin: 0;
+    font-size: var(--font-size--sm);
+    color: var(--color-foreground);
+    text-align: center;
+  }
+
+  .free-shipping-bar__track {
+    width: 100%;
+    height: 6px;
+    border-radius: 999px;
+    background-color: rgb(var(--color-foreground-rgb) / 0.12);
+    overflow: hidden;
+  }
+
+  .free-shipping-bar__fill {
+    height: 100%;
+    border-radius: 999px;
+    background-color: var(--color-foreground);
+    transition: width var(--animation-speed, 0.2s) ease;
+  }
+
+  .free-shipping-bar--unlocked .free-shipping-bar__fill {
+    background-color: #1a9d4f;
+  }
+{% endstylesheet %}

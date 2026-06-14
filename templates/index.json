@@ -537,6 +537,25 @@
         "padding-block-end": 64
       }
     },
+    "oni_promo_video": {
+      "type": "oni-promo-video",
+      "name": "Oni promo video",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "video_url": "",
+        "kicker": "鬼 The Film — Tokyo Midnight Division",
+        "heading": "Shop the drop",
+        "subheading": "Anime streetwear forged after dark — heavyweight hoodies & graphic tees, summoned in limited runs.",
+        "kanji": "鬼",
+        "content_position": "center",
+        "overlay_opacity": 55,
+        "min_height": 80,
+        "button_label_1": "Shop the drop",
+        "button_link_1": "shopify://collections/theory-001",
+        "button_label_2": "Shop hoodies",
+        "button_link_2": "shopify://collections/hoodies"
+      }
+    },
     "editorial_spotlight": {
       "type": "editorial-spotlight",
       "name": "Editorial spotlight",
@@ -758,6 +777,7 @@
     "collection_links",
     "hoodies_list",
     "tees_list",
+    "oni_promo_video",
     "editorial_spotlight",
     "join_horde",
     "marquee_bottom"

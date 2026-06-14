@@ -29,7 +29,7 @@ drop it into a Remotion project:
 npm create video@latest -- --template blank oni-trailer
 cp src/Video.tsx oni-trailer/src/
 cd oni-trailer
-npm i @remotion/transitions @remotion/google-fonts
+npm i @remotion/transitions
 
 # register the composition in src/Root.tsx, then:
 npx remotion studio          # interactive preview
@@ -38,6 +38,22 @@ npx remotion render Video out/oni-theory.mp4   # export MP4
 
 `calculateMetadata()` in `Video.tsx` sets duration/fps/size automatically, so
 the registered `<Composition>` only needs an id and the component.
+
+### Fonts
+
+The composition uses a system display stack (`'Anton', 'Oswald', 'Arial
+Narrow', 'DejaVu Sans', Impact, sans-serif`) so it renders anywhere with no
+font dependency. To match the storefront's exact **Anton** headings in the
+exported MP4, install and load it:
+
+```bash
+npm i @remotion/google-fonts
+```
+
+```tsx
+import {loadFont} from '@remotion/google-fonts/Anton';
+const DISPLAY = loadFont().fontFamily; // replace the DISPLAY constant
+```
 
 ## Use it in the store
 

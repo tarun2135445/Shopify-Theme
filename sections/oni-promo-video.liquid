@@ -1,0 +1,388 @@
+{%- liquid
+  assign video = section.settings.video
+  assign poster = section.settings.poster
+  assign has_video = false
+  if video != blank or section.settings.video_url != blank
+    assign has_video = true
+  endif
+-%}
+
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<div
+  class="oni-promo section section--full-width color-{{ section.settings.color_scheme }}"
+  style="--oni-promo-min-h: {{ section.settings.min_height }}svh; --oni-promo-overlay: {{ section.settings.overlay_opacity | divided_by: 100.0 }};"
+  data-testid="oni-promo-video-{{ section.id }}"
+>
+  <div class="oni-promo__bg" aria-hidden="true"></div>
+
+  {%- if has_video -%}
+    <video
+      class="oni-promo__media"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      {% if poster != blank %}poster="{{ poster | image_url: width: 1920 }}"{% endif %}
+    >
+      {%- if video != blank -%}
+        {%- for source in video.sources -%}
+          <source src="{{ source.url }}" type="{{ source.mime_type }}">
+        {%- endfor -%}
+      {%- endif -%}
+      {%- if section.settings.video_url != blank -%}
+        <source src="{{ section.settings.video_url }}" type="video/mp4">
+      {%- endif -%}
+    </video>
+  {%- endif -%}
+
+  <div class="oni-promo__scanlines" aria-hidden="true"></div>
+  <div class="oni-promo__overlay" aria-hidden="true"></div>
+  <div class="oni-promo__kanji" aria-hidden="true">{{ section.settings.kanji }}</div>
+
+  <div class="oni-promo__content oni-promo__content--{{ section.settings.content_position }}">
+    {% if section.settings.kicker != blank %}
+      <p class="oni-promo__kicker">{{ section.settings.kicker }}</p>
+    {% endif %}
+
+    {% if section.settings.heading != blank %}
+      <h2 class="oni-promo__title" data-text="{{ section.settings.heading | escape }}">
+        {{ section.settings.heading | escape }}
+      </h2>
+    {% endif %}
+
+    {% if section.settings.subheading != blank %}
+      <p class="oni-promo__sub">{{ section.settings.subheading }}</p>
+    {% endif %}
+
+    <div class="oni-promo__actions">
+      {% if section.settings.button_label_1 != blank and section.settings.button_link_1 != blank %}
+        <a href="{{ section.settings.button_link_1 }}" class="button">
+          {{- section.settings.button_label_1 -}}
+        </a>
+      {% endif %}
+      {% if section.settings.button_label_2 != blank and section.settings.button_link_2 != blank %}
+        <a href="{{ section.settings.button_link_2 }}" class="button button-secondary">
+          {{- section.settings.button_label_2 -}}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .oni-promo {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: var(--oni-promo-min-h, 80svh);
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  /* Animated neon fallback (shows through when no video is set) */
+  .oni-promo__bg {
+    position: absolute;
+    z-index: 0;
+    inset: -20%;
+    background:
+      radial-gradient(38% 45% at 22% 78%, rgb(var(--color-primary-rgb) / 0.28), transparent 70%),
+      radial-gradient(30% 38% at 80% 18%, rgb(0 245 255 / 0.14), transparent 70%),
+      radial-gradient(52% 58% at 60% 92%, rgb(140 70 220 / 0.28), transparent 72%),
+      var(--color-background);
+    filter: blur(40px);
+  }
+
+  .oni-promo__media {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* CRT scanlines */
+  .oni-promo__scanlines {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgb(var(--color-foreground-rgb) / 0.05) 0 1px,
+      transparent 1px 4px
+    );
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
+
+  /* Legibility overlay */
+  .oni-promo__overlay {
+    position: absolute;
+    z-index: 3;
+    inset: 0;
+    background:
+      linear-gradient(to top, rgb(var(--color-background-rgb) / 0.92) 0%, rgb(var(--color-background-rgb) / 0.2) 45%, rgb(var(--color-background-rgb) / 0.55) 100%);
+    opacity: var(--oni-promo-overlay, 0.55);
+    pointer-events: none;
+  }
+
+  .oni-promo__kanji {
+    position: absolute;
+    z-index: 3;
+    inset-block-start: 50%;
+    inset-inline-start: 50%;
+    translate: -50% -54%;
+    font-family: var(--font-heading--family);
+    font-size: 60vmin;
+    line-height: 1;
+    font-weight: 700;
+    color: rgb(var(--color-primary-rgb) / 0.06);
+    -webkit-text-stroke: 1px rgb(var(--color-primary-rgb) / 0.16);
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .oni-promo__content {
+    position: relative;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+    padding: clamp(2rem, 6vw, 5rem);
+    max-width: 60rem;
+    width: 100%;
+  }
+
+  .oni-promo__content--center {
+    align-items: center;
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  .oni-promo__content--start {
+    align-items: flex-start;
+    text-align: start;
+    margin-inline-end: auto;
+  }
+
+  .oni-promo__kicker {
+    margin: 0;
+    font-family: var(--font-accent--family);
+    font-size: clamp(0.7rem, 1.4vw, 0.9rem);
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: rgb(var(--color-primary-rgb) / 0.95);
+  }
+
+  .oni-promo__title {
+    position: relative;
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-weight: var(--font-heading--weight);
+    font-size: clamp(2.75rem, 9vw, 7rem);
+    line-height: 0.95;
+    text-transform: uppercase;
+    color: var(--color-foreground-heading);
+  }
+
+  .oni-promo__sub {
+    margin: 0;
+    max-width: 36rem;
+    font-family: var(--font-accent--family);
+    font-size: clamp(0.85rem, 1.6vw, 1.05rem);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgb(var(--color-foreground-rgb) / 0.78);
+  }
+
+  .oni-promo__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.75rem;
+  }
+
+  .oni-promo__content--center .oni-promo__actions {
+    justify-content: center;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .oni-promo__bg {
+      animation: oni-promo-haze 18s ease-in-out infinite alternate;
+    }
+
+    .oni-promo__title::before,
+    .oni-promo__title::after {
+      content: attr(data-text);
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      opacity: 0.85;
+      pointer-events: none;
+    }
+
+    .oni-promo__title::before {
+      color: rgb(var(--color-primary-rgb) / 0.9);
+      animation: oni-promo-glitch-a 3.4s steps(1, jump-none) infinite;
+    }
+
+    .oni-promo__title::after {
+      color: rgb(0 245 255 / 0.55);
+      animation: oni-promo-glitch-b 2.9s steps(1, jump-none) infinite;
+    }
+  }
+
+  /* If a visitor prefers reduced motion, freeze the background video */
+  @media (prefers-reduced-motion: reduce) {
+    .oni-promo__media {
+      display: none;
+    }
+  }
+
+  @keyframes oni-promo-haze {
+    from { transform: translate3d(-3%, -2%, 0) scale(1); }
+    to   { transform: translate3d(3%, 2%, 0) scale(1.08); }
+  }
+
+  @keyframes oni-promo-glitch-a {
+    0%, 91%, 100% { clip-path: inset(100% 0 0 0); transform: none; }
+    92% { clip-path: inset(12% 0 78% 0); transform: translate(-0.35rem, 0); }
+    94% { clip-path: inset(64% 0 22% 0); transform: translate(0.3rem, 0); }
+    96% { clip-path: inset(38% 0 48% 0); transform: translate(-0.2rem, 0.05em); }
+    98% { clip-path: inset(80% 0 6% 0); transform: translate(0.25rem, 0); }
+  }
+
+  @keyframes oni-promo-glitch-b {
+    0%, 88%, 100% { clip-path: inset(100% 0 0 0); transform: none; }
+    89% { clip-path: inset(70% 0 18% 0); transform: translate(0.4rem, 0); }
+    92% { clip-path: inset(8% 0 84% 0); transform: translate(-0.3rem, 0); }
+    95% { clip-path: inset(45% 0 40% 0); transform: translate(0.2rem, -0.04em); }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Oni promo video",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Video"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Background video"
+    },
+    {
+      "type": "text",
+      "id": "video_url",
+      "label": "External video URL (.mp4)",
+      "info": "Use a Shopify Files URL or CDN link for the rendered Remotion trailer. Used if no video is selected above."
+    },
+    {
+      "type": "image_picker",
+      "id": "poster",
+      "label": "Poster image",
+      "info": "Shown before the video loads."
+    },
+    {
+      "type": "header",
+      "content": "Overlay content"
+    },
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker",
+      "default": "鬼 The Film — Tokyo Midnight Division"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop the drop"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Anime streetwear forged after dark — heavyweight hoodies & graphic tees, summoned in limited runs."
+    },
+    {
+      "type": "text",
+      "id": "kanji",
+      "label": "Kanji watermark",
+      "default": "鬼"
+    },
+    {
+      "type": "select",
+      "id": "content_position",
+      "label": "Content position",
+      "options": [
+        { "value": "center", "label": "Center" },
+        { "value": "start", "label": "Bottom left" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay darkness",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 55
+    },
+    {
+      "type": "range",
+      "id": "min_height",
+      "label": "Minimum height",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "svh",
+      "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "text",
+      "id": "button_label_1",
+      "label": "Primary button label",
+      "default": "Shop the drop"
+    },
+    {
+      "type": "url",
+      "id": "button_link_1",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "button_label_2",
+      "label": "Secondary button label",
+      "default": "Shop hoodies"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "Secondary button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Oni promo video",
+      "category": "t:categories.banners"
+    }
+  ]
+}
+{% endschema %}

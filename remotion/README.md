@@ -19,25 +19,41 @@ glitch text.
 All motion is driven by `useCurrentFrame()` (no CSS animation), so it renders
 deterministically.
 
-## Preview & render locally
+## Preview & render
 
-This folder holds only the composition source. To preview or export an MP4,
-drop it into a Remotion project:
+This folder is a **self-contained Remotion project** — install and render:
 
 ```bash
-# one-time: create a Remotion project and copy this source in
-npm create video@latest -- --template blank oni-trailer
-cp src/Video.tsx oni-trailer/src/
-cd oni-trailer
-npm i @remotion/transitions
-
-# register the composition in src/Root.tsx, then:
-npx remotion studio          # interactive preview
-npx remotion render Video out/oni-theory.mp4   # export MP4
+cd remotion
+npm install
+npm run studio    # interactive preview at http://localhost:3000
+npm run render    # export out/oni-theory.mp4 (composition id: Main)
 ```
 
-`calculateMetadata()` in `Video.tsx` sets duration/fps/size automatically, so
-the registered `<Composition>` only needs an id and the component.
+The composition is registered in [`src/Root.tsx`](./src/Root.tsx). Remotion does
+**not** auto-detect the `calculateMetadata` export from `Video.tsx` — it must be
+passed to `<Composition>` as a prop (alongside fallback dimensions), which is
+already wired up here:
+
+```tsx
+import {Composition} from 'remotion';
+import Video, {calculateMetadata} from './Video';
+
+<Composition
+  id="Main"
+  component={Video}
+  calculateMetadata={calculateMetadata}
+  durationInFrames={424}
+  fps={30}
+  width={1920}
+  height={1080}
+/>
+```
+
+> **Headless Chromium:** Remotion downloads its own Chrome on first render. In a
+> locked-down or CI environment that blocks that download, point it at an
+> existing Chrome **headless-shell** binary instead:
+> `npm run render -- --browser-executable=/path/to/headless_shell`
 
 ### Fonts
 

@@ -1,0 +1,18 @@
+{
+  "name": "oni-theory-trailer",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ONI THEORY brand trailer (Remotion)",
+  "scripts": {
+    "studio": "remotion studio",
+    "render": "remotion render Main out/oni-theory.mp4",
+    "render:vertical": "remotion render Main out/oni-theory-9x16.mp4"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.477",
+    "@remotion/transitions": "^4.0.477",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.477"
+  }
+}

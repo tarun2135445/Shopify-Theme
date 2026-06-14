@@ -1,0 +1,40 @@
+/* ============================================================
+   ONI MOTION — Framer-style scroll motion (initial states)
+   Powered by Motion (motion.dev), the framework-agnostic engine
+   from the Framer Motion team. Animation is driven by oni-motion.js;
+   this file only declares the "before reveal" hidden state so there
+   is no flash of un-animated content.
+
+   Design principles
+   - Sits alongside oni-fx / polly-fx; never replaces them.
+   - Homepage content sections only (the hero — first section — is
+     left untouched so it stays the LCP element).
+   - Progressive enhancement: the hidden state applies ONLY once the
+     head script adds `html.oni-motion-ready`, which it does only when
+     motion is appropriate (not reduced-motion, IntersectionObserver
+     present, not the theme editor). A head-level failsafe removes the
+     class if oni-motion.js never boots, so content can never be
+     trapped hidden.
+   - prefers-reduced-motion: reduce → no hidden state, content visible.
+   ============================================================ */
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Before reveal: gently lowered + transparent. */
+  html.oni-motion-ready
+    main[data-template='index']
+    > .shopify-section:not(:first-child) {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+  }
+
+  /* After reveal: oni-motion.js adds `.oni-revealed` and clears the
+     inline styles it animated, so the section settles with no lingering
+     transform (no stray containing block / stacking context). The extra
+     class gives this rule higher specificity than the hidden state. */
+  html.oni-motion-ready
+    main[data-template='index']
+    > .shopify-section:not(:first-child).oni-revealed {
+    opacity: 1;
+    transform: none;
+  }
+}

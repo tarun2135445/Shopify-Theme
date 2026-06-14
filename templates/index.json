@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "oni_hero": {
@@ -19,12 +28,14 @@
     },
     "marquee_top": {
       "type": "marquee",
-      "name": "t:names.marquee_section",
       "blocks": {
         "marquee_text_1": {
           "type": "text",
           "settings": {
             "text": "<p>New drops 新着</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
             "type_preset": "custom",
             "font": "var(--font-heading--family)",
             "font_size": "var(--font-size--h3)",
@@ -32,7 +43,14 @@
             "letter_spacing": "normal",
             "case": "uppercase",
             "wrap": "nowrap",
-            "width": "fit-content"
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
           },
           "blocks": {}
         },
@@ -40,6 +58,9 @@
           "type": "text",
           "settings": {
             "text": "<p>◆ Free shipping over ₹1,499 ◆</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
             "type_preset": "custom",
             "font": "var(--font-accent--family)",
             "font_size": "var(--font-size--h4)",
@@ -47,7 +68,14 @@
             "letter_spacing": "normal",
             "case": "uppercase",
             "wrap": "nowrap",
-            "width": "fit-content"
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
           },
           "blocks": {}
         },
@@ -55,6 +83,9 @@
           "type": "text",
           "settings": {
             "text": "<p>鬼 Oni Theory</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
             "type_preset": "custom",
             "font": "var(--font-heading--family)",
             "font_size": "var(--font-size--h3)",
@@ -62,7 +93,14 @@
             "letter_spacing": "normal",
             "case": "uppercase",
             "wrap": "nowrap",
-            "width": "fit-content"
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
           },
           "blocks": {}
         },
@@ -70,6 +108,9 @@
           "type": "text",
           "settings": {
             "text": "<p>◆ Limited runs only ◆</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
             "type_preset": "custom",
             "font": "var(--font-accent--family)",
             "font_size": "var(--font-size--h4)",
@@ -77,7 +118,14 @@
             "letter_spacing": "normal",
             "case": "uppercase",
             "wrap": "nowrap",
-            "width": "fit-content"
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
           },
           "blocks": {}
         }
@@ -88,41 +136,105 @@
         "marquee_text_3",
         "marquee_text_4"
       ],
+      "name": "t:names.marquee_section",
       "settings": {
         "movement_direction": "normal",
         "color_scheme": "scheme-2",
-        "gap_between_elements": 40,
         "padding-block-start": 16,
-        "padding-block-end": 16
+        "padding-block-end": 16,
+        "gap_between_elements": 40
+      }
+    },
+    "oni_stats_hud": {
+      "type": "oni-stats-hud",
+      "blocks": {
+        "stat_designs": {
+          "type": "stat",
+          "settings": {
+            "count_to": 15,
+            "value": "",
+            "suffix": "+",
+            "caption": "Designs deployed"
+          }
+        },
+        "stat_dispatch": {
+          "type": "stat",
+          "settings": {
+            "count_to": 0,
+            "value": "24H",
+            "suffix": "",
+            "caption": "Dispatch time"
+          }
+        },
+        "stat_limited": {
+          "type": "stat",
+          "settings": {
+            "count_to": 100,
+            "value": "",
+            "suffix": "%",
+            "caption": "Limited runs"
+          }
+        },
+        "stat_oni": {
+          "type": "stat",
+          "settings": {
+            "count_to": 0,
+            "value": "鬼",
+            "suffix": "",
+            "caption": "Demon energy"
+          }
+        }
+      },
+      "block_order": [
+        "stat_designs",
+        "stat_dispatch",
+        "stat_limited",
+        "stat_oni"
+      ],
+      "name": "Oni stats HUD",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "label": "SYSTEM STATUS — ONI THEORY 鬼の理論"
       }
     },
     "collection_links": {
       "type": "collection-links",
-      "name": "t:names.collection_links",
       "blocks": {
         "link": {
           "type": "_collection-link",
           "static": true,
+          "settings": {
+            "show_count": true
+          },
           "blocks": {
             "title": {
               "type": "_inline-collection-title",
               "name": "t:names.title",
               "static": true,
               "settings": {
-                "font": "var(--font-heading--family)"
-              }
+                "font": "var(--font-heading--family)",
+                "weight": "",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none"
+              },
+              "blocks": {}
             },
             "image": {
               "type": "_image",
               "static": true,
               "settings": {
                 "height": "large",
-                "ratio": "square"
-              }
+                "ratio": "square",
+                "border_radius": 0
+              },
+              "blocks": {}
             }
-          }
+          },
+          "block_order": []
         }
       },
+      "name": "t:names.collection_links",
       "settings": {
         "collection_list": [
           "hoodies",
@@ -141,7 +253,6 @@
     },
     "hoodies_list": {
       "type": "product-list",
-      "name": "Heavyweight hoodies",
       "blocks": {
         "static-header": {
           "type": "_product-list-content",
@@ -313,6 +424,7 @@
           ]
         }
       },
+      "name": "Heavyweight hoodies",
       "settings": {
         "collection": "hoodies",
         "layout_type": "grid",
@@ -335,7 +447,6 @@
     },
     "tees_list": {
       "type": "product-list",
-      "name": "Graphic tees",
       "blocks": {
         "static-header": {
           "type": "_product-list-content",
@@ -507,6 +618,7 @@
           ]
         }
       },
+      "name": "Graphic tees",
       "settings": {
         "collection": "t-shirts",
         "layout_type": "carousel",
@@ -527,9 +639,53 @@
         "padding-block-end": 64
       }
     },
+    "oni_promo_video": {
+      "type": "oni-promo-video",
+      "name": "Oni promo video",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "video": "shopify://files/videos/WhatsApp Video 2026-06-14 at 13.29.51.mp4",
+        "video_url": "",
+        "kicker": "鬼 The Film — Tokyo Midnight Division",
+        "heading": "Shop the drop",
+        "subheading": "Anime streetwear forged after dark — heavyweight hoodies & graphic tees, summoned in limited runs.",
+        "kanji": "鬼",
+        "content_position": "center",
+        "overlay_opacity": 55,
+        "min_height": 80,
+        "button_label_1": "Shop the drop",
+        "button_link_1": "shopify://collections/theory-001",
+        "button_label_2": "Shop hoodies",
+        "button_link_2": "shopify://collections/hoodies"
+      }
+    },
+    "editorial_spotlight": {
+      "type": "editorial-spotlight",
+      "name": "Editorial spotlight",
+      "settings": {
+        "layout": "overlay",
+        "media_position": "left",
+        "content_vertical": "bottom",
+        "text_alignment": "left",
+        "section_width": "full-width",
+        "min_height": 85,
+        "image": "shopify://shop_images/oni-editorial-forged-after-dark.png",
+        "enable_zoom": true,
+        "overlay_opacity": 45,
+        "color_scheme": "scheme-4",
+        "kicker": "鬼 The Edit",
+        "heading": "Forged after dark",
+        "text": "<p>Statement streetwear shot in the neon back-alleys of midnight Tokyo. Limited runs, heavyweight builds — gone before sunrise.</p>",
+        "button_label_1": "Shop the drop",
+        "button_link_1": "shopify://collections/theory-001",
+        "button_label_2": "Explore hoodies",
+        "button_link_2": "shopify://collections/hoodies",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
     "join_horde": {
       "type": "section",
-      "name": "Join the horde",
       "blocks": {
         "horde_jumbo": {
           "type": "jumbo-text",
@@ -540,7 +696,8 @@
             "line_height": "0.8",
             "letter_spacing": "-0.03em",
             "case": "uppercase",
-            "text_effect": "reveal"
+            "text_effect": "reveal",
+            "animation_repeat": false
           },
           "blocks": {}
         },
@@ -575,9 +732,9 @@
             "width": "custom",
             "custom_width": 50,
             "inherit_color_scheme": true,
+            "color_scheme": "",
             "heading": "",
             "heading_preset": "h3",
-            "color_scheme": "",
             "border_style": "all",
             "border_width": 1,
             "border_radius": 0,
@@ -600,6 +757,7 @@
         "horde_sub",
         "horde_signup"
       ],
+      "name": "Join the horde",
       "settings": {
         "content_direction": "column",
         "vertical_on_mobile": true,
@@ -611,19 +769,33 @@
         "gap": 16,
         "section_width": "full-width",
         "section_height": "small",
+        "section_height_custom": 50,
         "color_scheme": "scheme-2",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
         "padding-block-start": 80,
         "padding-block-end": 80
       }
     },
     "marquee_bottom": {
       "type": "marquee",
-      "name": "t:names.marquee_section",
       "blocks": {
         "marquee_b_1": {
           "type": "text",
           "settings": {
             "text": "<p>Oni Theory 鬼の理論</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
             "type_preset": "custom",
             "font": "var(--font-heading--family)",
             "font_size": "var(--font-size--h3)",
@@ -631,7 +803,14 @@
             "letter_spacing": "normal",
             "case": "uppercase",
             "wrap": "nowrap",
-            "width": "fit-content"
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
           },
           "blocks": {}
         },
@@ -639,6 +818,9 @@
           "type": "text",
           "settings": {
             "text": "<p>◆ Forged after dark ◆</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
             "type_preset": "custom",
             "font": "var(--font-accent--family)",
             "font_size": "var(--font-size--h4)",
@@ -646,7 +828,14 @@
             "letter_spacing": "normal",
             "case": "uppercase",
             "wrap": "nowrap",
-            "width": "fit-content"
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
           },
           "blocks": {}
         }
@@ -655,64 +844,13 @@
         "marquee_b_1",
         "marquee_b_2"
       ],
+      "name": "t:names.marquee_section",
       "settings": {
         "movement_direction": "reverse",
         "color_scheme": "scheme-3",
-        "gap_between_elements": 40,
         "padding-block-start": 16,
-        "padding-block-end": 16
-      }
-    },
-    "oni_stats_hud": {
-      "type": "oni-stats-hud",
-      "name": "Oni stats HUD",
-      "blocks": {
-        "stat_designs": {
-          "type": "stat",
-          "settings": {
-            "count_to": 15,
-            "value": "",
-            "suffix": "+",
-            "caption": "Designs deployed"
-          }
-        },
-        "stat_dispatch": {
-          "type": "stat",
-          "settings": {
-            "count_to": 0,
-            "value": "24H",
-            "suffix": "",
-            "caption": "Dispatch time"
-          }
-        },
-        "stat_limited": {
-          "type": "stat",
-          "settings": {
-            "count_to": 100,
-            "value": "",
-            "suffix": "%",
-            "caption": "Limited runs"
-          }
-        },
-        "stat_oni": {
-          "type": "stat",
-          "settings": {
-            "count_to": 0,
-            "value": "鬼",
-            "suffix": "",
-            "caption": "Demon energy"
-          }
-        }
-      },
-      "block_order": [
-        "stat_designs",
-        "stat_dispatch",
-        "stat_limited",
-        "stat_oni"
-      ],
-      "settings": {
-        "color_scheme": "scheme-1",
-        "label": "SYSTEM STATUS — ONI THEORY 鬼の理論"
+        "padding-block-end": 16,
+        "gap_between_elements": 40
       }
     }
   },
@@ -723,6 +861,8 @@
     "collection_links",
     "hoodies_list",
     "tees_list",
+    "oni_promo_video",
+    "editorial_spotlight",
     "join_horde",
     "marquee_bottom"
   ]

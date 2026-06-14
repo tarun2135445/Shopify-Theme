@@ -1,0 +1,277 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#MainContent"
+  - generic [ref=e3]:
+    - complementary [ref=e6]:
+      - paragraph [ref=e10]: ⛩ Free shipping over ₹2,999 — new drops every full moon 🌕
+    - banner [ref=e11]:
+      - generic [ref=e15]:
+        - generic [ref=e16]:
+          - link "Oni Theory" [ref=e17] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e18]: Oni Theory
+          - navigation "Primary" [ref=e21]:
+            - list [ref=e23]:
+              - generic:
+                - link "Home" [ref=e24] [cursor=pointer]:
+                  - /url: /
+                  - generic [ref=e25]: Home
+                - link "Hoodies" [ref=e26] [cursor=pointer]:
+                  - /url: /collections/hoodies
+                  - generic [ref=e27]: Hoodies
+                - link "T-Shirts" [ref=e28] [cursor=pointer]:
+                  - /url: /collections/t-shirts
+                  - generic [ref=e29]: T-Shirts
+                - link "Accessories" [ref=e30] [cursor=pointer]:
+                  - /url: /collections/accessories
+                  - generic [ref=e31]: Accessories
+                - link "Theory 001" [ref=e32] [cursor=pointer]:
+                  - /url: /collections/theory-001
+                  - generic [ref=e33]: Theory 001
+        - generic [ref=e34]:
+          - button "Search" [ref=e36] [cursor=pointer]:
+            - generic:
+              - img
+          - generic [ref=e37]:
+            - button "Account" [ref=e42] [cursor=pointer]:
+              - img [ref=e44]
+            - generic [ref=e46]:
+              - button "Cart" [ref=e47] [cursor=pointer]:
+                - generic [ref=e48]:
+                  - generic:
+                    - img
+                  - generic [ref=e52]: "2"
+              - text: Rs. 3,999.00 INR Rs. 3,799.00 INR Rs. 7,798.00 INR
+            - status [ref=e53]
+  - main [ref=e54]:
+    - generic [ref=e55]:
+      - region "Quick add to cart bar" [ref=e56]:
+        - img "AKUMA Oversized Hoodie worn by model — Oni Mask print, Oni Theory streetwear" [ref=e58]
+        - generic [ref=e59]:
+          - paragraph [ref=e60]: AKUMA Oversized Hoodie — Oni Mask
+          - generic [ref=e61]: S
+        - generic [ref=e64]:
+          - generic [ref=e65]:
+            - generic [ref=e66]: Sale price
+            - text: Rs. 1,499.00 INR
+          - generic [ref=e67]:
+            - generic [ref=e68]: Regular price
+            - text: Rs. 2,199.00 INR
+        - button "Add to cart" [ref=e69] [cursor=pointer]:
+          - generic [ref=e70]:
+            - generic:
+              - img
+            - generic [ref=e71]: Add to cart
+          - generic [ref=e72]:
+            - generic:
+              - img
+      - generic [ref=e74]:
+        - link "Skip to product information" [ref=e75] [cursor=pointer]:
+          - /url: "#ProductInformation-template--30109739254103__main"
+        - generic [ref=e76]:
+          - list [ref=e79]:
+            - listitem [ref=e80]:
+              - button "Zoom media 1" [ref=e81]
+              - img "AKUMA Oversized Hoodie worn by model — Oni Mask print, Oni Theory streetwear" [ref=e83]
+            - listitem [ref=e84]:
+              - button "Zoom media 2" [ref=e85]
+              - img "Black oversized hoodie with crimson oni mask print and kanji" [ref=e87]
+          - generic [ref=e90]:
+            - generic [ref=e92]:
+              - heading "AKUMA Oversized Hoodie — Oni Mask" [level=1] [ref=e94]
+              - generic [ref=e97]:
+                - generic [ref=e98]:
+                  - generic [ref=e99]: Sale price
+                  - text: Rs. 1,499.00 INR
+                - generic [ref=e100]:
+                  - generic [ref=e101]: Regular price
+                  - text: Rs. 2,199.00 INR
+            - group "Size" [ref=e106]:
+              - generic [ref=e107]: Size
+              - generic [ref=e108] [cursor=pointer]:
+                - radio "S" [checked] [ref=e109]
+                - generic: S
+              - generic [ref=e110] [cursor=pointer]:
+                - radio "M" [ref=e111]
+                - generic: M
+              - generic [ref=e112] [cursor=pointer]:
+                - radio "L" [ref=e113]
+                - generic: L
+              - generic [ref=e114] [cursor=pointer]:
+                - radio "XL" [ref=e115]
+                - generic: XL
+              - generic [ref=e116] [cursor=pointer]:
+                - radio "XXL" [ref=e117]
+                - generic: XXL
+            - generic [ref=e119]:
+              - status [ref=e120]
+              - generic [ref=e122]:
+                - generic [ref=e124]:
+                  - button "Decrease quantity" [disabled] [ref=e125] [cursor=pointer]:
+                    - generic [ref=e126]: Decrease quantity
+                    - generic:
+                      - img
+                  - spinbutton "Quantity" [ref=e127]: "1"
+                  - button "Increase quantity" [ref=e128] [cursor=pointer]:
+                    - generic [ref=e129]: Increase quantity
+                    - generic:
+                      - img
+                - button "Add to cart" [ref=e132] [cursor=pointer]:
+                  - generic [ref=e133]:
+                    - generic:
+                      - img
+                    - generic [ref=e135]: Add to cart
+                  - generic [ref=e136]:
+                    - generic:
+                      - img
+                - button "Buy it now" [ref=e141] [cursor=pointer]
+            - generic [ref=e142]:
+              - paragraph [ref=e143]: Heavyweight 450 GSM oversized hoodie in sumi black. Oversized crimson oni mask print with hand-brushed 鬼 kanji across the chest. Brushed fleece interior, dropped shoulders, hidden kangaroo pocket.
+              - list [ref=e144]:
+                - listitem [ref=e145]: 450 GSM heavyweight French terry
+                - listitem [ref=e146]: Oversized boxy fit — size down for regular fit
+                - listitem [ref=e147]: Screen-printed front graphic, puff-ink kanji
+                - listitem [ref=e148]: Limited run. Once it's gone, it's gone.
+    - generic [ref=e152]:
+      - heading "You may also like" [level=3] [ref=e155]
+      - generic [ref=e156]:
+        - generic [ref=e158]:
+          - link "SHOGUN Hoodie — Iron Crest" [ref=e159] [cursor=pointer]:
+            - /url: /products/shogun-hoodie-iron-crest?variant=53765544247639
+            - generic [ref=e160]: SHOGUN Hoodie — Iron Crest
+          - generic [ref=e161] [cursor=pointer]:
+            - generic [ref=e162]:
+              - link "SHOGUN Hoodie — Iron Crest" [ref=e163]:
+                - /url: /products/shogun-hoodie-iron-crest?variant=53765544247639
+                - img "SHOGUN Hoodie — Iron Crest on model" [ref=e169]
+              - generic [ref=e171]: Sale
+              - generic:
+                - generic:
+                  - status
+                  - button "Choose" [ref=e172]:
+                    - generic [ref=e173]:
+                      - generic:
+                        - img
+                      - generic [ref=e174]: Choose
+            - link "SHOGUN Hoodie — Iron Crest" [ref=e175]:
+              - /url: /products/shogun-hoodie-iron-crest?variant=53765544247639
+              - heading "SHOGUN Hoodie — Iron Crest" [level=3] [ref=e177]
+            - generic [ref=e180]:
+              - generic [ref=e181]:
+                - generic [ref=e182]: Sale price
+                - text: Rs. 1,499.00 INR
+              - generic [ref=e183]:
+                - generic [ref=e184]: Regular price
+                - text: Rs. 2,199.00 INR
+        - generic [ref=e186]:
+          - link "GLITCH RONIN Hoodie — Static" [ref=e187] [cursor=pointer]:
+            - /url: /products/glitch-ronin-hoodie-static?variant=53761731264855
+            - generic [ref=e188]: GLITCH RONIN Hoodie — Static
+          - generic [ref=e189] [cursor=pointer]:
+            - generic [ref=e190]:
+              - link "GLITCH RONIN Hoodie — Static" [ref=e191]:
+                - /url: /products/glitch-ronin-hoodie-static?variant=53761731264855
+                - generic [ref=e194]:
+                  - img "GLITCH RONIN Hoodie worn by model — Static print, Oni Theory streetwear" [ref=e197]
+                  - img [ref=e200]
+              - generic [ref=e202]: Sale
+              - generic:
+                - generic:
+                  - status
+                  - button "Choose" [ref=e203]:
+                    - generic [ref=e204]:
+                      - generic:
+                        - img
+                      - generic [ref=e205]: Choose
+            - link "GLITCH RONIN Hoodie — Static" [ref=e206]:
+              - /url: /products/glitch-ronin-hoodie-static?variant=53761731264855
+              - heading "GLITCH RONIN Hoodie — Static" [level=3] [ref=e208]
+            - generic [ref=e211]:
+              - generic [ref=e212]:
+                - generic [ref=e213]: Sale price
+                - text: Rs. 1,499.00 INR
+              - generic [ref=e214]:
+                - generic [ref=e215]: Regular price
+                - text: Rs. 2,199.00 INR
+        - generic [ref=e217]:
+          - link "NEKO GLITCH Hoodie — Cyber Cat" [ref=e218] [cursor=pointer]:
+            - /url: /products/neko-glitch-hoodie-cyber-cat?variant=53765541757271
+            - generic [ref=e219]: NEKO GLITCH Hoodie — Cyber Cat
+          - generic [ref=e220] [cursor=pointer]:
+            - generic [ref=e221]:
+              - link "NEKO GLITCH Hoodie — Cyber Cat" [ref=e222]:
+                - /url: /products/neko-glitch-hoodie-cyber-cat?variant=53765541757271
+                - img "NEKO GLITCH Hoodie — Cyber Cat on model" [ref=e228]
+              - generic [ref=e230]: Sale
+              - generic:
+                - generic:
+                  - status
+                  - button "Choose" [ref=e231]:
+                    - generic [ref=e232]:
+                      - generic:
+                        - img
+                      - generic [ref=e233]: Choose
+            - link "NEKO GLITCH Hoodie — Cyber Cat" [ref=e234]:
+              - /url: /products/neko-glitch-hoodie-cyber-cat?variant=53765541757271
+              - heading "NEKO GLITCH Hoodie — Cyber Cat" [level=3] [ref=e236]
+            - generic [ref=e239]:
+              - generic [ref=e240]:
+                - generic [ref=e241]: Sale price
+                - text: Rs. 1,499.00 INR
+              - generic [ref=e242]:
+                - generic [ref=e243]: Regular price
+                - text: Rs. 2,199.00 INR
+        - generic [ref=e245]:
+          - link "RAIJIN Hoodie — Thunder God" [ref=e246] [cursor=pointer]:
+            - /url: /products/raijin-hoodie-thunder-god?variant=53765540282711
+            - generic [ref=e247]: RAIJIN Hoodie — Thunder God
+          - generic [ref=e248] [cursor=pointer]:
+            - generic [ref=e249]:
+              - link "RAIJIN Hoodie — Thunder God" [ref=e250]:
+                - /url: /products/raijin-hoodie-thunder-god?variant=53765540282711
+                - img "RAIJIN Hoodie — Thunder God on model" [ref=e256]
+              - generic [ref=e258]: Sale
+              - generic:
+                - generic:
+                  - status
+                  - button "Choose" [ref=e259]:
+                    - generic [ref=e260]:
+                      - generic:
+                        - img
+                      - generic [ref=e261]: Choose
+            - link "RAIJIN Hoodie — Thunder God" [ref=e262]:
+              - /url: /products/raijin-hoodie-thunder-god?variant=53765540282711
+              - heading "RAIJIN Hoodie — Thunder God" [level=3] [ref=e264]
+            - generic [ref=e267]:
+              - generic [ref=e268]:
+                - generic [ref=e269]: Sale price
+                - text: Rs. 1,499.00 INR
+              - generic [ref=e270]:
+                - generic [ref=e271]: Regular price
+                - text: Rs. 2,199.00 INR
+  - contentinfo [ref=e272]:
+    - generic [ref=e276]:
+      - generic [ref=e278]:
+        - heading "Oni Theory 鬼の理論" [level=2] [ref=e280]
+        - paragraph [ref=e282]: Anime streetwear forged after dark. Drop alerts, early access, zero spam.
+      - generic [ref=e285]:
+        - generic [ref=e286]: Email
+        - textbox "Email" [ref=e287]:
+          - /placeholder: Email address
+        - button "Sign up" [ref=e288]:
+          - img [ref=e289]
+    - generic [ref=e294]:
+      - generic [ref=e296]:
+        - text: © 2026
+        - link "Oni Theory" [ref=e297] [cursor=pointer]:
+          - /url: /
+        - text: ","
+        - link "Powered by Shopify" [ref=e298] [cursor=pointer]:
+          - /url: https://www.shopify.com?utm_campaign=poweredby&utm_medium=shopify&utm_source=onlinestore
+      - button "Terms and Policies" [ref=e300] [cursor=pointer]
+  - generic [ref=e301]:
+    - generic [ref=e302]: 鬼の理論
+    - generic [ref=e303]: ONI THEORY
+  - generic:
+    - generic: ⚡
+    - generic: Added to cart

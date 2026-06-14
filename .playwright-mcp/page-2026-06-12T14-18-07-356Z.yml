@@ -1,0 +1,207 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#MainContent"
+  - generic [ref=e3]:
+    - complementary [ref=e6]:
+      - paragraph [ref=e10]: ⛩ Free shipping over ₹2,999 — new drops every full moon 🌕
+    - banner [ref=e11]:
+      - generic [ref=e15]:
+        - generic [ref=e16]:
+          - link "Oni Theory" [ref=e17] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e18]: Oni Theory
+          - navigation "Primary" [ref=e21]:
+            - list [ref=e23]:
+              - generic:
+                - link "Home" [ref=e24] [cursor=pointer]:
+                  - /url: /
+                  - generic [ref=e25]: Home
+                - link "Hoodies" [ref=e26] [cursor=pointer]:
+                  - /url: /collections/hoodies
+                  - generic [ref=e27]: Hoodies
+                - link "T-Shirts" [ref=e28] [cursor=pointer]:
+                  - /url: /collections/t-shirts
+                  - generic [ref=e29]: T-Shirts
+                - link "Accessories" [ref=e30] [cursor=pointer]:
+                  - /url: /collections/accessories
+                  - generic [ref=e31]: Accessories
+                - link "Theory 001" [ref=e32] [cursor=pointer]:
+                  - /url: /collections/theory-001
+                  - generic [ref=e33]: Theory 001
+        - generic [ref=e34]:
+          - button "Search" [ref=e36] [cursor=pointer]:
+            - generic:
+              - img
+          - generic [ref=e37]:
+            - button "Account" [ref=e42] [cursor=pointer]:
+              - img [ref=e44]
+            - generic [ref=e46]:
+              - button "Cart" [ref=e47] [cursor=pointer]:
+                - generic [ref=e48]:
+                  - generic:
+                    - img
+                  - generic [ref=e52]: "2"
+              - text: Rs. 3,999.00 INR Rs. 3,799.00 INR Rs. 7,798.00 INR
+            - status [ref=e53]
+  - main [ref=e54]:
+    - generic [ref=e57]:
+      - link "Skip to product information" [ref=e58] [cursor=pointer]:
+        - /url: "#ProductInformation-template--30109739254103__main"
+      - generic [ref=e59]:
+        - list [ref=e62]:
+          - listitem [ref=e63]:
+            - button "Zoom media 1" [ref=e64]
+            - img "KITSUNE Heavyweight Hoodie worn by model — Nine Tails print, Oni Theory streetwear" [ref=e66]
+          - listitem [ref=e67]:
+            - button "Zoom media 2" [ref=e68]
+            - img "Crimson heavyweight hoodie with nine-tailed kitsune print" [ref=e70]
+          - listitem [ref=e71]:
+            - button "Zoom media 3" [ref=e72]
+            - img "KITSUNE Heavyweight Hoodie – Nine-Tails Fox Spirit graphic print, Oni Theory anime streetwear" [ref=e74]
+        - generic [ref=e77]:
+          - generic [ref=e79]:
+            - heading "KITSUNE Heavyweight Hoodie — Nine Tails" [level=1] [ref=e81]
+            - generic [ref=e84]: Rs. 3,999.00 INR
+          - group "Size" [ref=e89]:
+            - generic [ref=e90]: Size
+            - generic [ref=e91] [cursor=pointer]:
+              - radio "S - Sold out" [checked] [disabled] [ref=e92]
+              - generic: S
+              - img
+            - generic [ref=e93] [cursor=pointer]:
+              - radio "M - Sold out" [disabled] [ref=e94]
+              - generic: M
+              - img
+            - generic [ref=e95] [cursor=pointer]:
+              - radio "L - Sold out" [disabled] [ref=e96]
+              - generic: L
+              - img
+            - generic [ref=e97] [cursor=pointer]:
+              - radio "XL - Sold out" [disabled] [ref=e98]
+              - generic: XL
+              - img
+            - generic [ref=e99] [cursor=pointer]:
+              - radio "XXL - Sold out" [disabled] [ref=e100]
+              - generic: XXL
+              - img
+          - generic [ref=e102]:
+            - status [ref=e103]
+            - generic [ref=e105]:
+              - generic [ref=e107]:
+                - button "Decrease quantity" [disabled] [ref=e108] [cursor=pointer]:
+                  - generic [ref=e109]: Decrease quantity
+                  - generic:
+                    - img
+                - spinbutton "Quantity" [disabled] [ref=e110]: "1"
+                - button "Increase quantity" [ref=e111] [cursor=pointer]:
+                  - generic [ref=e112]: Increase quantity
+                  - generic:
+                    - img
+              - button "Unavailable" [disabled] [ref=e115]:
+                - generic [ref=e118]: Unavailable
+                - generic [ref=e119]:
+                  - generic:
+                    - img
+          - generic [ref=e120]:
+            - paragraph [ref=e121]: Deep crimson heavyweight hoodie with a monochrome nine-tailed kitsune illustration across the chest and vertical kanji down the sleeve. Cut oversized, built to outlast winters and all-nighters.
+            - list [ref=e122]:
+              - listitem [ref=e123]: 450 GSM heavyweight French terry
+              - listitem [ref=e124]: Oversized fit, dropped shoulders
+              - listitem [ref=e125]: Water-based front print, sleeve kanji hit
+              - listitem [ref=e126]: Limited run of 200
+    - generic [ref=e130]:
+      - heading "You may also like" [level=3] [ref=e133]
+      - generic [ref=e134]:
+        - generic [ref=e136]:
+          - link "AKUMA Oversized Hoodie — Oni Mask" [ref=e137] [cursor=pointer]:
+            - /url: /products/akuma-oversized-hoodie-oni-mask?variant=53761726939479
+            - generic [ref=e138]: AKUMA Oversized Hoodie — Oni Mask
+          - generic [ref=e139] [cursor=pointer]:
+            - generic [ref=e140]:
+              - link "AKUMA Oversized Hoodie — Oni Mask" [ref=e141]:
+                - /url: /products/akuma-oversized-hoodie-oni-mask?variant=53761726939479
+                - generic [ref=e144]:
+                  - img "AKUMA Oversized Hoodie worn by model — Oni Mask print, Oni Theory streetwear" [ref=e147]
+                  - img [ref=e150]
+              - generic [ref=e152]: Sold out
+              - generic:
+                - generic:
+                  - status
+            - link "AKUMA Oversized Hoodie — Oni Mask" [ref=e153]:
+              - /url: /products/akuma-oversized-hoodie-oni-mask?variant=53761726939479
+              - heading "AKUMA Oversized Hoodie — Oni Mask" [level=3] [ref=e155]
+            - generic [ref=e158]: Rs. 3,799.00 INR
+        - generic [ref=e160]:
+          - link "BOSS FIGHT Tee — Final Form" [ref=e161] [cursor=pointer]:
+            - /url: /products/boss-fight-tee-final-form?variant=53765552832855
+            - generic [ref=e162]: BOSS FIGHT Tee — Final Form
+          - generic [ref=e163] [cursor=pointer]:
+            - generic [ref=e164]:
+              - link "BOSS FIGHT Tee — Final Form" [ref=e165]:
+                - /url: /products/boss-fight-tee-final-form?variant=53765552832855
+                - img "BOSS FIGHT Tee — Final Form on model" [ref=e171]
+              - generic [ref=e173]: Sold out
+              - generic:
+                - generic:
+                  - status
+            - link "BOSS FIGHT Tee — Final Form" [ref=e174]:
+              - /url: /products/boss-fight-tee-final-form?variant=53765552832855
+              - heading "BOSS FIGHT Tee — Final Form" [level=3] [ref=e176]
+            - generic [ref=e179]: Rs. 1,599.00 INR
+        - generic [ref=e181]:
+          - link "CYBER GEISHA Tee — Chrome Bloom" [ref=e182] [cursor=pointer]:
+            - /url: /products/cyber-geisha-tee-chrome-bloom?variant=53765550145879
+            - generic [ref=e183]: CYBER GEISHA Tee — Chrome Bloom
+          - generic [ref=e184] [cursor=pointer]:
+            - generic [ref=e185]:
+              - link "CYBER GEISHA Tee — Chrome Bloom" [ref=e186]:
+                - /url: /products/cyber-geisha-tee-chrome-bloom?variant=53765550145879
+                - img "CYBER GEISHA Tee — Chrome Bloom on model" [ref=e192]
+              - generic [ref=e194]: Sold out
+              - generic:
+                - generic:
+                  - status
+            - link "CYBER GEISHA Tee — Chrome Bloom" [ref=e195]:
+              - /url: /products/cyber-geisha-tee-chrome-bloom?variant=53765550145879
+              - heading "CYBER GEISHA Tee — Chrome Bloom" [level=3] [ref=e197]
+            - generic [ref=e200]: Rs. 1,699.00 INR
+        - generic [ref=e202]:
+          - link "Cyber Samurai Long Sleeve" [ref=e203] [cursor=pointer]:
+            - /url: /products/cyber-samurai-long-sleeve?variant=53764211933527
+            - generic [ref=e204]: Cyber Samurai Long Sleeve
+          - generic [ref=e205] [cursor=pointer]:
+            - generic [ref=e206]:
+              - link "Cyber Samurai Long Sleeve" [ref=e207]:
+                - /url: /products/cyber-samurai-long-sleeve?variant=53764211933527
+                - img "Cyber Samurai Long Sleeve on model — ONI THEORY" [ref=e213]
+              - generic [ref=e215]: Sold out
+              - generic:
+                - generic:
+                  - status
+            - link "Cyber Samurai Long Sleeve" [ref=e216]:
+              - /url: /products/cyber-samurai-long-sleeve?variant=53764211933527
+              - heading "Cyber Samurai Long Sleeve" [level=3] [ref=e218]
+            - generic [ref=e221]: Rs. 62.99 INR
+  - contentinfo [ref=e222]:
+    - generic [ref=e226]:
+      - generic [ref=e228]:
+        - heading "Oni Theory 鬼の理論" [level=2] [ref=e230]
+        - paragraph [ref=e232]: Anime streetwear forged after dark. Drop alerts, early access, zero spam.
+      - generic [ref=e235]:
+        - generic [ref=e236]: Email
+        - textbox "Email" [ref=e237]:
+          - /placeholder: Email address
+        - button "Sign up" [ref=e238]:
+          - img [ref=e239]
+    - generic [ref=e244]:
+      - generic [ref=e246]:
+        - text: © 2026
+        - link "Oni Theory" [ref=e247] [cursor=pointer]:
+          - /url: /
+        - text: ","
+        - link "Powered by Shopify" [ref=e248] [cursor=pointer]:
+          - /url: https://www.shopify.com?utm_campaign=poweredby&utm_medium=shopify&utm_source=onlinestore
+      - button "Terms and Policies" [ref=e250] [cursor=pointer]
+  - generic:
+    - generic: ⚡
+    - generic: Added to cart

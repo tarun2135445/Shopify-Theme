@@ -5,8 +5,7 @@
   "description": "ONI THEORY brand trailer (Remotion)",
   "scripts": {
     "studio": "remotion studio",
-    "render": "remotion render Main out/oni-theory.mp4",
-    "render:vertical": "remotion render Main out/oni-theory-9x16.mp4"
+    "render": "remotion render Main out/oni-theory.mp4"
   },
   "dependencies": {
     "@remotion/cli": "^4.0.477",

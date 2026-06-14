@@ -1,17 +1,25 @@
 {
-  "name": "oni-theory-trailer",
+  "name": "oni-theory-motion",
   "version": "1.0.0",
   "private": true,
-  "description": "ONI THEORY brand trailer (Remotion)",
+  "description": "ONI THEORY motion graphics — Remotion brand trailer + live in-browser hero player",
   "scripts": {
     "studio": "remotion studio",
-    "render": "remotion render Main out/oni-theory.mp4"
+    "render": "remotion render Main out/oni-theory.mp4",
+    "build:player": "esbuild player/entry.tsx --bundle --minify --format=iife --platform=browser --jsx=automatic --define:process.env.NODE_ENV='\"production\"' --outfile=../assets/oni-motion.js",
+    "smoke": "node player/smoke.mjs",
+    "preview": "node player/preview-shot.mjs"
   },
   "dependencies": {
-    "@remotion/cli": "^4.0.477",
+    "@remotion/player": "^4.0.477",
     "@remotion/transitions": "^4.0.477",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "remotion": "^4.0.477"
+  },
+  "devDependencies": {
+    "@remotion/cli": "^4.0.477",
+    "esbuild": "^0.28.1",
+    "playwright-core": "^1.60.0"
   }
 }

@@ -9,9 +9,9 @@
  */
 {
   "sections": {
-    "oni_hero": {
-      "type": "oni-fx-hero",
-      "name": "Oni FX hero",
+    "oni_motion_hero": {
+      "type": "oni-motion-hero",
+      "name": "Oni motion hero",
       "settings": {
         "color_scheme": "scheme-1",
         "kicker": "新着 — Tokyo Midnight Division",
@@ -22,7 +22,6 @@
         "button_link_1": "shopify://collections/hoodies",
         "button_label_2": "Shop tees",
         "button_link_2": "shopify://collections/t-shirts",
-        "show_petals": true,
         "min_height": 90
       }
     },
@@ -771,7 +770,7 @@
     }
   },
   "order": [
-    "oni_hero",
+    "oni_motion_hero",
     "marquee_top",
     "oni_stats_hud",
     "collection_links",

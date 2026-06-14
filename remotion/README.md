@@ -1,10 +1,14 @@
-# ONI THEORY — Remotion Brand Trailer
+# ONI THEORY — Remotion Motion Graphics
 
-A frame-driven, cinematic brand trailer for **ONI THEORY** built with
-[Remotion](https://remotion.dev). It matches the store's visual language:
-Anton display type, the 鬼 kanji, Oni-red / cyber-cyan / oni-purple neon haze,
-CRT scanlines, film grain, drifting sakura petals, and chromatic-aberration
-glitch text.
+[Remotion](https://remotion.dev) powering two things for the **ONI THEORY** store:
+
+1. A cinematic **brand trailer** rendered to MP4 (`src/Video.tsx`).
+2. A **live, in-browser motion-graphics hero** that runs the Remotion composition
+   on the storefront via `@remotion/player` (`src/HeroLoop.tsx` → `assets/oni-motion.js`).
+
+Both share the store's visual language: Anton display type, the 鬼 kanji,
+Oni-red / cyber-cyan / oni-purple neon haze, CRT scanlines, film grain, drifting
+sakura petals, and chromatic-aberration glitch (shared FX in `src/fx.tsx`).
 
 ## What's in the video
 
@@ -18,6 +22,44 @@ glitch text.
 
 All motion is driven by `useCurrentFrame()` (no CSS animation), so it renders
 deterministically.
+
+## Live motion-graphics hero (in-browser)
+
+`src/HeroLoop.tsx` is a **seamless 10s loop** (every value is a continuous
+function of `frame`, so the 0/loop boundary is invisible). It runs live on the
+storefront — no MP4 — via `@remotion/player`, bundled with esbuild into a single
+committed asset that defines a custom element:
+
+```bash
+npm install
+npm run build:player   # -> ../assets/oni-motion.js  (defines <oni-motion>)
+```
+
+The Shopify section `sections/oni-motion-hero.liquid` mounts it and overlays the
+headline/CTAs as accessible HTML; the homepage (`templates/index.json`) uses it as
+the hero. Notes:
+
+- **Playback is driven by a rAF + `seekTo` loop** (in `player/entry.tsx`), which is
+  more reliable across browsers than the Player's internal autoplay clock and loops
+  seamlessly.
+- **Pauses when scrolled offscreen** (IntersectionObserver) to save CPU.
+- **Respects `prefers-reduced-motion`** — the player isn't mounted; the section's
+  animated CSS fallback (neon haze + 鬼) shows instead. The fallback also covers the
+  brief moment before the bundle loads and the no-JS case.
+- **Bundle size:** `assets/oni-motion.js` is ~395KB minified (~120KB gzipped:
+  React + ReactDOM + Remotion + the composition). It's loaded with
+  `fetchpriority="low"`. If that's too heavy for your Core Web Vitals, the CSS
+  fallback alone is a perfectly good lightweight hero.
+
+### Verify locally
+
+```bash
+npm run smoke     # headless-mounts <oni-motion>, asserts the DOM animates
+npm run preview   # writes /tmp/oni-hero-preview.png (hero mockup screenshot)
+```
+
+(Verification uses `playwright-core` + a local Chromium; set the executable path in
+`player/smoke.mjs` / `player/preview-shot.mjs` if yours differs.)
 
 ## Preview & render
 

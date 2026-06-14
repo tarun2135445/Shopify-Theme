@@ -102,7 +102,7 @@
               el,
               {
                 opacity: [0, 1],
-                transform: ['translate3d(0, 30px, 0)', 'translate3d(0, 0, 0)'],
+                transform: ['translate3d(0, 40px, 0)', 'translate3d(0, 0, 0)'],
               },
               { duration: 0.85, ease: EASE }
             );

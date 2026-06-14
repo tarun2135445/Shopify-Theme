@@ -24,7 +24,7 @@
     main[data-template='index']
     > .shopify-section:not(:first-child) {
     opacity: 0;
-    transform: translate3d(0, 30px, 0);
+    transform: translate3d(0, 40px, 0);
   }
 
   /* After reveal: oni-motion.js adds `.oni-revealed` and clears the
@@ -36,5 +36,33 @@
     > .shopify-section:not(:first-child).oni-revealed {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* ============================================================
+   PRODUCT ZOOM
+   The product image scales up inside its frame on hover (the
+   image moves, the card border stays put — a clean, premium zoom).
+   - Targets the <img> (.product-media__image); the card-level tilt
+     from oni-fx writes transform on the CARD, so they never collide.
+   - Defers to Horizon's native "subtle zoom" card-hover effect when
+     the merchant has enabled it, so the image never zooms twice.
+   - Applies site-wide (collection grids, homepage, search), not just
+     the homepage.
+   ============================================================ */
+.product-card .product-media {
+  overflow: hidden;
+}
+
+.product-card .product-media__image {
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+@media (any-pointer: fine) and (prefers-reduced-motion: no-preference) {
+  body:not(.card-hover-effect-subtle-zoom)
+    .product-card:hover
+    .product-media__image {
+    transform: scale(1.08);
   }
 }

@@ -1,0 +1,444 @@
+{% comment %}
+  ONI THEORY 鬼の理論 — CUSTOM HOODIE DESIGNER
+  ------------------------------------------------------------
+  Step wizard + live canvas mockup for customer-uploaded hoodie
+  designs. The uploaded file is stored permanently with the order
+  (native Shopify Files via the Cart AJAX API, or optional
+  Cloudinary) and attached as line item properties so it shows up
+  in the order admin as a downloadable link.
+
+  Setup: pick the "Custom Hoodie" product in section settings,
+  set up color blocks (optionally with real mockup photos), and
+  place the section on a page (see templates/page.hoodie-designer.json).
+{% endcomment %}
+
+{%- liquid
+  assign hoodie = section.settings.product
+  assign sizes = section.settings.sizes | default: 'S, M, L, XL, XXL' | split: ','
+  assign font_labels = 'Anton,Bebas Neue,Permanent Marker,Orbitron' | split: ','
+  assign font_stacks = "'Anton', sans-serif|'Bebas Neue', sans-serif|'Permanent Marker', cursive|'Orbitron', sans-serif" | split: '|'
+-%}
+
+{{ 'oni-hoodie-designer.css' | asset_url | stylesheet_tag }}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+  href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Permanent+Marker&family=Orbitron:wght@700;900&display=swap"
+  rel="stylesheet"
+>
+
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<div class="oni-hd color-{{ section.settings.color_scheme }}" data-testid="oni-hoodie-designer-{{ section.id }}">
+  <div class="oni-hd__inner">
+    <header class="oni-hd__head">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="oni-hd__eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="oni-hd__title">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subheading != blank -%}
+        <p class="oni-hd__subtitle">{{ section.settings.subheading }}</p>
+      {%- endif -%}
+    </header>
+
+    <oni-hoodie-designer id="oni-hd-{{ section.id }}">
+      <noscript>
+        <div class="oni-hd__noscript">
+          The hoodie designer needs JavaScript enabled to upload your artwork and build a live preview.
+        </div>
+      </noscript>
+
+      <div class="oni-hd__layout">
+        {%- comment -%} ── LEFT: live preview stage ── {%- endcomment -%}
+        <div class="oni-hd__stage">
+          <div class="oni-hd__views" role="tablist" aria-label="Preview side">
+            <button type="button" class="oni-hd__view-tab" data-hd-view="front" role="tab" aria-selected="true">
+              Front
+            </button>
+            <button type="button" class="oni-hd__view-tab" data-hd-view="back" role="tab" aria-selected="false" hidden>
+              Back
+            </button>
+          </div>
+
+          <div class="oni-hd__canvas-wrap">
+            <canvas class="oni-hd__canvas" aria-label="Hoodie design preview"></canvas>
+            <div class="oni-hd__stage-empty" data-hd-empty>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M3 8l4-4 5 3 5-3 4 4-3 3v9H6v-9L3 8z" stroke-linejoin="round"/>
+              </svg>
+              <span>Pick a color to start your preview</span>
+            </div>
+          </div>
+
+          <div class="oni-hd__stage-foot">
+            <p class="oni-hd__hint"><b>Drag</b> to move · corner to resize · top dot to rotate</p>
+            <button type="button" class="oni-hd__icon-btn" data-hd-reset>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M4 4v6h6M20 20v-6h-6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M20 9a8 8 0 0 0-14-3M4 15a8 8 0 0 0 14 3" stroke-linecap="round"/>
+              </svg>
+              Reset
+            </button>
+          </div>
+        </div>
+
+        {%- comment -%} ── RIGHT: step wizard panel ── {%- endcomment -%}
+        <div class="oni-hd__panel">
+          <ul class="oni-hd__progress" aria-hidden="true">
+            {%- for i in (1..6) -%}<li></li>{%- endfor -%}
+          </ul>
+
+          <div class="oni-hd__step-meta">
+            <span class="oni-hd__step-count" data-hd-counter>Step 1 / 6</span>
+          </div>
+
+          <div class="oni-hd__steps">
+            {%- comment -%} STEP 1 — COLOR {%- endcomment -%}
+            <section class="oni-hd__step" data-hd-step="color" data-active>
+              <h3 class="oni-hd__step-title">Choose your color</h3>
+              <p class="oni-hd__step-desc">Pick the hoodie base. Your preview updates instantly.</p>
+              <div class="oni-hd__swatches">
+                {%- for block in section.blocks -%}
+                  {%- if block.type == 'color' -%}
+                    <button
+                      type="button"
+                      class="oni-hd__swatch"
+                      data-hd-color="{{ block.settings.label | escape }}"
+                      data-hex="{{ block.settings.swatch }}"
+                      data-front="{{ block.settings.front_image | image_url: width: 1200 }}"
+                      data-back="{{ block.settings.back_image | image_url: width: 1200 }}"
+                      aria-pressed="false"
+                      {{ block.shopify_attributes }}
+                    >
+                      <span class="oni-hd__swatch-dot" style="background: {{ block.settings.swatch }};"></span>
+                      {{ block.settings.label }}
+                    </button>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+              <p class="oni-hd__validation" data-hd-validation>Select a color to continue.</p>
+            </section>
+
+            {%- comment -%} STEP 2 — SIZE {%- endcomment -%}
+            <section class="oni-hd__step" data-hd-step="size">
+              <h3 class="oni-hd__step-title">Pick your size</h3>
+              <p class="oni-hd__step-desc">Unisex fit. Check the size guide if you're between sizes.</p>
+              <div class="oni-hd__pills">
+                {%- for s in sizes -%}
+                  {%- assign sz = s | strip -%}
+                  <button type="button" class="oni-hd__pill" data-hd-size="{{ sz | escape }}" data-available="true" aria-pressed="false">{{ sz }}</button>
+                {%- endfor -%}
+              </div>
+              <p class="oni-hd__validation" data-hd-validation>Select a size to continue.</p>
+            </section>
+
+            {%- comment -%} STEP 3 — PLACEMENT {%- endcomment -%}
+            <section class="oni-hd__step" data-hd-step="placement">
+              <h3 class="oni-hd__step-title">Print placement</h3>
+              <p class="oni-hd__step-desc">Where should we print your design?</p>
+              <div class="oni-hd__cards">
+                <button type="button" class="oni-hd__card" data-hd-placement="front" aria-pressed="true">
+                  <svg viewBox="0 0 24 28" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+                    <path d="M8 2 3 5l2 4 1-1v17h12V8l1 1 2-4-5-3-3 2-3-2z" stroke-linejoin="round"/>
+                    <rect x="9" y="11" width="6" height="7" stroke-dasharray="2 2"/>
+                  </svg>
+                  <span>Front</span>
+                </button>
+                <button type="button" class="oni-hd__card" data-hd-placement="back" aria-pressed="false">
+                  <svg viewBox="0 0 24 28" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+                    <path d="M8 2 3 5l2 4 1-1v17h12V8l1 1 2-4-5-3H8z" stroke-linejoin="round"/>
+                    <rect x="8" y="9" width="8" height="10" stroke-dasharray="2 2"/>
+                  </svg>
+                  <span>Back</span>
+                </button>
+                <button type="button" class="oni-hd__card" data-hd-placement="both" aria-pressed="false">
+                  <svg viewBox="0 0 24 28" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+                    <path d="M8 2 3 5l2 4 1-1v17h12V8l1 1 2-4-5-3-3 2-3-2z" stroke-linejoin="round"/>
+                    <rect x="9" y="6" width="6" height="4" stroke-dasharray="2 2"/>
+                    <rect x="9" y="13" width="6" height="7" stroke-dasharray="2 2"/>
+                  </svg>
+                  <span>Both</span>
+                </button>
+              </div>
+            </section>
+
+            {%- comment -%} STEP 4 — UPLOAD {%- endcomment -%}
+            <section class="oni-hd__step" data-hd-step="upload">
+              <h3 class="oni-hd__step-title">Upload your design</h3>
+              <p class="oni-hd__step-desc">PNG, JPG or SVG · max {{ section.settings.max_file_size | default: 20 }}MB · 300 DPI looks best.</p>
+              <div class="oni-hd__drop" data-hd-drop tabindex="0" role="button" aria-label="Upload your design file">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                  <path d="M12 16V4m0 0L7 9m5-5 5 5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M4 17v2a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-2" stroke-linecap="round"/>
+                </svg>
+                <span class="oni-hd__drop-title">Tap to upload or drag &amp; drop</span>
+                <span class="oni-hd__drop-sub">PNG · JPG · SVG</span>
+                <input type="file" accept=".png,.jpg,.jpeg,.svg,image/png,image/jpeg,image/svg+xml" data-hd-file>
+              </div>
+              <div class="oni-hd__file" data-hd-filechip>
+                <img class="oni-hd__file-thumb" alt="" data-hd-thumb>
+                <div class="oni-hd__file-info">
+                  <p class="oni-hd__file-name"></p>
+                  <p class="oni-hd__file-meta"></p>
+                </div>
+                <button type="button" class="oni-hd__file-remove" data-hd-remove>Remove</button>
+              </div>
+              <p class="oni-hd__validation" data-hd-upload-error></p>
+              <p class="oni-hd__validation" data-hd-validation>Upload a design to continue.</p>
+            </section>
+
+            {%- comment -%} STEP 5 — TEXT (optional) {%- endcomment -%}
+            <section class="oni-hd__step" data-hd-step="text">
+              <h3 class="oni-hd__step-title">Add custom text <em style="font-style:normal;color:var(--hd-muted);font-size:.7em;letter-spacing:.14em">— OPTIONAL</em></h3>
+              <p class="oni-hd__step-desc">Drop a name, slogan or kanji. Drag it on the preview to place it.</p>
+              <div class="oni-hd__field">
+                <label class="oni-hd__label" for="oni-hd-text-{{ section.id }}">Your text</label>
+                <input class="oni-hd__input" id="oni-hd-text-{{ section.id }}" type="text" maxlength="40" placeholder="e.g. 鬼 ONITHEORY" data-hd-text>
+              </div>
+              <div class="oni-hd__field">
+                <label class="oni-hd__label" for="oni-hd-font-{{ section.id }}">Font</label>
+                <select class="oni-hd__select" id="oni-hd-font-{{ section.id }}" data-hd-font>
+                  {%- for i in (0..3) -%}
+                    <option value="{{ font_stacks[i] }}">{{ font_labels[i] }}</option>
+                  {%- endfor -%}
+                </select>
+              </div>
+              <div class="oni-hd__field">
+                <span class="oni-hd__label">Text color</span>
+                <div class="oni-hd__color-row">
+                  {%- assign text_colors = '#ffffff,#0b0b10,#ff3346,#ff7a18,#00f5ff,#ffe600' | split: ',' -%}
+                  {%- for tc in text_colors -%}
+                    <button type="button" class="oni-hd__color-chip" data-hd-textcolor="{{ tc }}" style="background: {{ tc }};" aria-pressed="false" aria-label="Text color {{ tc }}"></button>
+                  {%- endfor -%}
+                  <input type="color" class="oni-hd__color-native" value="#ffffff" data-hd-textcolor-native aria-label="Custom text color">
+                </div>
+              </div>
+            </section>
+
+            {%- comment -%} STEP 6 — REVIEW {%- endcomment -%}
+            <section class="oni-hd__step" data-hd-step="review">
+              <h3 class="oni-hd__step-title">Review &amp; add to cart</h3>
+              <p class="oni-hd__step-desc">Check your build. Your full-resolution file ships with the order.</p>
+              <ul class="oni-hd__summary" data-hd-summary></ul>
+              <div class="oni-hd__price">
+                <span class="lbl">Total</span>
+                <span class="amt" data-hd-price>{{ hoodie.price | default: 0 | money }}</span>
+              </div>
+              <div class="oni-hd__msg" data-hd-cart-msg></div>
+            </section>
+          </div>
+
+          <div class="oni-hd__nav">
+            <button type="button" class="oni-hd__btn oni-hd__btn--ghost" data-hd-back style="visibility:hidden">Back</button>
+            <button type="button" class="oni-hd__btn oni-hd__btn--primary" data-hd-next>Next</button>
+            <button type="button" class="oni-hd__btn oni-hd__btn--primary" data-hd-add hidden disabled>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M6 6h15l-1.5 9h-12L6 6zM6 6 5 3H2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/>
+              </svg>
+              Add to cart
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <script type="application/json" data-hd-config>
+        {
+          "productId": {{ hoodie.id | default: 'null' }},
+          "defaultVariantId": {{ hoodie.selected_or_first_available_variant.id | default: 'null' }},
+          "priceFormatted": {{ hoodie.price | default: 0 | money | json }},
+          "maxFileSizeMB": {{ section.settings.max_file_size | default: 20 | json }},
+          "provider": {{ section.settings.upload_provider | default: 'native' | json }},
+          "afterAdd": {{ section.settings.after_add | default: 'drawer' | json }},
+          "cloudinary": {
+            "cloudName": {{ section.settings.cloudinary_cloud_name | default: '' | json }},
+            "uploadPreset": {{ section.settings.cloudinary_upload_preset | default: '' | json }}
+          },
+          "fonts": [
+            {%- for i in (0..3) -%}
+              { "label": {{ font_labels[i] | json }}, "stack": {{ font_stacks[i] | json }} }{%- unless forloop.last -%},{%- endunless -%}
+            {%- endfor -%}
+          ],
+          "variants": [
+            {%- if hoodie -%}
+              {%- for v in hoodie.variants -%}
+                {
+                  "id": {{ v.id }},
+                  "available": {{ v.available }},
+                  "price": {{ v.price }},
+                  "price_formatted": {{ v.price | money | json }},
+                  "options": {
+                    {%- for opt in hoodie.options_with_values -%}
+                      {{ opt.name | json }}: {{ v.options[forloop.index0] | json }}{%- unless forloop.last -%},{%- endunless -%}
+                    {%- endfor -%}
+                  }
+                }{%- unless forloop.last -%},{%- endunless -%}
+              {%- endfor -%}
+            {%- endif -%}
+          ]
+        }
+      </script>
+    </oni-hoodie-designer>
+  </div>
+</div>
+
+<script type="module" src="{{ 'oni-hoodie-designer.js' | asset_url }}"></script>
+
+{% schema %}
+{
+  "name": "Oni hoodie designer",
+  "tag": "section",
+  "class": "section-wrapper oni-hd-section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Step-by-step custom hoodie builder. Customers upload their own art, position it on a live mockup, and you receive the full-resolution file as a downloadable link on the order."
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Custom hoodie product",
+      "info": "The product added to cart. Best results: a product with Color + Size variants (the designer auto-matches them). A single-variant product also works — color/size are saved as line item properties."
+    },
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "BUILD-A-HOODIE 鬼"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Design your own"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Upload your art, drop it on the hoodie, and we'll print it. One-off drops, made by you."
+    },
+    {
+      "type": "header",
+      "content": "Sizes"
+    },
+    {
+      "type": "text",
+      "id": "sizes",
+      "label": "Sizes (comma separated)",
+      "default": "S, M, L, XL, XXL"
+    },
+    {
+      "type": "header",
+      "content": "File upload"
+    },
+    {
+      "type": "select",
+      "id": "upload_provider",
+      "label": "Where to store uploads",
+      "options": [
+        { "value": "native", "label": "Shopify Files (no setup)" },
+        { "value": "cloudinary", "label": "Cloudinary (for larger files)" }
+      ],
+      "default": "native",
+      "info": "Shopify Files works out of the box and the file lands in the order admin as a download link (max ~20MB). Choose Cloudinary for bigger files."
+    },
+    {
+      "type": "range",
+      "id": "max_file_size",
+      "label": "Max file size",
+      "min": 5,
+      "max": 50,
+      "step": 5,
+      "unit": "MB",
+      "default": 20,
+      "info": "Shopify Files caps at ~20MB. Raise this only if you use Cloudinary on a plan that allows it."
+    },
+    {
+      "type": "text",
+      "id": "cloudinary_cloud_name",
+      "label": "Cloudinary cloud name",
+      "info": "Only needed if storage is set to Cloudinary."
+    },
+    {
+      "type": "text",
+      "id": "cloudinary_upload_preset",
+      "label": "Cloudinary unsigned upload preset"
+    },
+    {
+      "type": "header",
+      "content": "After add to cart"
+    },
+    {
+      "type": "select",
+      "id": "after_add",
+      "label": "When a hoodie is added",
+      "options": [
+        { "value": "drawer", "label": "Open cart drawer" },
+        { "value": "cart", "label": "Go to cart page" },
+        { "value": "stay", "label": "Stay here (show confirmation)" }
+      ],
+      "default": "drawer"
+    },
+    {
+      "type": "header",
+      "content": "Appearance"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "color",
+      "name": "Hoodie color",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Color name",
+          "default": "Black"
+        },
+        {
+          "type": "color",
+          "id": "swatch",
+          "label": "Swatch color",
+          "default": "#0b0b10"
+        },
+        {
+          "type": "image_picker",
+          "id": "front_image",
+          "label": "Front mockup (optional)",
+          "info": "Real hoodie photo for the front. Leave empty to use the built-in generated mockup."
+        },
+        {
+          "type": "image_picker",
+          "id": "back_image",
+          "label": "Back mockup (optional)"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Oni hoodie designer",
+      "category": "t:categories.product",
+      "blocks": [
+        { "type": "color", "settings": { "label": "Black", "swatch": "#0b0b10" } },
+        { "type": "color", "settings": { "label": "White", "swatch": "#f2efe9" } },
+        { "type": "color", "settings": { "label": "Charcoal", "swatch": "#3a3a42" } },
+        { "type": "color", "settings": { "label": "Navy", "swatch": "#1c2540" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

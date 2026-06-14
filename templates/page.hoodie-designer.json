@@ -1,0 +1,25 @@
+{
+  "sections": {
+    "designer": {
+      "type": "oni-hoodie-designer",
+      "settings": {
+        "eyebrow": "BUILD-A-HOODIE 鬼",
+        "heading": "Design your own",
+        "subheading": "Upload your art, drop it on the hoodie, and we'll print it. One-off drops, made by you.",
+        "sizes": "S, M, L, XL, XXL",
+        "upload_provider": "native",
+        "max_file_size": 20,
+        "after_add": "drawer",
+        "color_scheme": "scheme-1"
+      },
+      "blocks": {
+        "black": { "type": "color", "settings": { "label": "Black", "swatch": "#0b0b10" } },
+        "white": { "type": "color", "settings": { "label": "White", "swatch": "#f2efe9" } },
+        "charcoal": { "type": "color", "settings": { "label": "Charcoal", "swatch": "#3a3a42" } },
+        "navy": { "type": "color", "settings": { "label": "Navy", "swatch": "#1c2540" } }
+      },
+      "block_order": ["black", "white", "charcoal", "navy"]
+    }
+  },
+  "order": ["designer"]
+}

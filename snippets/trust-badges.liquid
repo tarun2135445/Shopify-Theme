@@ -1,0 +1,89 @@
+{%- doc -%}
+  Renders a compact row of trust signals (made-to-order, payments, returns,
+  secure checkout) shown under the add-to-cart button and the cart checkout
+  button to reduce purchase hesitation.
+
+  To edit the wording, change the text inside the .trust-badge spans below.
+  If you enable Cash on Delivery, add "• COD" to the payments badge.
+
+  @param {string} [layout] - 'inline' (default) or 'stacked'
+{%- enddoc -%}
+
+<div class="trust-badges trust-badges--{{ layout | default: 'inline' }}">
+  <span class="trust-badge">
+    <svg class="trust-badge__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11Z"/>
+      <circle cx="12" cy="10" r="2.5"/>
+    </svg>
+    <span>Made-to-order in India</span>
+  </span>
+
+  <span class="trust-badge">
+    <svg class="trust-badge__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="2.5" y="5" width="19" height="14" rx="2.5"/>
+      <path d="M2.5 9.5h19"/>
+      <path d="M6 15h4"/>
+    </svg>
+    <span>UPI, Cards &amp; Netbanking</span>
+  </span>
+
+  <span class="trust-badge">
+    <svg class="trust-badge__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M3 8a9 9 0 1 1-1 4"/>
+      <path d="M3 4v4h4"/>
+    </svg>
+    <span>7-day easy returns</span>
+  </span>
+
+  <span class="trust-badge">
+    <svg class="trust-badge__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="5" y="11" width="14" height="9" rx="2"/>
+      <path d="M8 11V8a4 4 0 0 1 8 0v3"/>
+    </svg>
+    <span>Secure checkout</span>
+  </span>
+</div>
+
+<style>
+  .trust-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem 1.1rem;
+    align-items: center;
+    margin-block-start: 1rem;
+    padding-block-start: 1rem;
+    border-block-start: 1px solid rgb(var(--color-foreground-rgb, 18 18 18) / 0.12);
+  }
+
+  .trust-badges--stacked {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .trust-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.78rem;
+    line-height: 1.2;
+    color: rgb(var(--color-foreground-rgb, 18 18 18) / 0.78);
+    white-space: nowrap;
+  }
+
+  .trust-badge__icon {
+    width: 1.05rem;
+    height: 1.05rem;
+    flex-shrink: 0;
+    opacity: 0.85;
+  }
+
+  @media screen and (max-width: 749px) {
+    .trust-badges {
+      gap: 0.5rem 0.9rem;
+    }
+
+    .trust-badge {
+      font-size: 0.74rem;
+    }
+  }
+</style>

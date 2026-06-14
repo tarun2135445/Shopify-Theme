@@ -34,13 +34,23 @@
           "settings": {
             "text": "<p>New drops 新着</p>",
             "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
             "type_preset": "custom",
             "font": "var(--font-heading--family)",
             "font_size": "var(--font-size--h3)",
             "line_height": "tight",
             "letter_spacing": "normal",
             "case": "uppercase",
-            "wrap": "nowrap"
+            "wrap": "nowrap",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
           },
           "blocks": {}
         },
@@ -49,13 +59,23 @@
           "settings": {
             "text": "<p>◆ Free shipping over ₹1,499 ◆</p>",
             "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
             "type_preset": "custom",
             "font": "var(--font-accent--family)",
             "font_size": "var(--font-size--h4)",
             "line_height": "tight",
             "letter_spacing": "normal",
             "case": "uppercase",
-            "wrap": "nowrap"
+            "wrap": "nowrap",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
           },
           "blocks": {}
         },
@@ -64,13 +84,23 @@
           "settings": {
             "text": "<p>鬼 Oni Theory</p>",
             "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
             "type_preset": "custom",
             "font": "var(--font-heading--family)",
             "font_size": "var(--font-size--h3)",
             "line_height": "tight",
             "letter_spacing": "normal",
             "case": "uppercase",
-            "wrap": "nowrap"
+            "wrap": "nowrap",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
           },
           "blocks": {}
         },
@@ -79,13 +109,23 @@
           "settings": {
             "text": "<p>◆ Limited runs only ◆</p>",
             "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
             "type_preset": "custom",
             "font": "var(--font-accent--family)",
             "font_size": "var(--font-size--h4)",
             "line_height": "tight",
             "letter_spacing": "normal",
             "case": "uppercase",
-            "wrap": "nowrap"
+            "wrap": "nowrap",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
           },
           "blocks": {}
         }
@@ -105,31 +145,93 @@
         "gap_between_elements": 40
       }
     },
+    "oni_stats_hud": {
+      "type": "oni-stats-hud",
+      "blocks": {
+        "stat_designs": {
+          "type": "stat",
+          "settings": {
+            "count_to": 15,
+            "value": "",
+            "suffix": "+",
+            "caption": "Designs deployed"
+          }
+        },
+        "stat_dispatch": {
+          "type": "stat",
+          "settings": {
+            "count_to": 0,
+            "value": "24H",
+            "suffix": "",
+            "caption": "Dispatch time"
+          }
+        },
+        "stat_limited": {
+          "type": "stat",
+          "settings": {
+            "count_to": 100,
+            "value": "",
+            "suffix": "%",
+            "caption": "Limited runs"
+          }
+        },
+        "stat_oni": {
+          "type": "stat",
+          "settings": {
+            "count_to": 0,
+            "value": "鬼",
+            "suffix": "",
+            "caption": "Demon energy"
+          }
+        }
+      },
+      "block_order": [
+        "stat_designs",
+        "stat_dispatch",
+        "stat_limited",
+        "stat_oni"
+      ],
+      "name": "Oni stats HUD",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "label": "SYSTEM STATUS — ONI THEORY 鬼の理論"
+      }
+    },
     "collection_links": {
       "type": "collection-links",
       "blocks": {
         "link": {
           "type": "_collection-link",
           "static": true,
-          "settings": {},
+          "settings": {
+            "show_count": true
+          },
           "blocks": {
             "title": {
               "type": "_inline-collection-title",
               "name": "t:names.title",
               "static": true,
               "settings": {
-                "font": "var(--font-heading--family)"
-              }
+                "font": "var(--font-heading--family)",
+                "weight": "",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none"
+              },
+              "blocks": {}
             },
             "image": {
               "type": "_image",
               "static": true,
               "settings": {
                 "height": "large",
-                "ratio": "square"
-              }
+                "ratio": "square",
+                "border_radius": 0
+              },
+              "blocks": {}
             }
-          }
+          },
+          "block_order": []
         }
       },
       "name": "t:names.collection_links",
@@ -542,6 +644,7 @@
       "name": "Oni promo video",
       "settings": {
         "color_scheme": "scheme-1",
+        "video": "shopify://files/videos/WhatsApp Video 2026-06-14 at 13.29.51.mp4",
         "video_url": "",
         "kicker": "鬼 The Film — Tokyo Midnight Division",
         "heading": "Shop the drop",
@@ -566,8 +669,8 @@
         "text_alignment": "left",
         "section_width": "full-width",
         "min_height": 85,
-        "enable_zoom": true,
         "image": "shopify://shop_images/oni-editorial-forged-after-dark.png",
+        "enable_zoom": true,
         "overlay_opacity": 45,
         "color_scheme": "scheme-4",
         "kicker": "鬼 The Edit",
@@ -593,7 +696,8 @@
             "line_height": "0.8",
             "letter_spacing": "-0.03em",
             "case": "uppercase",
-            "text_effect": "reveal"
+            "text_effect": "reveal",
+            "animation_repeat": false
           },
           "blocks": {}
         },
@@ -665,7 +769,19 @@
         "gap": 16,
         "section_width": "full-width",
         "section_height": "small",
+        "section_height_custom": 50,
         "color_scheme": "scheme-2",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
         "padding-block-start": 80,
         "padding-block-end": 80
       }
@@ -678,13 +794,23 @@
           "settings": {
             "text": "<p>Oni Theory 鬼の理論</p>",
             "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
             "type_preset": "custom",
             "font": "var(--font-heading--family)",
             "font_size": "var(--font-size--h3)",
             "line_height": "tight",
             "letter_spacing": "normal",
             "case": "uppercase",
-            "wrap": "nowrap"
+            "wrap": "nowrap",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
           },
           "blocks": {}
         },
@@ -693,13 +819,23 @@
           "settings": {
             "text": "<p>◆ Forged after dark ◆</p>",
             "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
             "type_preset": "custom",
             "font": "var(--font-accent--family)",
             "font_size": "var(--font-size--h4)",
             "line_height": "tight",
             "letter_spacing": "normal",
             "case": "uppercase",
-            "wrap": "nowrap"
+            "wrap": "nowrap",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
           },
           "blocks": {}
         }
@@ -715,58 +851,6 @@
         "padding-block-start": 16,
         "padding-block-end": 16,
         "gap_between_elements": 40
-      }
-    },
-    "oni_stats_hud": {
-      "type": "oni-stats-hud",
-      "blocks": {
-        "stat_designs": {
-          "type": "stat",
-          "settings": {
-            "count_to": 15,
-            "value": "",
-            "suffix": "+",
-            "caption": "Designs deployed"
-          }
-        },
-        "stat_dispatch": {
-          "type": "stat",
-          "settings": {
-            "count_to": 0,
-            "value": "24H",
-            "suffix": "",
-            "caption": "Dispatch time"
-          }
-        },
-        "stat_limited": {
-          "type": "stat",
-          "settings": {
-            "count_to": 100,
-            "value": "",
-            "suffix": "%",
-            "caption": "Limited runs"
-          }
-        },
-        "stat_oni": {
-          "type": "stat",
-          "settings": {
-            "count_to": 0,
-            "value": "鬼",
-            "suffix": "",
-            "caption": "Demon energy"
-          }
-        }
-      },
-      "block_order": [
-        "stat_designs",
-        "stat_dispatch",
-        "stat_limited",
-        "stat_oni"
-      ],
-      "name": "Oni stats HUD",
-      "settings": {
-        "color_scheme": "scheme-1",
-        "label": "SYSTEM STATUS — ONI THEORY 鬼の理論"
       }
     }
   },

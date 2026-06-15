@@ -101,13 +101,23 @@
               <div class="oni-hd__swatches">
                 {%- for block in section.blocks -%}
                   {%- if block.type == 'color' -%}
+                    {%- liquid
+                      assign front_src = block.settings.front_image | image_url: width: 1400
+                      if front_src == blank
+                        assign front_src = block.settings.front_image_url
+                      endif
+                      assign back_src = block.settings.back_image | image_url: width: 1400
+                      if back_src == blank
+                        assign back_src = block.settings.back_image_url
+                      endif
+                    -%}
                     <button
                       type="button"
                       class="oni-hd__swatch"
                       data-hd-color="{{ block.settings.label | escape }}"
                       data-hex="{{ block.settings.swatch }}"
-                      data-front="{{ block.settings.front_image | image_url: width: 1200 }}"
-                      data-back="{{ block.settings.back_image | image_url: width: 1200 }}"
+                      data-front="{{ front_src }}"
+                      data-back="{{ back_src }}"
                       aria-pressed="false"
                       {{ block.shopify_attributes }}
                     >
@@ -423,6 +433,18 @@
           "type": "image_picker",
           "id": "back_image",
           "label": "Back mockup (optional)"
+        },
+        {
+          "type": "text",
+          "id": "front_image_url",
+          "label": "Front mockup image URL",
+          "info": "Optional. Direct image URL, used only if no Front mockup image is picked above."
+        },
+        {
+          "type": "text",
+          "id": "back_image_url",
+          "label": "Back mockup image URL",
+          "info": "Optional. Direct image URL, used only if no Back mockup image is picked above."
         }
       ]
     }

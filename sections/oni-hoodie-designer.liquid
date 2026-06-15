@@ -105,40 +105,37 @@
                 {%- for block in section.blocks -%}
                   {%- if block.type == 'color' -%}
                     {%- liquid
-                      # Resolve mockups: picked image → URL setting → built-in studio
-                      # default (baked in so it works on the live theme even when
-                      # JSON template settings don't sync via the GitHub integration).
-                      assign front_src = block.settings.front_image | image_url: width: 1400
-                      if front_src == blank
-                        assign front_src = block.settings.front_image_url
-                      endif
-                      assign back_src = block.settings.back_image | image_url: width: 1400
-                      if back_src == blank
-                        assign back_src = block.settings.back_image_url
-                      endif
+                      # Resolve mockups: built-in per-colour studio default first,
+                      # then override with a picked image or URL setting if present.
+                      # (Default-first avoids image_url returning a placeholder for
+                      # unset pickers, which made every colour share one image.)
                       assign lbl = block.settings.label | downcase | strip
                       case lbl
                         when 'black'
-                          assign def_front = 'https://cdn.shopify.com/s/files/1/1023/5061/8967/files/hf_20260615_054109_ac39fd37-2b71-4361-9175-d8ec61b4ea11.png?v=1781518436'
-                          assign def_back = 'https://cdn.shopify.com/s/files/1/1023/5061/8967/files/hf_20260615_054153_8e45e701-a1c5-4b3f-a445-afb33bcbaf04.png?v=1781518436'
+                          assign front_src = 'https://cdn.shopify.com/s/files/1/1023/5061/8967/files/hf_20260615_054109_ac39fd37-2b71-4361-9175-d8ec61b4ea11.png?v=1781518436'
+                          assign back_src = 'https://cdn.shopify.com/s/files/1/1023/5061/8967/files/hf_20260615_054153_8e45e701-a1c5-4b3f-a445-afb33bcbaf04.png?v=1781518436'
                         when 'white'
-                          assign def_front = 'https://cdn.shopify.com/s/files/1/1023/5061/8967/files/hf_20260615_054114_8fde2faf-c6ea-48c2-a30a-3887b441f6f9.png?v=1781518436'
-                          assign def_back = 'https://cdn.shopify.com/s/files/1/1023/5061/8967/files/hf_20260615_054157_9d4e8ca6-2ff7-49ee-ad1a-56484695197f.png?v=1781518437'
+                          assign front_src = 'https://cdn.shopify.com/s/files/1/1023/5061/8967/files/hf_20260615_054114_8fde2faf-c6ea-48c2-a30a-3887b441f6f9.png?v=1781518436'
+                          assign back_src = 'https://cdn.shopify.com/s/files/1/1023/5061/8967/files/hf_20260615_054157_9d4e8ca6-2ff7-49ee-ad1a-56484695197f.png?v=1781518437'
                         when 'charcoal'
-                          assign def_front = 'https://cdn.shopify.com/s/files/1/1023/5061/8967/files/hf_20260615_054106_d835f42b-ba84-4e1a-a7bc-e8d3d7c1dfb5.png?v=1781518438'
-                          assign def_back = 'https://cdn.shopify.com/s/files/1/1023/5061/8967/files/hf_20260615_054207_9e585547-7777-4949-a9ff-54f0c1c8f9f2.png?v=1781518436'
+                          assign front_src = 'https://cdn.shopify.com/s/files/1/1023/5061/8967/files/hf_20260615_054106_d835f42b-ba84-4e1a-a7bc-e8d3d7c1dfb5.png?v=1781518438'
+                          assign back_src = 'https://cdn.shopify.com/s/files/1/1023/5061/8967/files/hf_20260615_054207_9e585547-7777-4949-a9ff-54f0c1c8f9f2.png?v=1781518436'
                         when 'navy'
-                          assign def_front = 'https://cdn.shopify.com/s/files/1/1023/5061/8967/files/hf_20260615_054117_2a3e45b5-360d-4175-a559-158a60743c5c.png?v=1781518436'
-                          assign def_back = 'https://cdn.shopify.com/s/files/1/1023/5061/8967/files/hf_20260615_054210_1b16a848-4291-489f-b649-f4206d6fe4e4.png?v=1781518437'
+                          assign front_src = 'https://cdn.shopify.com/s/files/1/1023/5061/8967/files/hf_20260615_054117_2a3e45b5-360d-4175-a559-158a60743c5c.png?v=1781518436'
+                          assign back_src = 'https://cdn.shopify.com/s/files/1/1023/5061/8967/files/hf_20260615_054210_1b16a848-4291-489f-b649-f4206d6fe4e4.png?v=1781518437'
                         else
-                          assign def_front = ''
-                          assign def_back = ''
+                          assign front_src = ''
+                          assign back_src = ''
                       endcase
-                      if front_src == blank
-                        assign front_src = def_front
+                      if block.settings.front_image != blank
+                        assign front_src = block.settings.front_image | image_url: width: 1400
+                      elsif block.settings.front_image_url != blank
+                        assign front_src = block.settings.front_image_url
                       endif
-                      if back_src == blank
-                        assign back_src = def_back
+                      if block.settings.back_image != blank
+                        assign back_src = block.settings.back_image | image_url: width: 1400
+                      elsif block.settings.back_image_url != blank
+                        assign back_src = block.settings.back_image_url
                       endif
                     -%}
                     <button

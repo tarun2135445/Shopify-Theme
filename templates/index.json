@@ -749,6 +749,54 @@
             "body": "Authentic products and a hassle-free 7-day return. Stitching is neat and the hoodie holds its shape. Will order the next drop for sure.",
             "verified": true
           }
+        },
+        "review_sneha": {
+          "type": "_review-item",
+          "settings": {
+            "author": "Sneha Gupta",
+            "location": "Kolkata",
+            "rating": 5,
+            "date": "Dec 2025",
+            "title": "Best streetwear in India",
+            "body": "The oversized fit is exactly the vibe I wanted. Bought two tees and both are top quality. Delivery to Kolkata was quicker than expected.",
+            "verified": true
+          }
+        },
+        "review_aditya": {
+          "type": "_review-item",
+          "settings": {
+            "author": "Aditya Joshi",
+            "location": "Ahmedabad",
+            "rating": 4,
+            "date": "Dec 2025",
+            "title": "Solid quality, loud prints",
+            "body": "The anime graphics really pop and the cotton is thick. Took 5 days to reach Ahmedabad but totally worth the wait.",
+            "verified": true
+          }
+        },
+        "review_meera": {
+          "type": "_review-item",
+          "settings": {
+            "author": "Meera Krishnan",
+            "location": "Kochi",
+            "rating": 5,
+            "date": "Nov 2025",
+            "title": "Repeat customer now",
+            "body": "Third order from Oni Theory and never disappointed. Sizing is consistent and the prepaid discount is a nice touch. Highly recommend.",
+            "verified": true
+          }
+        },
+        "review_karan": {
+          "type": "_review-item",
+          "settings": {
+            "author": "Karan Singh",
+            "location": "Jaipur",
+            "rating": 5,
+            "date": "Nov 2025",
+            "title": "Limited drop, no regrets",
+            "body": "Grabbed a limited-run hoodie before it sold out. Heavyweight, warm, and the print hasn't cracked at all. Easily worth every rupee.",
+            "verified": true
+          }
         }
       },
       "block_order": [
@@ -757,7 +805,11 @@
         "review_ananya",
         "review_rahul",
         "review_kavya",
-        "review_vikram"
+        "review_vikram",
+        "review_sneha",
+        "review_aditya",
+        "review_meera",
+        "review_karan"
       ],
       "name": "Store reviews",
       "settings": {

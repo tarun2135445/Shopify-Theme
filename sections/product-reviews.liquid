@@ -5,10 +5,8 @@
   assign rating_sum = 0
   assign rating_count = 0
   for b in section.blocks
-    if b.type == '_review-item'
-      assign rating_sum = rating_sum | plus: b.settings.rating
-      assign rating_count = rating_count | plus: 1
-    endif
+    assign rating_sum = rating_sum | plus: b.settings.rating
+    assign rating_count = rating_count | plus: 1
   endfor
 
   assign rating_avg = 0

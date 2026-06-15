@@ -1,0 +1,343 @@
+{%- liquid
+  assign s = section.settings
+  assign coll = collections[s.collection]
+  assign limit = s.max_products | default: 8
+-%}
+
+<div class="section-background color-{{ s.color_scheme }}"></div>
+<div
+  class="oni-carousel section section--full-width color-{{ s.color_scheme }}"
+  style="--oni-c-pt: {{ s.padding_block_start }}px; --oni-c-pb: {{ s.padding_block_end }}px;"
+  data-testid="oni-drag-carousel-{{ section.id }}"
+>
+  <div class="oni-carousel__head">
+    <div class="oni-carousel__heads">
+      {%- if s.kicker != blank -%}
+        <p class="oni-carousel__kicker">{{ s.kicker }}</p>
+      {%- endif -%}
+      {%- if s.heading != blank -%}
+        <h2 class="oni-carousel__title">
+          {{ s.heading | escape }}
+          {%- if s.kanji != blank %} <span class="oni-carousel__kanji">{{ s.kanji }}</span>{% endif -%}
+        </h2>
+      {%- endif -%}
+    </div>
+    {%- if s.button_label != blank and s.button_link != blank -%}
+      <a class="oni-carousel__viewall button button-secondary" href="{{ s.button_link }}" data-oni-magnetic>
+        {{- s.button_label -}}
+      </a>
+    {%- endif -%}
+  </div>
+
+  <div class="oni-carousel__viewport">
+    <ul class="oni-carousel__track" data-oni-carousel role="list">
+      {%- if coll != blank and coll.products_count > 0 -%}
+        {%- for product in coll.products limit: limit -%}
+          <li class="oni-pcard">
+            <a class="oni-pcard__link" href="{{ product.url }}" draggable="false">
+              <div class="oni-pcard__media">
+                {%- if product.featured_media -%}
+                  {{
+                    product.featured_media.preview_image
+                    | image_url: width: 700
+                    | image_tag:
+                      class: 'oni-pcard__img',
+                      loading: 'lazy',
+                      draggable: 'false',
+                      widths: '300, 450, 600, 700',
+                      sizes: '(max-width: 749px) 70vw, 300px',
+                      alt: product.title | escape
+                  }}
+                {%- else -%}
+                  <div class="oni-pcard__img oni-pcard__ph">{{ s.kanji | default: '鬼' }}</div>
+                {%- endif -%}
+                <span class="oni-pcard__sheen" aria-hidden="true"></span>
+              </div>
+              <div class="oni-pcard__b">
+                <span class="oni-pcard__name">{{ product.title }}</span>
+                <span class="oni-pcard__price">{{ product.price | money }}</span>
+              </div>
+            </a>
+          </li>
+        {%- endfor -%}
+      {%- else -%}
+        {%- for i in (1..6) -%}
+          <li class="oni-pcard">
+            <a class="oni-pcard__link" href="#" draggable="false">
+              <div class="oni-pcard__media">
+                <div class="oni-pcard__img oni-pcard__ph">{{ s.kanji | default: '鬼' }}</div>
+                <span class="oni-pcard__sheen" aria-hidden="true"></span>
+              </div>
+              <div class="oni-pcard__b">
+                <span class="oni-pcard__name">{{ 'onboarding.product_title' | t | default: 'Product title' }}</span>
+                <span class="oni-pcard__price">{{ 1999 | money }}</span>
+              </div>
+            </a>
+          </li>
+        {%- endfor -%}
+      {%- endif -%}
+    </ul>
+    <p class="oni-carousel__hint" aria-hidden="true">◆ drag / swipe — momentum carries</p>
+  </div>
+</div>
+
+{% stylesheet %}
+  .oni-carousel {
+    padding-block-start: var(--oni-c-pt, 64px);
+    padding-block-end: var(--oni-c-pb, 64px);
+    overflow: hidden;
+  }
+
+  .oni-carousel__head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: var(--page-width, 1200px);
+    margin: 0 auto 28px;
+    padding-inline: clamp(1rem, 4vw, 2.5rem);
+  }
+
+  .oni-carousel__kicker {
+    margin: 0 0 6px;
+    font-family: var(--font-accent--family, inherit);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    opacity: 0.8;
+  }
+
+  .oni-carousel__title {
+    margin: 0;
+  }
+
+  .oni-carousel__kanji {
+    color: var(--color-primary, currentColor);
+  }
+
+  .oni-carousel__viewall {
+    white-space: nowrap;
+    flex: 0 0 auto;
+  }
+
+  /* Full-bleed viewport; first card aligns to the page gutter. */
+  .oni-carousel__viewport {
+    overflow: hidden;
+    padding-inline: max(
+      clamp(1rem, 4vw, 2.5rem),
+      calc((100% - var(--page-width, 1200px)) / 2 + clamp(1rem, 4vw, 2.5rem))
+    );
+  }
+
+  .oni-carousel__track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    margin: 0;
+    padding: 4px 0;
+    list-style: none;
+    cursor: grab;
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-user-select: none;
+    will-change: transform;
+  }
+
+  .oni-carousel__track.is-dragging {
+    cursor: grabbing;
+  }
+
+  .oni-pcard {
+    flex: 0 0 auto;
+    width: clamp(220px, 26vw, 300px);
+  }
+
+  .oni-pcard__link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    -webkit-user-drag: none;
+  }
+
+  .oni-pcard__media {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3 / 4;
+    background: rgb(var(--color-foreground-rgb, 0 0 0) / 0.05);
+  }
+
+  .oni-pcard__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .oni-pcard__ph {
+    display: grid;
+    place-items: center;
+    font-family: var(--font-heading--family, sans-serif);
+    font-size: 48px;
+    color: rgb(var(--color-foreground-rgb, 0 0 0) / 0.12);
+  }
+
+  .oni-pcard__sheen {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    background: linear-gradient(
+      115deg,
+      transparent 30%,
+      rgb(0 245 255 / 0.16) 48%,
+      rgb(255 255 255 / 0.18) 50%,
+      transparent 70%
+    );
+    background-size: 250% 100%;
+    background-position: 150% 0;
+    transition: opacity 0.2s ease;
+  }
+
+  @media (any-pointer: fine) and (prefers-reduced-motion: no-preference) {
+    .oni-pcard:hover .oni-pcard__img {
+      transform: scale(1.08);
+    }
+    .oni-pcard:hover .oni-pcard__sheen {
+      opacity: 1;
+      animation: oni-pcard-sheen 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+  }
+
+  @keyframes oni-pcard-sheen {
+    to {
+      background-position: -120% 0;
+    }
+  }
+
+  .oni-pcard__b {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px 2px 0;
+  }
+
+  .oni-pcard__name {
+    font-weight: 600;
+  }
+
+  .oni-pcard__price {
+    font-family: var(--font-accent--family, inherit);
+    color: var(--color-primary, currentColor);
+    white-space: nowrap;
+  }
+
+  .oni-carousel__hint {
+    max-width: var(--page-width, 1200px);
+    margin: 16px auto 0;
+    padding-inline: clamp(1rem, 4vw, 2.5rem);
+    font-family: var(--font-accent--family, inherit);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.55;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .oni-pcard__img {
+      transition: none;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Oni drag carousel",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "max_products",
+      "min": 2,
+      "max": 16,
+      "step": 1,
+      "label": "Products to show",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker",
+      "default": "鬼 Drag the drop"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Graphic tees"
+    },
+    {
+      "type": "text",
+      "id": "kanji",
+      "label": "Kanji accent",
+      "default": "半袖"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "View all"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_start",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_block_end",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 64
+    }
+  ],
+  "presets": [
+    {
+      "name": "Oni drag carousel"
+    }
+  ]
+}
+{% endschema %}

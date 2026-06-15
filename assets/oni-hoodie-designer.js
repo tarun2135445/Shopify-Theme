@@ -119,6 +119,7 @@ class OniHoodieDesigner extends HTMLElement {
     this.#bindCart();
 
     this.#syncViewTabs();
+    this.#updatePlacementPrices();
     this.#refresh();
     this.#resizeCanvas();
 
@@ -913,17 +914,37 @@ class OniHoodieDesigner extends HTMLElement {
   }
 
   /* ════════════════════ CART ════════════════════ */
+  /* Price is driven by sides: Both = two-sided, Front/Back = one-sided.
+     Color, size, placement and the artwork ride along as line item
+     properties, so we match the variant purely on the "sides" option. */
   #variant() {
     const vs = this.config.variants || [];
-    const color = this.state.color?.name?.toLowerCase();
-    const size = this.state.size?.toLowerCase();
-    const vals = (v) => Object.values(v.options || {}).map((x) => String(x).toLowerCase());
-    let m =
-      vs.find((v) => (!color || vals(v).includes(color)) && (!size || vals(v).includes(size))) ||
-      (size ? vs.find((v) => vals(v).includes(size)) : null) ||
-      vs.find((v) => String(v.id) === String(this.config.defaultVariantId)) ||
-      vs[0];
+    if (!vs.length) return null;
+    const twoSided = this.state.placement === 'both';
+    const vals = (v) =>
+      Object.values(v.options || {})
+        .map((x) => String(x).toLowerCase())
+        .join(' ');
+    let m = vs.find((v) => {
+      const s = vals(v);
+      return twoSided ? s.includes('two') : s.includes('one');
+    });
+    if (!m) m = vs.find((v) => String(v.id) === String(this.config.defaultVariantId)) || vs[0];
     return m || null;
+  }
+
+  /* Show the one-sided / two-sided price on the placement cards. */
+  #updatePlacementPrices() {
+    const vs = this.config.variants || [];
+    if (!vs.length) return;
+    const tok = (v) =>
+      Object.values(v.options || {})
+        .map((x) => String(x).toLowerCase())
+        .join(' ');
+    const one = vs.find((v) => tok(v).includes('one'));
+    const two = vs.find((v) => tok(v).includes('two'));
+    if (one) this.querySelectorAll('[data-hd-card-price="one"]').forEach((el) => (el.textContent = one.price_formatted || ''));
+    if (two) this.querySelectorAll('[data-hd-card-price="two"]').forEach((el) => (el.textContent = two.price_formatted || ''));
   }
 
   #updateAddState() {

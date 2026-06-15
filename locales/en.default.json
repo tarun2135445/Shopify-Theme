@@ -142,7 +142,9 @@
     },
     "store_feedback": {
       "placeholder": "Share your experience with our store…",
-      "post_success": "Thanks for your feedback! We really appreciate it."
+      "post_success": "Thanks for your feedback! We really appreciate it.",
+      "widget_label": "Send us feedback",
+      "widget_button": "Send feedback"
     },
     "filter": "Filter",
     "load_video": "Load video: {{ description }}",

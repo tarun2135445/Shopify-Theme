@@ -1,0 +1,225 @@
+{%- doc -%}
+  Floating feedback widget. Renders a fixed chat-style button in the bottom-right
+  corner that opens a panel with a star rating + feedback form. Submissions are
+  sent to the merchant via Shopify's native contact form (same as the store
+  feedback section). Pure CSS toggle (hidden checkbox) — no JavaScript.
+
+  Rendered once site-wide from layout/theme.liquid.
+{%- enddoc -%}
+
+{%- assign form_id = 'FeedbackWidget' -%}
+{%- assign is_open = false -%}
+{%- if form.posted_successfully? and form.id == form_id -%}
+  {%- assign is_open = true -%}
+{%- endif -%}
+{%- if form.errors and form.id == form_id -%}
+  {%- assign is_open = true -%}
+{%- endif -%}
+
+<div class="feedback-widget" data-feedback-widget>
+  <input
+    type="checkbox"
+    id="{{ form_id }}-toggle"
+    class="feedback-widget__toggle"
+    {% if is_open %}checked{% endif %}
+  >
+
+  <label
+    for="{{ form_id }}-toggle"
+    class="feedback-widget__fab button"
+    aria-label="{{ 'blocks.store_feedback.widget_label' | t }}"
+  >
+    <svg class="feedback-widget__icon feedback-widget__icon--open" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path fill="currentColor" d="M12 3C6.5 3 2 6.6 2 11c0 2.2 1.1 4.2 2.9 5.6-.1 1.2-.6 2.4-1.4 3.4 1.6-.2 3.1-.8 4.4-1.7 1.3.4 2.7.7 4.1.7 5.5 0 10-3.6 10-8s-4.5-8-10-8Z"/>
+    </svg>
+    <svg class="feedback-widget__icon feedback-widget__icon--close" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path fill="currentColor" d="M18.3 5.7a1 1 0 0 0-1.4 0L12 10.6 7.1 5.7A1 1 0 0 0 5.7 7.1L10.6 12l-4.9 4.9a1 1 0 1 0 1.4 1.4L12 13.4l4.9 4.9a1 1 0 0 0 1.4-1.4L13.4 12l4.9-4.9a1 1 0 0 0 0-1.4Z"/>
+    </svg>
+  </label>
+
+  <div class="feedback-widget__panel color-scheme-1" role="dialog" aria-label="{{ 'blocks.store_feedback.widget_label' | t }}">
+    <div class="feedback-widget__header">
+      <h3 class="feedback-widget__title">{{ 'blocks.store_feedback.widget_label' | t }}</h3>
+      <label for="{{ form_id }}-toggle" class="feedback-widget__close" aria-label="{{ 'content.cancel' | t }}">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M18.3 5.7a1 1 0 0 0-1.4 0L12 10.6 7.1 5.7A1 1 0 0 0 5.7 7.1L10.6 12l-4.9 4.9a1 1 0 1 0 1.4 1.4L12 13.4l4.9 4.9a1 1 0 0 0 1.4-1.4L13.4 12l4.9-4.9a1 1 0 0 0 0-1.4Z"/>
+        </svg>
+      </label>
+    </div>
+
+    {%- form 'contact', id: form_id, class: 'review-form' -%}
+      <input type="hidden" name="contact[id]" value="{{ form_id }}">
+      <input type="hidden" name="contact[Subject]" value="Store feedback">
+
+      {%- if form.posted_successfully? and form.id == form_id -%}
+        <div class="review-form__success" tabindex="-1" autofocus>
+          {{- 'icon-checkmark.svg' | inline_asset_content -}}
+          {{ 'blocks.store_feedback.post_success' | t }}
+        </div>
+      {%- else -%}
+        {%- if form.errors and form.id == form_id -%}
+          <div class="review-form__error" tabindex="-1" autofocus>
+            {{- 'icon-error.svg' | inline_asset_content -}}
+            {{ form.errors.translated_fields.email | capitalize }}
+            {{ form.errors.messages.email }}
+          </div>
+        {%- endif -%}
+
+        {% render 'star-rating-input', form_id: form_id %}
+
+        <label class="visually-hidden" for="{{ form_id }}-name">{{ 'blocks.contact_form.name' | t }}</label>
+        <input
+          type="text"
+          id="{{ form_id }}-name"
+          class="review-form__input"
+          name="contact[name]"
+          autocomplete="name"
+          placeholder="{{ 'blocks.contact_form.name' | t }}"
+          value="{% if customer %}{{ customer.name }}{% endif %}"
+        >
+
+        <label class="visually-hidden" for="{{ form_id }}-email">{{ 'blocks.contact_form.email' | t }}</label>
+        <input
+          type="email"
+          id="{{ form_id }}-email"
+          class="review-form__input"
+          name="contact[email]"
+          autocomplete="email"
+          spellcheck="false"
+          autocapitalize="off"
+          required
+          aria-required="true"
+          placeholder="{{ 'blocks.contact_form.email' | t }}"
+          value="{% if customer %}{{ customer.email }}{% endif %}"
+        >
+
+        <label class="visually-hidden" for="{{ form_id }}-body">{{ 'blocks.contact_form.comment' | t }}</label>
+        <textarea
+          id="{{ form_id }}-body"
+          class="review-form__input review-form__input--textarea"
+          name="contact[body]"
+          rows="4"
+          placeholder="{{ 'blocks.store_feedback.placeholder' | t }}"
+        >{{ form.body }}</textarea>
+
+        <button type="submit" class="button review-form__submit">{{ 'blocks.store_feedback.widget_button' | t }}</button>
+      {%- endif -%}
+    {%- endform -%}
+  </div>
+</div>
+
+<style>
+  .feedback-widget {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 40;
+  }
+
+  .feedback-widget__toggle {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .feedback-widget__fab {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    padding: 0;
+    border-radius: 50%;
+    box-shadow: 0 6px 20px rgb(0 0 0 / 0.18);
+    cursor: pointer;
+    margin-left: auto;
+  }
+
+  .feedback-widget__icon {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+
+  .feedback-widget__icon--close {
+    display: none;
+  }
+
+  .feedback-widget__toggle:checked ~ .feedback-widget__fab .feedback-widget__icon--open {
+    display: none;
+  }
+
+  .feedback-widget__toggle:checked ~ .feedback-widget__fab .feedback-widget__icon--close {
+    display: block;
+  }
+
+  .feedback-widget__toggle:focus-visible ~ .feedback-widget__fab {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+  }
+
+  .feedback-widget__panel {
+    position: absolute;
+    right: 0;
+    bottom: 4.25rem;
+    width: 22rem;
+    max-width: calc(100vw - 3rem);
+    padding: var(--padding-xl, 1.25rem);
+    border-radius: var(--style-border-radius-popover, 12px);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    border: 1px solid rgb(var(--color-foreground-rgb) / 0.1);
+    box-shadow: 0 12px 40px rgb(0 0 0 / 0.22);
+    display: none;
+  }
+
+  .feedback-widget__toggle:checked ~ .feedback-widget__panel {
+    display: block;
+  }
+
+  .feedback-widget__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gap-sm, 0.75rem);
+    margin-bottom: var(--gap-md, 1rem);
+  }
+
+  .feedback-widget__title {
+    margin: 0;
+    font-size: 1.05rem;
+  }
+
+  .feedback-widget__close {
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--color-foreground);
+    flex: none;
+  }
+
+  .feedback-widget__close svg {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+
+  .feedback-widget__close:hover {
+    background-color: rgb(var(--color-foreground-rgb) / 0.08);
+  }
+
+  @media screen and (max-width: 749px) {
+    .feedback-widget {
+      bottom: 1rem;
+      right: 1rem;
+    }
+  }
+</style>

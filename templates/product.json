@@ -154,7 +154,10 @@
                 },
                 "review_oni": {
                   "type": "review",
-                  "settings": {},
+                  "settings": {
+                    "manual_rating": 4.5,
+                    "manual_rating_count": 4
+                  },
                   "blocks": {}
                 }
               },
@@ -295,6 +298,70 @@
         "color_scheme": "",
         "padding-block-start": 0,
         "padding-block-end": 0
+      }
+    },
+    "product_reviews_oni": {
+      "type": "product-reviews",
+      "blocks": {
+        "review_1": {
+          "type": "_review-item",
+          "settings": {
+            "author": "Priya Sharma",
+            "location": "Mumbai",
+            "rating": 5,
+            "date": "Mar 2026",
+            "title": "Loved the fit!",
+            "body": "The fabric quality is excellent and the stitching is neat. Delivered to Mumbai in just 4 days. Will definitely order again.",
+            "verified": true
+          }
+        },
+        "review_2": {
+          "type": "_review-item",
+          "settings": {
+            "author": "Arjun Mehta",
+            "location": "Bengaluru",
+            "rating": 5,
+            "date": "Feb 2026",
+            "title": "Worth every rupee",
+            "body": "Exactly as shown in the photos. The colour is rich and didn't fade even after a wash. Highly recommend this store.",
+            "verified": true
+          }
+        },
+        "review_3": {
+          "type": "_review-item",
+          "settings": {
+            "author": "Ananya Reddy",
+            "location": "Hyderabad",
+            "rating": 4,
+            "date": "Feb 2026",
+            "title": "Great, slightly snug",
+            "body": "Beautiful design and very comfortable. The size runs a little small, so I'd suggest sizing up. Otherwise perfect.",
+            "verified": true
+          }
+        },
+        "review_4": {
+          "type": "_review-item",
+          "settings": {
+            "author": "Rahul Verma",
+            "location": "Delhi",
+            "rating": 5,
+            "date": "Jan 2026",
+            "title": "Premium feel",
+            "body": "Packaging was lovely and the product feels premium. Customer support replied quickly on WhatsApp too.",
+            "verified": true
+          }
+        }
+      },
+      "block_order": ["review_1", "review_2", "review_3", "review_4"],
+      "settings": {
+        "heading": "Customer Reviews",
+        "show_summary": true,
+        "show_form": true,
+        "form_button_label": "Submit review",
+        "section_width": "page-width",
+        "color_scheme": "scheme-1",
+        "padding-block-start": 48,
+        "padding-block-end": 48
       }
     },
     "product_recommendations_qggXJq": {
@@ -441,6 +508,7 @@
   },
   "order": [
     "main",
+    "product_reviews_oni",
     "product_recommendations_qggXJq"
   ]
 }

@@ -1,0 +1,253 @@
+{% liquid
+  assign st = section.settings
+  assign has_testimonials = false
+  for b in section.blocks
+    if b.type == '_review-item'
+      assign has_testimonials = true
+      break
+    endif
+  endfor
+  assign form_id = section.id | prepend: 'StoreFeedbackForm-'
+%}
+
+<div class="section-background color-{{ st.color_scheme }}"></div>
+<div
+  class="section section--{{ st.section_width }} color-{{ st.color_scheme }} spacing-style"
+  style="{% render 'spacing-style', settings: st %}"
+>
+  <div class="store-feedback__inner">
+    {%- if st.heading != blank -%}
+      <h2 class="store-feedback__heading">{{ st.heading }}</h2>
+    {%- endif -%}
+
+    {%- if st.subheading != blank -%}
+      <p class="store-feedback__subheading">{{ st.subheading }}</p>
+    {%- endif -%}
+
+    {%- if has_testimonials -%}
+      <div class="review-list">
+        {% content_for 'blocks' %}
+      </div>
+    {%- endif -%}
+
+    {%- if st.show_form -%}
+      <div class="review-form-wrapper">
+        <h3 class="review-form__heading">{{ st.form_heading }}</h3>
+        {%- form 'contact', id: form_id, class: 'review-form' -%}
+          <input type="hidden" name="contact[id]" value="{{ form_id }}">
+          <input type="hidden" name="contact[Subject]" value="Store feedback">
+
+          {%- if form.posted_successfully? and form.id == form_id -%}
+            <div class="review-form__success" tabindex="-1" autofocus>
+              {{- 'icon-checkmark.svg' | inline_asset_content -}}
+              {{ 'blocks.store_feedback.post_success' | t }}
+            </div>
+          {%- endif -%}
+
+          {%- if form.errors and form.id == form_id -%}
+            <div class="review-form__error" tabindex="-1" autofocus>
+              {{- 'icon-error.svg' | inline_asset_content -}}
+              {{ form.errors.translated_fields.email | capitalize }}
+              {{ form.errors.messages.email }}
+            </div>
+          {%- endif -%}
+
+          {% render 'star-rating-input', form_id: form_id %}
+
+          <div class="review-form__row">
+            <label class="visually-hidden" for="{{ form_id }}-name">{{ 'blocks.contact_form.name' | t }}</label>
+            <input
+              type="text"
+              id="{{ form_id }}-name"
+              class="review-form__input"
+              name="contact[name]"
+              autocomplete="name"
+              placeholder="{{ 'blocks.contact_form.name' | t }}"
+              value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+            >
+
+            <label class="visually-hidden" for="{{ form_id }}-email">{{ 'blocks.contact_form.email' | t }}</label>
+            <input
+              type="email"
+              id="{{ form_id }}-email"
+              class="review-form__input"
+              name="contact[email]"
+              autocomplete="email"
+              spellcheck="false"
+              autocapitalize="off"
+              required
+              aria-required="true"
+              placeholder="{{ 'blocks.contact_form.email' | t }}"
+              value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+            >
+          </div>
+
+          <label class="visually-hidden" for="{{ form_id }}-body">{{ 'blocks.contact_form.comment' | t }}</label>
+          <textarea
+            id="{{ form_id }}-body"
+            class="review-form__input review-form__input--textarea"
+            name="contact[body]"
+            rows="5"
+            placeholder="{{ 'blocks.store_feedback.placeholder' | t }}"
+          >{{ form.body }}</textarea>
+
+          <button type="submit" class="button review-form__submit">{{ st.form_button_label }}</button>
+        {%- endform -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .store-feedback__inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-lg);
+  }
+
+  .store-feedback__heading,
+  .store-feedback__subheading {
+    margin: 0;
+  }
+
+  .store-feedback__subheading {
+    opacity: 0.8;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.store_feedback",
+  "disabled_on": {
+    "groups": ["header"]
+  },
+  "blocks": [
+    {
+      "type": "_review-item"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:settings.review_heading",
+      "default": "What our customers say"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "t:settings.subheading",
+      "default": "Trusted by shoppers across India"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_form",
+      "label": "t:settings.show_form",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "form_heading",
+      "label": "t:settings.review_heading",
+      "default": "Share your feedback"
+    },
+    {
+      "type": "text",
+      "id": "form_button_label",
+      "label": "t:settings.label",
+      "default": "t:text_defaults.feedback_form_button_label"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "t:options.page"
+        },
+        {
+          "value": "full-width",
+          "label": "t:options.full"
+        }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 48
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.store_feedback",
+      "category": "t:categories.text",
+      "blocks": {
+        "testimonial_1": {
+          "type": "_review-item",
+          "settings": {
+            "author": "Kavya Iyer",
+            "location": "Chennai",
+            "rating": 5,
+            "date": "Mar 2026",
+            "title": "Smooth experience",
+            "body": "Easy to order and fast COD delivery across India. This is my go-to store now.",
+            "verified": true
+          }
+        },
+        "testimonial_2": {
+          "type": "_review-item",
+          "settings": {
+            "author": "Vikram Nair",
+            "location": "Pune",
+            "rating": 5,
+            "date": "Feb 2026",
+            "title": "Genuine and reliable",
+            "body": "Genuine products and a hassle-free 7-day return. A trustworthy Indian brand.",
+            "verified": true
+          }
+        },
+        "testimonial_3": {
+          "type": "_review-item",
+          "settings": {
+            "author": "Sneha Gupta",
+            "location": "Kolkata",
+            "rating": 4,
+            "date": "Jan 2026",
+            "title": "Good value",
+            "body": "Good prices and a helpful support team. Wish they had a few more colour options.",
+            "verified": true
+          }
+        }
+      },
+      "block_order": ["testimonial_1", "testimonial_2", "testimonial_3"]
+    }
+  ]
+}
+{% endschema %}

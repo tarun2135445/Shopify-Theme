@@ -1,0 +1,410 @@
+{% liquid
+  assign st = section.settings
+  assign review_product = product | default: closest.product
+
+  assign rating_sum = 0
+  assign rating_count = 0
+  for b in section.blocks
+    if b.type == '_review-item'
+      assign rating_sum = rating_sum | plus: b.settings.rating
+      assign rating_count = rating_count | plus: 1
+    endif
+  endfor
+
+  assign rating_avg = 0
+  if rating_count > 0
+    assign rating_avg = rating_sum | times: 1.0 | divided_by: rating_count
+  endif
+
+  assign form_id = section.id | prepend: 'ProductReviewForm-'
+%}
+
+<div class="section-background color-{{ st.color_scheme }}"></div>
+<div
+  class="section section--{{ st.section_width }} color-{{ st.color_scheme }} spacing-style"
+  style="{% render 'spacing-style', settings: st %}"
+>
+  <div class="product-reviews__inner">
+    {%- if st.heading != blank -%}
+      <h2 class="product-reviews__heading">{{ st.heading }}</h2>
+    {%- endif -%}
+
+    {%- if st.show_summary and rating_count > 0 -%}
+      <div class="review-summary">
+        {% render 'rating-stars', rating: rating_avg, size: '1.4em' %}
+        <span class="review-summary__score">{{ rating_avg | round: 1 }} / 5</span>
+        <span class="review-summary__count">({{ rating_count }} {{ 'content.reviews' | t }})</span>
+      </div>
+    {%- endif -%}
+
+    {%- if rating_count > 0 -%}
+      <div class="review-list">
+        {% content_for 'blocks' %}
+      </div>
+    {%- endif -%}
+
+    {%- if st.show_form -%}
+      <div class="review-form-wrapper">
+        <h3 class="review-form__heading">{{ 'blocks.product_reviews.write_review' | t }}</h3>
+        {%- form 'contact', id: form_id, class: 'review-form' -%}
+          <input type="hidden" name="contact[id]" value="{{ form_id }}">
+          {%- if review_product != blank -%}
+            <input type="hidden" name="contact[Product]" value="{{ review_product.title | escape }}">
+          {%- endif -%}
+
+          {%- if form.posted_successfully? and form.id == form_id -%}
+            <div class="review-form__success" tabindex="-1" autofocus>
+              {{- 'icon-checkmark.svg' | inline_asset_content -}}
+              {{ 'blocks.product_reviews.post_success' | t }}
+            </div>
+          {%- endif -%}
+
+          {%- if form.errors and form.id == form_id -%}
+            <div class="review-form__error" tabindex="-1" autofocus>
+              {{- 'icon-error.svg' | inline_asset_content -}}
+              {{ form.errors.translated_fields.email | capitalize }}
+              {{ form.errors.messages.email }}
+            </div>
+          {%- endif -%}
+
+          {% render 'star-rating-input', form_id: form_id %}
+
+          <div class="review-form__row">
+            <label class="visually-hidden" for="{{ form_id }}-name">{{ 'blocks.contact_form.name' | t }}</label>
+            <input
+              type="text"
+              id="{{ form_id }}-name"
+              class="review-form__input"
+              name="contact[name]"
+              autocomplete="name"
+              placeholder="{{ 'blocks.contact_form.name' | t }}"
+              value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+            >
+
+            <label class="visually-hidden" for="{{ form_id }}-email">{{ 'blocks.contact_form.email' | t }}</label>
+            <input
+              type="email"
+              id="{{ form_id }}-email"
+              class="review-form__input"
+              name="contact[email]"
+              autocomplete="email"
+              spellcheck="false"
+              autocapitalize="off"
+              required
+              aria-required="true"
+              placeholder="{{ 'blocks.contact_form.email' | t }}"
+              value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+            >
+          </div>
+
+          <label class="visually-hidden" for="{{ form_id }}-body">{{ 'blocks.contact_form.comment' | t }}</label>
+          <textarea
+            id="{{ form_id }}-body"
+            class="review-form__input review-form__input--textarea"
+            name="contact[body]"
+            rows="5"
+            placeholder="{{ 'blocks.product_reviews.review_placeholder' | t }}"
+          >{{ form.body }}</textarea>
+
+          <button type="submit" class="button review-form__submit">{{ st.form_button_label }}</button>
+        {%- endform -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .product-reviews__inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-lg);
+  }
+
+  .product-reviews__heading,
+  .review-form__heading {
+    margin: 0;
+  }
+
+  .review-summary {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-sm);
+    flex-wrap: wrap;
+  }
+
+  .review-summary__score {
+    font-weight: 600;
+  }
+
+  .review-summary__count {
+    opacity: 0.7;
+  }
+
+  .review-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap-lg);
+  }
+
+  @media screen and (min-width: 750px) {
+    .review-list {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .review-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-md);
+    max-width: 48rem;
+  }
+
+  .review-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-md);
+  }
+
+  .review-form__row {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-md);
+  }
+
+  @media screen and (min-width: 750px) {
+    .review-form__row {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  .review-form__input {
+    width: 100%;
+    color: var(--color-input-text);
+    background-color: var(--color-input-background);
+    padding: var(--padding-lg) var(--padding-xl);
+    border-radius: var(--style-border-radius-inputs);
+    border: var(--style-border-width-inputs) solid var(--color-input-border);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .review-form__input--textarea {
+    resize: vertical;
+    min-height: var(--input-textarea-min-height);
+  }
+
+  .review-form__submit {
+    align-self: flex-start;
+  }
+
+  .review-form__success,
+  .review-form__error {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-xs);
+  }
+
+  .star-input {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-self: flex-start;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    gap: var(--gap-3xs);
+  }
+
+  .star-input__label {
+    cursor: pointer;
+    line-height: 0;
+  }
+
+  .star-input__star {
+    height: 1.75rem;
+    width: 1.75rem;
+    fill: rgb(var(--color-foreground-rgb) / var(--opacity-20, 0.2));
+    transition: fill 0.1s ease;
+  }
+
+  .star-input__radio:checked ~ .star-input__label .star-input__star,
+  .star-input__label:hover .star-input__star,
+  .star-input__label:hover ~ .star-input__label .star-input__star {
+    fill: var(--color-primary);
+  }
+
+  .star-input__radio:focus-visible + .star-input__label .star-input__star {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  .rating {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--gap-3xs);
+  }
+
+  .rating-color--primary {
+    --star-fill-color: var(--color-primary);
+    --star-fill-color-rgb: var(--color-primary-rgb);
+  }
+
+  .rating-color--foreground {
+    --star-fill-color: var(--color-foreground);
+    --star-fill-color-rgb: var(--color-foreground-rgb);
+  }
+
+  .rating .stars {
+    height: var(--star-size, 1.1em);
+    width: var(--star-size, 1.1em);
+    fill: var(--empty-star-fill-color);
+    flex: none;
+  }
+
+  .rating .filled-star {
+    fill: var(--star-fill-color);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.product_reviews",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "blocks": [
+    {
+      "type": "_review-item"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:settings.review_heading",
+      "default": "Customer Reviews"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_summary",
+      "label": "t:settings.show_summary",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_form",
+      "label": "t:settings.show_form",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "form_button_label",
+      "label": "t:settings.label",
+      "default": "t:text_defaults.review_form_button_label"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "t:options.page"
+        },
+        {
+          "value": "full-width",
+          "label": "t:options.full"
+        }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 48
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.product_reviews",
+      "category": "t:categories.product",
+      "blocks": {
+        "review_1": {
+          "type": "_review-item",
+          "settings": {
+            "author": "Priya Sharma",
+            "location": "Mumbai",
+            "rating": 5,
+            "date": "Mar 2026",
+            "title": "Loved the fit!",
+            "body": "The fabric quality is excellent and the stitching is neat. Delivered to Mumbai in just 4 days. Will definitely order again.",
+            "verified": true
+          }
+        },
+        "review_2": {
+          "type": "_review-item",
+          "settings": {
+            "author": "Arjun Mehta",
+            "location": "Bengaluru",
+            "rating": 5,
+            "date": "Feb 2026",
+            "title": "Worth every rupee",
+            "body": "Exactly as shown in the photos. The colour is rich and didn't fade even after a wash. Highly recommend this store.",
+            "verified": true
+          }
+        },
+        "review_3": {
+          "type": "_review-item",
+          "settings": {
+            "author": "Ananya Reddy",
+            "location": "Hyderabad",
+            "rating": 4,
+            "date": "Feb 2026",
+            "title": "Great, slightly snug",
+            "body": "Beautiful design and very comfortable. The size runs a little small, so I'd suggest sizing up. Otherwise perfect.",
+            "verified": true
+          }
+        },
+        "review_4": {
+          "type": "_review-item",
+          "settings": {
+            "author": "Rahul Verma",
+            "location": "Delhi",
+            "rating": 5,
+            "date": "Jan 2026",
+            "title": "Premium feel",
+            "body": "Packaging was lovely and the product feels premium. Customer support replied quickly on WhatsApp too.",
+            "verified": true
+          }
+        }
+      },
+      "block_order": ["review_1", "review_2", "review_3", "review_4"]
+    }
+  ]
+}
+{% endschema %}

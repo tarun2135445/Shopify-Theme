@@ -40,7 +40,7 @@
   <div class="oni-promo__overlay" aria-hidden="true"></div>
   <div class="oni-promo__kanji" aria-hidden="true">{{ section.settings.kanji }}</div>
 
-  <div class="oni-promo__content oni-promo__content--{{ section.settings.content_position }}">
+  <div class="oni-promo__content oni-promo__content--{{ section.settings.content_position }}" data-oni-parallax="5">
     {% if section.settings.kicker != blank %}
       <p class="oni-promo__kicker">{{ section.settings.kicker }}</p>
     {% endif %}

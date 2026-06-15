@@ -3,6 +3,7 @@
     "designer": {
       "type": "oni-hoodie-designer",
       "settings": {
+        "product": "custom-hoodie",
         "eyebrow": "BUILD-A-HOODIE 鬼",
         "heading": "Design your own",
         "subheading": "Upload your art, drop it on the hoodie, and we'll print it. One-off drops, made by you.",

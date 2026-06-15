@@ -3,6 +3,7 @@
     "designer": {
       "type": "oni-hoodie-designer",
       "settings": {
+        "product": "custom-hoodie",
         "eyebrow": "BUILD-A-HOODIE 鬼",
         "heading": "Design your own",
         "subheading": "Upload your art, drop it on the hoodie, and we'll print it. One-off drops, made by you.",
@@ -13,10 +14,42 @@
         "color_scheme": "scheme-1"
       },
       "blocks": {
-        "black": { "type": "color", "settings": { "label": "Black", "swatch": "#0b0b10" } },
-        "white": { "type": "color", "settings": { "label": "White", "swatch": "#f2efe9" } },
-        "charcoal": { "type": "color", "settings": { "label": "Charcoal", "swatch": "#3a3a42" } },
-        "navy": { "type": "color", "settings": { "label": "Navy", "swatch": "#1c2540" } }
+        "black": {
+          "type": "color",
+          "settings": {
+            "label": "Black",
+            "swatch": "#0b0b10",
+            "front_image_url": "https://cdn.shopify.com/s/files/1/1023/5061/8967/files/hf_20260615_054109_ac39fd37-2b71-4361-9175-d8ec61b4ea11.png?v=1781518436",
+            "back_image_url": "https://cdn.shopify.com/s/files/1/1023/5061/8967/files/hf_20260615_054153_8e45e701-a1c5-4b3f-a445-afb33bcbaf04.png?v=1781518436"
+          }
+        },
+        "white": {
+          "type": "color",
+          "settings": {
+            "label": "White",
+            "swatch": "#f2efe9",
+            "front_image_url": "https://cdn.shopify.com/s/files/1/1023/5061/8967/files/hf_20260615_054114_8fde2faf-c6ea-48c2-a30a-3887b441f6f9.png?v=1781518436",
+            "back_image_url": "https://cdn.shopify.com/s/files/1/1023/5061/8967/files/hf_20260615_054157_9d4e8ca6-2ff7-49ee-ad1a-56484695197f.png?v=1781518437"
+          }
+        },
+        "charcoal": {
+          "type": "color",
+          "settings": {
+            "label": "Charcoal",
+            "swatch": "#3a3a42",
+            "front_image_url": "https://cdn.shopify.com/s/files/1/1023/5061/8967/files/hf_20260615_054106_d835f42b-ba84-4e1a-a7bc-e8d3d7c1dfb5.png?v=1781518438",
+            "back_image_url": "https://cdn.shopify.com/s/files/1/1023/5061/8967/files/hf_20260615_054207_9e585547-7777-4949-a9ff-54f0c1c8f9f2.png?v=1781518436"
+          }
+        },
+        "navy": {
+          "type": "color",
+          "settings": {
+            "label": "Navy",
+            "swatch": "#1c2540",
+            "front_image_url": "https://cdn.shopify.com/s/files/1/1023/5061/8967/files/hf_20260615_054117_2a3e45b5-360d-4175-a559-158a60743c5c.png?v=1781518436",
+            "back_image_url": "https://cdn.shopify.com/s/files/1/1023/5061/8967/files/hf_20260615_054210_1b16a848-4291-489f-b649-f4206d6fe4e4.png?v=1781518437"
+          }
+        }
       },
       "block_order": ["black", "white", "charcoal", "navy"]
     }

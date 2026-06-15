@@ -1,0 +1,69 @@
+{%- doc -%}
+  Renders a star-rating display for a numeric rating value.
+  Visual style matches blocks/review.liquid (same star path + half-star gradient).
+
+  @param {number} rating - The rating value, e.g. 4 or 4.5
+  @param {number} [scale_max] - Maximum number of stars (default: 5)
+  @param {string} [style] - "shaded" or "outline" (default: "shaded")
+  @param {string} [color] - "primary" or "foreground" (default: "primary")
+  @param {string} [size] - CSS length for star size (default: "1.1em")
+
+  @example
+  {% render 'rating-stars', rating: 4.5, scale_max: 5 %}
+{%- enddoc -%}
+
+{%- liquid
+  assign _rating = rating | default: 0 | plus: 0.0
+  assign _scale_max = scale_max | default: 5
+  assign _style = style | default: 'shaded'
+  assign _color = color | default: 'primary'
+  assign _size = size | default: '1.1em'
+
+  assign decimal_rating = 0
+  assign decimal = _rating | modulo: 1
+  if decimal >= 0.3 and decimal <= 0.7
+    assign decimal_rating = 0.5
+  elsif decimal > 0.7
+    assign decimal_rating = 1
+  endif
+  assign decimal_rounded = decimal_rating | ceil
+  assign svg_filled_stars = _rating | floor | plus: decimal_rounded
+-%}
+
+<svg
+  class="visually-hidden"
+  style="width: 0; height: 0;"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 32 32"
+  role="presentation"
+>
+  <defs>
+    <linearGradient id="half" x1="0" x2="100%" y1="0" y2="0">
+      <stop offset="50%" stop-color="var(--star-fill-color)"></stop>
+      <stop offset="50%" stop-color="{% if _style == 'outline' %}transparent{% else %}rgb(var(--star-fill-color-rgb) / var(--opacity-20)){% endif %}"></stop>
+    </linearGradient>
+    <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" id="star">
+      <path d="M31.547 12a.848.848 0 00-.677-.577l-9.427-1.376-4.224-8.532a.847.847 0 00-1.516 0l-4.218 8.534-9.427 1.355a.847.847 0 00-.467 1.467l6.823 6.664-1.612 9.375a.847.847 0 001.23.893l8.428-4.434 8.432 4.432a.847.847 0 001.229-.894l-1.615-9.373 6.822-6.665a.845.845 0 00.214-.869z" />
+    </symbol>
+  </defs>
+</svg>
+
+<div
+  class="rating rating-color--{{ _color }}"
+  style="--star-size: {{ _size }};"
+  aria-label="{{ 'accessibility.rating' | t: rating: _rating }}"
+>
+  {%- for star in (1.._scale_max) -%}
+    <svg
+      class="stars {% if star <= svg_filled_stars %}filled-star{% endif %}"
+      viewBox="0 0 32 32"
+      style="--empty-star-fill-color:{% if _style == 'outline' %}transparent{% else %}rgb(var(--star-fill-color-rgb) / var(--opacity-20)){% endif %}"
+      role="presentation"
+    >
+      <use xlink:href="#star"{% if decimal_rating == 0.5 and star == svg_filled_stars %} fill="url(#half)"{% endif %}></use>
+      {%- if _style == 'outline' -%}
+        <use xlink:href="#star" fill="none" stroke="var(--star-fill-color)" stroke-width="var(--icon-stroke-width)"></use>
+      {%- endif -%}
+    </svg>
+  {%- endfor -%}
+</div>

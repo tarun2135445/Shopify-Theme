@@ -13,6 +13,16 @@
     assign scale_max = product.metafields.reviews.rating.value.scale_max | default: 5
     assign rating_count = product.metafields.reviews.rating_count | default: 3
   endif
+
+  # Fallback for stores without a reviews app: use the manually entered rating.
+  if rating == blank and block_settings.manual_rating > 0
+    assign rating = block_settings.manual_rating
+    assign rating_count = block_settings.manual_rating_count
+  endif
+
+  if scale_max == blank
+    assign scale_max = 5
+  endif
 -%}
 
 {%- if rating != blank -%}
@@ -171,6 +181,22 @@
     {
       "type": "paragraph",
       "content": "t:content.app_required_for_ratings"
+    },
+    {
+      "type": "range",
+      "id": "manual_rating",
+      "label": "t:settings.manual_rating",
+      "min": 0,
+      "max": 5,
+      "step": 0.5,
+      "default": 0,
+      "info": "t:settings.manual_rating_info"
+    },
+    {
+      "type": "number",
+      "id": "manual_rating_count",
+      "label": "t:settings.manual_rating_count",
+      "default": 0
     },
     {
       "type": "select",

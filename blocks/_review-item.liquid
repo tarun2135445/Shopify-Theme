@@ -1,0 +1,170 @@
+{%- assign s = block.settings -%}
+
+<div
+  class="review-item spacing-style"
+  style="{% render 'spacing-style', settings: s %}"
+  {{ block.shopify_attributes }}
+>
+  <div class="review-item__header">
+    {% render 'rating-stars', rating: s.rating, color: 'primary' %}
+    {%- if s.verified -%}
+      <span class="review-item__badge">{{ 'blocks.product_reviews.verified_buyer' | t }}</span>
+    {%- endif -%}
+  </div>
+
+  {%- if s.title != blank -%}
+    <p class="review-item__title">{{ s.title }}</p>
+  {%- endif -%}
+
+  {%- if s.body != blank -%}
+    <p class="review-item__body">{{ s.body }}</p>
+  {%- endif -%}
+
+  <p class="review-item__meta">
+    <span class="review-item__author">{{ s.author }}</span>
+    {%- if s.location != blank -%}<span>, {{ s.location }}</span>{%- endif -%}
+    {%- if s.date != blank -%}<span class="review-item__date"> · {{ s.date }}</span>{%- endif -%}
+  </p>
+</div>
+
+{% stylesheet %}
+  .review-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-2xs);
+  }
+
+  .review-item__header {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-xs);
+    flex-wrap: wrap;
+  }
+
+  .review-item__badge {
+    font-size: 0.75rem;
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    border-radius: var(--style-border-radius-inputs, 4px);
+    padding: 2px 8px;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+
+  .review-item__title {
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .review-item__body {
+    margin: 0;
+  }
+
+  .review-item__meta {
+    margin: 0;
+    opacity: 0.7;
+    font-size: 0.875rem;
+  }
+
+  .rating {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--gap-3xs);
+  }
+
+  .rating-color--primary {
+    --star-fill-color: var(--color-primary);
+    --star-fill-color-rgb: var(--color-primary-rgb);
+  }
+
+  .rating-color--foreground {
+    --star-fill-color: var(--color-foreground);
+    --star-fill-color-rgb: var(--color-foreground-rgb);
+  }
+
+  .rating .stars {
+    height: var(--star-size, 1.1em);
+    width: var(--star-size, 1.1em);
+    fill: var(--empty-star-fill-color);
+    flex: none;
+  }
+
+  .rating .filled-star {
+    fill: var(--star-fill-color);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.review_item",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "author",
+      "label": "t:settings.author",
+      "default": "Priya Sharma"
+    },
+    {
+      "type": "text",
+      "id": "location",
+      "label": "t:settings.location",
+      "default": "Mumbai"
+    },
+    {
+      "type": "range",
+      "id": "rating",
+      "label": "t:settings.rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "date",
+      "label": "t:settings.review_date"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:settings.review_title"
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "t:settings.review_body"
+    },
+    {
+      "type": "checkbox",
+      "id": "verified",
+      "label": "t:settings.verified_buyer",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    }
+  ]
+}
+{% endschema %}

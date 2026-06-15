@@ -43,6 +43,7 @@
     "play_video": "Play video",
     "loading_product_recommendations": "Loading product recommendations",
     "rating": "Rating of this product is {{ rating }} out of 5",
+    "rating_input": "Select a star rating",
     "remove_item": "Remove {{ title}}",
     "remove": "Remove",
     "reset_search": "Reset search",
@@ -132,6 +133,16 @@
       "label": "Email",
       "placeholder": "Email address",
       "success": "Thanks for subscribing!"
+    },
+    "product_reviews": {
+      "write_review": "Write a review",
+      "review_placeholder": "Tell others what you think about this product…",
+      "verified_buyer": "Verified buyer",
+      "post_success": "Thank you! Your review has been sent to us for approval."
+    },
+    "store_feedback": {
+      "placeholder": "Share your experience with our store…",
+      "post_success": "Thanks for your feedback! We really appreciate it."
     },
     "filter": "Filter",
     "load_video": "Load video: {{ description }}",

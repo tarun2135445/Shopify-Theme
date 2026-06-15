@@ -1,12 +1,9 @@
 {% liquid
   assign st = section.settings
   assign has_testimonials = false
-  for b in section.blocks
-    if b.type == '_review-item'
-      assign has_testimonials = true
-      break
-    endif
-  endfor
+  if section.blocks.size > 0
+    assign has_testimonials = true
+  endif
   assign form_id = section.id | prepend: 'StoreFeedbackForm-'
 %}
 

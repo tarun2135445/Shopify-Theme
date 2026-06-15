@@ -408,6 +408,14 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
+.oni-hd__card-price {
+  font-family: var(--hd-font-head);
+  font-weight: 800;
+  font-size: 0.82rem;
+  color: var(--hd-red);
+  letter-spacing: 0.01em;
+}
+.oni-hd__card-price:empty { display: none; }
 
 /* ── Dropzone (upload) ────────────────────────────────── */
 .oni-hd__drop {

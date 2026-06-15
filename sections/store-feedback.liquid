@@ -113,6 +113,108 @@
   .store-feedback__subheading {
     opacity: 0.8;
   }
+
+  .review-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap-lg);
+  }
+
+  @media screen and (min-width: 750px) {
+    .review-list {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .review-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-md);
+    max-width: 48rem;
+  }
+
+  .review-form__heading {
+    margin: 0;
+  }
+
+  .review-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-md);
+  }
+
+  .review-form__row {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-md);
+  }
+
+  @media screen and (min-width: 750px) {
+    .review-form__row {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  .review-form__input {
+    width: 100%;
+    color: var(--color-input-text);
+    background-color: var(--color-input-background);
+    padding: var(--padding-lg) var(--padding-xl);
+    border-radius: var(--style-border-radius-inputs);
+    border: var(--style-border-width-inputs) solid var(--color-input-border);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .review-form__input--textarea {
+    resize: vertical;
+    min-height: var(--input-textarea-min-height);
+  }
+
+  .review-form__submit {
+    align-self: flex-start;
+  }
+
+  .review-form__success,
+  .review-form__error {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-xs);
+  }
+
+  .star-input {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-self: flex-start;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    gap: var(--gap-3xs);
+  }
+
+  .star-input__label {
+    cursor: pointer;
+    line-height: 0;
+  }
+
+  .star-input__star {
+    height: 1.75rem;
+    width: 1.75rem;
+    fill: rgb(var(--color-foreground-rgb) / var(--opacity-20, 0.2));
+    transition: fill 0.1s ease;
+  }
+
+  .star-input__radio:checked ~ .star-input__label .star-input__star,
+  .star-input__label:hover .star-input__star,
+  .star-input__label:hover ~ .star-input__label .star-input__star {
+    fill: var(--color-primary);
+  }
+
+  .star-input__radio:focus-visible + .star-input__label .star-input__star {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
 {% endstylesheet %}
 
 {% schema %}

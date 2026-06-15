@@ -222,4 +222,72 @@
       right: 1rem;
     }
   }
+
+  /* Review form + star-input styles (kept self-contained so the widget renders
+     correctly site-wide, independent of any reviews section being on the page). */
+  .feedback-widget__panel .review-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-md, 1rem);
+  }
+
+  .feedback-widget__panel .review-form__input {
+    width: 100%;
+    color: var(--color-input-text);
+    background-color: var(--color-input-background);
+    padding: var(--padding-lg) var(--padding-xl);
+    border-radius: var(--style-border-radius-inputs);
+    border: var(--style-border-width-inputs) solid var(--color-input-border);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .feedback-widget__panel .review-form__input--textarea {
+    resize: vertical;
+    min-height: var(--input-textarea-min-height);
+  }
+
+  .feedback-widget__panel .review-form__submit {
+    align-self: flex-start;
+  }
+
+  .feedback-widget__panel .review-form__success,
+  .feedback-widget__panel .review-form__error {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-xs);
+  }
+
+  .feedback-widget__panel .star-input {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-self: flex-start;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    gap: var(--gap-3xs);
+  }
+
+  .feedback-widget__panel .star-input__label {
+    cursor: pointer;
+    line-height: 0;
+  }
+
+  .feedback-widget__panel .star-input__star {
+    height: 1.75rem;
+    width: 1.75rem;
+    fill: rgb(var(--color-foreground-rgb) / var(--opacity-20, 0.2));
+    transition: fill 0.1s ease;
+  }
+
+  .feedback-widget__panel .star-input__radio:checked ~ .star-input__label .star-input__star,
+  .feedback-widget__panel .star-input__label:hover .star-input__star,
+  .feedback-widget__panel .star-input__label:hover ~ .star-input__label .star-input__star {
+    fill: var(--color-primary);
+  }
+
+  .feedback-widget__panel .star-input__radio:focus-visible + .star-input__label .star-input__star {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
 </style>

@@ -674,6 +674,103 @@
         "padding_block_start": 64,
         "padding_block_end": 64
       }
+    },
+    "store_reviews": {
+      "type": "store-feedback",
+      "blocks": {
+        "review_priya": {
+          "type": "_review-item",
+          "settings": {
+            "author": "Priya Sharma",
+            "location": "Mumbai",
+            "rating": 5,
+            "date": "Mar 2026",
+            "title": "Heavyweight hoodie, premium feel",
+            "body": "The fabric is genuinely heavy and the print is crisp. Ordered on COD and it reached Mumbai in 3 days. Easily my favourite streetwear brand now.",
+            "verified": true
+          }
+        },
+        "review_arjun": {
+          "type": "_review-item",
+          "settings": {
+            "author": "Arjun Mehta",
+            "location": "Bengaluru",
+            "rating": 5,
+            "date": "Mar 2026",
+            "title": "Worth every rupee",
+            "body": "Exactly like the photos — rich colour, didn't fade after a wash. Free shipping kicked in over ₹1,499 which was a nice bonus.",
+            "verified": true
+          }
+        },
+        "review_ananya": {
+          "type": "_review-item",
+          "settings": {
+            "author": "Ananya Reddy",
+            "location": "Hyderabad",
+            "rating": 4,
+            "date": "Feb 2026",
+            "title": "Great fit, size up slightly",
+            "body": "Beautiful anime graphic and super comfortable. Runs a touch snug so I'd suggest going one size up. Otherwise perfect.",
+            "verified": true
+          }
+        },
+        "review_rahul": {
+          "type": "_review-item",
+          "settings": {
+            "author": "Rahul Verma",
+            "location": "Delhi",
+            "rating": 5,
+            "date": "Feb 2026",
+            "title": "Packaging was lovely",
+            "body": "Felt like unboxing a collectible. Support replied on WhatsApp within minutes when I asked about sizing. Trustworthy Indian brand.",
+            "verified": true
+          }
+        },
+        "review_kavya": {
+          "type": "_review-item",
+          "settings": {
+            "author": "Kavya Iyer",
+            "location": "Chennai",
+            "rating": 5,
+            "date": "Jan 2026",
+            "title": "Fast COD delivery",
+            "body": "Smooth ordering and quick cash-on-delivery across India. The limited-run tee I grabbed gets compliments everywhere.",
+            "verified": true
+          }
+        },
+        "review_vikram": {
+          "type": "_review-item",
+          "settings": {
+            "author": "Vikram Nair",
+            "location": "Pune",
+            "rating": 5,
+            "date": "Jan 2026",
+            "title": "Genuine and reliable",
+            "body": "Authentic products and a hassle-free 7-day return. Stitching is neat and the hoodie holds its shape. Will order the next drop for sure.",
+            "verified": true
+          }
+        }
+      },
+      "block_order": [
+        "review_priya",
+        "review_arjun",
+        "review_ananya",
+        "review_rahul",
+        "review_kavya",
+        "review_vikram"
+      ],
+      "name": "Store reviews",
+      "settings": {
+        "heading": "Loved across India 🇮🇳",
+        "subheading": "Trusted by thousands of shoppers nationwide — here's what the horde is saying.",
+        "show_form": true,
+        "form_heading": "Share your feedback",
+        "form_button_label": "Send feedback",
+        "section_width": "page-width",
+        "color_scheme": "scheme-1",
+        "padding-block-start": 64,
+        "padding-block-end": 64
+      }
     }
   },
   "order": [
@@ -686,6 +783,7 @@
     "oni_promo_video",
     "editorial_spotlight",
     "join_horde",
+    "store_reviews",
     "marquee_bottom"
   ]
 }

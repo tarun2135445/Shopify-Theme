@@ -471,10 +471,10 @@
       "settings": {
         "layout": "overlay",
         "media_position": "left",
-        "content_vertical": "bottom",
+        "content_vertical": "center",
         "text_alignment": "left",
         "section_width": "full-width",
-        "min_height": 85,
+        "min_height": 60,
         "image": "shopify://shop_images/oni-editorial-forged-after-dark.png",
         "enable_zoom": true,
         "overlay_opacity": 45,

@@ -405,3 +405,109 @@ leaking bucket.
 
 These are additive and low-risk. Everything else above is recommendation, not
 code change, and should be prioritised per the Phase-8 roadmap.
+
+---
+
+# SEO — Round 2 (deep technical / on-page pass)
+
+A closer, code-level audit beyond the Phase-4 summary. Findings are split into
+**fixed in this PR** and **still recommended**.
+
+## Bugs found & fixed in this PR
+
+### 1. Duplicate H1 on the homepage *(fixed)*
+The header emitted `<h1 class="visually-hidden">{{ shop.name }}</h1>` on the
+index template (`sections/header.liquid`), **and** the hero section
+(`sections/oni-fx-hero.liquid:24`) emits a visible `<h1>`. Two H1s on the most
+important page dilutes the primary topical signal. Fixed by demoting the header's
+hidden shop-name element to a `<p>` so the keyword-rich, visible hero heading is
+the single H1. *(Caveat: if you ever build a homepage with no section-level H1,
+re-introduce one — every page should have exactly one.)*
+
+### 2. Missing meta description on description-less pages *(fixed)*
+`snippets/meta-tags.liquid` only rendered `<meta name="description">` when
+`page_description` was set — so collections/custom pages without a description
+shipped **no** meta description, leaving Google to invent snippets. Added a
+fallback to the computed `og_description` (page → shop.description → shop.name)
+so every page now has one.
+
+### 3. Organization `url` pointed at the current page *(fixed)*
+The Organization JSON-LD used `request.origin | append: page.url` (the URL of
+whatever page you're on) as the entity URL. Corrected to `request.origin` (the
+canonical site root).
+
+### 4. No WebSite / SearchAction schema *(added)*
+Added `WebSite` + `SearchAction` structured data on the homepage
+(`sections/header.liquid`), which makes the **Google sitelinks search box**
+eligible and points it at the theme's search route.
+
+### 5. Missing `og:locale` *(added)*
+Added `<meta property="og:locale">` from `request.locale.iso_code` for cleaner
+social/link-preview rendering.
+
+## Structured-data status (after this PR)
+- ✅ Product — Shopify `structured_data` filter (`product-information.liquid`).
+- ✅ Organization — `header.liquid` (now with correct `url`).
+- ✅ BreadcrumbList — product & collection (added round 1).
+- ✅ WebSite + SearchAction — homepage (added this round).
+- ✅ Article — blog posts (`main-blog-post.liquid`).
+- ❌ **FAQPage** — still missing. Add to product/help/FAQ content for extra SERP
+  real estate (high ROI, low effort).
+- ⚠️ **AggregateRating** — still absent because reviews are hardcoded. A real
+  review app (Loox/Judge.me) is what unlocks star ratings in Google. This remains
+  the single biggest SEO *and* CRO lever.
+
+## Still recommended (not code-fixable here)
+
+### Crawlability / indexation (highest priority)
+- **The live site returned HTTP 403 to external crawlers.** Re-confirming from
+  round 1 because it dwarfs everything else: if Googlebot is being challenged by
+  the WAF/Gokwik bot protection, nothing else matters. Verify in **Google Search
+  Console → URL Inspection / Crawl stats** that Googlebot fetches return 200.
+  Whitelist Googlebot/Bingbot if the WAF is blocking them.
+- No custom `robots.txt`/`sitemap` templates exist — that's fine (Shopify serves
+  sensible defaults). Don't add custom ones unless you need to.
+
+### Image SEO
+- Image rendering is centralized through `snippets/image.liquid`/`media.liquid`,
+  which correctly use `image.alt`. But alt text defaults to **empty** when the
+  merchant hasn't set it. **Action:** set descriptive alt text on all product
+  media in the admin (e.g. "Oni Theory oversized black anime hoodie — front").
+  Good for image search and accessibility.
+- Define `width`/`height` on all imagery (theme largely does) to protect CLS.
+
+### On-page / content (compounding)
+- **Collection pages have no intro copy** — add 80–150 words of keyword-led copy
+  per collection ("anime hoodies India", "oversized graphic hoodie") so they can
+  rank, not just funnel.
+- **Use the blog** (`blog.json`/`article.json` exist, unused). Target long-tail
+  intent the big players ignore: "best anime hoodies in India", sizing/care
+  guides, design-story lookbooks. Cheapest durable organic channel you have.
+- **Internal linking** is thin — link blog → collections → products with
+  descriptive, keyword-rich anchors (the new breadcrumbs help here).
+- **hreflang:** you have 44 locale files, but hreflang tags only emit when
+  multiple *languages are actually published* in Markets (Shopify injects them
+  via `content_for_header`). If you're English-only, ignore. If you publish more
+  languages later, confirm hreflang appears in the rendered `<head>`.
+
+### Technical / performance-for-SEO
+- **Add `preconnect`/`dns-prefetch`** for `cdn.shopify.com` (and any
+  third-party: Gokwik, fonts, analytics) — none are currently present; this
+  shaves connection latency and helps LCP, a ranking factor.
+- **Core Web Vitals:** the render-blocking view transitions + always-on motion
+  stack (see corrected mobile-performance section) hurt mobile LCP, which feeds
+  page-experience ranking. Highest technical-SEO performance win after the 403.
+
+## Round-2 priority order
+1. **Verify Googlebot isn't 403-blocked** (GSC) — existential.
+2. **Real review app → AggregateRating** (stars in SERPs) — biggest CTR lever.
+3. Add **FAQPage schema** + product/collection copy — quick, compounding.
+4. Set **product image alt text** in admin.
+5. Add **preconnect** hints + tackle CWV (motion stack, render-blocking).
+6. Activate the **blog** + internal linking for long-tail organic.
+
+## Round-2 code changes shipped in this PR
+- `sections/header.liquid`: demote homepage hidden `<h1>` → `<p>` (single H1);
+  fix Organization `url`; add WebSite + SearchAction schema on homepage.
+- `snippets/meta-tags.liquid`: meta-description fallback (every page gets one);
+  add `og:locale`.

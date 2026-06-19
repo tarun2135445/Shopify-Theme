@@ -54,6 +54,10 @@
   content="{{ og_type }}"
 >
 <meta
+  property="og:locale"
+  content="{{ request.locale.iso_code }}"
+>
+<meta
   property="og:description"
   content="{{ og_description | escape }}"
 >
@@ -125,9 +129,10 @@
   href="{{ canonical_url }}"
 >
 
-{% if page_description %}
+{%- assign meta_description = page_description | default: og_description -%}
+{% if meta_description != blank %}
   <meta
     name="description"
-    content="{{ page_description | escape }}"
+    content="{{ meta_description | escape }}"
   >
 {% endif %}

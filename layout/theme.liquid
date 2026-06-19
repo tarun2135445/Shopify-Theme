@@ -6,6 +6,16 @@
   lang="{{ request.locale.iso_code }}"
 >
   <head>
+    {%- comment -%}
+      Resource hints — establish early connections to Shopify's CDNs, which
+      serve every theme asset, product image, and webfont. Issued first in the
+      head so the browser can warm these connections in parallel with HTML parse,
+      shaving connection latency off LCP. Harmless if duplicated by the platform.
+    {%- endcomment -%}
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.shopify.com">
+
     {%- if settings.favicon != blank -%}
       <link
         rel="icon"

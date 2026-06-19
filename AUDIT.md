@@ -511,3 +511,101 @@ social/link-preview rendering.
   fix Organization `url`; add WebSite + SearchAction schema on homepage.
 - `snippets/meta-tags.liquid`: meta-description fallback (every page gets one);
   add `og:locale`.
+
+---
+
+# Performance / Core Web Vitals — Round 3
+
+A deep, code-level pass on loading behaviour and the three Core Web Vitals
+(LCP, CLS, INP). As before: **fixed in this PR** vs **recommended**.
+
+## What's already good (credit where due)
+- **Scripts are non-blocking** — the importmap + per-module `fetchpriority="low"`
+  `defer`/`type=module` wiring in `scripts.liquid` keeps JS off the critical
+  render path. This is a strong baseline.
+- **LCP element is protected by design.** The homepage hero (`oni-fx-hero`) is
+  CSS/text-only (no `<img>`), so the LCP is the hero `<h1>`. `oni-motion.css`
+  *deliberately* leaves the first section (the hero) un-hidden
+  (`> .shopify-section:not(:first-child)`), gated behind
+  `prefers-reduced-motion` with a 5s JS failsafe — so the hero paints
+  immediately and is never trapped hidden waiting on JS. Nicely done.
+- **CLS risk is low.** Hero uses `svh` min-height (stable), the central
+  `image.liquid` sets `width`/`height`, and the decorative layers
+  (haze/scanlines/petals) are absolutely positioned → no reflow.
+- Fonts are `preload`ed; `base.css` uses `preload: true`.
+
+## Fixed in this PR
+### Missing CDN resource hints *(fixed)*
+There were **no `preconnect`/`dns-prefetch` hints anywhere** — yet every theme
+asset, product image, and webfont loads from Shopify's CDN. Added, as the first
+thing in `<head>`:
+- `preconnect` → `https://cdn.shopify.com` (crossorigin)
+- `preconnect` → `https://fonts.shopifycdn.com` (crossorigin)
+- `dns-prefetch` → `https://cdn.shopify.com` (fallback)
+
+This warms the TLS connection in parallel with HTML parse, directly shaving
+latency off the render-blocking CSS and the LCP webfont.
+
+## Recommended (higher-risk / merchant-decision — not auto-changed)
+
+### 1. Render-blocking view transitions — biggest available LCP win
+`theme.liquid` adds `<link rel="expect" href="#MainContent" blocking="render">`
+and `scripts.liquid` loads `view-transitions.js` with `blocking="render"` —
+**both gated behind the `page_transition_enabled` / `transition_to_main_product`
+theme settings.** When on, the browser *delays first paint* until `#MainContent`
+is ready, purely for transition smoothness. On mid-range Android over mobile
+data this is a direct LCP/FCP hit. **Action:** turn these settings off (at least
+revisit whether the polish is worth the LCP cost on mobile). Left as a setting
+toggle rather than a code edit because it's the merchant's UX call.
+
+### 2. Three render-blocking effect stylesheets (~110KB+ uncompressed)
+`stylesheets.liquid` loads `oni-fx.css` (46KB), `polly-fx.css`, and
+`oni-motion.css` as plain render-blocking `stylesheet_tag`s, on top of
+`base.css` (104KB).
+- `oni-fx.css` *is* hero-critical (styles the LCP section) — keep it blocking.
+- `oni-motion.css` must apply pre-paint to avoid FOUC — keep it blocking, but
+  it's small.
+- **`polly-fx.css` is the candidate to defer/scope** — confirm whether its
+  styles are above-the-fold; if not, load it non-render-blocking
+  (`media="print"` + `onload` swap, or `preload`+swap) or scope it to the
+  templates that use it.
+- Longer term: extract critical CSS and lazy-load the rest.
+
+### 3. Always-on motion JS = INP / main-thread tax
+`motion.min.js` (65KB) + `oni-motion.js` + `oni-fx.js` (38KB) + `polly-fx.js`
+ship on **every** page (deferred, so not render-blocking, but they still parse,
+execute, and bind scroll/observer handlers). On low-end devices this inflates
+**Total Blocking Time and INP**.
+- `data-oni-parallax` scroll work must be `requestAnimationFrame`-batched and use
+  passive listeners (verify in `oni-fx.js`/`oni-motion.js`).
+- Only load the stack on templates that actually use the effects; the homepage
+  needs it, a policy page does not.
+- The head script already bails on `prefers-reduced-motion` — good; make sure
+  the effect *scripts* themselves also early-return so reduced-motion users
+  don't pay the JS cost either.
+
+### 4. LCP webfont priority
+The heading font (which renders the LCP `<h1>`) is preloaded with
+`fetchpriority="low"` (`fonts.liquid`). Consider raising the **heading** font to
+default/high priority on the homepage so the LCP text isn't waiting behind
+lower-priority fetches. Test both ways — it's a trade-off, not a clear win.
+
+### 5. Total asset weight
+~1.3MB of theme assets. After the wins above, audit for unused CSS/JS
+(`qr-code` and the hoodie-designer are already page-scoped — good) and ship
+appropriately sized hero/product imagery (Shopify's responsive `srcset` via
+`image.liquid` already helps).
+
+## Round-3 priority order
+1. **Disable render-blocking page/product transitions on mobile** — biggest LCP
+   win, just a settings toggle.
+2. ✅ **Preconnect to Shopify CDN** — shipped this PR.
+3. **Defer/scope `polly-fx.css`** and any non-critical effect CSS.
+4. **Scope the motion JS** to templates that use it; confirm rAF + passive
+   scroll handlers for INP.
+5. **Raise heading-font priority** on the homepage (test).
+6. Re-measure with PageSpeed Insights / CrUX field data and iterate.
+
+## Round-3 code changes shipped in this PR
+- `layout/theme.liquid`: add `preconnect`/`dns-prefetch` resource hints for
+  `cdn.shopify.com` and `fonts.shopifycdn.com` at the top of `<head>`.

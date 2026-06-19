@@ -1,0 +1,63 @@
+{% doc %}
+  Outputs BreadcrumbList structured data (schema.org) for product and collection
+  pages so search engines can render breadcrumb rich results. Additive only —
+  complements the Product structured data emitted via the `structured_data`
+  filter in product-information.liquid and the Organization schema in header.liquid.
+{% enddoc %}
+
+{%- if request.page_type == 'product' and product != blank -%}
+  {%- assign first_collection = product.collections.first -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": {{ request.origin | json }}
+        },
+        {%- if first_collection != blank -%}
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ first_collection.title | json }},
+          "item": {{ first_collection.url | prepend: request.origin | json }}
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": {{ product.title | json }}
+        }
+        {%- else -%}
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ product.title | json }}
+        }
+        {%- endif -%}
+      ]
+    }
+  </script>
+{%- elsif request.page_type == 'collection' and collection != blank -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": {{ request.origin | json }}
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ collection.title | json }}
+        }
+      ]
+    }
+  </script>
+{%- endif -%}

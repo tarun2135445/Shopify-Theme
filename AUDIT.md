@@ -124,8 +124,11 @@ threshold are all visible *before* checkout.
 ### Mobile experience — 5/10
 This is **your most important channel and your weakest area.**
 - Quick-add **disabled on mobile** (`settings_data.json`) — removes one-tap add.
-- ~1.3MB of theme assets; always-on heavy JS/CSS (`motion.min.js` 65KB,
-  `oni-fx.js`+`oni-fx.css` ~85KB, `qr-code-generator.js` 45KB) load site-wide.
+- ~1.3MB of theme assets; the genuinely site-wide custom stack is heavy:
+  `motion.min.js` (65KB) + `oni-motion.js`, `oni-fx.js` (38KB) + `oni-fx.css`
+  (46KB), and `polly-fx.js` — all loaded globally via `scripts.liquid` /
+  `stylesheets.liquid`. (Note: `qr-code-generator.js` is gift-card-only and the
+  hoodie-designer bundle is loaded by its section — both already page-scoped.)
 - `border-radius: 0` everywhere + dense motion can feel harsh and janky on
   mid-range Android, which is the bulk of the Indian market.
 
@@ -167,8 +170,10 @@ This is **your most important channel and your weakest area.**
   `blocking="render"` and `theme.liquid` adds `rel="expect" blocking="render"`
   on `#MainContent` (lines 19–26) — this **delays first paint** to make
   transitions smooth. Pretty, but it costs LCP on slow connections.
-- 45KB `qr-code-generator.js` and the full hoodie-designer bundle should be
-  **page-scoped**, not global.
+- The always-on motion/effects stack (`motion.min.js` 65KB, `oni-motion.js`,
+  `oni-fx.js` 38KB + `oni-fx.css` 46KB, `polly-fx.js`) ships on every page from
+  `scripts.liquid`/`stylesheets.liquid` — lazy-load or conditionally enqueue it
+  so pages that don't need the effects don't pay for them.
 
 ### Recommendations by effort
 **Quick wins (< 1 day)** — *several already implemented in this PR:*
@@ -188,7 +193,8 @@ This is **your most important channel and your weakest area.**
 - Turn the vanity stat HUD into a **trust bar** (rating, orders shipped, returns
   policy, secure payment, COD available).
 - Shorten hero to ~65svh; surface a trust strip + bestsellers above the fold.
-- Page-scope `qr-code-generator.js` and the hoodie-designer assets.
+- Trim/lazy-load the site-wide motion stack (`motion.min.js`, `oni-motion.js`,
+  `oni-fx.js`/`oni-fx.css`, `polly-fx.js`) so it loads only where it's used.
 
 **High impact (< 1 month)**
 - Reduce always-on motion/JS; lazy-load `oni-fx`/`motion` and drop
@@ -315,7 +321,7 @@ hard on trust and proof.
 | **HIGH (30d)** | Add delivery/dispatch dates + COD reassurance on PDP | High | Low | Very High |
 | **HIGH** | Re-enable mobile quick-add; shorten hero; trust bar | Med–High | Low | High |
 | **HIGH** | Email/SMS/WhatsApp flows (welcome, cart, post-purchase) | High | Med | Very High |
-| **HIGH** | Mobile performance: kill render-blocking transitions, page-scope heavy JS | Med–High | Med | High |
+| **HIGH** | Mobile performance: kill render-blocking transitions, lazy-load site-wide motion/oni-fx stack | Med–High | Med | High |
 | **MEDIUM (90d)** | Real About + Delivery/Returns pages | Med | Low–Med | High |
 | **MEDIUM** | SEO content + collection copy + FAQ schema | Med (compounding) | Med | High |
 | **MEDIUM** | Retargeting + pixel/CAPI verification | Med | Med | High |
@@ -368,7 +374,8 @@ hard on trust and proof.
 - **Week 3:** Stand up email/SMS/WhatsApp welcome + abandoned-cart + COD-confirm
   flows. Add first-order capture offer.
 - **Week 4:** Mobile performance pass — remove render-blocking transitions,
-  page-scope heavy JS (qr-code, hoodie-designer), measure LCP. Start daily Reels.
+  lazy-load the site-wide motion/oni-fx stack (`motion.min.js`, `oni-motion.js`,
+  `oni-fx.js`/`.css`, `polly-fx.js`), measure LCP. Start daily Reels.
 
 ### 4) 90-day growth plan
 - **Days 31–60:** Build About + Delivery/Returns pages. Ship SEO content (4–8

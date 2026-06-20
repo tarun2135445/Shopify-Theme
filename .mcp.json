@@ -13,6 +13,10 @@
         "GOOGLE_APPLICATION_CREDENTIALS": "${GOOGLE_APPLICATION_CREDENTIALS:-}",
         "GOOGLE_ADS_LOGIN_CUSTOMER_ID": "${GOOGLE_ADS_LOGIN_CUSTOMER_ID:-}"
       }
+    },
+    "Zapier-MCP": {
+      "type": "http",
+      "url": "https://mcp.zapier.com/api/v1/connect"
     }
   }
 }

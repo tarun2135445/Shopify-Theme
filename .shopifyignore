@@ -4,3 +4,4 @@ remotion/
 # Tooling config / docs — not part of the deployed theme
 .mcp.json
 docs/
+deploy/

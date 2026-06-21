@@ -1,0 +1,130 @@
+{%- doc -%}
+  Renders site-wide SEO structured data (JSON-LD) in the document <head>.
+
+  Outputs:
+  - Organization  — name, url, logo, description and social profiles (sameAs).
+  - WebSite       — with a SearchAction so Google can show a sitelinks search box.
+  - BreadcrumbList — on product and collection pages (breadcrumb rich results).
+
+  Product structured data (offers + aggregateRating) is rendered on the product
+  page via snippets/product-schema.liquid, so it is not duplicated here.
+{%- enddoc -%}
+
+{%- liquid
+  assign base_url = request.origin
+
+  # Collect non-blank social profile URLs for the Organization "sameAs" array.
+  assign social_keys = 'social_instagram_link,social_twitter_link,social_facebook_link,social_youtube_link,social_tiktok_link,social_pinterest_link' | split: ','
+  assign same_as = ''
+  for key in social_keys
+    assign social_url = settings[key]
+    if social_url != blank
+      if same_as == ''
+        assign same_as = social_url
+      else
+        assign same_as = same_as | append: '~~' | append: social_url
+      endif
+    endif
+  endfor
+-%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": {{ shop.name | json }},
+  "url": {{ base_url | json }}
+  {%- if settings.logo != blank -%}
+    ,"logo": {{ settings.logo | image_url: width: 512 | prepend: 'https:' | json }}
+  {%- endif -%}
+  {%- if shop.description != blank -%}
+    ,"description": {{ shop.description | strip_html | json }}
+  {%- endif -%}
+  {%- if same_as != '' -%}
+    ,"sameAs": [
+      {%- assign same_as_list = same_as | split: '~~' -%}
+      {%- for social_url in same_as_list -%}
+        {{ social_url | json }}{%- unless forloop.last %},{% endunless -%}
+      {%- endfor -%}
+    ]
+  {%- endif -%}
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": {{ shop.name | json }},
+  "url": {{ base_url | json }},
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": {{ base_url | append: '/search?q={search_term_string}' | json }}
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+{%- case request.page_type -%}
+  {%- when 'product' -%}
+    {%- assign breadcrumb_collection = product.collections.first -%}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": {{ base_url | json }}
+        }
+        {%- if breadcrumb_collection -%}
+        ,{
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ breadcrumb_collection.title | json }},
+          "item": {{ base_url | append: breadcrumb_collection.url | json }}
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": {{ product.title | json }},
+          "item": {{ base_url | append: product.url | json }}
+        }
+        {%- else -%}
+        ,{
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ product.title | json }},
+          "item": {{ base_url | append: product.url | json }}
+        }
+        {%- endif -%}
+      ]
+    }
+    </script>
+  {%- when 'collection' -%}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": {{ base_url | json }}
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ collection.title | json }},
+          "item": {{ base_url | append: collection.url | json }}
+        }
+      ]
+    }
+    </script>
+{%- endcase -%}

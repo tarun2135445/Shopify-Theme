@@ -89,10 +89,14 @@
 {%- endif -%}
 
 {%- if settings.social_twitter_link != blank -%}
-  <meta
-    name="twitter:site"
-    content="{{ settings.social_twitter_link | split: 'twitter.com/' | last | prepend: '@' }}"
-  >
+  {%- assign twitter_handle = settings.social_twitter_link | remove: 'https://' | remove: 'http://' | remove: 'www.' | split: '/' -%}
+  {%- assign twitter_handle = twitter_handle[1] | split: '?' | first -%}
+  {%- if twitter_handle != blank -%}
+    <meta
+      name="twitter:site"
+      content="@{{ twitter_handle }}"
+    >
+  {%- endif -%}
 {%- endif -%}
 <meta
   name="twitter:card"

@@ -6,6 +6,10 @@
   (the same data the on-page star block uses), so review stars become eligible
   for Google rich results. Uses an AggregateOffer for products with a price range.
 
+  Brand resolves to an optional `custom.brand` metafield, falling back to the
+  shop name — never the `vendor` field, which often holds the fulfilment/POD
+  supplier rather than the storefront brand.
+
   @param {object} product - The product to describe.
 {%- enddoc -%}
 
@@ -16,6 +20,7 @@
   assign rating_count = product.metafields.reviews.rating_count.value
   assign product_url = request.origin | append: product.url
   assign first_variant = product.selected_or_first_available_variant
+  assign brand_name = product.metafields.custom.brand.value | default: shop.name
 -%}
 {
   "@context": "https://schema.org/",
@@ -34,7 +39,7 @@
   {%- endif -%}
   ,"brand": {
     "@type": "Brand",
-    "name": {% if product.vendor != blank %}{{ product.vendor | json }}{% else %}{{ shop.name | json }}{% endif %}
+    "name": {{ brand_name | json }}
   }
   {%- if first_variant.sku != blank -%}
     ,"sku": {{ first_variant.sku | json }}

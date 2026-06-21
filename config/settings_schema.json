@@ -2284,5 +2284,44 @@
         "default": "equal-width-buttons"
       }
     ]
+  },
+  {
+    "name": "Social media & SEO",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "These profile links power your Organization structured data (sameAs) and the X (Twitter) meta tag, helping search engines connect your store to your social accounts. Enter full profile URLs."
+      },
+      {
+        "type": "url",
+        "id": "social_instagram_link",
+        "label": "Instagram URL"
+      },
+      {
+        "type": "url",
+        "id": "social_twitter_link",
+        "label": "X (Twitter) URL"
+      },
+      {
+        "type": "url",
+        "id": "social_facebook_link",
+        "label": "Facebook URL"
+      },
+      {
+        "type": "url",
+        "id": "social_youtube_link",
+        "label": "YouTube URL"
+      },
+      {
+        "type": "url",
+        "id": "social_tiktok_link",
+        "label": "TikTok URL"
+      },
+      {
+        "type": "url",
+        "id": "social_pinterest_link",
+        "label": "Pinterest URL"
+      }
+    ]
   }
 ]

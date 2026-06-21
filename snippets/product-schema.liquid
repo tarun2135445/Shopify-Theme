@@ -1,0 +1,66 @@
+{%- doc -%}
+  Renders Product structured data (JSON-LD) for a product.
+
+  Unlike Shopify's built-in `product | structured_data` filter, this also emits
+  `aggregateRating` from the `reviews.rating` / `reviews.rating_count` metafields
+  (the same data the on-page star block uses), so review stars become eligible
+  for Google rich results. Uses an AggregateOffer for products with a price range.
+
+  @param {object} product - The product to describe.
+{%- enddoc -%}
+
+{%- liquid
+  assign currency = cart.currency.iso_code | default: shop.currency
+  assign rating = product.metafields.reviews.rating.value.rating
+  assign scale_max = product.metafields.reviews.rating.value.scale_max | default: 5
+  assign rating_count = product.metafields.reviews.rating_count.value
+  assign product_url = request.origin | append: product.url
+  assign first_variant = product.selected_or_first_available_variant
+-%}
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": {{ product.title | json }},
+  "url": {{ product_url | json }}
+  {%- if product.description != blank -%}
+    ,"description": {{ product.description | strip_html | truncatewords: 60 | json }}
+  {%- endif -%}
+  {%- if product.images.size > 0 -%}
+    ,"image": [
+      {%- for image in product.images limit: 5 -%}
+        {{ image | image_url: width: 1200 | prepend: 'https:' | json }}{%- unless forloop.last %},{% endunless -%}
+      {%- endfor -%}
+    ]
+  {%- endif -%}
+  ,"brand": {
+    "@type": "Brand",
+    "name": {% if product.vendor != blank %}{{ product.vendor | json }}{% else %}{{ shop.name | json }}{% endif %}
+  }
+  {%- if first_variant.sku != blank -%}
+    ,"sku": {{ first_variant.sku | json }}
+  {%- endif -%}
+  ,"offers": {
+    {%- if product.price_min == product.price_max -%}
+    "@type": "Offer",
+    "price": {{ product.price | divided_by: 100.0 }},
+    {%- else -%}
+    "@type": "AggregateOffer",
+    "lowPrice": {{ product.price_min | divided_by: 100.0 }},
+    "highPrice": {{ product.price_max | divided_by: 100.0 }},
+    "offerCount": {{ product.variants.size }},
+    {%- endif -%}
+    "priceCurrency": {{ currency | json }},
+    "availability": {% if product.available %}"https://schema.org/InStock"{% else %}"https://schema.org/OutOfStock"{% endif %},
+    "itemCondition": "https://schema.org/NewCondition",
+    "url": {{ product_url | json }}
+  }
+  {%- if rating != blank and rating_count != blank and rating_count > 0 -%}
+    ,"aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": {{ rating }},
+      "reviewCount": {{ rating_count }},
+      "bestRating": {{ scale_max }},
+      "worstRating": 1
+    }
+  {%- endif -%}
+}

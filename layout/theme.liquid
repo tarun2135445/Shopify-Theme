@@ -80,7 +80,7 @@
         "@type": "SearchAction",
         "target": {
           "@type": "EntryPoint",
-          "urlTemplate": {{ seo_base_url | append: '/search?q={search_term_string}' | json }}
+          "urlTemplate": "{{ seo_base_url }}/search?q={search_term_string}"
         },
         "query-input": "required name=search_term_string"
       }

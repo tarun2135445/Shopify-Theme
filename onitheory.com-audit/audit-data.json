@@ -1,0 +1,89 @@
+{
+  "summary": {
+    "health_score": 88,
+    "business_type": "E-commerce (apparel / anime streetwear)",
+    "top_findings": [
+      "meta description had no fallback (homepage shipped none)",
+      "og:image rendered nothing when a page had no image",
+      "Organization JSON-LD url pointed at the current page, not the site root",
+      "no WebSite + SearchAction entity (no sitelinks search box)",
+      "twitter:site referenced an undefined setting; no sameAs signals"
+    ],
+    "quick_wins": [
+      "Publish the unpublished Oni Theory theme",
+      "Fill Social media & sharing settings (share image + profile URLs)",
+      "Set homepage meta description in Online Store > Preferences"
+    ]
+  },
+  "categories": [
+    {
+      "name": "Technical SEO",
+      "score": 90,
+      "what_works": ["Canonical tags", "Shopify-generated robots.txt & sitemap", "https schema context"],
+      "findings": []
+    },
+    {
+      "name": "On-Page SEO",
+      "score": 88,
+      "what_works": ["Smart <title> with shop-name suffix", "Open Graph + Twitter cards"],
+      "findings": [
+        {
+          "title": "Missing meta description fallback",
+          "severity": "High",
+          "description": "<meta name=description> only rendered when page_description was set; homepage and description-less pages shipped no meta description.",
+          "recommendation": "Fallback page_description -> shop.description (applied)."
+        },
+        {
+          "title": "Imageless social cards",
+          "severity": "Medium",
+          "description": "og:image only rendered when page_image existed; homepage/collections/policies shared with no image.",
+          "recommendation": "Fallback page_image -> settings.share_image -> settings.logo; add twitter:image (applied)."
+        }
+      ]
+    },
+    {
+      "name": "Schema / Structured Data",
+      "score": 92,
+      "what_works": ["Native Product structured_data filter", "Article schema on blog posts"],
+      "findings": [
+        {
+          "title": "Organization url pointed at current page",
+          "severity": "High",
+          "description": "Organization.url was request.origin | append: page.url, changing per page and breaking entity consolidation.",
+          "recommendation": "Set url to site root request.origin; add sameAs (applied)."
+        },
+        {
+          "title": "No WebSite + SearchAction",
+          "severity": "Medium",
+          "description": "No sitelinks search box eligibility for brand queries.",
+          "recommendation": "Add homepage-gated WebSite + SearchAction JSON-LD (applied)."
+        }
+      ]
+    },
+    {
+      "name": "AI Search Readiness",
+      "score": 85,
+      "what_works": ["Clean semantic <head>", "Organization + Product entities"],
+      "findings": [
+        {
+          "title": "Brand entity signals incomplete",
+          "severity": "Low",
+          "description": "sameAs empty until social URLs are entered in theme settings.",
+          "recommendation": "Fill Social media & sharing settings."
+        }
+      ]
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      {"name": "Phase 1: Critical Fixes", "timeframe": "Now", "items": ["Publish the unpublished Oni Theory theme", "Remove storefront password when launch-ready"]},
+      {"name": "Phase 2: High-Impact Config", "timeframe": "This week", "items": ["Fill Social media & sharing settings (share image + profile URLs)", "Set homepage title + meta description in Preferences", "Fill store description"]},
+      {"name": "Phase 3: Content & Authority", "timeframe": "Month 1", "items": ["Confirm product image alt text", "Re-run Rich Results Test on a product URL post-publish"]},
+      {"name": "Phase 4: Monitoring", "timeframe": "Ongoing", "items": ["Re-run Lighthouse after publish", "Monitor Search Console coverage once de-passworded"]}
+    ]
+  },
+  "artifacts": {
+    "findings_dir": "findings/",
+    "screenshots_dir": "screenshots/"
+  }
+}

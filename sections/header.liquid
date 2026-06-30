@@ -284,10 +284,36 @@
   {% endif %}
 {% endcapture %}
 
-{%- comment -%}
-  Organization & WebSite JSON-LD are rendered site-wide in <head> via
-  snippets/seo-schema.liquid (richer: includes logo, description and sameAs).
-{%- endcomment -%}
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name": {{ shop.name | json }},
+    {% if settings.logo %}
+      "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
+    {% endif %}
+    "url": {{ request.origin | json }}
+  }
+</script>
+
+{%- if request.page_type == 'index' -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": {{ shop.name | json }},
+      "url": {{ request.origin | json }},
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": {{ request.origin | append: routes.search_url | append: '?q={search_term_string}' | json }}
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+  </script>
+{%- endif -%}
 
 <header-component
   id="header-component"
@@ -323,7 +349,12 @@
     class="header__underlay header__underlay-open"
   ></div>
   {%- if request.page_type == 'index' -%}
-    <h1 class="visually-hidden">{{ shop.name }}</h1>
+    {%- comment -%}
+      The homepage hero (oni-fx-hero) provides the visible, keyword-rich <h1>.
+      Keep the shop name here for branding/accessibility but as a <p> so the
+      homepage has a single H1.
+    {%- endcomment -%}
+    <p class="visually-hidden">{{ shop.name }}</p>
   {%- endif -%}
   {% for row in rows %}
     {% liquid

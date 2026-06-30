@@ -4,29 +4,6 @@
   @param {object} [product] - The product object, available on product pages for price meta tags.
 {% enddoc %}
 
-{%- liquid
-  assign og_title = page_title | default: shop.name
-  assign og_url = canonical_url | default: request.origin
-  assign og_type = 'website'
-  assign og_description = page_description | default: shop.description | default: shop.name
-  assign og_image = page_image | default: settings.logo
-
-  if request.page_type == 'product'
-    assign og_type = 'product'
-  elsif request.page_type == 'article'
-    assign og_type = 'article'
-  elsif request.page_type == 'password'
-    assign og_url = request.origin
-  endif
-
-  # Use the first color scheme's background as the browser theme color.
-  assign theme_color = ''
-  for scheme in settings.color_schemes
-    assign theme_color = scheme.settings.background
-    break
-  endfor
--%}
-
 <meta charset="utf-8">
 <meta
   http-equiv="X-UA-Compatible"
@@ -40,12 +17,25 @@
   name="view-transition"
   content="same-origin"
 >
-{%- if theme_color != blank -%}
-  <meta
-    name="theme-color"
-    content="{{ theme_color }}"
-  >
-{%- endif -%}
+<meta
+  name="theme-color"
+  content="#0b0b10"
+>
+
+{%- liquid
+  assign og_title = page_title | default: shop.name
+  assign og_url = canonical_url | default: request.origin
+  assign og_type = 'website'
+  assign og_description = page_description | default: shop.description | default: shop.name
+
+  if request.page_type == 'product'
+    assign og_type = 'product'
+  elsif request.page_type == 'article'
+    assign og_type = 'article'
+  elsif request.page_type == 'password'
+    assign og_url = request.origin
+  endif
+%}
 
 <meta
   property="og:site_name"
@@ -64,26 +54,30 @@
   content="{{ og_type }}"
 >
 <meta
+  property="og:locale"
+  content="{{ request.locale.iso_code }}"
+>
+<meta
   property="og:description"
   content="{{ og_description | escape }}"
 >
 
-{%- if og_image -%}
+{%- if page_image -%}
   <meta
     property="og:image"
-    content="https:{{ og_image | image_url }}"
+    content="http:{{ page_image | image_url }}"
   >
   <meta
     property="og:image:secure_url"
-    content="https:{{ og_image | image_url }}"
+    content="https:{{ page_image | image_url }}"
   >
   <meta
     property="og:image:width"
-    content="{{ og_image.width }}"
+    content="{{ page_image.width }}"
   >
   <meta
     property="og:image:height"
-    content="{{ og_image.height }}"
+    content="{{ page_image.height }}"
   >
 {%- endif -%}
 
@@ -99,14 +93,10 @@
 {%- endif -%}
 
 {%- if settings.social_twitter_link != blank -%}
-  {%- assign twitter_handle = settings.social_twitter_link | remove: 'https://' | remove: 'http://' | remove: 'www.' | split: '/' -%}
-  {%- assign twitter_handle = twitter_handle[1] | split: '?' | first -%}
-  {%- if twitter_handle != blank -%}
-    <meta
-      name="twitter:site"
-      content="@{{ twitter_handle }}"
-    >
-  {%- endif -%}
+  <meta
+    name="twitter:site"
+    content="{{ settings.social_twitter_link | split: 'twitter.com/' | last | prepend: '@' }}"
+  >
 {%- endif -%}
 <meta
   name="twitter:card"
@@ -120,10 +110,10 @@
   name="twitter:description"
   content="{{ og_description | escape }}"
 >
-{%- if og_image -%}
+{%- if page_image -%}
   <meta
     name="twitter:image"
-    content="https:{{ og_image | image_url }}"
+    content="https:{{ page_image | image_url }}"
   >
 {%- endif -%}
 
@@ -139,9 +129,10 @@
   href="{{ canonical_url }}"
 >
 
-{%- if og_description != blank -%}
+{%- assign meta_description = page_description | default: og_description -%}
+{% if meta_description != blank %}
   <meta
     name="description"
-    content="{{ og_description | escape }}"
+    content="{{ meta_description | escape }}"
   >
-{%- endif -%}
+{% endif %}

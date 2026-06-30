@@ -20,13 +20,17 @@
   >
 {%- endunless -%}
 {%- unless settings.type_heading_font.system? -%}
+  {%- comment -%}
+    Heading font renders the hero <h1> (the LCP element on most templates), so
+    fetch it at high priority to speed up Largest Contentful Paint.
+  {%- endcomment -%}
   <link
     rel="preload"
     as="font"
     href="{{ settings.type_heading_font | font_url }}"
     type="font/woff2"
     crossorigin
-    fetchpriority="low"
+    fetchpriority="high"
   >
 {%- endunless -%}
 {%- unless settings.type_accent_font.system? -%}

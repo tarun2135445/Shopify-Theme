@@ -1,0 +1,30 @@
+{%- layout none -%}
+{%- # Alternate page template "llms" -> assign to a page to serve a GEO llms.txt-style
+     manifest at /pages/<handle>. Lists brand, collections and key pages so answer
+     engines can ground answers about the store. -%}
+# {{ shop.name }}
+
+> {{ shop.description | default: page.content | strip_html | truncatewords: 40 }}
+
+This is the official storefront of {{ shop.name }} ({{ request.origin }}).
+
+## Collections
+{% for collection in collections -%}
+{%- unless collection.handle == 'frontpage' or collection.products_count == 0 -%}
+- [{{ collection.title }}]({{ request.origin }}{{ collection.url }}): {{ collection.description | strip_html | truncatewords: 25 | default: collection.title }}
+{% endunless -%}
+{%- endfor %}
+
+## Pages
+{% for p in pages -%}
+{%- unless p.handle == page.handle -%}
+- [{{ p.title }}]({{ request.origin }}{{ p.url }})
+{% endunless -%}
+{%- endfor %}
+
+## Policies & Contact
+- Search: {{ request.origin }}{{ routes.search_url }}
+- All products: {{ request.origin }}{{ routes.all_products_collection_url }}
+- Sitemap: {{ request.origin }}/sitemap.xml
+
+_Last generated from live store data on request. Brand: {{ shop.name }}._

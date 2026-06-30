@@ -646,22 +646,51 @@ transition was active on every page.
    for first paint.
 4. Plus the CDN `preconnect` hints from round 3a.
 
-### Still outstanding — INP (534ms) needs a follow-up
-INP is dominated by the always-on motion JS (`motion.min.js` 65KB +
-`oni-motion.js`/`oni-fx.js`/`polly-fx.js`) executing and binding scroll/interaction
-handlers on **every** page. Meaningfully fixing INP means **scoping that stack to
-the templates that actually use it** and confirming scroll handlers are
-`requestAnimationFrame`-batched + passive — a larger, higher-risk change held
-back from this pass because it touches site-wide behaviour (e.g. product-card
-tilt/zoom). Recommend doing it as a focused next step and re-measuring.
+### INP (534ms) — addressed by scoping the motion JS
+INP was dominated by the always-on motion JS executing on **every** page.
+Investigation showed every Motion-driven section (`oni-fx-hero`,
+`oni-promo-video`, `oni-drag-carousel`, `editorial-spotlight`) and the
+`oni-motion.css` reveal rules target **only `templates/index.json`** — yet the
+whole stack loaded site-wide. Verified that:
+- `oni-fx.js`/`polly-fx.js` have **no** Motion-lib dependency (only
+  `oni-motion.js` uses `motion.min.js`), and
+- `oni-motion.css`'s product-image zoom is **pure CSS hover** (needs no JS).
+
+So the heavy stack was scoped to the homepage:
+- `motion.min.js` (65KB), `oni-motion.js`, `polly-fx.js`, and the
+  `oni-motion-ready` head gate → now loaded **only on the index template**.
+- `polly-fx.css` → index-only (and still non-render-blocking).
+- Kept **global**: `oni-fx.js`/`oni-fx.css` (product-card tilt/borders + glitch
+  headings) and `oni-motion.css` (CSS-only product zoom).
+
+Net effect: ~75KB of JS parse/execute removed from every product, collection,
+cart, and search page — i.e. the entire conversion funnel — which is where INP
+matters most. *(If these sections are later added to another template, extend
+the `request.page_type == 'index'` guard in `scripts.liquid`/`stylesheets.liquid`
+to include it.)*
 
 ### TTFB (1.8s)
 Server-side (Shopify + installed apps like Gokwik + Liquid render time), not
 fixable in theme markup. Audit installed apps and reduce blocking app embeds.
 
-### Round-3b code changes shipped in this PR
+### Round-3b/c code changes shipped in this PR
 - `layout/theme.liquid`: remove render-blocking `rel="expect"` view-transition
   blocker.
-- `snippets/scripts.liquid`: drop `blocking="render"` from `view-transitions.js`.
+- `snippets/scripts.liquid`: drop `blocking="render"` from `view-transitions.js`;
+  scope `motion.min.js` + `oni-motion.js` + `polly-fx.js` + the `oni-motion-ready`
+  gate to the homepage (INP).
 - `snippets/fonts.liquid`: heading font → `fetchpriority="high"`.
-- `snippets/stylesheets.liquid`: load `polly-fx.css` non-render-blocking.
+- `snippets/stylesheets.liquid`: load `polly-fx.css` non-render-blocking and
+  scope it to the homepage.
+
+## What remains (not fixable in theme code)
+These need merchant action, not theme edits, and are unchanged from the earlier
+phases:
+- **TTFB 1.8s** — Shopify server + installed apps (e.g. Gokwik) + Liquid render
+  time. Audit/trim blocking app embeds.
+- **Real reviews → AggregateRating**, **real social links**, **contact details**,
+  **delivery/COD copy**, **product image alt text**, **collection/blog content**,
+  **FAQ content** — all require merchant input or admin configuration.
+- **Re-measure**: field (CrUX) data updates over a ~28-day rolling window, so it
+  won't move immediately. Run a **Lighthouse lab test** on the deployed theme to
+  confirm the LCP/FCP/INP improvements right away.

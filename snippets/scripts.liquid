@@ -276,29 +276,43 @@
 ></script>
 
 <script src="{{ 'oni-fx.js' | asset_url }}" defer="defer"></script>
-<script src="{{ 'polly-fx.js' | asset_url }}" defer="defer"></script>
 
-<script>
-  // ONI MOTION — gate the "before reveal" hidden state (oni-motion.css).
-  // Runs in <head> before first paint so sections never flash. Added only
-  // when motion is appropriate; a failsafe removes the class if the motion
-  // script never boots, so content can never be trapped hidden.
-  (function () {
-    try {
-      var el = document.documentElement;
-      if (el.classList.contains('shopify-design-mode')) return;
-      var mq = window.matchMedia;
-      if (mq && mq('(prefers-reduced-motion: reduce)').matches) return;
-      if (!('IntersectionObserver' in window)) return;
-      el.classList.add('oni-motion-ready');
-      window.setTimeout(function () {
-        if (!window.__oniMotionBooted) el.classList.remove('oni-motion-ready');
-      }, 5000);
-    } catch (e) {}
-  })();
-</script>
-<script src="{{ 'motion.min.js' | asset_url }}" defer="defer"></script>
-<script src="{{ 'oni-motion.js' | asset_url }}" defer="defer"></script>
+{%- comment -%}
+  Motion stack (Motion engine + scroll reveals/parallax/carousel + polly-fx
+  editorial motion) is scoped to the homepage. Every section that uses it —
+  oni-fx-hero, oni-promo-video, oni-drag-carousel, editorial-spotlight, and the
+  index-only reveal rules in oni-motion.css — only appears on templates/index.json,
+  so loading ~75KB of JS on product/collection/cart/search pages was pure waste
+  (and hurt INP). oni-fx.js/.css stay global (product-card effects + glitch
+  headings site-wide); oni-motion.css stays global too (its product-image zoom is
+  pure CSS hover, no JS). If these sections are ever added to another template,
+  extend the condition below to include it.
+{%- endcomment -%}
+{%- if request.page_type == 'index' -%}
+  <script src="{{ 'polly-fx.js' | asset_url }}" defer="defer"></script>
+
+  <script>
+    // ONI MOTION — gate the "before reveal" hidden state (oni-motion.css).
+    // Runs in <head> before first paint so sections never flash. Added only
+    // when motion is appropriate; a failsafe removes the class if the motion
+    // script never boots, so content can never be trapped hidden.
+    (function () {
+      try {
+        var el = document.documentElement;
+        if (el.classList.contains('shopify-design-mode')) return;
+        var mq = window.matchMedia;
+        if (mq && mq('(prefers-reduced-motion: reduce)').matches) return;
+        if (!('IntersectionObserver' in window)) return;
+        el.classList.add('oni-motion-ready');
+        window.setTimeout(function () {
+          if (!window.__oniMotionBooted) el.classList.remove('oni-motion-ready');
+        }, 5000);
+      } catch (e) {}
+    })();
+  </script>
+  <script src="{{ 'motion.min.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'oni-motion.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
 
 <script>
   const Theme = {

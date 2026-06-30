@@ -25,15 +25,14 @@
     {%- endif -%}
 
     {% # theme-check-disable RemoteAsset %}
-    {% comment %} This a way to wait for main content to load when navigating to a new page so that the view transitions can work consistently {% endcomment %}
-    {% if settings.transition_to_main_product or settings.page_transition_enabled %}
-      <link
-        rel="expect"
-        href="#MainContent"
-        blocking="render"
-        id="view-transition-render-blocker"
-      >
-    {% endif %}
+    {% comment %}
+      Note: a `<link rel="expect" blocking="render">` on #MainContent was
+      previously emitted here (when page/product transitions are enabled) to make
+      view transitions consistent. It forced the browser to delay first paint
+      until #MainContent parsed, which inflated FCP/LCP on mobile (confirmed in
+      CrUX field data). Removed so first paint is not render-blocked — the view
+      transition script still runs, transitions just don't block initial render.
+    {% endcomment %}
 
     {%- render 'meta-tags' -%}
     {%- render 'breadcrumb-schema' -%}

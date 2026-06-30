@@ -609,3 +609,59 @@ appropriately sized hero/product imagery (Shopify's responsive `srcset` via
 ## Round-3 code changes shipped in this PR
 - `layout/theme.liquid`: add `preconnect`/`dns-prefetch` resource hints for
   `cdn.shopify.com` and `fonts.shopifycdn.com` at the top of `<head>`.
+
+---
+
+## Round-3b — validated against CrUX field data (mobile)
+
+PageSpeed Insights field data (Chrome UX Report, 28-day) **confirmed the
+diagnosis** and triggered the higher-impact fixes:
+
+| Metric | Field value | Verdict |
+|---|---|---|
+| LCP | **5.2s** | ❌ Poor (target < 2.5s) |
+| INP | **534ms** | ❌ Poor (target < 200ms) |
+| CLS | **0.03** | ✅ Good (as predicted) |
+| FCP | **4.0s** | ❌ Poor |
+| TTFB | **1.8s** | ⚠️ Needs improvement |
+| Lab Performance | **60** | — |
+
+Live settings confirmed the culprits: `page_transition_enabled` **and**
+`transition_to_main_product` were both `true`, so the render-blocking view
+transition was active on every page.
+
+### Fixes applied for LCP / FCP
+1. **Removed the render-blocking view transition** — deleted the
+   `<link rel="expect" href="#MainContent" blocking="render">` from
+   `theme.liquid` and the `blocking="render"` on `view-transitions.js`
+   (`scripts.liquid`). First paint is no longer held back waiting for
+   `#MainContent`; transitions still run, they just don't block render. This is
+   the single biggest FCP/LCP win.
+2. **Raised the heading font (Anton) to `fetchpriority="high"`** (`fonts.liquid`)
+   — it renders the hero `<h1>`, the LCP element, so it shouldn't wait behind
+   low-priority fetches.
+3. **Made `polly-fx.css` non-render-blocking** (`stylesheets.liquid`,
+   `media="print"`/`onload` swap + `<noscript>` fallback) — its reveal states
+   only apply once its deferred JS adds `.polly-fx-ready`, so it's never needed
+   for first paint.
+4. Plus the CDN `preconnect` hints from round 3a.
+
+### Still outstanding — INP (534ms) needs a follow-up
+INP is dominated by the always-on motion JS (`motion.min.js` 65KB +
+`oni-motion.js`/`oni-fx.js`/`polly-fx.js`) executing and binding scroll/interaction
+handlers on **every** page. Meaningfully fixing INP means **scoping that stack to
+the templates that actually use it** and confirming scroll handlers are
+`requestAnimationFrame`-batched + passive — a larger, higher-risk change held
+back from this pass because it touches site-wide behaviour (e.g. product-card
+tilt/zoom). Recommend doing it as a focused next step and re-measuring.
+
+### TTFB (1.8s)
+Server-side (Shopify + installed apps like Gokwik + Liquid render time), not
+fixable in theme markup. Audit installed apps and reduce blocking app embeds.
+
+### Round-3b code changes shipped in this PR
+- `layout/theme.liquid`: remove render-blocking `rel="expect"` view-transition
+  blocker.
+- `snippets/scripts.liquid`: drop `blocking="render"` from `view-transitions.js`.
+- `snippets/fonts.liquid`: heading font → `fetchpriority="high"`.
+- `snippets/stylesheets.liquid`: load `polly-fx.css` non-render-blocking.

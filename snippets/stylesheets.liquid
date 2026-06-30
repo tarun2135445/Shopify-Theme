@@ -1,5 +1,17 @@
 {{ 'overflow-list.css' | asset_url | preload_tag: as: 'style' }}
 {{ 'base.css' | asset_url | stylesheet_tag: preload: true }}
 {{ 'oni-fx.css' | asset_url | stylesheet_tag }}
-{{ 'polly-fx.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+  polly-fx.css is loaded non-render-blocking: its "before reveal" hidden states
+  only apply once polly-fx.js (deferred) adds `.polly-fx-ready`, so it is never
+  needed for first paint. The media="print"/onload swap keeps it off the
+  critical render path; the <noscript> fallback covers JS-disabled clients.
+{%- endcomment -%}
+<link
+  rel="stylesheet"
+  href="{{ 'polly-fx.css' | asset_url }}"
+  media="print"
+  onload="this.media='all'"
+>
+<noscript>{{ 'polly-fx.css' | asset_url | stylesheet_tag }}</noscript>
 {{ 'oni-motion.css' | asset_url | stylesheet_tag }}

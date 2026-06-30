@@ -6,16 +6,14 @@
     Overviews, Bing Copilot, etc.
   To opt a bot OUT later, change its `Allow: /` to `Disallow: /`.
 {% endcomment %}
-{%- for group in robots.default_groups -%}
+{% for group in robots.default_groups %}
   {{- group.user_agent }}
-  {%- for rule in group.rules -%}
-    {{ rule }}
-  {%- endfor -%}
+  {% for rule in group.rules %}{{ rule }}
+  {% endfor -%}
   {%- if group.sitemap != blank %}
     {{ group.sitemap }}
-  {%- endif -%}
-  {{ "\n" }}
-{%- endfor -%}
+  {%- endif %}
+{% endfor %}
 
 # --- AI answer-engine & generative-search crawlers (AEO/GEO): explicitly allowed ---
 {%- assign ai_agents = "GPTBot,OAI-SearchBot,ChatGPT-User,ClaudeBot,anthropic-ai,Claude-Web,Claude-SearchBot,PerplexityBot,Perplexity-User,Google-Extended,Applebot,Applebot-Extended,Bingbot,CCBot,Amazonbot,Meta-ExternalAgent,DuckAssistBot,cohere-ai,YouBot,Diffbot" | split: "," -%}

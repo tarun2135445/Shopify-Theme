@@ -1,0 +1,228 @@
+
+
+{% comment %}
+  FAQ section — renders an accessible Q&A accordion and emits FAQPage
+  structured data (schema.org). This makes the questions eligible for Google
+  FAQ rich results and, more importantly, gives AI answer engines (AEO/GEO)
+  clean question→answer pairs they can extract and cite. Q&A content comes
+  from the section's blocks, so a single valid FAQPage script is built from
+  whatever the merchant enters.
+{% endcomment %}
+
+{%- capture faq_schema_items -%}
+  {%- assign is_first = true -%}
+  {%- for block in section.blocks -%}
+    {%- if block.settings.question != blank and block.settings.answer != blank -%}
+      {%- unless is_first %},{% endunless -%}
+      {"@type":"Question","name":{{ block.settings.question | json }},"acceptedAnswer":{"@type":"Answer","text":{{ block.settings.answer | strip_newlines | json }}}}
+      {%- assign is_first = false -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- assign faq_schema_items = faq_schema_items | strip -%}
+
+{%- if faq_schema_items != blank -%}
+  <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{{ faq_schema_items }}]}
+  </script>
+{%- endif -%}
+
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<div class="section page-width-content color-{{ section.settings.color_scheme }}">
+  <div
+    class="faq spacing-style"
+    style="{% render 'spacing-style', settings: section.settings %}"
+  >
+    {%- if section.settings.heading != blank -%}
+      <h2 class="faq__heading">{{ section.settings.heading | escape }}</h2>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="faq__list">
+        {%- for block in section.blocks -%}
+          {%- if block.settings.question != blank -%}
+            <details
+              class="faq__item"
+              {% if block.settings.open_by_default %}open{% endif %}
+              {{ block.shopify_attributes }}
+            >
+              <summary class="faq__question">
+                <span class="faq__question-text">{{ block.settings.question | escape }}</span>
+                <span class="faq__icon svg-wrapper" aria-hidden="true">
+                  {{- 'icon-caret.svg' | inline_asset_content -}}
+                </span>
+              </summary>
+              <div class="faq__answer rte">
+                {{ block.settings.answer }}
+              </div>
+            </details>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .faq__heading {
+    margin-block-end: var(--margin-lg, 1.5rem);
+  }
+
+  .faq__list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .faq__item {
+    border-block-end: var(--style-border-width, 1px) solid var(--color-border);
+  }
+
+  .faq__item:first-child {
+    border-block-start: var(--style-border-width, 1px) solid var(--color-border);
+  }
+
+  .faq__question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gap-md, 1rem);
+    padding-block: var(--padding-md, 1rem);
+    min-height: var(--minimum-touch-target, 44px);
+    cursor: pointer;
+    list-style: none;
+    font-weight: 600;
+  }
+
+  .faq__question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq__icon {
+    display: inline-flex;
+    flex-shrink: 0;
+    width: 1.2rem;
+    height: 1.2rem;
+    transition: transform 0.2s ease;
+  }
+
+  .faq__item[open] .faq__icon {
+    transform: rotate(180deg);
+  }
+
+  .faq__answer {
+    padding-block-end: var(--padding-md, 1rem);
+    max-width: 70ch;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "FAQ",
+  "class": "section-wrapper",
+  "disabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Frequently asked questions"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "What is your question?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "info": "Clear, direct answers are the ones AI answer engines quote back to shoppers.",
+          "default": "<p>Add your answer here.</p>"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_by_default",
+          "label": "Open by default",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "max_blocks": 50,
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What sizes are available?",
+            "answer": "<p>Our hoodies run true to size and are available from S to XXL. Check the size guide on each product page for exact chest and length measurements.</p>",
+            "open_by_default": true
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long does shipping take?",
+            "answer": "<p>Orders are printed and dispatched within 2–4 business days. Delivery within India typically takes 4–7 business days after dispatch.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "<p>We accept returns and exchanges within 7 days of delivery on unworn items with tags attached. Custom-designed pieces are made to order and are non-returnable unless faulty.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are the prints machine washable?",
+            "answer": "<p>Yes. Wash inside out on a cold, gentle cycle and air dry to keep the print looking sharp for longer.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -284,14 +284,48 @@
   {% endif %}
 {% endcapture %}
 
+{%- liquid
+  # Collect the merchant's social profile URLs (space-delimited; URLs never contain spaces)
+  # into a `sameAs` array so search/answer engines can tie the store to its social identity.
+  assign social_urls = ''
+  if settings.social_instagram_link != blank
+    assign social_urls = social_urls | append: settings.social_instagram_link | append: ' '
+  endif
+  if settings.social_twitter_link != blank
+    assign social_urls = social_urls | append: settings.social_twitter_link | append: ' '
+  endif
+  if settings.social_facebook_link != blank
+    assign social_urls = social_urls | append: settings.social_facebook_link | append: ' '
+  endif
+  if settings.social_youtube_link != blank
+    assign social_urls = social_urls | append: settings.social_youtube_link | append: ' '
+  endif
+  if settings.social_tiktok_link != blank
+    assign social_urls = social_urls | append: settings.social_tiktok_link | append: ' '
+  endif
+  if settings.social_pinterest_link != blank
+    assign social_urls = social_urls | append: settings.social_pinterest_link | append: ' '
+  endif
+  assign social_urls = social_urls | split: ' '
+-%}
 <script type="application/ld+json">
   {
-    "@context": "http://schema.org",
+    "@context": "https://schema.org",
     "@type": "Organization",
     "name": {{ shop.name | json }},
     {% if settings.logo %}
       "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
     {% endif %}
+    {%- if shop.description != blank %}
+      "description": {{ shop.description | json }},
+    {% endif -%}
+    {%- if social_urls.size > 0 %}
+      "sameAs": [
+        {%- for url in social_urls -%}
+          {{ url | json }}{%- unless forloop.last %},{% endunless -%}
+        {%- endfor -%}
+      ],
+    {% endif -%}
     "url": {{ request.origin | json }}
   }
 </script>

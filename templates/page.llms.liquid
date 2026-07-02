@@ -1,7 +1,8 @@
 {%- layout none -%}
 {%- # Alternate page template "llms" -> assign to a page to serve a GEO llms.txt-style
-     manifest at /pages/<handle>. Lists brand, collections and key pages so answer
-     engines can ground answers about the store. -%}
+     manifest at /pages/<handle> (also reachable via the /llms.txt redirect).
+     Lists brand, collections and key pages so answer engines can ground
+     answers about the store. -%}
 # {{ shop.name }}
 
 > {{ shop.description | default: page.content | strip_html | truncatewords: 40 }}

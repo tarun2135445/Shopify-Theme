@@ -1,0 +1,39 @@
+{%- doc -%}
+  Speculation Rules — prefetch same-origin navigations the shopper is about to
+  take (hover/pointerdown via "moderate" eagerness), so collection → product
+  clicks start with the HTML already in flight. Progressive enhancement:
+  browsers without the Speculation Rules API ignore the script entirely.
+
+  Cart, checkout, account, search, and app/CDN paths are excluded — they are
+  stateful, personalised, or pointless to prefetch. Add data-no-prefetch to any
+  link that should never be speculated.
+{%- enddoc -%}
+<script type="speculationrules">
+  {
+    "prefetch": [
+      {
+        "where": {
+          "and": [
+            { "href_matches": "/*" },
+            {
+              "not": {
+                "href_matches": [
+                  "/cart*",
+                  "/checkout*",
+                  "/account*",
+                  "/admin*",
+                  "/apps/*",
+                  "/search*",
+                  "/cdn/*",
+                  "/*.txt"
+                ]
+              }
+            },
+            { "not": { "selector_matches": "[data-no-prefetch]" } }
+          ]
+        },
+        "eagerness": "moderate"
+      }
+    ]
+  }
+</script>

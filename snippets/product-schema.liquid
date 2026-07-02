@@ -14,6 +14,10 @@
 {%- enddoc -%}
 
 {%- liquid
+  # priceValidUntil is required for full Google Merchant-listing eligibility.
+  # Jan 1 of next year: always in the future, regenerated on every render.
+  assign price_valid_year = 'now' | date: '%Y' | plus: 1
+  assign price_valid_until = price_valid_year | append: '-01-01'
   assign currency = cart.currency.iso_code | default: shop.currency
   assign rating = product.metafields.reviews.rating.value.rating
   assign scale_max = product.metafields.reviews.rating.value.scale_max | default: 5
@@ -55,6 +59,7 @@
     "offerCount": {{ product.variants.size }},
     {%- endif -%}
     "priceCurrency": {{ currency | json }},
+    "priceValidUntil": {{ price_valid_until | json }},
     "availability": {% if product.available %}"https://schema.org/InStock"{% else %}"https://schema.org/OutOfStock"{% endif %},
     "itemCondition": "https://schema.org/NewCondition",
     "url": {{ product_url | json }}

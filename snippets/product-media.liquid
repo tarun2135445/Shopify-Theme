@@ -32,8 +32,17 @@
   {% liquid
     assign high_res_url = media.preview_image | image_url: width: 3840
     assign fetch_priority = 'auto'
+    assign preload_image = false
     if is_main_product_media
       assign fetch_priority = 'high'
+      # Preload only the PDP main media (the LCP element there). The preload
+      # param emits a Link header (early hint), not markup, so the browser can
+      # start the LCP image fetch before it parses this far into the HTML.
+      # Gated to product pages so featured-product sections on other templates
+      # don't preload below-the-fold images.
+      if request.page_type == 'product'
+        assign preload_image = true
+      endif
     endif
     assign focal_point_style = '--focal-point: ' | append: media.presentation.focal_point | append: ';'
   %}
@@ -49,6 +58,7 @@
       ref: ref_image_to_transition,
       data_max_resolution: high_res_url,
       fetchpriority: fetch_priority,
+      preload: preload_image,
       style: focal_point_style,
       ref: image_ref
   }}

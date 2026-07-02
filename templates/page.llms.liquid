@@ -1,8 +1,15 @@
 {%- layout none -%}
-{%- # Alternate page template "llms" -> assign to a page to serve a GEO llms.txt-style
-     manifest at /pages/<handle> (also reachable via the /llms.txt redirect).
-     Lists brand, collections and key pages so answer engines can ground
-     answers about the store. -%}
+{%- comment -%}
+  Alternate page template "llms" -> assign to a page to serve a GEO llms.txt-style
+  manifest at /pages/<handle> (also reachable via the /llms.txt redirect).
+  Lists brand, collections and key pages so answer engines can ground
+  answers about the store.
+
+  Keep this file free of multi-line {% # %} inline comments: every line of one
+  must start with "#", otherwise the file is a Liquid syntax error and
+  Shopify's GitHub sync silently skips it (which is how this template went
+  missing from the live theme twice).
+{%- endcomment -%}
 # {{ shop.name }}
 
 > {{ shop.description | default: page.content | strip_html | truncatewords: 40 }}

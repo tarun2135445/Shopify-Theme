@@ -26,7 +26,7 @@
   assign og_title = page_title | default: shop.name
   assign og_url = canonical_url | default: request.origin
   assign og_type = 'website'
-  assign og_description = page_description | default: shop.description | default: shop.name
+  assign og_description = page_description | default: shop.description | default: settings.seo_brand_description | default: shop.name
 
   if request.page_type == 'product'
     assign og_type = 'product'
@@ -82,6 +82,24 @@
   <meta
     property="og:image:alt"
     content="{{ page_image.alt | default: og_title | escape }}"
+  >
+{%- elsif settings.logo -%}
+  {%- comment -%}
+    No social-share image set for this page (common on the homepage when
+    Online Store > Preferences has no image) — fall back to the brand logo
+    so shares and AI answer cards are never image-less.
+  {%- endcomment -%}
+  <meta
+    property="og:image"
+    content="https:{{ settings.logo | image_url: width: 1200 }}"
+  >
+  <meta
+    property="og:image:secure_url"
+    content="https:{{ settings.logo | image_url: width: 1200 }}"
+  >
+  <meta
+    property="og:image:alt"
+    content="{{ shop.name | escape }}"
   >
 {%- endif -%}
 

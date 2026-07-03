@@ -2321,6 +2321,16 @@
         "type": "url",
         "id": "social_pinterest_link",
         "label": "Pinterest URL"
+      },
+      {
+        "type": "header",
+        "content": "SEO fallbacks"
+      },
+      {
+        "type": "textarea",
+        "id": "seo_brand_description",
+        "label": "Brand description",
+        "info": "Used when a page has no meta description of its own (e.g. the homepage when Online Store > Preferences is empty). Also feeds the Organization structured data and the LLMs manifest. Aim for 140-160 characters."
       }
     ]
   }

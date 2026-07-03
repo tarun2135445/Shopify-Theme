@@ -316,8 +316,9 @@
     {% if settings.logo %}
       "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
     {% endif %}
-    {%- if shop.description != blank %}
-      "description": {{ shop.description | json }},
+    {%- assign org_description = shop.description | default: settings.seo_brand_description -%}
+    {%- if org_description != blank %}
+      "description": {{ org_description | json }},
     {% endif -%}
     {%- if social_urls.size > 0 %}
       "sameAs": [

@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "google-ads": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/googleads/google-ads-mcp.git",
+        "google-ads-mcp"
+      ],
+      "env": {
+        "GOOGLE_PROJECT_ID": "${GOOGLE_PROJECT_ID:-}",
+        "GOOGLE_ADS_DEVELOPER_TOKEN": "${GOOGLE_ADS_DEVELOPER_TOKEN:-}",
+        "GOOGLE_APPLICATION_CREDENTIALS": "${GOOGLE_APPLICATION_CREDENTIALS:-}",
+        "GOOGLE_ADS_LOGIN_CUSTOMER_ID": "${GOOGLE_ADS_LOGIN_CUSTOMER_ID:-}"
+      }
+    },
+    "Zapier-MCP": {
+      "type": "http",
+      "url": "https://mcp.zapier.com/api/v1/connect"
+    }
+  }
+}
